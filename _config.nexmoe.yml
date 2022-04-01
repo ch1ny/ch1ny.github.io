@@ -39,8 +39,8 @@ menu:
     关于本人:
         - /about.html
         - icon-info-circle
-    # 我的朋友:
-    #     - /friends.html # 使用说明：https://docs.nexmoe.com/article/py
+    我的朋友:
+        - /friends.html # 使用说明：https://docs.nexmoe.com/article/py
 
 widgets:
     - search
