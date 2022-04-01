@@ -45,7 +45,7 @@ layout: py
     }
 </style>
 
-<div style="text-align: center; position: relative; width: 100%;">
+<div style="text-align: center; position: relative; width: 100%; user-select: none;">
     <div style="position: absolute; width: 100%; font-size: 1.5rem; line-height: 4rem;">破案了，原来德布罗煜没有朋友</div>
     <button class="button" onclick="const self = this.classList.add('button_cannot_seen'); document.querySelector('.sob').classList.remove('sob_hidden');">我的朋友呢？</button>
     <div style="width: 100%; display: flex; justify-content: space-around;">
