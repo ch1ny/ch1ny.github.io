@@ -297,7 +297,9 @@ body {
         width: 100%;
         padding: $gutter;
         position: absolute;
-        min-height: 100vh;
+        min-height: 96vh;
+        margin-top: 2vh;
+        margin-bottom: 2vh;
 
         .nexmoe-page-nav {
             list-style: none;
@@ -336,7 +338,10 @@ body {
 
         .nexmoe-post {
             width: 100%;
-            margin-bottom: 40px;
+            margin-bottom: 1rem;
+            transition: 300ms;
+            padding: 1rem;
+            border-radius: 1rem;
 
             article p:first-child {
                 margin-top: 0;
@@ -345,6 +350,9 @@ body {
             article p:last-child {
                 margin-bottom: 0;
             }
+        }
+        .nexmoe-post:hover {
+            background-color: rgba(0, 0, 0, .1);
         }
 
         .nexmoe-post-meta {
@@ -476,12 +484,6 @@ body {
         margin: -($gutter);
         margin-top: 0;
     }
-}
-
-#nexmoe-content:after {
-    clear: both;
-    display: table;
-    content: ' ';
 }
 
 @media screen and (max-width: 1024px) {

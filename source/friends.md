@@ -3,7 +3,7 @@ title: 我的朋友
 layout: py
 ---
 
-{% meting "1337928912" "netease" "song" "volume:0.5 "autoplay:true" "preload:auto" "mutex:false" "listmaxheight:340px" "theme:#31aeff" %}
+{% meting "1337928912" "netease" "song" "volume:0.5 "autoplay:true" "preload:auto" "mutex:false" "theme:#31aeff" %}
 
 <hr />
 
