@@ -38,10 +38,10 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img-blog.csdnimg.cn/481bd4a571584ed9b0222f2b59bcfd30.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,npm/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css?v=233" crossorigin>
-    <link rel="stylesheet" href="/css/style.css?v=1648819881614">
+    <link rel="stylesheet" href="/css/style.css?v=1648820996325">
      
     
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1648819881614">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1648820996325">
     
 <meta name="generator" content="Hexo 6.1.0"></head>
 
@@ -191,24 +191,22 @@
     <div id="nexmoe-content">
         <div class="nexmoe-primary">
             <div class="nexmoe-post">
-
-  <article>
-      
-          <div class="nexmoe-post-cover" style="padding-bottom: NaN%;"> 
-              <img data-src="https://tse1-mm.cn.bing.net/th/id/R-C.1c06375ca9292528fe62ed3c027090b7?rik=V9YxI7dFI9A3WA&riu=http%3a%2f%2fuploadfile.qikuedu.com%2f2019%2f0520%2f20190520104330150.jpg&ehk=cohtMwwyzbmXZI7ZW%2fQBo3NAw%2f5hkB%2fem9%2fnqDfRXDc%3d&risl=&pid=ImgRaw&r=0" data-sizes="auto" alt="Unity使用Newtonsoft报错的解决方案" class="lazyload">
-              <h1>Unity使用Newtonsoft报错的解决方案</h1>
-          </div>
-      
-      
-      <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
+	<article>
+		
+		<div class="nexmoe-post-cover">
+			<img
+				data-src="https://tse1-mm.cn.bing.net/th/id/R-C.1c06375ca9292528fe62ed3c027090b7?rik=V9YxI7dFI9A3WA&riu=http%3a%2f%2fuploadfile.qikuedu.com%2f2019%2f0520%2f20190520104330150.jpg&ehk=cohtMwwyzbmXZI7ZW%2fQBo3NAw%2f5hkB%2fem9%2fnqDfRXDc%3d&risl=&pid=ImgRaw&r=0"
+				data-sizes="auto"
+				alt="Unity使用Newtonsoft报错的解决方案"
+				class="lazyload"
+			/>
+			<h1>Unity使用Newtonsoft报错的解决方案</h1>
+		</div>
+		 <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
     <a><i class="nexmoefont icon-calendar-fill"></i>2021年11月26日</a>
     <a><i class="nexmoefont icon-areachart"></i>572 字</a>
     <a><i class="nexmoefont icon-time-circle-fill"></i>大概 2 分钟</a>
-</div>
-
-      
-
-      <p>最近在做人机交互课的实验，主要开发工具选择了 Unity3D 。把做好的项目通过 <strong>git</strong> 上传后，又用 <code>git clone</code> 了下来来测试项目上传是否成功。结果发现 clone 回来的项目，出现了一些问题。</p>
+</div> <p>最近在做人机交互课的实验，主要开发工具选择了 Unity3D 。把做好的项目通过 <strong>git</strong> 上传后，又用 <code>git clone</code> 了下来来测试项目上传是否成功。结果发现 clone 回来的项目，出现了一些问题。</p>
 <span id="more"></span>
 
 <!-- toc -->
@@ -236,10 +234,9 @@
 <h3><span id="方法二访问-github-下载-unitypackage-文件手动导入">方法二：访问 GitHub 下载 unitypackage 文件手动导入</span></h3><p>访问 GitHub 下载相应的支持 Unity 的 Newtonsoft.Json 资源包。<a target="_blank" rel="noopener" href="https://github.com/SaladLab/Json.Net.Unity3D/releases">点我跳转</a><br><img data-fancybox="gallery" data-sizes="auto" data-src="https://img-blog.csdnimg.cn/3ccd69afc8ed4acbb89df49f40fdfc65.png" alt="在这里插入图片描述" class="lazyload"></p>
 <p>选择需要的版本进行下载（由于我使用到了 <code>Newtonsoft.Json.Linq</code> ，因此我需要下载的是 <code>JsonNet.9.0.1.unitypackage</code> ）。<br><img data-fancybox="gallery" data-sizes="auto" data-src="https://img-blog.csdnimg.cn/e603d8a638d6423980fdf418d4dbdccd.png" alt="在这里插入图片描述" class="lazyload"><br>打开报错的 Unity 项目，双击下载好的 <strong>unitypackage</strong> 文件，使用 <strong>Unity Editor</strong> 打开。<br><img data-fancybox="gallery" data-sizes="auto" data-src="https://img-blog.csdnimg.cn/52bdfa6bef544914b123f3a9abfb96ba.png" alt="在这里插入图片描述" class="lazyload"><br>将所有包都勾选好点击“导入”即可。此时 Unity 会重新编译一遍脚本。<br><img data-fancybox="gallery" data-sizes="auto" data-src="https://img-blog.csdnimg.cn/9622959061f64ffd853ced64e275e3e9.png" alt="在这里插入图片描述" class="lazyload"><br>编译成功后你就会发现控制台里已经没有报错的信息了。<br><img data-fancybox="gallery" data-sizes="auto" data-src="https://img-blog.csdnimg.cn/84963310156d4a0ca3b62d82dc0fd176.png" alt="在这里插入图片描述" class="lazyload"></p>
 
-  </article>
+	</article>
 
-  
-      
+	 
     <div class="nexmoe-post-copyright">
         <strong>Author：</strong>德布罗煜<br>
         <strong>Link：</strong><a href="https://ch1ny.github.io/2021/11/26/Unity%E4%BD%BF%E7%94%A8Newtonsoft%E6%8A%A5%E9%94%99%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" title="https:&#x2F;&#x2F;ch1ny.github.io&#x2F;2021&#x2F;11&#x2F;26&#x2F;Unity使用Newtonsoft报错的解决方案&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;ch1ny.github.io&#x2F;2021&#x2F;11&#x2F;26&#x2F;Unity使用Newtonsoft报错的解决方案&#x2F;</a><br>
@@ -248,9 +245,6 @@
         
     </div>
 
-
-  
-  
   <div class="nexmoe-post-meta nexmoe-rainbow">
     
         <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>
@@ -258,14 +252,11 @@
     
         <a class="nexmoefont icon-tag-fill -none-link" href="/tags/Unity3D/" rel="tag">Unity3D</a>
     
+</div> 
+	<div class="nexmoe-post-footer"></div>
+	
 </div>
 
-  
-      <div class="nexmoe-post-footer">
-          
-      </div>
-  
-</div>
             <div class="nexmoe-post-right">
               <div class="nexmoe-fixed">
                   <div class="nexmoe-tool"> 
@@ -297,10 +288,10 @@
 
  
 
-<script async src="/js/app.js?v=1648819881616"></script>
+<script async src="/js/app.js?v=1648820996326"></script>
 
 
-	<script async src="/js/search.js?v=1648819881616"></script>
+	<script async src="/js/search.js?v=1648820996326"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
