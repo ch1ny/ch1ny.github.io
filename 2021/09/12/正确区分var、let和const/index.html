@@ -21,15 +21,15 @@
 <meta property="og:description" content="var、let 和 const 都是 JavaScript 中用来声明变量的关键字，并且 let 和 const 关键字是在 ES6 中才新增的。既然都是用来声明变量的，那它们之间有什么区别呢？">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-09-12T04:35:47.000Z">
-<meta property="article:modified_time" content="2022-04-02T05:45:07.292Z">
+<meta property="article:modified_time" content="2022-04-02T05:54:59.223Z">
 <meta property="article:author" content="德布罗煜">
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,npm/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css?v=233" crossorigin>
-    <link rel="stylesheet" href="/css/style.css?v=1648878347791">
+    <link rel="stylesheet" href="/css/style.css?v=1648882715710">
      
     
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1648878347791">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1648882715710">
     
 <meta name="generator" content="Hexo 6.1.0"></head>
 
@@ -54,9 +54,9 @@
         </a>
     </div>
     <div class="nexmoe-count">
-        <div><span>文章</span>10</div>
-        <div><span>标签</span>8</div>
-        <div><span>分类</span>3</div>
+        <div><span>文章</span>11</div>
+        <div><span>标签</span>9</div>
+        <div><span>分类</span>5</div>
     </div>
     <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
         
@@ -132,6 +132,20 @@
         
 
         <li class="category-list-item">
+          <a class="category-list-link" href="/categories/JavaScript/">JavaScript</a>
+          <span class="category-list-count">3</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/React/">React</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
           <a class="category-list-link" href="/categories/Revue/">Revue</a>
           <span class="category-list-count">3</span>
         </li>
@@ -147,7 +161,7 @@
 
         <li class="category-list-item">
           <a class="category-list-link" href="/categories/编程/">编程</a>
-          <span class="category-list-count">5</span>
+          <span class="category-list-count">2</span>
         </li>
 
         
@@ -161,7 +175,7 @@
     
   <div class="nexmoe-widget-wrap">
     <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
-      <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Revue/" style="font-size: 20px;">Revue</a> <a href="/tags/Unity3D/" style="font-size: 10px;">Unity3D</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/electron/" style="font-size: 10px;">electron</a> <a href="/tags/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8/" style="font-size: 10px;">字节跳动</a> <a href="/tags/%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4/" style="font-size: 10px;">阿里巴巴</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 15px;">面试</a>
+      <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/React/" style="font-size: 10px;">React</a> <a href="/tags/Revue/" style="font-size: 16.67px;">Revue</a> <a href="/tags/Unity3D/" style="font-size: 10px;">Unity3D</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/electron/" style="font-size: 10px;">electron</a> <a href="/tags/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8/" style="font-size: 10px;">字节跳动</a> <a href="/tags/%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4/" style="font-size: 10px;">阿里巴巴</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 13.33px;">面试</a>
     </div>
     
   </div>
@@ -192,10 +206,33 @@
 		</div>
 		 <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
     <a><i class="nexmoefont icon-calendar-fill"></i>2021年09月12日</a>
-    <a><i class="nexmoefont icon-areachart"></i>1.8k 字</a>
+    <a><i class="nexmoefont icon-areachart"></i>1.9k 字</a>
     <a><i class="nexmoefont icon-time-circle-fill"></i>大概 8 分钟</a>
 </div> <p>var、let 和 const 都是 JavaScript 中用来声明变量的关键字，并且 let 和 const 关键字是在 ES6 中才新增的。既然都是用来声明变量的，那它们之间有什么区别呢？</p>
 <span id="more"></span>
+
+<!-- toc -->
+
+<ul>
+<li><a href="#var-%E5%92%8C-letconst-%E7%9A%84%E5%8C%BA%E5%88%AB">var 和 let&#x2F;const 的区别</a><ul>
+<li><a href="#%E4%BD%9C%E7%94%A8%E5%9F%9F">作用域</a></li>
+<li><a href="#%E9%87%8D%E5%A4%8D%E5%A3%B0%E6%98%8E">重复声明</a></li>
+<li><a href="#%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87%E4%B8%8E%E6%9A%82%E6%97%B6%E6%80%A7%E6%AD%BB%E5%8C%BA">变量提升与暂时性死区</a><ul>
+<li><a href="#%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87">变量提升</a></li>
+<li><a href="#%E6%9A%82%E6%97%B6%E6%80%A7%E6%AD%BB%E5%8C%BA">暂时性死区</a></li>
+</ul>
+</li>
+<li><a href="#varlet-%E5%B0%8F%E7%BB%93">var&#x2F;let 小结</a></li>
+</ul>
+</li>
+<li><a href="#const">const</a></li>
+<li><a href="#%E5%A3%B0%E6%98%8E%E9%A3%8E%E6%A0%BC%E5%8F%8A%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5">声明风格及最佳实践</a><ul>
+<li><a href="#%E4%B8%8D%E4%BD%BF%E7%94%A8-var">不使用 var</a></li>
+<li><a href="#const-%E4%BC%98%E5%85%88">const 优先</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
 
 <h1><span id="var-和-letx2fconst-的区别">var 和 let&#x2F;const 的区别</span></h1><h2><span id="作用域">作用域</span></h2><p>对于 <strong>var</strong> 来说，它声明的变量的作用域是它当前的执行上下文。具体来说就是，当 <strong>var</strong>处于函数内部，则是该函数执行上下文；如果在函数外部，则是全局执行上下文。换句话说，对于使用<strong>var</strong>声明的变量，其作用域只能是函数块的或是全局的。</p>
 <p>而使用<strong>let、const</strong>声明的变量，在除去全局作用域以及函数块作用域外，还新增了新的作用域限定范围，即使用 <code>&#123;&#125;</code> 包裹起来的代码块（被称作<strong>块作用域</strong>，可以是 if、while、switch 等关键字形成的代码块，也可以是单独使用<code>&#123;&#125;</code>形成的代码块）。</p>
@@ -258,7 +295,7 @@
 
   <div class="nexmoe-post-meta nexmoe-rainbow">
     
-        <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>
+        <a class="nexmoefont icon-appstore-fill -link" href="/categories/JavaScript/">JavaScript</a>
     
     
         <a class="nexmoefont icon-tag-fill -none-link" href="/tags/JavaScript/" rel="tag">JavaScript</a>
@@ -299,10 +336,10 @@
 
  
 
-<script async src="/js/app.js?v=1648878347792"></script>
+<script async src="/js/app.js?v=1648882715711"></script>
 
 
-	<script async src="/js/search.js?v=1648878347792"></script>
+	<script async src="/js/search.js?v=1648882715711"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
