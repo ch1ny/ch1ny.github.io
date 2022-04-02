@@ -12,7 +12,7 @@ function: # 功能开关，可选值（true,false）
     darkmode: false # 是否启用暗色主题，可选值（true,false）
 
 # 附加图标库 使用说明：https://docs.nexmoe.com/config/icon
-iconlib: # //at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css
+iconlib: //at.alicdn.com/t/font_3299330_el19bsi97h8.css
 
 search:
     type: local # 可选engine（用搜索引擎搜索）、swiftype、或local（本地搜索）
@@ -38,9 +38,10 @@ menu:
         - icon-container
     关于本人:
         - /about.html
-        - icon-info-circle
+        - icon-user
     我的朋友:
         - /friends.html # 使用说明：https://docs.nexmoe.com/article/py
+        - icon-team
 
 widgets:
     - search
@@ -66,9 +67,14 @@ social:
         - rgba(231, 106, 141, .15)
     GitHub:
         - https://github.com/ch1ny/
-        - icon-github
+        - icon-github-fill
         - rgb(25, 23, 23)
         - rgba(25, 23, 23, .15)
+    Gitee:
+        - https://gitee.com/ch1ny
+        - icon-gitee
+        - rgb(165, 15, 15)
+        - rgba(165, 15, 15, .15)
 
 # 自定义样式，启用后可在站点的source文件夹下新建custom.css自定义站点样式
 customstyle: false

@@ -304,15 +304,11 @@ body {
         .nexmoe-page-nav {
             list-style: none;
             text-align: center;
-            display: inline-block;
+            display: flex;
             color: #ddd;
             background-color: #f5f6f5;
             border-radius: $radius;
-            margin-top: -10px;
-
-            .prev {
-                margin-left: 8px;
-            }
+            justify-content: center;
 
             .current {
                 color: #fff;
@@ -328,7 +324,6 @@ body {
             width: 35px;
             height: 35px;
             line-height: 35px;
-            margin-right: 8px;
             float: left;
         }
     }
@@ -734,38 +729,7 @@ photos img {
 }
 
 .nexmoe-rainbow-fill {
-    a:nth-child(7n+1) {
-        color: #fff;
-        background-color: $nrfbgc1;
-    }
-
-    a:nth-child(7n+2) {
-        color: #fff;
-        background-color: $nrfbgc2;
-    }
-
-    a:nth-child(7n+3) {
-        color: #fff;
-        background-color: $nrfbgc3;
-    }
-
-    a:nth-child(7n+4) {
-        color: #fff;
-        background-color: $nrfbgc4;
-    }
-
-    a:nth-child(7n+5) {
-        color: #fff;
-        background-color: $nrfbgc5;
-    }
-
-    a:nth-child(7n+6) {
-        color: #fff;
-        background-color: $nrfbgc6;
-    }
-
-    a:nth-child(7n+7) {
-        color: #fff;
-        background-color: $nrfbgc7;
+    a {
+        color: #fff
     }
 }

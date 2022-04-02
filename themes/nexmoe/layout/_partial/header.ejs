@@ -21,9 +21,10 @@
     </div>
     <%- partial('_partial/sidebar') %>
     <div class="nexmoe-copyright">
-        &copy; <%= date(new Date(), 'YYYY') %> <%= config.author || config.title %>
+        &copy; <%= date(new Date(), 'YYYY') %> <a href="https://github.com/ch1ny/ch1ny.github.io" target="_blank"><%= config.author || config.title %></a>
         <%= __('Powered by') %> <a href="http://hexo.io/" target="_blank">Hexo</a>
-        & <a href="https://github.com/ch1ny/ch1ny.github.io" target="_blank">Ch1ny</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        <br /><a href="https://beian.miit.gov.cn/" target="_blank">赣ICP备2021007955号</a>
         <%- theme.sidebar %>
     </div>
 </div><!-- .nexmoe-drawer -->
