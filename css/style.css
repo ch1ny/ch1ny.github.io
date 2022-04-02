@@ -1075,14 +1075,11 @@ body {
 #nexmoe-content .nexmoe-primary .nexmoe-page-nav {
   list-style: none;
   text-align: center;
-  display: inline-block;
+  display: flex;
   color: #ddd;
   background-color: #f5f6f5;
   border-radius: 13px;
-  margin-top: -10px;
-}
-#nexmoe-content .nexmoe-primary .nexmoe-page-nav .prev {
-  margin-left: 8px;
+  justify-content: center;
 }
 #nexmoe-content .nexmoe-primary .nexmoe-page-nav .current {
   color: #fff;
@@ -1096,7 +1093,6 @@ body {
   width: 35px;
   height: 35px;
   line-height: 35px;
-  margin-right: 8px;
   float: left;
 }
 #nexmoe-content .nexmoe-posts {
