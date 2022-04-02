@@ -16,7 +16,7 @@
     <meta name="description" content="对于 JavaScript 初学者来说，JavaScript 有着这样一个概念十分重要，几乎是每个前端工程师面试时必然会遇到的一个问题，JS 的闭包（closure）。今天我们就来浅谈一下 JS 中的闭包究竟是怎样的东西。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="浅谈JS中的闭包">
-<meta property="og:url" content="https://ch1ny.github.io/2021/09/28/%E6%B5%85%E8%B0%88JS%E4%B8%AD%E7%9A%84%E9%97%AD%E5%8C%85/index.html">
+<meta property="og:url" content="https://ch1ny.github.io/2021/09/28/JavaScript/%E6%B5%85%E8%B0%88JS%E4%B8%AD%E7%9A%84%E9%97%AD%E5%8C%85/index.html">
 <meta property="og:site_name" content="德布罗煜">
 <meta property="og:description" content="对于 JavaScript 初学者来说，JavaScript 有着这样一个概念十分重要，几乎是每个前端工程师面试时必然会遇到的一个问题，JS 的闭包（closure）。今天我们就来浅谈一下 JS 中的闭包究竟是怎样的东西。">
 <meta property="og:locale" content="zh_CN">
@@ -26,12 +26,12 @@
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,npm/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css?v=233" crossorigin>
-    <link rel="stylesheet" href="/css/style.css?v=1648887875099">
+    <link rel="stylesheet" href="/css/style.css?v=1648908646975">
      
     
         <link rel="stylesheet" href="//at.alicdn.com/t/font_3299330_el19bsi97h8.css">
     
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1648887875099">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1648908646975">
     
 <meta name="generator" content="Hexo 6.1.0"></head>
 
@@ -56,9 +56,9 @@
         </a>
     </div>
     <div class="nexmoe-count">
-        <div><span>文章</span>12</div>
-        <div><span>标签</span>9</div>
-        <div><span>分类</span>5</div>
+        <div><span>文章</span>14</div>
+        <div><span>标签</span>10</div>
+        <div><span>分类</span>6</div>
     </div>
     <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
         
@@ -143,6 +143,13 @@
         
 
         <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Node-js/">Node.js</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
           <a class="category-list-link" href="/categories/React/">React</a>
           <span class="category-list-count">1</span>
         </li>
@@ -179,7 +186,7 @@
     
   <div class="nexmoe-widget-wrap">
     <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
-      <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/React/" style="font-size: 10px;">React</a> <a href="/tags/Revue/" style="font-size: 20px;">Revue</a> <a href="/tags/Unity3D/" style="font-size: 10px;">Unity3D</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/electron/" style="font-size: 10px;">electron</a> <a href="/tags/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8/" style="font-size: 10px;">字节跳动</a> <a href="/tags/%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4/" style="font-size: 10px;">阿里巴巴</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 15px;">面试</a>
+      <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Node-js/" style="font-size: 15px;">Node.js</a> <a href="/tags/React/" style="font-size: 10px;">React</a> <a href="/tags/Revue/" style="font-size: 20px;">Revue</a> <a href="/tags/Unity3D/" style="font-size: 10px;">Unity3D</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/electron/" style="font-size: 10px;">electron</a> <a href="/tags/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8/" style="font-size: 10px;">字节跳动</a> <a href="/tags/%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4/" style="font-size: 10px;">阿里巴巴</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 15px;">面试</a>
     </div>
     
   </div>
@@ -262,7 +269,7 @@
 	 
     <div class="nexmoe-post-copyright">
         <strong>Author：</strong>德布罗煜<br>
-        <strong>Link：</strong><a href="https://ch1ny.github.io/2021/09/28/%E6%B5%85%E8%B0%88JS%E4%B8%AD%E7%9A%84%E9%97%AD%E5%8C%85/" title="https:&#x2F;&#x2F;ch1ny.github.io&#x2F;2021&#x2F;09&#x2F;28&#x2F;浅谈JS中的闭包&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;ch1ny.github.io&#x2F;2021&#x2F;09&#x2F;28&#x2F;浅谈JS中的闭包&#x2F;</a><br>
+        <strong>Link：</strong><a href="https://ch1ny.github.io/2021/09/28/JavaScript/%E6%B5%85%E8%B0%88JS%E4%B8%AD%E7%9A%84%E9%97%AD%E5%8C%85/" title="https:&#x2F;&#x2F;ch1ny.github.io&#x2F;2021&#x2F;09&#x2F;28&#x2F;JavaScript&#x2F;浅谈JS中的闭包&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;ch1ny.github.io&#x2F;2021&#x2F;09&#x2F;28&#x2F;JavaScript&#x2F;浅谈JS中的闭包&#x2F;</a><br>
         
             <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
         
@@ -311,10 +318,10 @@
 
  
 
-<script async src="/js/app.js?v=1648887875100"></script>
+<script async src="/js/app.js?v=1648908646976"></script>
 
 
-	<script async src="/js/search.js?v=1648887875100"></script>
+	<script async src="/js/search.js?v=1648908646976"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
