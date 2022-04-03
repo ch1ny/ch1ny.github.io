@@ -830,6 +830,11 @@ article.nexmoe-py ul li img.lazyloaded {
 *::before {
   box-sizing: border-box;
 }
+*::selection {
+  background: rgba(39,154,255,0.6);
+  color: #fff;
+  text-shadow: none;
+}
 a {
   text-decoration: none;
 }
@@ -1081,11 +1086,18 @@ body {
   border-radius: 13px;
   justify-content: center;
 }
+#nexmoe-content .nexmoe-primary .nexmoe-page-nav .page-number {
+  transition: 300ms;
+  margin-inline: 10px;
+}
 #nexmoe-content .nexmoe-primary .nexmoe-page-nav .current {
   color: #fff;
   background: #31aeff;
   opacity: 0.9;
   box-shadow: 0 2px 12px #31aeff;
+}
+#nexmoe-content .nexmoe-primary .nexmoe-page-nav a:not(.current):hover {
+  background-color: rgba(155,155,155,0.3);
 }
 #nexmoe-content .nexmoe-primary .nexmoe-page-nav > * {
   color: #999;

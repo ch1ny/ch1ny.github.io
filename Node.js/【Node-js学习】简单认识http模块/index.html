@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+
+<html 
+	lang="zh_CN">
+
+	<head>
+		
+		<title>【Node.js学习】简单认识http模块 - 德布罗煜</title>
+		<meta charset="UTF-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+		 
+
+		<link
+			rel="shortcut icon"
+			href="https://assets.aiolia.top/Pictures/Others/116359b4ccf19917.jpg"
+			type="image/png"
+		/>
+		<meta name="description" content="这里我们回顾一下我们学习 Node.js 的目的：是为了将 Node.js 作为后端开发的工具才去学习它的，那么要使它能够代替传统的后端开发语言，Node.js 必须要具备基本的 HTTP 通信的功能。要实现 HTTP 通信，就要用到我们今天介绍的这个模块—— http 模块了。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Node.js学习】简单认识http模块">
+<meta property="og:url" content="https://aiolia.top/Node.js/%E3%80%90Node-js%E5%AD%A6%E4%B9%A0%E3%80%91%E7%AE%80%E5%8D%95%E8%AE%A4%E8%AF%86http%E6%A8%A1%E5%9D%97/index.html">
+<meta property="og:site_name" content="德布罗煜">
+<meta property="og:description" content="这里我们回顾一下我们学习 Node.js 的目的：是为了将 Node.js 作为后端开发的工具才去学习它的，那么要使它能够代替传统的后端开发语言，Node.js 必须要具备基本的 HTTP 通信的功能。要实现 HTTP 通信，就要用到我们今天介绍的这个模块—— http 模块了。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-04-03T07:02:50.000Z">
+<meta property="article:modified_time" content="2022-04-03T13:57:22.882Z">
+<meta property="article:author" content="德布罗煜">
+<meta property="article:tag" content="Node.js">
+<meta name="twitter:card" content="summary">
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,npm/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css?v=233"
+			crossorigin
+		/>
+		<link rel="stylesheet" href="/css/style.css?v=1648994276883">  
+		<link rel="stylesheet" href="//at.alicdn.com/t/font_3299330_el19bsi97h8.css" />
+		 <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1648994276883"> 
+	<meta name="generator" content="Hexo 6.1.0"></head>
+
+	<body class="mdui-drawer-body-left">
+		
+		<div id="nexmoe-background">
+			<div
+				class="nexmoe-bg"
+				style="background-image: url(https://assets.aiolia.top/Pictures/Others/f0d5cc34c6e5aa7.jpg)"
+			></div>
+			<div class="mdui-appbar mdui-shadow-0">
+				<div class="mdui-toolbar">
+					<a
+						mdui-drawer="{target: '#drawer', swipe: true}"
+						title="menu"
+						class="mdui-btn mdui-btn-icon mdui-ripple"
+						><i class="mdui-icon nexmoefont icon-menu"></i
+					></a>
+					<div class="mdui-toolbar-spacer"></div>
+					<!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+					<a
+						href="/"
+						title="德布罗煜"
+						class="mdui-btn mdui-btn-icon"
+						><img src="https://assets.aiolia.top/Pictures/Others/116359b4ccf19917.jpg" alt="德布罗煜"
+					/></a>
+				</div>
+			</div>
+		</div>
+		<div id="nexmoe-header"><div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="德布罗煜">
+            <img src="https://assets.aiolia.top/Pictures/Others/116359b4ccf19917.jpg" alt="德布罗煜" alt="德布罗煜">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>15</div>
+        <div><span>标签</span>10</div>
+        <div><span>分类</span>6</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archive.html" title="文章归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                文章归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/about.html" title="关于本人">
+            <i class="mdui-list-item-icon nexmoefont icon-user"></i>
+            <div class="mdui-list-item-content">
+                关于本人
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/friends.html" title="我的朋友">
+            <i class="mdui-list-item-icon nexmoefont icon-team"></i>
+            <div class="mdui-list-item-content">
+                我的朋友
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+        
+            <form id="search_form">
+                <label><input class="st-default-search-input" id="search_value" name="q" type="search" placeholder="Search" style="
+                    font-size: 15px !important;
+                    height: 56px !important;
+                    background-image: none;
+                "></label>
+            </form>
+         
+    </div>
+</div>
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=1056317718&website=www.oicqzone.com" target="_blank" mdui-tooltip="{content: 'QQ'}" style="color: rgb(49, 174, 255);background-color: rgba(49, 174, 255, .1);">
+            <i class="nexmoefont icon-QQ"></i>
+        </a><a class="mdui-ripple" href="https://space.bilibili.com/27905679" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/ch1ny/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github-fill"></i>
+        </a><a class="mdui-ripple" href="https://gitee.com/ch1ny" target="_blank" mdui-tooltip="{content: 'Gitee'}" style="color: rgb(165, 15, 15);background-color: rgba(165, 15, 15, .15);">
+            <i class="nexmoefont icon-gitee"></i>
+        </a>
+    </div>
+</div>
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">分类</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/JavaScript/">JavaScript</a>
+          <span class="category-list-count">3</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Node-js/">Node.js</a>
+          <span class="category-list-count">3</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/React/">React</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Revue/">Revue</a>
+          <span class="category-list-count">4</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/工作/">工作</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/编程/">编程</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Node-js/" style="font-size: 16.67px;">Node.js</a> <a href="/tags/React/" style="font-size: 10px;">React</a> <a href="/tags/Revue/" style="font-size: 20px;">Revue</a> <a href="/tags/Unity3D/" style="font-size: 10px;">Unity3D</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/electron/" style="font-size: 10px;">electron</a> <a href="/tags/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8/" style="font-size: 10px;">字节跳动</a> <a href="/tags/%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4/" style="font-size: 10px;">阿里巴巴</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 13.33px;">面试</a>
+    </div>
+    
+  </div>
+
+    
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2022 <a href="https://github.com/ch1ny/ch1ny.github.io" target="_blank">德布罗煜</a>
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        <br /><a href="https://beian.miit.gov.cn/" target="_blank">赣ICP备2021007955号</a>
+        
+    </div>
+</div><!-- .nexmoe-drawer --></div>
+		<div id="nexmoe-content">
+			<div class="nexmoe-primary">
+				<div class="nexmoe-post">
+	<article>
+		
+		<div
+			class="nexmoe-post-cover"
+			style="padding-bottom: 56.25%"
+		>
+			<img
+				data-src="https://assets.aiolia.top/Pictures/Others/f0d5cc34c6e5aa7.jpg"
+				data-sizes="auto"
+				alt="【Node.js学习】简单认识http模块"
+				class="lazyload"
+			/>
+			<h1>【Node.js学习】简单认识http模块</h1>
+		</div>
+		 <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2022年04月03日</a>
+    <a><i class="nexmoefont icon-areachart"></i>1.5k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 6 分钟</a>
+</div> <p>这里我们回顾一下我们学习 Node.js 的目的：是为了将 Node.js 作为后端开发的工具才去学习它的，那么要使它能够代替传统的后端开发语言，Node.js 必须要具备基本的 HTTP 通信的功能。要实现 HTTP 通信，就要用到我们今天介绍的这个模块—— <strong>http 模块</strong>了。</p>
+<span id="more"></span>
+
+<!-- toc -->
+
+<ul>
+<li><a href="#http-%E6%A8%A1%E5%9D%97%E7%AE%80%E4%BB%8B">http 模块简介</a></li>
+<li><a href="#%E8%BF%9B%E4%B8%80%E6%AD%A5%E7%90%86%E8%A7%A3-http-%E6%A8%A1%E5%9D%97%E7%9A%84%E4%BD%9C%E7%94%A8">进一步理解 http 模块的作用</a></li>
+<li><a href="#%E5%88%9B%E5%BB%BA%E5%9F%BA%E6%9C%AC%E7%9A%84-web-%E6%9C%8D%E5%8A%A1%E5%99%A8">创建基本的 web 服务器</a><ul>
+<li><a href="#%E5%88%9B%E5%BB%BA-web-%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%AD%A5%E9%AA%A4">创建 web 服务器的基本步骤</a><ul>
+<li><a href="#%E6%AD%A5%E9%AA%A4%E4%B8%80-%E5%AF%BC%E5%85%A5-http-%E6%A8%A1%E5%9D%97">步骤一 - 导入 http 模块</a></li>
+<li><a href="#%E6%AD%A5%E9%AA%A4%E4%BA%8C-%E5%88%9B%E5%BB%BA-web-%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E4%BE%8B">步骤二 - 创建 web 服务器实例</a></li>
+<li><a href="#%E6%AD%A5%E9%AA%A4%E4%B8%89-%E4%B8%BA%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E4%BE%8B%E7%BB%91%E5%AE%9A-request-%E4%BA%8B%E4%BB%B6">步骤三 - 为服务器实例绑定 request 事件</a></li>
+<li><a href="#%E6%AD%A5%E9%AA%A4%E5%9B%9B-%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1%E5%99%A8">步骤四 - 启动服务器</a></li>
+<li><a href="#%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81">完整代码</a></li>
+</ul>
+</li>
+<li><a href="#req-%E5%AF%B9%E8%B1%A1httpincomingmessage">req 对象&lt;http.IncomingMessage&gt;</a></li>
+<li><a href="#resp-%E5%AF%B9%E8%B1%A1httpserverresponse">resp 对象&lt;http.ServerResponse&gt;</a></li>
+</ul>
+</li>
+<li><a href="#%E6%A0%B9%E6%8D%AE%E4%B8%8D%E5%90%8C%E7%9A%84-url-%E5%93%8D%E5%BA%94%E4%B8%8D%E5%90%8C%E7%9A%84%E5%86%85%E5%AE%B9">根据不同的 URL 响应不同的内容</a></li>
+</ul>
+<!-- tocstop -->
+
+<h1><span id="http-模块简介">http 模块简介</span></h1><p>在介绍 http 模块之前，我们先来回顾一下<strong>客户端</strong>和<strong>服务器端</strong>的概念。</p>
+<ul>
+<li><strong>客户端</strong>：在网络节点中，负责消费资源的计算机，叫做客户端。</li>
+<li><strong>服务器端</strong>：<strong>负责对外提供网络资源</strong>的计算机，叫做服务器。</li>
+</ul>
+<p><strong>http 模块</strong>是 Node.js 官方提供的、用来<strong>创建 web 服务器</strong>的模块。通过 http 模块提供的 <code>http.createServer()</code> 方法，就能方便地把一台普通的计算机，变为一台 Web 服务器，从而对外提供 Web 资源服务。</p>
+<p>如果要使用 http 模块创建 Web 服务器，首先需要导入它：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;http&#x27;</span>);<br></code></pre></td></tr></table></figure>
+
+<h1><span id="进一步理解-http-模块的作用">进一步理解 http 模块的作用</span></h1><p>服务器与普通计算机的<strong>区别</strong>在于，服务器上安装了 <strong>web 服务器软件</strong>，如：IIS、Apache 等。通过安装这些服务器软件，就能把一台普通的电脑变成一台 web 服务器。</p>
+<p>而有了 Node.js，我们便不再需要 IIS、Apache 这些第三方 web 服务器软件。因为我们可以基于 Node.js 提供的 http 模块自行搭建一个 Web 服务器，对外提供 Web 服务。</p>
+<h1><span id="创建基本的-web-服务器">创建基本的 web 服务器</span></h1><h2><span id="创建-web-服务器的基本步骤">创建 web 服务器的基本步骤</span></h2><ol>
+<li><a href="#步骤一-导入-http-模块">导入 http 模块</a></li>
+<li><a href="#步骤二-创建-web-服务器实例">创建 web 服务器实例</a></li>
+<li><a href="#步骤三-为服务器实例绑定-request-事件">为服务器实例绑定 <strong>request</strong> 事件，监听客户端的请求</a></li>
+<li><a href="#步骤四-启动服务器">启动服务器</a></li>
+</ol>
+<h3><span id="步骤一-导入-http-模块">步骤一 - 导入 http 模块</span></h3><p>如果希望在计算机上创建一个 web 服务器，从而对外提供 web 服务，首先需要导入 http 模块。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;http&#x27;</span>);<br></code></pre></td></tr></table></figure>
+
+<h3><span id="步骤二-创建-web-服务器实例">步骤二 - 创建 web 服务器实例</span></h3><p>调用 <code>http.createServer()</code> 方法，即可快速创建一个 web 服务器实例。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> server = http.<span class="hljs-title function_">createServer</span>();<br></code></pre></td></tr></table></figure>
+
+<h3><span id="步骤三-为服务器实例绑定-request-事件">步骤三 - 为服务器实例绑定 request 事件</span></h3><p>为服务器实例绑定 request 事件，即可监听客户端发来的网络请求。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js">server.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;request&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">req, resp</span>) =&gt;</span> &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;接到客户端发送请求&#x27;</span>);<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(req);<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<p>我们通过 <code>server.on()</code> 绑定监听事件，监听 <code>request</code> 事件，并给第二个参数传入一个回调函数。该回调函数接收请求对象和响应对象作为形参，用于在监听到 <code>request</code> 请求后执行回调。</p>
+<h3><span id="步骤四-启动服务器">步骤四 - 启动服务器</span></h3><p>调用服务器实例的 <code>listen()</code> 方法，即可启动当前的 web 服务器实例。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js">server.<span class="hljs-title function_">listen</span>(<span class="hljs-number">80</span>, <span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;服务器开始监听 80 端口&#x27;</span>);<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<h3><span id="完整代码">完整代码</span></h3><p>创建一个基本的 web 服务器的完整代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 步骤一 - 导入 http 模块</span><br><span class="hljs-keyword">const</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;http&#x27;</span>);<br><br><span class="hljs-comment">// 步骤二 - 创建 web 服务器实例</span><br><span class="hljs-keyword">const</span> server = http.<span class="hljs-title function_">createServer</span>();<br><br><span class="hljs-comment">// 步骤三 - 为服务器实例绑定 request 事件</span><br>server.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;request&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">req, resp</span>) =&gt;</span> &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;接到客户端发送请求&#x27;</span>);<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(req);<br>&#125;);<br><br><span class="hljs-comment">// 步骤四 - 启动服务器</span><br>server.<span class="hljs-title function_">listen</span>(<span class="hljs-number">80</span>, <span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;服务器开始监听 80 端口&#x27;</span>);<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<h2><span id="req-对象lthttpincomingmessagegt">req 对象&lt;http.IncomingMessage&gt;</span></h2><p>我们可以通过 request 请求对象提取出客户端发送的请求中的信息，示例代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;http&#x27;</span>);<br><span class="hljs-keyword">const</span> server = http.<span class="hljs-title function_">createServer</span>();<br>server.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;request&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">req, resp</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">const</span> url = req.<span class="hljs-property">url</span>;<br>    <span class="hljs-keyword">const</span> method = req.<span class="hljs-property">method</span>;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`请求的url是<span class="hljs-subst">$&#123;url&#125;</span>，请求的方法是<span class="hljs-subst">$&#123;method&#125;</span>`</span>);<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<h2><span id="resp-对象lthttpserverresponsegt">resp 对象&lt;http.ServerResponse&gt;</span></h2><p>在服务器的 request 事件处理函数中，如果想访问与服务器相关的属性或数据可以使用 response 响应对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs js">server.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;request&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">req, resp</span>) =&gt;</span> &#123;<br>    <span class="hljs-comment">// resp.writeHead()方法介绍：</span><br>    <span class="hljs-comment">// 向响应头写入内容</span><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> &#123;<span class="hljs-type">Number</span>&#125; statusCode 三位数字，表示3位的HTTP状态码</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> &#123;<span class="hljs-type">String</span>&#125; statusMessage 可选参数，可以输入一段人类可读的状态信息</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> &#123;<span class="hljs-type">Object|Array</span>&#125; headers 可选参数，表示响应标头</span><br><span class="hljs-comment">     */</span><br>    resp.<span class="hljs-title function_">writeHead</span>(<span class="hljs-number">200</span>, &#123;<br>        <span class="hljs-string">&#x27;content-type&#x27;</span>: <span class="hljs-string">&#x27;text/html; charset=utf8&#x27;</span>, <span class="hljs-comment">// 这里给响应设置UTF8字符集，防止中文乱码</span><br>    &#125;);<br>    <span class="hljs-keyword">const</span> res = <span class="hljs-string">`请求的url是<span class="hljs-subst">$&#123;req.url&#125;</span>，请求的方法是<span class="hljs-subst">$&#123;req.method&#125;</span>`</span>;<br>    <span class="hljs-comment">// 这里介绍 resp.end()方法</span><br>    <span class="hljs-comment">// 向客户端发送指定内容，并终止本次请求的处理过程</span><br>    resp.<span class="hljs-title function_">end</span>(res);<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<h1><span id="根据不同的-url-响应不同的内容">根据不同的 URL 响应不同的内容</span></h1><p>通过上面的步骤，我们已经实现了基本的 web 服务器搭建。但是这样一个简单的服务器还存在一个问题，那就是它只能监听发送到某个端口的所有请求，而不能区分发向不同地址的请求。接下来，我们将实现根据不同的 URL 返回不同的响应。</p>
+<p>示例代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;http&#x27;</span>);<br><span class="hljs-keyword">const</span> server = http.<span class="hljs-title function_">createServer</span>();<br><br>server.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;request&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">req, resp</span>) =&gt;</span> &#123;<br>    <span class="hljs-comment">// 这里给响应设置UTF8字符集，防止中文乱码</span><br>    resp.<span class="hljs-title function_">setHeader</span>(<span class="hljs-string">&#x27;content-type&#x27;</span>, <span class="hljs-string">&#x27;text/html; charset=utf8&#x27;</span>);<br>    <span class="hljs-keyword">switch</span> (req.<span class="hljs-property">url</span>) &#123;<br>        <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;/&#x27;</span>:<br>            resp.<span class="hljs-title function_">write</span>(<span class="hljs-string">`&lt;h1&gt;欢迎来到首页&lt;/h1&gt;`</span>);<br>            resp.<span class="hljs-title function_">end</span>();<br>            <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;/about&#x27;</span>:<br>            resp.<span class="hljs-title function_">write</span>(<span class="hljs-string">`&lt;h1&gt;这里是简介&lt;/h1&gt;`</span>);<br>            resp.<span class="hljs-title function_">end</span>();<br>            <span class="hljs-keyword">break</span>;<br>        <span class="hljs-attr">default</span>:<br>            <span class="hljs-comment">// 默认返回 404</span><br>            resp.<span class="hljs-title function_">writeHead</span>(<span class="hljs-number">404</span>);<br>            resp.<span class="hljs-title function_">end</span>(<span class="hljs-string">`&lt;h1&gt;404 NOT FOUND&lt;/h1&gt;`</span>);<br>            <span class="hljs-keyword">break</span>;<br>    &#125;<br>&#125;);<br><br>server.<span class="hljs-title function_">listen</span>(<span class="hljs-number">80</span>, <span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;服务器开始运行&#x27;</span>);<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+	</article>
+
+	 
+    <div class="nexmoe-post-copyright">
+        <strong>Author：</strong>德布罗煜<br>
+        <strong>Link：</strong><a href="https://aiolia.top/Node.js/%E3%80%90Node-js%E5%AD%A6%E4%B9%A0%E3%80%91%E7%AE%80%E5%8D%95%E8%AE%A4%E8%AF%86http%E6%A8%A1%E5%9D%97/" title="https:&#x2F;&#x2F;aiolia.top&#x2F;Node.js&#x2F;【Node-js学习】简单认识http模块&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;aiolia.top&#x2F;Node.js&#x2F;【Node-js学习】简单认识http模块&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+        <a class="nexmoefont icon-appstore-fill -link" href="/categories/Node-js/">Node.js</a>
+    
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/Node-js/" rel="tag">Node.js</a>
+    
+</div> 
+	<div class="nexmoe-post-footer"></div>
+	
+</div>
+
+				<div class="nexmoe-post-right">
+					<div class="nexmoe-fixed">
+						<div class="nexmoe-tool">
+							
+
+							<a
+								href="#nexmoe-content"
+								class="toc-link"
+								aria-label="回到顶部"
+								title="top"
+								><button class="mdui-fab mdui-ripple">
+									<i class="nexmoefont icon-caret-top"></i></button
+							></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		 
+    <div id="nexmoe-search-space">
+        <div class="search-container">
+            <div class="search-header">
+                <div class="search-input-container">
+                    <input class="search-input" type="text" placeholder="Search" oninput="sinput();">
+                </div>
+                <a class="search-close" onclick="sclose();">×</a>
+            </div>
+            <div class="search-body"></div>
+        </div>
+    </div>
+ <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+ 
+
+<script async src="/js/app.js?v=1648994276885"></script>
+
+
+	<script async src="/js/search.js?v=1648994276885"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
+<script>
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
+</script>
+
+ 
+
+
+
+
+
+	</body>
+</html>

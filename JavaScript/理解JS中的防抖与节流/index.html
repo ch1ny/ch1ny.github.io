@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+
+<html 
+	lang="zh_CN">
+
+	<head>
+		
+		<title>理解 JS 中的防抖与节流 - 德布罗煜</title>
+		<meta charset="UTF-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+		 
+
+		<link
+			rel="shortcut icon"
+			href="https://assets.aiolia.top/Pictures/Others/116359b4ccf19917.jpg"
+			type="image/png"
+		/>
+		<meta name="description" content="在前端项目开发中，在合适的地方做好防抖与节流是十分重要的。首先我们要知道，哪些地方适合采用防抖节流进行开发。一个重要的特征就是——某个函数在短时间内被频繁持续地执行。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="理解 JS 中的防抖与节流">
+<meta property="og:url" content="https://aiolia.top/JavaScript/%E7%90%86%E8%A7%A3JS%E4%B8%AD%E7%9A%84%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81/index.html">
+<meta property="og:site_name" content="德布罗煜">
+<meta property="og:description" content="在前端项目开发中，在合适的地方做好防抖与节流是十分重要的。首先我们要知道，哪些地方适合采用防抖节流进行开发。一个重要的特征就是——某个函数在短时间内被频繁持续地执行。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/a9127a35ad0047789b2892135ed3bf96.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/8a0a38e3a5454aafbab6062aa9263468.gif">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/63e5779d43f743f7be350ff1ce7fcb4d.gif">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/49fd57d5bbd04aa0bd3190eacb240637.gif">
+<meta property="article:published_time" content="2022-01-11T02:17:29.000Z">
+<meta property="article:modified_time" content="2022-04-02T05:54:54.953Z">
+<meta property="article:author" content="德布罗煜">
+<meta property="article:tag" content="JavaScript">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/a9127a35ad0047789b2892135ed3bf96.png">
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,npm/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css?v=233"
+			crossorigin
+		/>
+		<link rel="stylesheet" href="/css/style.css?v=1648994276893">  
+		<link rel="stylesheet" href="//at.alicdn.com/t/font_3299330_el19bsi97h8.css" />
+		 <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1648994276893"> 
+	<meta name="generator" content="Hexo 6.1.0"></head>
+
+	<body class="mdui-drawer-body-left">
+		
+		<div id="nexmoe-background">
+			<div
+				class="nexmoe-bg"
+				style="background-image: url(https://assets.aiolia.top/Pictures/Others/f0d5cc34c6e5aa7.jpg)"
+			></div>
+			<div class="mdui-appbar mdui-shadow-0">
+				<div class="mdui-toolbar">
+					<a
+						mdui-drawer="{target: '#drawer', swipe: true}"
+						title="menu"
+						class="mdui-btn mdui-btn-icon mdui-ripple"
+						><i class="mdui-icon nexmoefont icon-menu"></i
+					></a>
+					<div class="mdui-toolbar-spacer"></div>
+					<!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+					<a
+						href="/"
+						title="德布罗煜"
+						class="mdui-btn mdui-btn-icon"
+						><img src="https://assets.aiolia.top/Pictures/Others/116359b4ccf19917.jpg" alt="德布罗煜"
+					/></a>
+				</div>
+			</div>
+		</div>
+		<div id="nexmoe-header"><div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="德布罗煜">
+            <img src="https://assets.aiolia.top/Pictures/Others/116359b4ccf19917.jpg" alt="德布罗煜" alt="德布罗煜">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>15</div>
+        <div><span>标签</span>10</div>
+        <div><span>分类</span>6</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archive.html" title="文章归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                文章归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/about.html" title="关于本人">
+            <i class="mdui-list-item-icon nexmoefont icon-user"></i>
+            <div class="mdui-list-item-content">
+                关于本人
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/friends.html" title="我的朋友">
+            <i class="mdui-list-item-icon nexmoefont icon-team"></i>
+            <div class="mdui-list-item-content">
+                我的朋友
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+        
+            <form id="search_form">
+                <label><input class="st-default-search-input" id="search_value" name="q" type="search" placeholder="Search" style="
+                    font-size: 15px !important;
+                    height: 56px !important;
+                    background-image: none;
+                "></label>
+            </form>
+         
+    </div>
+</div>
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=1056317718&website=www.oicqzone.com" target="_blank" mdui-tooltip="{content: 'QQ'}" style="color: rgb(49, 174, 255);background-color: rgba(49, 174, 255, .1);">
+            <i class="nexmoefont icon-QQ"></i>
+        </a><a class="mdui-ripple" href="https://space.bilibili.com/27905679" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/ch1ny/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github-fill"></i>
+        </a><a class="mdui-ripple" href="https://gitee.com/ch1ny" target="_blank" mdui-tooltip="{content: 'Gitee'}" style="color: rgb(165, 15, 15);background-color: rgba(165, 15, 15, .15);">
+            <i class="nexmoefont icon-gitee"></i>
+        </a>
+    </div>
+</div>
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">分类</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/JavaScript/">JavaScript</a>
+          <span class="category-list-count">3</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Node-js/">Node.js</a>
+          <span class="category-list-count">3</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/React/">React</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Revue/">Revue</a>
+          <span class="category-list-count">4</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/工作/">工作</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/编程/">编程</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Node-js/" style="font-size: 16.67px;">Node.js</a> <a href="/tags/React/" style="font-size: 10px;">React</a> <a href="/tags/Revue/" style="font-size: 20px;">Revue</a> <a href="/tags/Unity3D/" style="font-size: 10px;">Unity3D</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/electron/" style="font-size: 10px;">electron</a> <a href="/tags/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8/" style="font-size: 10px;">字节跳动</a> <a href="/tags/%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4/" style="font-size: 10px;">阿里巴巴</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 13.33px;">面试</a>
+    </div>
+    
+  </div>
+
+    
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2022 <a href="https://github.com/ch1ny/ch1ny.github.io" target="_blank">德布罗煜</a>
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        <br /><a href="https://beian.miit.gov.cn/" target="_blank">赣ICP备2021007955号</a>
+        
+    </div>
+</div><!-- .nexmoe-drawer --></div>
+		<div id="nexmoe-content">
+			<div class="nexmoe-primary">
+				<div class="nexmoe-post">
+	<article>
+		
+		<div class="nexmoe-post-cover">
+			<img
+				data-src="https://pic1.zhimg.com/v2-535e92c65ddaff1a55f11df10c680c75_720w.jpg?source=172ae18b"
+				data-sizes="auto"
+				alt="理解 JS 中的防抖与节流"
+				class="lazyload"
+			/>
+			<h1>理解 JS 中的防抖与节流</h1>
+		</div>
+		 <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2022年01月11日</a>
+    <a><i class="nexmoefont icon-areachart"></i>1.4k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 6 分钟</a>
+</div> <blockquote>
+<p>在前端项目开发中，在合适的地方做好<strong>防抖</strong>与<strong>节流</strong>是十分重要的。首先我们要知道，哪些地方适合采用防抖节流进行开发。一个重要的特征就是——<strong>某个函数在短时间内被频繁持续地执行</strong>。</p>
+</blockquote>
+<span id="more"></span>
+
+<p>下面将给大家展示一个例子，方便理解：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;zh&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span> /&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;X-UA-Compatible&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;IE=edge&quot;</span> /&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span> /&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>防抖节流<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css"></span><br><span class="language-css">            <span class="hljs-selector-tag">body</span> &#123;</span><br><span class="language-css">                <span class="hljs-attribute">text-align</span>: center;</span><br><span class="language-css">                <span class="hljs-attribute">margin</span>: <span class="hljs-number">0%</span>;</span><br><span class="language-css">            &#125;</span><br><span class="language-css"></span><br><span class="language-css">            <span class="hljs-selector-tag">div</span> &#123;</span><br><span class="language-css">                <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;</span><br><span class="language-css">                <span class="hljs-attribute">height</span>: <span class="hljs-number">75px</span>;</span><br><span class="language-css">                <span class="hljs-attribute">text-align</span>: center;</span><br><span class="language-css">                <span class="hljs-attribute">background-color</span>: gray;</span><br><span class="language-css">                <span class="hljs-attribute">color</span>: white;</span><br><span class="language-css">                <span class="hljs-attribute">font-size</span>: <span class="hljs-number">75px</span>;</span><br><span class="language-css">                <span class="hljs-attribute">line-height</span>: <span class="hljs-number">75px</span>;</span><br><span class="language-css">                <span class="hljs-attribute">position</span>: relative;</span><br><span class="language-css">                <span class="hljs-attribute">left</span>: <span class="hljs-number">50%</span>;</span><br><span class="language-css">                <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate</span>(-<span class="hljs-number">50%</span>);</span><br><span class="language-css">                user-select: none;</span><br><span class="language-css">            &#125;</span><br><span class="language-css">        </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>未采用防抖与节流，函数被频繁触发<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;number&quot;</span>&gt;</span>0<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">        &#123;</span><br><span class="language-javascript">            <span class="hljs-keyword">let</span> num = <span class="hljs-number">0</span>;</span><br><span class="language-javascript"></span><br><span class="language-javascript">            <span class="hljs-keyword">function</span> <span class="hljs-title function_">movemouse</span>(<span class="hljs-params"></span>) &#123;</span><br><span class="language-javascript">                <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&#x27;#number&#x27;</span>).<span class="hljs-property">onmousemove</span> = <span class="hljs-function">() =&gt;</span> &#123;</span><br><span class="language-javascript">                    <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&#x27;#number&#x27;</span>).<span class="hljs-property">innerText</span> = ++num;</span><br><span class="language-javascript">                &#125;;</span><br><span class="language-javascript">            &#125;</span><br><span class="language-javascript"></span><br><span class="language-javascript">            <span class="hljs-title function_">movemouse</span>();</span><br><span class="language-javascript">        &#125;</span><br><span class="language-javascript">    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>通过以上代码，我们构造了一个简单的函数被频繁触发的 demo 。<br><img data-fancybox="gallery" data-sizes="auto" data-src="https://img-blog.csdnimg.cn/a9127a35ad0047789b2892135ed3bf96.png" alt="在这里插入图片描述" class="lazyload"><br>这是一个灰色的 <code>div</code> ，当鼠标在它里面移动时，其内容会加一，效果如下：<br><img data-fancybox="gallery" data-sizes="auto" data-src="https://img-blog.csdnimg.cn/8a0a38e3a5454aafbab6062aa9263468.gif" alt="在这里插入图片描述" class="lazyload"><br>可以看到，当我们对这个函数不作任何处理时，我们每滑动一次鼠标，都会频繁地触发函数。当该函数执行一次的开销变得很大时（比如发送 AJAX 请求），这样的执行方式将会给用户带来地狱般的使用体验。<br>下面我们来看看如何通过<strong>防抖</strong>（<strong>debounce</strong>）和<strong>节流</strong>（<strong>throttle</strong>）来解决这个问题。</p>
+<p><strong>防抖</strong><br>所谓防抖（debounce），是指让函数保持一定的时间间隔触发。当某函数触发过一次后，要求其等待一段时间后才能再次执行。<br>下面我来演示一下如何通过防抖技术解决我们上面给出的样例中出现的问题。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- 为节省时间，多余的部分就不写了，只关注防抖部分的代码实现 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>这是防抖<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;debounce&quot;</span>&gt;</span>0<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    &#123;</span><br><span class="language-javascript">        <span class="hljs-keyword">let</span> num = <span class="hljs-number">0</span>;</span><br><span class="language-javascript">        <span class="hljs-keyword">let</span> noMove = <span class="hljs-literal">true</span>;</span><br><span class="language-javascript">        <span class="hljs-keyword">let</span> timeout;</span><br><span class="language-javascript"></span><br><span class="language-javascript">        <span class="hljs-comment">/*</span></span><br><span class="hljs-comment"><span class="language-javascript">         * 防抖 debounce</span></span><br><span class="hljs-comment"><span class="language-javascript">         */</span></span><br><span class="language-javascript">        <span class="hljs-keyword">function</span> <span class="hljs-title function_">debounce</span>(<span class="hljs-params"></span>) &#123;</span><br><span class="language-javascript">            <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&#x27;#debounce&#x27;</span>).<span class="hljs-property">onmousemove</span> = <span class="hljs-function">() =&gt;</span> &#123;</span><br><span class="language-javascript">                <span class="hljs-keyword">if</span> (noMove) &#123;</span><br><span class="language-javascript">                    noMove = <span class="hljs-literal">false</span>;</span><br><span class="language-javascript">                    <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&#x27;#debounce&#x27;</span>).<span class="hljs-property">innerText</span> = ++num;</span><br><span class="language-javascript">                &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="language-javascript">                    <span class="hljs-keyword">if</span> (timeout) &#123;</span><br><span class="language-javascript">                        <span class="hljs-built_in">clearTimeout</span>(timeout);</span><br><span class="language-javascript">                    &#125;</span><br><span class="language-javascript">                &#125;</span><br><span class="language-javascript">                timeout = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;</span><br><span class="language-javascript">                    noMove = <span class="hljs-literal">true</span>;</span><br><span class="language-javascript">                &#125;, <span class="hljs-number">1000</span>);</span><br><span class="language-javascript">            &#125;;</span><br><span class="language-javascript">        &#125;</span><br><span class="language-javascript"></span><br><span class="language-javascript">        <span class="hljs-title function_">debounce</span>();</span><br><span class="language-javascript">    &#125;</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>在<strong>防抖</strong>解决方案中，我们为函数添加了两个新的变量：<code>noMove</code> 和 <code>timeout</code> 。其中，<code>noMove</code> 是一个布尔值，用来记录在一定时间范围内函数是否没有被触发，一旦触发函数将会把 <code>noMove</code> 置为 <code>false</code> 。同时启动一个计时器，赋给 <code>timeout</code> 变量，它负责在指定时间过后将 <code>noMove</code> 的值再次恢复为 <code>true</code> ，以使函数能够正常执行。当然，每当函数在规定时长内再次被触发时，我们会移除上一轮函数执行中赋值给 <code>timeout</code> 的计时器，并重新计时。<br>以上便是<strong>防抖</strong>技术的基本思想。下面我们来看看实际效果。<br><img data-fancybox="gallery" data-sizes="auto" data-src="https://img-blog.csdnimg.cn/63e5779d43f743f7be350ff1ce7fcb4d.gif" alt="在这里插入图片描述" class="lazyload"><br>通过防抖的实现后，我们可以看见 demo 中的 <code>div</code> 依旧会因为鼠标的移动而使自身的内容加一，但是执行远没有最初那么频繁了。而且在函数执行一次后，只有当一段时间没有再次执行函数之后，该函数才会再次生效，否则，频繁地触发函数将会导致函数永远无法执行。</p>
+<p><strong>节流</strong><br>防抖与节流都能解决前端页面函数触发过于频繁的问题，但两者的基本思想并不完全相同，下面我们把<strong>防抖</strong>的代码修改为<strong>节流</strong>的解决方案：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>这是节流<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;throttle&quot;</span>&gt;</span>0<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    &#123;</span><br><span class="language-javascript">        <span class="hljs-keyword">let</span> num = <span class="hljs-number">0</span>;</span><br><span class="language-javascript">        <span class="hljs-keyword">let</span> noMove = <span class="hljs-literal">true</span>;</span><br><span class="language-javascript"></span><br><span class="language-javascript">        <span class="hljs-comment">/*</span></span><br><span class="hljs-comment"><span class="language-javascript">         * 节流 (throttle)</span></span><br><span class="hljs-comment"><span class="language-javascript">         */</span></span><br><span class="language-javascript">        <span class="hljs-keyword">function</span> <span class="hljs-title function_">throttle</span>(<span class="hljs-params"></span>) &#123;</span><br><span class="language-javascript">            <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;throttle&#x27;</span>).<span class="hljs-property">onmousemove</span> = <span class="hljs-function">() =&gt;</span> &#123;</span><br><span class="language-javascript">                <span class="hljs-keyword">if</span> (noMove) &#123;</span><br><span class="language-javascript">                    <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;throttle&#x27;</span>).<span class="hljs-property">innerText</span> = ++num;</span><br><span class="language-javascript">                    noMove = <span class="hljs-literal">false</span>;</span><br><span class="language-javascript">                    <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;</span><br><span class="language-javascript">                        noMove = <span class="hljs-literal">true</span>;</span><br><span class="language-javascript">                    &#125;, <span class="hljs-number">1000</span>);</span><br><span class="language-javascript">                &#125;</span><br><span class="language-javascript">            &#125;;</span><br><span class="language-javascript">        &#125;</span><br><span class="language-javascript"></span><br><span class="language-javascript">        <span class="hljs-title function_">throttle</span>();</span><br><span class="language-javascript">    &#125;</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>节流</strong>的基本思想是让函数触发保持在一定的速率下，以免频繁地执行。在这个方案下，我们同样引入了变量 <code>noMove</code> 。当触发并执行相关函数后，我们让 <code>noMove</code> 置为 <code>false</code> ，并启动一个计时器，让它在一定时间后将 <code>noMove</code> 恢复为 <code>true</code> 。下面是<strong>节流</strong>的实现效果：<br><img data-fancybox="gallery" data-sizes="auto" data-src="https://img-blog.csdnimg.cn/49fd57d5bbd04aa0bd3190eacb240637.gif" alt="在这里插入图片描述" class="lazyload"></p>
+<p>现在，我们还可以对<strong>防抖</strong>函数与<strong>节流</strong>函数做进一步封装，使其更加偏向实际开发使用。封装如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">debounce</span>(<span class="hljs-params">func, wait</span>) &#123;<br>    <span class="hljs-keyword">let</span> timeout;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-keyword">if</span> (timeout) &#123;<br>            <span class="hljs-built_in">clearTimeout</span>(timeout);<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            func.<span class="hljs-title function_">apply</span>(<span class="hljs-variable language_">this</span>, <span class="hljs-variable language_">arguments</span>);<br>        &#125;<br>        timeout = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>            timeout = <span class="hljs-literal">null</span>;<br>        &#125;, wait);<br>    &#125;;<br>&#125;<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">throttle</span>(<span class="hljs-params">func, wait</span>) &#123;<br>    <span class="hljs-keyword">let</span> timeout;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-keyword">if</span> (!timeout) &#123;<br>            func.<span class="hljs-title function_">apply</span>(<span class="hljs-variable language_">this</span>, <span class="hljs-variable language_">arguments</span>);<br>            timeout = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>                timeout = <span class="hljs-literal">null</span>;<br>            &#125;, wait);<br>        &#125;<br>    &#125;;<br>&#125;<br><br><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&#x27;#debounce&#x27;</span>).<span class="hljs-property">onmousemove</span> = <span class="hljs-title function_">debounce</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;debounce&#x27;</span>).<span class="hljs-property">innerText</span> = ++<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;debounce&#x27;</span>).<span class="hljs-property">innerText</span>;<br>&#125;, <span class="hljs-number">1000</span>);<br><br><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&#x27;#throttle&#x27;</span>).<span class="hljs-property">onmousemove</span> = <span class="hljs-title function_">throttle</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;throttle&#x27;</span>).<span class="hljs-property">innerText</span> = ++<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;throttle&#x27;</span>).<span class="hljs-property">innerText</span>;<br>&#125;, <span class="hljs-number">1000</span>);<br></code></pre></td></tr></table></figure>
+
+<p>以上就是<strong>防抖</strong>与<strong>节流</strong>的基本思想的介绍，读者应该根据自己开发项目中的实际需要选择不同的解决方案，同时上面给出的代码也仅供参考，真正重要的是两种解决方案的基本思想，开发者应该根据实际开发来调整具体的实现逻辑。</p>
+
+	</article>
+
+	 
+    <div class="nexmoe-post-copyright">
+        <strong>Author：</strong>德布罗煜<br>
+        <strong>Link：</strong><a href="https://aiolia.top/JavaScript/%E7%90%86%E8%A7%A3JS%E4%B8%AD%E7%9A%84%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81/" title="https:&#x2F;&#x2F;aiolia.top&#x2F;JavaScript&#x2F;理解JS中的防抖与节流&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;aiolia.top&#x2F;JavaScript&#x2F;理解JS中的防抖与节流&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+        <a class="nexmoefont icon-appstore-fill -link" href="/categories/JavaScript/">JavaScript</a>
+    
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/JavaScript/" rel="tag">JavaScript</a>
+    
+</div> 
+	<div class="nexmoe-post-footer"></div>
+	
+</div>
+
+				<div class="nexmoe-post-right">
+					<div class="nexmoe-fixed">
+						<div class="nexmoe-tool">
+							
+
+							<a
+								href="#nexmoe-content"
+								class="toc-link"
+								aria-label="回到顶部"
+								title="top"
+								><button class="mdui-fab mdui-ripple">
+									<i class="nexmoefont icon-caret-top"></i></button
+							></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		 
+    <div id="nexmoe-search-space">
+        <div class="search-container">
+            <div class="search-header">
+                <div class="search-input-container">
+                    <input class="search-input" type="text" placeholder="Search" oninput="sinput();">
+                </div>
+                <a class="search-close" onclick="sclose();">×</a>
+            </div>
+            <div class="search-body"></div>
+        </div>
+    </div>
+ <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+ 
+
+<script async src="/js/app.js?v=1648994276894"></script>
+
+
+	<script async src="/js/search.js?v=1648994276894"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
+<script>
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
+</script>
+
+ 
+
+
+
+
+
+	</body>
+</html>
