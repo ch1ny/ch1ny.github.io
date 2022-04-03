@@ -1,5 +1,5 @@
 ---
-title: 【Node.js学习】fs文件系统模块
+title: 【Node.js学习】简单认识fs文件系统模块
 date: 2022-04-02 21:03:53
 tags: [Node.js]
 categories: [Node.js]
@@ -35,9 +35,9 @@ const fs = require('fs');
 
 ```js
 /**
- * @param path {String} 必选参数，字符串，表示需要读取的文件的路径
+ * @param {String} path 必选参数，字符串，表示需要读取的文件的路径
  * @param options 可选参数，以什么编码格式来读取文件
- * @param callback {Function} 必选参数，表示读取完文件后，可以通过该回调函数拿到读取的结果
+ * @param {Function} callback 必选参数，表示读取完文件后，可以通过该回调函数拿到读取的结果
  */
 fs.readFile(path[, options], callback)
 ```
@@ -90,10 +90,10 @@ fs.readFile('./text.txt', 'utf8', function (err, data) {
 
 ```js
 /**
- * @param path {String} 必选参数，字符串，表示需要写入的文件的路径
+ * @param {String} path 必选参数，字符串，表示需要写入的文件的路径
  * @param data 必选参数，表示需要写入的内容
  * @param options 可选参数，以什么编码格式来写入数据，默认utf8
- * @param callback {Function} 必选参数，表示写入完成之后执行的回调函数
+ * @param {Function} callback 必选参数，表示写入完成之后执行的回调函数
  */
 fs.writeFile(path, data[, options], callback)
 ```

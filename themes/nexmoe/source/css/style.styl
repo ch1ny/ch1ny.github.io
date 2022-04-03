@@ -11,6 +11,12 @@ $radius = 13px;
     box-sizing: border-box;
 }
 
+*::selection {
+    background: rgba(39, 154, 255, .6);
+    color: #fff;
+    text-shadow: none;
+}
+
 a {
     text-decoration: none;
 }
@@ -310,11 +316,20 @@ body {
             border-radius: $radius;
             justify-content: center;
 
+            .page-number {
+                transition: 300ms;
+                margin-inline: 10px;
+            }
+
             .current {
                 color: #fff;
                 background: $color1;
                 opacity: 0.9;
                 box-shadow: 0 2px 12px $color1;
+            }
+
+            a:not(.current):hover {
+                background-color: rgba(155, 155, 155, .3)
             }
         }
 
