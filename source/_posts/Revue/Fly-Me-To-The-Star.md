@@ -132,6 +132,5 @@ oh, fly me to the star
 </div>
 
 <br />
-<iframe src="https://player.bilibili.com/player.html?aid=33053034&page=2&as_wide=1&high_quality=1&danmaku=0"
-style="width: 62em; height: 35em;"
-allowfullscreen="allowfullscreen" width="100%" height="100%" scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts"></iframe>
+
+{% biliplayer 33053034 2 1 %}

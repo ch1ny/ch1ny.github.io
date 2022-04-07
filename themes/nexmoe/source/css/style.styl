@@ -777,3 +777,40 @@ photos img {
         color: #fff
     }
 }
+
+// 我自己的组件的定义
+
+#nexmoe-content {
+    
+    div {
+        div.nexmoe-post {
+            article {
+                div.my-aplayer-container {
+                    margin: 0;
+
+                    div[id^=aplayer-] {
+                        div.aplayer-body {
+                            div.aplayer-pic {
+                                width: 90px;
+                                height: 90px;
+                            }
+
+                            div.aplayer-info {
+                                margin-left: 90px;
+                                height: 90px;
+
+                                div.aplayer-controller > div.aplayer-bar-wrap > div.aplayer-bar > div.aplayer-played {
+                                    background: rgb(49, 174, 255) !important;
+
+                                    span.aplayer-thumb {
+                                        background: rgb(49, 174, 255) !important;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
