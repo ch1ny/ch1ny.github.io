@@ -1461,6 +1461,23 @@ photos img {
 .nexmoe-rainbow-fill a {
   color: #fff;
 }
+#nexmoe-content div div.nexmoe-post article div.my-aplayer-container {
+  margin: 0;
+}
+#nexmoe-content div div.nexmoe-post article div.my-aplayer-container div[id^=aplayer-] div.aplayer-body div.aplayer-pic {
+  width: 90px;
+  height: 90px;
+}
+#nexmoe-content div div.nexmoe-post article div.my-aplayer-container div[id^=aplayer-] div.aplayer-body div.aplayer-info {
+  margin-left: 90px;
+  height: 90px;
+}
+#nexmoe-content div div.nexmoe-post article div.my-aplayer-container div[id^=aplayer-] div.aplayer-body div.aplayer-info div.aplayer-controller > div.aplayer-bar-wrap > div.aplayer-bar > div.aplayer-played {
+  background: #31aeff !important;
+}
+#nexmoe-content div div.nexmoe-post article div.my-aplayer-container div[id^=aplayer-] div.aplayer-body div.aplayer-info div.aplayer-controller > div.aplayer-bar-wrap > div.aplayer-bar > div.aplayer-played span.aplayer-thumb {
+  background: #31aeff !important;
+}
 @-moz-keyframes shake-it {
   0% {
     text-shadow: 0 0 rgba(0,255,255,0.5), 0 0 rgba(255,0,0,0.5);
