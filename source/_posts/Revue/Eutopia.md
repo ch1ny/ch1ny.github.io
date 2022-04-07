@@ -9,7 +9,7 @@ coverHeight: 400
 ---
 
 {% myplayer %}
-{% aplayer "Eutopia" "钟岚珠（法元明菜）" "https://assets.aiolia.top/Audios/565807693_nb2-1-112.mp3" "https://assets.aiolia.top/Pictures/Others/Eutopia_AS.jpg" %}
+{% aplayer "Eutopia" "钟岚珠（法元明菜）" "https://assets.aiolia.top/Audios/565807693_nb2-1-112.mp3" "https://assets.aiolia.top/Pictures/Others/Eutopia_AS.jpg" "lrc:https://assets.aiolia.top/Audios/565807693_nb2-1-112.lrc" %}
 {% endmyplayer %}
 
 <!-- more -->
@@ -33,8 +33,8 @@ Dokidoki o ageru
 
 Come on, it's show time
 
-それっぽいだけじゃね　物足りないでしょう
-Sore ppoi dake ja ne monotarinaideshou
+それっぽいだけじゃね　物足りないでしょう So
+Sore ppoi dake ja ne monotarinaideshou So
 
 **欢迎来到我的天地**
 
