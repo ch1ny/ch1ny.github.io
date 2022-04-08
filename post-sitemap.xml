@@ -9,32 +9,8 @@
 
 
     <url>
-        <loc>https://aiolia.top/Revue/Eutopia/</loc>
-        <lastmod>2022-04-07T07:53:43.901Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://aiolia.top/Revue/%E8%8A%B1%E5%92%B2%E3%81%8B%E5%94%84/</loc>
-        <lastmod>2022-04-07T07:07:50.200Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://aiolia.top/Revue/Star-Divine-%E3%83%95%E3%82%A3%E3%83%8A%E3%83%BC%E3%83%AC/</loc>
-        <lastmod>2022-04-07T07:07:18.833Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://aiolia.top/Revue/Fly-Me-To-The-Star/</loc>
-        <lastmod>2022-04-07T07:07:10.419Z</lastmod>
+        <lastmod>2022-04-08T04:08:12.197Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -42,7 +18,31 @@
 
     <url>
         <loc>https://aiolia.top/Revue/%E8%AA%87%E3%82%8A%E3%81%A8%E9%A9%95%E3%82%8A/</loc>
-        <lastmod>2022-04-07T07:06:49.234Z</lastmod>
+        <lastmod>2022-04-08T03:16:40.959Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://aiolia.top/Revue/%E8%8A%B1%E5%92%B2%E3%81%8B%E5%94%84/</loc>
+        <lastmod>2022-04-08T03:13:54.753Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://aiolia.top/Revue/Fly-Me-To-The-Star/</loc>
+        <lastmod>2022-04-08T03:11:13.694Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://aiolia.top/Revue/Eutopia/</loc>
+        <lastmod>2022-04-08T02:32:11.118Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
