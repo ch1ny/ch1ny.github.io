@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+
+<html 
+	lang="zh_CN">
+
+	<head>
+		
+		<title>【VSCODE插件推荐】TODO Highlight - 德布罗煜</title>
+		<meta charset="UTF-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+		 
+
+		<link
+			rel="shortcut icon"
+			href="https://assets.aiolia.top/Pictures/Others/116359b4ccf19917.jpg"
+			type="image/png"
+		/>
+		<meta name="description" content="当你在使用 VSCode 编写代码时，突然发现了一个小 bug，但是又不想停下手上的活来解决这个 bug，应该怎么办呢？在这篇文章中，我将为你们推荐一款 VSCode 的插件，帮你在代码中添加醒目的 TODO 注释。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【VSCODE插件推荐】TODO Highlight">
+<meta property="og:url" content="https://aiolia.top/%E3%80%90VSCODE%E6%8F%92%E4%BB%B6%E6%8E%A8%E8%8D%90%E3%80%91TODO-Highlight/index.html">
+<meta property="og:site_name" content="德布罗煜">
+<meta property="og:description" content="当你在使用 VSCode 编写代码时，突然发现了一个小 bug，但是又不想停下手上的活来解决这个 bug，应该怎么办呢？在这篇文章中，我将为你们推荐一款 VSCode 的插件，帮你在代码中添加醒目的 TODO 注释。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://assets.aiolia.top/Pictures/Others/20220409143727.png">
+<meta property="og:image" content="https://assets.aiolia.top/Pictures/Others/20220409150024.png">
+<meta property="article:published_time" content="2022-04-09T06:22:07.000Z">
+<meta property="article:modified_time" content="2022-04-09T07:11:39.059Z">
+<meta property="article:author" content="德布罗煜">
+<meta property="article:tag" content="VSCODE">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://assets.aiolia.top/Pictures/Others/20220409143727.png">
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,npm/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css?v=233"
+			crossorigin
+		/>
+		<link rel="stylesheet" href="/css/style.css?v=1649488325930">  
+		<link rel="stylesheet" href="//at.alicdn.com/t/font_3299330_el19bsi97h8.css" />
+		 <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1649488325930"> 
+	<meta name="generator" content="Hexo 6.1.0"></head>
+
+	<body class="mdui-drawer-body-left">
+		
+		<div id="nexmoe-background">
+			<div
+				class="nexmoe-bg"
+				style="background-image: url(https://assets.aiolia.top/Pictures/Others/f0d5cc34c6e5aa7.jpg)"
+			></div>
+			<div class="mdui-appbar mdui-shadow-0">
+				<div class="mdui-toolbar">
+					<a
+						mdui-drawer="{target: '#drawer', swipe: true}"
+						title="menu"
+						class="mdui-btn mdui-btn-icon mdui-ripple"
+						><i class="mdui-icon nexmoefont icon-menu"></i
+					></a>
+					<div class="mdui-toolbar-spacer"></div>
+					<!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+					<a
+						href="/"
+						title="德布罗煜"
+						class="mdui-btn mdui-btn-icon"
+						><img src="https://assets.aiolia.top/Pictures/Others/116359b4ccf19917.jpg" alt="德布罗煜"
+					/></a>
+				</div>
+			</div>
+		</div>
+		<div id="nexmoe-header"><div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a target="_blank" rel="noopener" href="https://assets.aiolia.top/Pictures/Others/116359b4ccf19917.jpg" title="德布罗煜">
+            <img src="https://assets.aiolia.top/Pictures/Others/116359b4ccf19917.jpg" alt="德布罗煜" alt="德布罗煜">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>21</div>
+        <div><span>标签</span>11</div>
+        <div><span>分类</span>6</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archive.html" title="文章归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                文章归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/about.html" title="关于本人">
+            <i class="mdui-list-item-icon nexmoefont icon-user"></i>
+            <div class="mdui-list-item-content">
+                关于本人
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/friends.html" title="我的朋友">
+            <i class="mdui-list-item-icon nexmoefont icon-team"></i>
+            <div class="mdui-list-item-content">
+                我的朋友
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+        
+            <form id="search_form">
+                <label><input class="st-default-search-input" id="search_value" name="q" type="search" placeholder="Search" style="
+                    font-size: 15px !important;
+                    height: 56px !important;
+                    background-image: none;
+                "></label>
+            </form>
+         
+    </div>
+</div>
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=1056317718&website=www.oicqzone.com" target="_blank" mdui-tooltip="{content: 'QQ'}" style="color: rgb(49, 174, 255);background-color: rgba(49, 174, 255, .1);">
+            <i class="nexmoefont icon-QQ"></i>
+        </a><a class="mdui-ripple" href="https://space.bilibili.com/27905679" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/ch1ny/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github-fill"></i>
+        </a><a class="mdui-ripple" href="https://gitee.com/ch1ny" target="_blank" mdui-tooltip="{content: 'Gitee'}" style="color: rgb(165, 15, 15);background-color: rgba(165, 15, 15, .15);">
+            <i class="nexmoefont icon-gitee"></i>
+        </a>
+    </div>
+</div>
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">分类</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/JavaScript/">JavaScript</a>
+          <span class="category-list-count">3</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Node-js/">Node.js</a>
+          <span class="category-list-count">4</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/React/">React</a>
+          <span class="category-list-count">4</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Revue/">Revue</a>
+          <span class="category-list-count">5</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/工作/">工作</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/编程/">编程</a>
+          <span class="category-list-count">3</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Node-js/" style="font-size: 15px;">Node.js</a> <a href="/tags/React/" style="font-size: 15px;">React</a> <a href="/tags/Revue/" style="font-size: 17.5px;">Revue</a> <a href="/tags/Unity3D/" style="font-size: 10px;">Unity3D</a> <a href="/tags/VSCODE/" style="font-size: 10px;">VSCODE</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/electron/" style="font-size: 10px;">electron</a> <a href="/tags/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8/" style="font-size: 10px;">字节跳动</a> <a href="/tags/%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4/" style="font-size: 10px;">阿里巴巴</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 12.5px;">面试</a>
+    </div>
+    
+  </div>
+
+    
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2022 <a href="https://github.com/ch1ny/ch1ny.github.io" target="_blank">德布罗煜</a>
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        <br /><a href="https://beian.miit.gov.cn/" target="_blank">赣ICP备2021007955号</a>
+        
+    </div>
+</div><!-- .nexmoe-drawer --></div>
+		<div id="nexmoe-content">
+			<div class="nexmoe-primary">
+				<div class="nexmoe-post">
+	<article>
+		
+		<div class="nexmoe-post-cover">
+			<img
+				data-src="https://wayou.gallerycdn.vsassets.io/extensions/wayou/vscode-todo-highlight/1.0.5/1635478170130/Microsoft.VisualStudio.Services.Icons.Default"
+				data-sizes="auto"
+				alt="【VSCODE插件推荐】TODO Highlight"
+				class="lazyload"
+			/>
+			<h1>【VSCODE插件推荐】TODO Highlight</h1>
+		</div>
+		 <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2022年04月09日</a>
+    <a><i class="nexmoefont icon-areachart"></i>956 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 4 分钟</a>
+</div> <p>当你在使用 VSCode 编写代码时，突然发现了一个小 bug，但是又不想停下手上的活来解决这个 bug，应该怎么办呢？在这篇文章中，我将为你们推荐一款 VSCode 的插件，帮你在代码中添加醒目的 <code>TODO</code> 注释。</p>
+<span id="more"></span>
+
+<!-- toc -->
+
+<ul>
+<li><a href="#%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95">基本使用方法</a></li>
+<li><a href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%85%B3%E9%94%AE%E5%AD%97%E5%8F%8A%E6%A0%B7%E5%BC%8F">自定义关键字及样式</a></li>
+</ul>
+<!-- tocstop -->
+
+<p><strong>插件名称</strong>：TODO Highlight<br><strong>插件作者</strong>：Wayou Liu<br><strong>下载量</strong>：2,451,400+ （统计于 2022 年 4 月 9 日 14:25:37）</p>
+<h1><span id="基本使用方法">基本使用方法</span></h1><p>在编写代码时，遇到突然发现的小 bug 时，根据代码编写规范，一般来说应该在代码中加一个 TODO 注释，就像下面这样：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> 这个地方需要进行修改，我确信我有一种绝妙的写法，可惜这里地方太小，我的代码放不下</span><br></code></pre></td></tr></table></figure>
+
+<p>或者</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// <span class="hljs-doctag">FIXME:</span> 这谁写的阴间代码？你牛び啊！</span><br></code></pre></td></tr></table></figure>
+
+<p>但是这些 TODO 标记随着时间和项目的增长，会逐渐散布在项目的每一个角落，而且总是用着模糊不清的描述让开发者摸不着头脑。<br>今天我就来推荐一款 VSCode 可用的插件——TODO Highlight 。<br><em>安装插件的方法就不用我来介绍了吧</em><br>安装好插件后，来到你的项目代码中，试试看写一段 TODO 标记吧！<br><img data-fancybox="gallery" data-sizes="auto" data-src="https://assets.aiolia.top/Pictures/Others/20220409143727.png" alt="默认样式" class="lazyload"><br>这就是 TODO Highlight 的默认样式，它会自动匹配代码中的 <code>TODO:</code> 和 <code>FIXME:</code> ，并显示不同的颜色。</p>
+<h1><span id="自定义关键字及样式">自定义关键字及样式</span></h1><p>当然，你也可以通过 settings.json 自行配置该插件。下面我们来尝试修改一下 settings.json 匹配的关键字及样式。<br>打开 settings.json ，找到 <code>todohighlight.defaultStyle</code> 字段，这里是 TODOHighlight 的默认样式定义。我的配置是这样的：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-attr">&quot;todohighlight.defaultStyle&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;cursor&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;pointer&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;border&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;1px solid #eee&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;borderRadius&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;2px&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;isWholeLine&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">false</span><br><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br></code></pre></td></tr></table></figure>
+
+<p>表示当鼠标指向这些 TODO 标记时，鼠标光标会呈现 <code>pointer</code> 的状态，同时为标记外围设置边缘，<code>isWholeLine</code> 则是说明高亮提示是否要覆盖一整行。<br>在设置好默认样式后，我们在 settings.json 中新增一条字段 <code>todohighlight.keywords</code> ，它接收一个 json 数组，用来定义插件匹配的关键字。<br>比如我们将它修改为如下的代码：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-attr">&quot;todohighlight.keywords&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>    <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;text&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;TODO:&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;color&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;#000&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;backgroundColor&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;#ffab00&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;overviewRulerColor&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;#ffab00&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;text&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;FIXME:&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;color&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;#fff&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;backgroundColor&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;#f00&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;overviewRulerColor&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;#f00&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;isWholeLine&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">true</span><br>    <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;text&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;DEBUG:&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;color&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;#000&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;backgroundColor&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;#0f0&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;overviewRulerColor&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;#0f0&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;isWholeLine&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">true</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;fontWeight&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;bold&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;text&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;NOTE:&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;color&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;#fff&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;backgroundColor&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;#00a0ff&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;overviewRulerColor&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;#00a0ff&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;isWholeLine&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">true</span><br>    <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;text&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;INFO:&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;color&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;#000&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;backgroundColor&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;#a0a0a0&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;overviewRulerColor&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;#a0a0a0&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br></code></pre></td></tr></table></figure>
+
+<p>每个 json 对应了一种匹配形式。</p>
+<ul>
+<li>其中 <code>text</code> 字段表示需要匹配的具体关键字，这个插件默认只匹配了 <code>TODO:</code> 和 <code>FIXME:</code> 两条，我们可以通过这个字段新增匹配的关键字，比如最下方的 <code>DEBUG:</code>；</li>
+<li><code>color</code> 字段表示匹配后文本的颜色；</li>
+<li><code>backgroundColor</code> 字段表示匹配的文本的背景底色；</li>
+<li><code>overviewRulerColor</code> 字段表示该行在 Vscode 右侧的滚动条上显示的颜色；</li>
+<li><code>isWholeLine</code> 表示是否覆盖整行；</li>
+<li>可以根据在 JSX 中书写 css 的格式自行定义样式字段</li>
+</ul>
+<p>而在上面这样配置后，你的 VSCode 就会变成这种风格：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// INFO: 这里是示例</span><br><span class="hljs-comment">// <span class="hljs-doctag">NOTE:</span> 做个笔记</span><br><span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> 这是个TODO标记</span><br><span class="hljs-comment">// <span class="hljs-doctag">FIXME:</span> 这里有个 Bug 需要解决</span><br><span class="hljs-comment">// DE<span class="hljs-doctag">BUG:</span> 下面的代码是调试用的，调试完了记得删除</span><br></code></pre></td></tr></table></figure>
+
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://assets.aiolia.top/Pictures/Others/20220409150024.png" alt="自定义样式" class="lazyload"></p>
+
+	</article>
+
+	 
+    <div class="nexmoe-post-copyright">
+        <strong>Author：</strong>德布罗煜<br>
+        <strong>Link：</strong><a href="https://aiolia.top/%E3%80%90VSCODE%E6%8F%92%E4%BB%B6%E6%8E%A8%E8%8D%90%E3%80%91TODO-Highlight/" title="https:&#x2F;&#x2F;aiolia.top&#x2F;【VSCODE插件推荐】TODO-Highlight&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;aiolia.top&#x2F;【VSCODE插件推荐】TODO-Highlight&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+  
+	<div class="nexmoe-post-nav">
+		<nav class="post-nav">
+			  
+			<!-- 先找到与当前文字相同的目录 -->
+			         
+			<!-- 在找到当前文章所在的 index -->
+			        
+			<!-- 上一篇文章 -->
+			<div class="old">
+				<span>上一章</span>
+				<a href="/%E4%BD%BF%E7%94%A8Vue%E5%92%8CElectron%E5%BC%80%E5%8F%91%E4%B8%80%E6%AC%BE%E7%AE%80%E5%8D%95%E7%9A%84Markdown%E7%BC%96%E8%BE%91%E5%99%A8/"> 使用Vue和Electron开发一款简单的Markdown编辑器</a>
+			</div>
+			                              
+		</nav>
+	</div>
+	 <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+        <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>
+    
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/VSCODE/" rel="tag">VSCODE</a>
+    
+</div> 
+	<div class="nexmoe-post-footer"><section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css" />
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+	var gitalk = new Gitalk({
+		clientID: 'ff29a03a84dced426b94',
+		clientSecret: '00ca8566cf149a9557cfa902eaa4dc0bccf3a667',
+		id: '【VSCODE插件推荐】TODO Highlight',
+		repo: 'ch1ny.github.io',
+		owner: 'ch1ny',
+		admin: 'ch1ny',
+		title: 'Ch1nyBlogComment',
+	});
+	gitalk.render('gitalk');
+</script>
+
+</section></div>
+	
+</div>
+
+				<div class="nexmoe-post-right">
+					<div class="nexmoe-fixed">
+						<div class="nexmoe-tool">
+							
+
+							<a
+								href="#nexmoe-content"
+								class="toc-link"
+								aria-label="回到顶部"
+								title="top"
+								><button class="mdui-fab mdui-ripple">
+									<i class="nexmoefont icon-caret-top"></i></button
+							></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		 
+    <div id="nexmoe-search-space">
+        <div class="search-container">
+            <div class="search-header">
+                <div class="search-input-container">
+                    <input class="search-input" type="text" placeholder="Search" oninput="sinput();">
+                </div>
+                <a class="search-close" onclick="sclose();">×</a>
+            </div>
+            <div class="search-body"></div>
+        </div>
+    </div>
+ <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+ 
+
+<script async src="/js/app.js?v=1649488325931"></script>
+
+
+	<script async src="/js/search.js?v=1649488325931"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
+<script>
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
+</script>
+
+ 
+
+
+
+
+
+		<script src="https://cdn.jsdelivr.net/npm/smooth-scrolling.js@latest"></script>
+	</body>
+</html>

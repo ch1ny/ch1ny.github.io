@@ -5,7 +5,7 @@
 
 	<head>
 		
-		<title>Tags：JavaScript - 德布罗煜</title>
+		<title>关于React18中ReactDOM.render报错的解决方法 - 德布罗煜</title>
 		<meta charset="UTF-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
@@ -17,21 +17,26 @@
 			href="https://assets.aiolia.top/Pictures/Others/116359b4ccf19917.jpg"
 			type="image/png"
 		/>
-		<meta property="og:type" content="website">
-<meta property="og:title" content="德布罗煜">
-<meta property="og:url" content="https://aiolia.top/tags/JavaScript/index.html">
+		<meta name="description" content="近日 React.js 由 React17 升级到了 React18，很多升级了项目依赖的开发者可能会遇到刚进入项目控制台就打印了这样一段错误的情况：  Warning: ReactDOM.render is no longer supported in React 18. Use createRoot instead. Until you switch to the new API, your">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于React18中ReactDOM.render报错的解决方法">
+<meta property="og:url" content="https://aiolia.top/React/%E5%85%B3%E4%BA%8EReact18%E4%B8%ADReactDOM.render%E6%8A%A5%E9%94%99%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/index.html">
 <meta property="og:site_name" content="德布罗煜">
+<meta property="og:description" content="近日 React.js 由 React17 升级到了 React18，很多升级了项目依赖的开发者可能会遇到刚进入项目控制台就打印了这样一段错误的情况：  Warning: ReactDOM.render is no longer supported in React 18. Use createRoot instead. Until you switch to the new API, your">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-04-08T11:00:52.000Z">
+<meta property="article:modified_time" content="2022-04-08T11:13:18.607Z">
 <meta property="article:author" content="德布罗煜">
+<meta property="article:tag" content="React">
 <meta name="twitter:card" content="summary">
 		<link
 			rel="stylesheet"
 			href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,npm/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css?v=233"
 			crossorigin
 		/>
-		<link rel="stylesheet" href="/css/style.css?v=1649488326014">  
+		<link rel="stylesheet" href="/css/style.css?v=1649488325931">  
 		<link rel="stylesheet" href="//at.alicdn.com/t/font_3299330_el19bsi97h8.css" />
-		 <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1649488326014"> 
+		 <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1649488325932"> 
 	<meta name="generator" content="Hexo 6.1.0"></head>
 
 	<body class="mdui-drawer-body-left">
@@ -214,136 +219,99 @@
 </div><!-- .nexmoe-drawer --></div>
 		<div id="nexmoe-content">
 			<div class="nexmoe-primary">
-				<section class="nexmoe-posts">
-    
-    <div class="nexmoe-post">
-        <a href="/JavaScript/%E7%90%86%E8%A7%A3JS%E4%B8%AD%E7%9A%84%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81/">
-            
-                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: NaN%;"> 
-                    <img data-src="https://pic1.zhimg.com/v2-535e92c65ddaff1a55f11df10c680c75_720w.jpg?source=172ae18b" data-sizes="auto" alt="理解 JS 中的防抖与节流" class="lazyload">
-                    <h1>理解 JS 中的防抖与节流</h1>
-                </div>
-            
-        </a>
-
-        <div class="nexmoe-post-meta nexmoe-rainbow">
-            <a><i class="nexmoefont icon-calendar-fill"></i>2022年01月11日</a>
-            <a><i class="nexmoefont icon-areachart"></i>1.4k 字</a>
-            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 6 分钟</a>
-        </div>
-
-        <article>
-            
-                <blockquote>
-<p>在前端项目开发中，在合适的地方做好<strong>防抖</strong>与<strong>节流</strong>是十分重要的。首先我们要知道，哪些地方适合采用防抖节流进行开发。一个重要的特征就是——<strong>某个函数在短时间内被频繁持续地执行</strong>。</p>
+				<div class="nexmoe-post">
+	<article>
+		
+		<div class="nexmoe-post-cover">
+			<img
+				data-src="https://tse1-mm.cn.bing.net/th/id/R-C.bc71c1c1c50551a1d65e7b529ea29d08?rik=EU42gCFH4J%2bBZA&riu=http%3a%2f%2fwww.goodworklabs.com%2fwp-content%2fuploads%2f2016%2f10%2freactjs.png&ehk=qvQ5EVoUnJZ7k5L347zsU3f87YTckr1iQBzKdwXJd0w%3d&risl=&pid=ImgRaw&r=0"
+				data-sizes="auto"
+				alt="关于React18中ReactDOM.render报错的解决方法"
+				class="lazyload"
+			/>
+			<h1>关于React18中ReactDOM.render报错的解决方法</h1>
+		</div>
+		 <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2022年04月08日</a>
+    <a><i class="nexmoefont icon-areachart"></i>421 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 1 分钟</a>
+</div> <p>近日 React.js 由 React17 升级到了 React18，很多升级了项目依赖的开发者可能会遇到刚进入项目控制台就打印了这样一段错误的情况：</p>
+<blockquote>
+<p>Warning: ReactDOM.render is no longer supported in React 18. Use createRoot instead. Until you switch to the new API, your app will behave as if it’s running React 17.</p>
 </blockquote>
-            
-        </article>
+<p>我将在这篇文章中指出解决这个问题的办法。</p>
+<span id="more"></span>
+
+<!-- toc -->
+
+<ul>
+<li><a href="#%E5%A4%AA%E9%95%BF%E4%B8%8D%E7%9C%8B%E7%89%88">太长不看版</a></li>
+</ul>
+<!-- tocstop -->
+
+<p>在 React18 之前，我们渲染元素都是通过函数 <code>ReactDOM.render()</code> 来实现将 React 元素渲染到 DOM 上的。就像下面这样：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><span class="hljs-keyword">import</span> <span class="hljs-title class_">React</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;react&#x27;</span>;<br><span class="hljs-keyword">import</span> <span class="hljs-title class_">ReactDOM</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;react-dom&#x27;</span>;<br><span class="hljs-keyword">import</span> <span class="hljs-title class_">App</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./App&#x27;</span>;<br><br><span class="hljs-title class_">ReactDOM</span>.<span class="hljs-title function_">render</span>(<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">App</span> /&gt;</span></span>, <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;root&#x27;</span>));<br></code></pre></td></tr></table></figure>
+
+<p>但是到了 React18，已不再支持通过这样的方式渲染 React 元素了。但是 React 还是会为开发者保留余地，在开发者没有将项目源码改为最新的 API 时，项目依旧会以 React17 的表现运行。<br>所以即使不做改动也不会有任何问题，但是对于强迫症选手来说，控制台里一直有个错还是看着很不舒服。所以这里我就讲讲新的 API 究竟应该怎么使用。</p>
+<h1><span id="太长不看版">太长不看版</span></h1><p>其实解决方法很简单，更换新的 API 即可。新的 API 是 <code>createRoot</code> ，我们通过下面的方式修改我们的代码：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><span class="hljs-keyword">import</span> <span class="hljs-title class_">React</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;react&#x27;</span>;<br><span class="hljs-comment">// import ReactDOM from &#x27;react-dom&#x27;; 原来的代码</span><br><span class="hljs-keyword">import</span> &#123; createRoot &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;react-dom/client&#x27;</span>; <span class="hljs-comment">// 新的 API 引入方式</span><br><span class="hljs-keyword">import</span> <span class="hljs-title class_">App</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./App&#x27;</span>;<br><br><span class="hljs-comment">// &lt;!-- new code --&gt;</span><br><span class="hljs-keyword">const</span> root = <span class="hljs-title function_">createRoot</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;root&#x27;</span>));<br>root.<span class="hljs-title function_">render</span>(<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">App</span> /&gt;</span></span>);<br><span class="hljs-comment">// &lt;!-- end new code --&gt;</span><br><br><span class="hljs-comment">// 原来的代码</span><br><span class="hljs-comment">// ReactDOM.render(&lt;App /&gt;, document.getElementById(&#x27;root&#x27;));</span><br></code></pre></td></tr></table></figure>
+
+	</article>
+
+	 
+    <div class="nexmoe-post-copyright">
+        <strong>Author：</strong>德布罗煜<br>
+        <strong>Link：</strong><a href="https://aiolia.top/React/%E5%85%B3%E4%BA%8EReact18%E4%B8%ADReactDOM.render%E6%8A%A5%E9%94%99%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" title="https:&#x2F;&#x2F;aiolia.top&#x2F;React&#x2F;关于React18中ReactDOM.render报错的解决方法&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;aiolia.top&#x2F;React&#x2F;关于React18中ReactDOM.render报错的解决方法&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
     </div>
-    <hr />
-    
-    <div class="nexmoe-post">
-        <a href="/React/React%E7%9A%84%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86/">
-            
-                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: NaN%;"> 
-                    <img data-src="https://tse1-mm.cn.bing.net/th/id/R-C.bc71c1c1c50551a1d65e7b529ea29d08?rik=EU42gCFH4J%2bBZA&riu=http%3a%2f%2fwww.goodworklabs.com%2fwp-content%2fuploads%2f2016%2f10%2freactjs.png&ehk=qvQ5EVoUnJZ7k5L347zsU3f87YTckr1iQBzKdwXJd0w%3d&risl=&pid=ImgRaw&r=0" data-sizes="auto" alt="React的事件处理" class="lazyload">
-                    <h1>React的事件处理</h1>
-                </div>
-            
-        </a>
 
-        <div class="nexmoe-post-meta nexmoe-rainbow">
-            <a><i class="nexmoefont icon-calendar-fill"></i>2022年01月02日</a>
-            <a><i class="nexmoefont icon-areachart"></i>1.1k 字</a>
-            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 5 分钟</a>
-        </div>
-
-        <article>
-            
-                <p>在这篇文章中，我们将会了解在 React 中如何进行事件处理。</p>
-            
-        </article>
-    </div>
-    <hr />
-    
-    <div class="nexmoe-post">
-        <a href="/React/React%E7%9A%84%E7%BB%84%E4%BB%B6/">
-            
-                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: NaN%;"> 
-                    <img data-src="https://tse1-mm.cn.bing.net/th/id/R-C.bc71c1c1c50551a1d65e7b529ea29d08?rik=EU42gCFH4J%2bBZA&riu=http%3a%2f%2fwww.goodworklabs.com%2fwp-content%2fuploads%2f2016%2f10%2freactjs.png&ehk=qvQ5EVoUnJZ7k5L347zsU3f87YTckr1iQBzKdwXJd0w%3d&risl=&pid=ImgRaw&r=0" data-sizes="auto" alt="React的组件" class="lazyload">
-                    <h1>React的组件</h1>
-                </div>
-            
-        </a>
-
-        <div class="nexmoe-post-meta nexmoe-rainbow">
-            <a><i class="nexmoefont icon-calendar-fill"></i>2022年01月01日</a>
-            <a><i class="nexmoefont icon-areachart"></i>3.2k 字</a>
-            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 14 分钟</a>
-        </div>
-
-        <article>
-            
-                <p>在上一篇关于 React 的博文中，我们对 react 的渲染和 JSX 的语法有了一个基本的认识。今天就让我们再深入一点，学习 React 组件的相关知识。</p>
-            
-        </article>
-    </div>
-    <hr />
-    
-    <div class="nexmoe-post">
-        <a href="/React/React%E5%85%A5%E9%97%A8/">
-            
-                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: NaN%;"> 
-                    <img data-src="https://tse1-mm.cn.bing.net/th/id/R-C.bc71c1c1c50551a1d65e7b529ea29d08?rik=EU42gCFH4J%2bBZA&riu=http%3a%2f%2fwww.goodworklabs.com%2fwp-content%2fuploads%2f2016%2f10%2freactjs.png&ehk=qvQ5EVoUnJZ7k5L347zsU3f87YTckr1iQBzKdwXJd0w%3d&risl=&pid=ImgRaw&r=0" data-sizes="auto" alt="React入门" class="lazyload">
-                    <h1>React入门</h1>
-                </div>
-            
-        </a>
-
-        <div class="nexmoe-post-meta nexmoe-rainbow">
-            <a><i class="nexmoefont icon-calendar-fill"></i>2022年01月01日</a>
-            <a><i class="nexmoefont icon-areachart"></i>1.8k 字</a>
-            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 8 分钟</a>
-        </div>
-
-        <article>
-            
-                <p>最近想开个新坑了，决定出个 React 专题。</p>
-            
-        </article>
-    </div>
-    <hr />
-    
-    <div class="nexmoe-post">
-        <a href="/JavaScript/%E6%B5%85%E8%B0%88JS%E4%B8%AD%E7%9A%84%E9%97%AD%E5%8C%85/">
-            
-                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: NaN%;"> 
-                    <img data-src="https://pic1.zhimg.com/v2-535e92c65ddaff1a55f11df10c680c75_720w.jpg?source=172ae18b" data-sizes="auto" alt="浅谈JS中的闭包" class="lazyload">
-                    <h1>浅谈JS中的闭包</h1>
-                </div>
-            
-        </a>
-
-        <div class="nexmoe-post-meta nexmoe-rainbow">
-            <a><i class="nexmoefont icon-calendar-fill"></i>2021年09月28日</a>
-            <a><i class="nexmoefont icon-areachart"></i>1.4k 字</a>
-            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 6 分钟</a>
-        </div>
-
-        <article>
-            
-                <p>对于 JavaScript 初学者来说，JavaScript 有着这样一个概念十分重要，几乎是每个前端工程师面试时必然会遇到的一个问题，JS 的<strong>闭包（closure）</strong>。今天我们就来浅谈一下 JS 中的闭包究竟是怎样的东西。</p>
-            
-        </article>
-    </div>
-    <hr />
-    
-</section>
-
-    <nav class="nexmoe-page-nav">
-        <span class="page-number current">1</span><a class="page-number" href="/tags/JavaScript/page/2/">2</a><a class="extend next" rel="next" href="/tags/JavaScript/page/2/"><i class="nexmoefont icon-right"></i></a>
-    </nav>
   
+	<div class="nexmoe-post-nav">
+		<nav class="post-nav">
+			                  
+			<!-- 先找到与当前文字相同的目录 -->
+			            
+			<!-- 在找到当前文章所在的 index -->
+			            
+			<!-- 上一篇文章 -->
+			<div class="old">
+				<span>上一章</span>
+				<a href="/React/React%E7%9A%84%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86/"> React的事件处理</a>
+			</div>
+			              
+		</nav>
+	</div>
+	 <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+        <a class="nexmoefont icon-appstore-fill -link" href="/categories/React/">React</a>
+    
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/React/" rel="tag">React</a>
+    
+</div> 
+	<div class="nexmoe-post-footer"><section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css" />
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+	var gitalk = new Gitalk({
+		clientID: 'ff29a03a84dced426b94',
+		clientSecret: '00ca8566cf149a9557cfa902eaa4dc0bccf3a667',
+		id: '关于React18中ReactDOM.render报错的解决方法',
+		repo: 'ch1ny.github.io',
+		owner: 'ch1ny',
+		admin: 'ch1ny',
+		title: 'Ch1nyBlogComment',
+	});
+	gitalk.render('gitalk');
+</script>
+
+</section></div>
+	
+</div>
+
 				<div class="nexmoe-post-right">
 					<div class="nexmoe-fixed">
 						<div class="nexmoe-tool">
@@ -380,10 +348,10 @@
 
  
 
-<script async src="/js/app.js?v=1649488326015"></script>
+<script async src="/js/app.js?v=1649488325933"></script>
 
 
-	<script async src="/js/search.js?v=1649488326015"></script>
+	<script async src="/js/search.js?v=1649488325933"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
