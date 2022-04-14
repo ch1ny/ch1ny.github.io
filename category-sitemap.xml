@@ -9,6 +9,13 @@
 
 
     <url>
+        <loc>https://aiolia.top/categories/JavaScript/</loc>
+        <lastmod>2022-04-14T13:40:29.533Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://aiolia.top/categories/%25E7%25BC%2596%25E7%25A8%258B/</loc>
         <lastmod>2022-04-09T07:11:39.059Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -32,13 +39,6 @@
     <url>
         <loc>https://aiolia.top/categories/Node-js/</loc>
         <lastmod>2022-04-04T15:24:17.933Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://aiolia.top/categories/JavaScript/</loc>
-        <lastmod>2022-04-02T05:54:59.223Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
