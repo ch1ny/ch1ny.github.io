@@ -842,9 +842,15 @@ article.nexmoe-py ul li img.lazyloaded {
   box-sizing: border-box;
 }
 *::selection {
-  background: rgba(39,154,255,0.6);
+  background: #00aeff;
   color: #fff;
   text-shadow: none;
+}
+figure.highlight table tbody tr td.gutter {
+  user-select: none;
+}
+figure.highlight table tbody tr td.code pre *::selection {
+  background: #ff5a86;
 }
 a {
   text-decoration: none;
