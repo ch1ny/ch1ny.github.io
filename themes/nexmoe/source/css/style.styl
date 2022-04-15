@@ -12,9 +12,19 @@ $radius = 13px;
 }
 
 *::selection {
-    background: rgba(39, 154, 255, .6);
+    background: rgb(0, 174, 255);
     color: #fff;
     text-shadow: none;
+}
+
+figure.highlight table tbody tr{
+    td.gutter {
+        user-select: none;
+    }
+
+    td.code pre *::selection {
+    background: rgb(255, 90, 134);
+    }
 }
 
 a {
