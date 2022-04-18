@@ -25,7 +25,7 @@
 <meta property="og:description" content="在上一篇关于 React 的博文中，我们对 react 的渲染和 JSX 的语法有了一个基本的认识。今天就让我们再深入一点，学习 React 组件的相关知识。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-01-01T07:02:52.000Z">
-<meta property="article:modified_time" content="2022-04-05T04:54:36.228Z">
+<meta property="article:modified_time" content="2022-04-18T06:06:46.130Z">
 <meta property="article:author" content="德布罗煜">
 <meta property="article:tag" content="JavaScript">
 <meta property="article:tag" content="React">
@@ -35,9 +35,9 @@
 			href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,npm/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css?v=233"
 			crossorigin
 		/>
-		<link rel="stylesheet" href="/css/style.css?v=1650011082552">  
+		<link rel="stylesheet" href="/css/style.css?v=1650264675640">  
 		<link rel="stylesheet" href="//at.alicdn.com/t/font_3299330_el19bsi97h8.css" />
-		 <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1650011082552"> 
+		 <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1650264675640"> 
 	<meta name="generator" content="Hexo 6.1.0"></head>
 
 	<body class="mdui-drawer-body-left">
@@ -73,7 +73,7 @@
         </a>
     </div>
     <div class="nexmoe-count">
-        <div><span>文章</span>24</div>
+        <div><span>文章</span>25</div>
         <div><span>标签</span>11</div>
         <div><span>分类</span>6</div>
     </div>
@@ -168,7 +168,7 @@
 
         <li class="category-list-item">
           <a class="category-list-link" href="/categories/React/">React</a>
-          <span class="category-list-count">4</span>
+          <span class="category-list-count">5</span>
         </li>
 
         
@@ -203,7 +203,7 @@
     
   <div class="nexmoe-widget-wrap">
     <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
-      <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Node-js/" style="font-size: 15px;">Node.js</a> <a href="/tags/React/" style="font-size: 15px;">React</a> <a href="/tags/Revue/" style="font-size: 17.5px;">Revue</a> <a href="/tags/Unity3D/" style="font-size: 10px;">Unity3D</a> <a href="/tags/VSCODE/" style="font-size: 10px;">VSCODE</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/electron/" style="font-size: 10px;">electron</a> <a href="/tags/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8/" style="font-size: 10px;">字节跳动</a> <a href="/tags/%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4/" style="font-size: 10px;">阿里巴巴</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 12.5px;">面试</a>
+      <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Node-js/" style="font-size: 15px;">Node.js</a> <a href="/tags/React/" style="font-size: 17.5px;">React</a> <a href="/tags/Revue/" style="font-size: 17.5px;">Revue</a> <a href="/tags/Unity3D/" style="font-size: 10px;">Unity3D</a> <a href="/tags/VSCODE/" style="font-size: 10px;">VSCODE</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/electron/" style="font-size: 10px;">electron</a> <a href="/tags/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8/" style="font-size: 10px;">字节跳动</a> <a href="/tags/%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4/" style="font-size: 10px;">阿里巴巴</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 12.5px;">面试</a>
     </div>
     
   </div>
@@ -304,7 +304,8 @@
 <h1><span id="组合组件">组合组件</span></h1><p>组件可以在其输出中引用其他组件。这就可以使我们用同一组件抽象出任意层次细节。我们可以来看看以下代码：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">Student</span>(<span class="hljs-params">props</span>) &#123;<br>    <span class="hljs-keyword">return</span> (<br>        <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span></span><br><span class="language-xml">            &#123;props.name&#125;是位&#123;props.male ? &#x27;男&#x27; : &#x27;女&#x27;&#125;同学</span><br><span class="language-xml">        <span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span></span><br>    );<br>&#125;<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">Classroom</span>(<span class="hljs-params">props</span>) &#123;<br>    <span class="hljs-keyword">return</span> (<br>        <span class="language-xml"><span class="hljs-tag">&lt;&gt;</span></span><br><span class="language-xml">            <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>&#123;props.classroom&#125;班花名册如下：<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span><br><span class="language-xml">            <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">                &#123;props.students.map((student) =&gt; (</span><br><span class="language-xml">                    <span class="hljs-tag">&lt;<span class="hljs-name">Student</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&#123;student.name&#125;</span> <span class="hljs-attr">male</span>=<span class="hljs-string">&#123;student.male&#125;</span> /&gt;</span></span><br><span class="language-xml">                ))&#125;</span><br><span class="language-xml">            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;/&gt;</span></span><br>    );<br>&#125;<br><br><span class="hljs-keyword">const</span> classroom = (<br>    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">Classroom</span></span></span><br><span class="hljs-tag"><span class="language-xml">        <span class="hljs-attr">classroom</span>=<span class="hljs-string">&#123;2&#125;</span></span></span><br><span class="hljs-tag"><span class="language-xml">        <span class="hljs-attr">students</span>=<span class="hljs-string">&#123;[</span></span></span><br><span class="hljs-tag"><span class="language-xml">            &#123; <span class="hljs-attr">name:</span> &#x27;小明&#x27;, <span class="hljs-attr">male:</span> <span class="hljs-attr">true</span> &#125;,</span></span><br><span class="hljs-tag"><span class="language-xml">            &#123; <span class="hljs-attr">name:</span> &#x27;小红&#x27;, <span class="hljs-attr">male:</span> <span class="hljs-attr">false</span> &#125;,</span></span><br><span class="hljs-tag"><span class="language-xml">            &#123; <span class="hljs-attr">name:</span> &#x27;小亮&#x27;, <span class="hljs-attr">male:</span> <span class="hljs-attr">true</span> &#125;,</span></span><br><span class="hljs-tag"><span class="language-xml">        ]&#125;</span></span><br><span class="hljs-tag"><span class="language-xml">    /&gt;</span></span><br>);<br><br><span class="hljs-title class_">ReactDOM</span>.<span class="hljs-title function_">render</span>(classroom, <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;root&#x27;</span>));<br></code></pre></td></tr></table></figure>
 
-<p><a target="_blank" rel="noopener" href="https://codepen.io/ch1ny/pen/MWrrKQE?editors=0010" class="CodePenLink"><b>在 Codepen 上尝试</b></a></p>
+<a target="_blank" rel="noopener" href="https://codepen.io/ch1ny/pen/MWrrKQE?editors=0010" class="CodePenLink"><b>在 Codepen 上尝试</b></a>
+
 <p>在这个例子中，我们构造了一个简单的花名册组件。通常来说，每个新的 React 应用程序的顶层组件都是 <code>App</code> 组件。但是，在一个实际项目中，你还会需要一些其他的小组件，并且自下而上地将这类组件逐步应用到视图层的每一处。</p>
 <h1><span id="props-的只读性">props 的只读性</span></h1><p>组件无论是使用函数式声明还是通过 class 声明，都绝对不能修改自身的 props ，这叫做 props 的只读性。<br>在了解只读性之前让我们先来认识一种函数：<strong>纯函数</strong>。<br>我们来看看下面这段代码：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">add</span>(<span class="hljs-params">a, b</span>) &#123;<br>    <span class="hljs-keyword">return</span> a + b;<br>&#125;<br></code></pre></td></tr></table></figure>
@@ -321,7 +322,8 @@
 <p>在这个用例中，我们通过 <code>setInterval()</code> 方法，每隔一秒钟调用一次 <code>ReactDOM.render()</code> 方法更新视图层。但是这样的更新方式未免太过繁琐，下面我们将介绍一种新的更新视图的方法，我们将学习如何正确地封装一个 <code>Clock</code> 组件，它将设置自己的计时器并按秒实现更新。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Clock</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">React.Component</span> &#123;<br>    <span class="hljs-title function_">constructor</span>(<span class="hljs-params">props</span>) &#123;<br>        <span class="hljs-variable language_">super</span>(props);<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">state</span> = &#123;<br>            <span class="hljs-attr">time</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(),<br>        &#125;;<br>    &#125;<br><br>    <span class="hljs-title function_">render</span>(<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-keyword">return</span> (<br>            <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">                <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>这是一个 React 的时钟用例<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span><br><span class="language-xml">                <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>现在的时间是：&#123;this.state.time.toLocaleTimeString()&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span></span><br><span class="language-xml">            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>        );<br>    &#125;<br>&#125;<br><br><span class="hljs-title class_">ReactDOM</span>.<span class="hljs-title function_">render</span>(<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">Clock</span> /&gt;</span></span>, <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;root&#x27;</span>));<br></code></pre></td></tr></table></figure>
 
-<p><a target="_blank" rel="noopener" href="https://codepen.io/ch1ny/pen/zYppqdQ?editors=0010" class="CodePenLink"><b>在 Codepen 上尝试</b></a></p>
+<a target="_blank" rel="noopener" href="https://codepen.io/ch1ny/pen/zYppqdQ?editors=0010" class="CodePenLink"><b>在 Codepen 上尝试</b></a>
+
 <p>在这里我们构造了一个简单的时钟的外观，我们在渲染函数里获取到组件自身的 <code>state.time</code> ，并将其转换成时间字符串展示在视图中。但是我们还缺少一个关键功能，那就是让时钟每秒钟更新一次。接下来，我们将通过这个 class 组件，来认识 React 的 class 组件中的<strong>生命周期</strong>。</p>
 <h2><span id="初步了解生命周期">初步了解生命周期</span></h2><p>在具有许多组件的应用程序中，当组件被销毁时释放所占用的资源是非常重要的。<br>在我们的 <code>Clock</code> 组件第一次渲染到 DOM 中时，我们就要为其设置一个计时器，让它自动更新 <code>Clock</code> 的时间。这个阶段我们称之为 <strong>“挂载（Mount）”</strong> 。<br>当我们的 <code>Clock</code> 组件从 DOM 中移除时，我们应该清除这个计时器所占据的资源，防止内存泄露。这个阶段被称为 <strong>“卸载（Unmount）”</strong> 。<br>在 React 中，为 class 组件保留了一些特殊的方法，这些方法会在一个组件的特定阶段被调用，这些方法叫做<strong>生命周期函数</strong>。</p>
 <p>以我们的 <code>Clock</code> 组件举例，我们来通过<strong>生命周期函数</strong>实现更新时钟状态。</p>
@@ -334,7 +336,8 @@
 <p>完整代码如下：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Clock</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">React.Component</span> &#123;<br>    <span class="hljs-title function_">constructor</span>(<span class="hljs-params">props</span>) &#123;<br>        <span class="hljs-variable language_">super</span>(props);<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">state</span> = &#123;<br>            <span class="hljs-attr">time</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(),<br>        &#125;;<br>    &#125;<br><br>    <span class="hljs-title function_">componentDidMount</span>(<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">tickInterval</span> = <span class="hljs-built_in">setInterval</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setState</span>(&#123;<br>                <span class="hljs-attr">time</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(),<br>            &#125;);<br>        &#125;, <span class="hljs-number">1000</span>);<br>    &#125;<br><br>    <span class="hljs-title function_">componentWillUnmount</span>(<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-built_in">clearInterval</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">tickInterval</span>);<br>    &#125;<br><br>    <span class="hljs-title function_">render</span>(<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-keyword">return</span> (<br>            <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">                <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>这是一个 React 的时钟用例<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span><br><span class="language-xml">                <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>现在的时间是：&#123;this.state.time.toLocaleTimeString()&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span></span><br><span class="language-xml">            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>        );<br>    &#125;<br>&#125;<br><br><span class="hljs-title class_">ReactDOM</span>.<span class="hljs-title function_">render</span>(<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">Clock</span> /&gt;</span></span>, <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;root&#x27;</span>));<br></code></pre></td></tr></table></figure>
 
-<p><a target="_blank" rel="noopener" href="https://codepen.io/ch1ny/pen/YzYYqaG?editors=0010" class="CodePenLink"><b>在 Codepen 上尝试</b></a></p>
+<a target="_blank" rel="noopener" href="https://codepen.io/ch1ny/pen/YzYYqaG?editors=0010" class="CodePenLink"><b>在 Codepen 上尝试</b></a>
+
 <p>这个时钟样例每秒都会实现刷新。<br>让我们来快速梳理一下在这段代码中都发生了什么：</p>
 <ol>
 <li>当我们通过 <code>ReactDOM.render()</code> 方法尝试将 <code>&lt;Clock /&gt;</code> 组件渲染到 DOM 中去，React 会调用 <code>&lt;Clock /&gt;</code> 的构造函数。</li>
@@ -388,7 +391,7 @@
   
 	<div class="nexmoe-post-nav">
 		<nav class="post-nav">
-			              
+			                      
 			<!-- 先找到与当前文字相同的目录 -->
 			      
 			<!-- 在找到当前文章所在的 index -->
@@ -404,7 +407,7 @@
 				<span>下一章</span>
 				<a href="/React/React%E7%9A%84%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86/"> React的事件处理</a>
 			</div>
-			                         
+			                        
 		</nav>
 	</div>
 	 <div class="nexmoe-post-meta nexmoe-rainbow">
@@ -472,10 +475,10 @@
 
  
 
-<script async src="/js/app.js?v=1650011082553"></script>
+<script async src="/js/app.js?v=1650264675641"></script>
 
 
-	<script async src="/js/search.js?v=1650011082553"></script>
+	<script async src="/js/search.js?v=1650264675641"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>

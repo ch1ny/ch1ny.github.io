@@ -3,8 +3,15 @@
 
 
     <url>
+        <loc>https://aiolia.top/tags/React/</loc>
+        <lastmod>2022-04-18T06:50:33.637Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://aiolia.top/tags/JavaScript/</loc>
-        <lastmod>2022-04-15T07:45:00.202Z</lastmod>
+        <lastmod>2022-04-18T06:50:33.637Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -12,13 +19,6 @@
     <url>
         <loc>https://aiolia.top/tags/VSCODE/</loc>
         <lastmod>2022-04-09T07:11:39.059Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://aiolia.top/tags/React/</loc>
-        <lastmod>2022-04-08T11:13:18.607Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
