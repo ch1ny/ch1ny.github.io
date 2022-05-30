@@ -97,7 +97,7 @@ class Switcher extends React.Component {
 }
 ```
 
-<a href="https://codepen.io/ch1ny/pen/OJzzYrx?editors=0010" class="CodePenLink"><b>在 Codepen 上尝试</b></a>
+{% pen https://codepen.io/ch1ny/pen/OJzzYrx?editors=0010 %}
 
 ## 谨慎对待 this
 

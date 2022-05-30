@@ -21,13 +21,13 @@ search:
 
 cdn: # 这里可以修改站点使用的库的CDN
     # disqusjs:
-    #     css: https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqusjs.min.css
-    #     js: https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqus.min.js
+    #     css: https://unpkg.com/disqusjs@1.2.5/dist/disqusjs.min.css
+    #     js: https://unpkg.com/disqusjs@1.2.5/dist/disqus.min.js
     gitalk:
-        css: https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css
-        js: https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js
+        css: https://unpkg.com/gitalk@latest/dist/gitalk.css
+        js: https://unpkg.com/gitalk@latest/dist/gitalk.min.js
     # valine:
-    #     js: https://cdn.jsdelivr.net/npm/valine
+    #     js: https://unpkg.com/valine
 
 menu:
     回到首页:

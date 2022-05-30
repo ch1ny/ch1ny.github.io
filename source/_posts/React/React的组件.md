@@ -125,7 +125,7 @@ const classroom = (
 ReactDOM.render(classroom, document.getElementById('root'));
 ```
 
-<a href="https://codepen.io/ch1ny/pen/MWrrKQE?editors=0010" class="CodePenLink"><b>在 Codepen 上尝试</b></a>
+{% pen https://codepen.io/ch1ny/pen/MWrrKQE?editors=0010 %}
 
 在这个例子中，我们构造了一个简单的花名册组件。通常来说，每个新的 React 应用程序的顶层组件都是 `App` 组件。但是，在一个实际项目中，你还会需要一些其他的小组件，并且自下而上地将这类组件逐步应用到视图层的每一处。
 
@@ -198,7 +198,7 @@ class Clock extends React.Component {
 ReactDOM.render(<Clock />, document.getElementById('root'));
 ```
 
-<a href="https://codepen.io/ch1ny/pen/zYppqdQ?editors=0010" class="CodePenLink"><b>在 Codepen 上尝试</b></a>
+{% pen https://codepen.io/ch1ny/pen/zYppqdQ?editors=0010 %}
 
 在这里我们构造了一个简单的时钟的外观，我们在渲染函数里获取到组件自身的 `state.time` ，并将其转换成时间字符串展示在视图中。但是我们还缺少一个关键功能，那就是让时钟每秒钟更新一次。接下来，我们将通过这个 class 组件，来认识 React 的 class 组件中的**生命周期**。
 
@@ -268,7 +268,7 @@ class Clock extends React.Component {
 ReactDOM.render(<Clock />, document.getElementById('root'));
 ```
 
-<a href="https://codepen.io/ch1ny/pen/YzYYqaG?editors=0010" class="CodePenLink"><b>在 Codepen 上尝试</b></a>
+{% pen https://codepen.io/ch1ny/pen/YzYYqaG?editors=0010 %}
 
 这个时钟样例每秒都会实现刷新。
 让我们来快速梳理一下在这段代码中都发生了什么：

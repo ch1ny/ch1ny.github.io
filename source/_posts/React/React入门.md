@@ -184,6 +184,6 @@ React DOM 会将元素和它的子元素与它们之前的状态进行比较，�
 如果是用我给的 React 代码写的计时器的这个例子，你会发现`<h1>`标签不再闪光了，同时内部的文本节点也只有**具体的时间部分**在闪烁，**“现在是”**三个字则不会，因为 ReactDOM 只会更新需要更新的部分。
 
 > React 的代码示例可以看这里：
-> <a href="https://codepen.io/ch1ny/pen/RwxxrON?editors=0010" class="CodePenLink"><b>在 Codepen 上尝试</b></a>
+> {% pen https://codepen.io/ch1ny/pen/RwxxrON?editors=0010 %}
 
 尽管每一秒我们都会新建一个描述整个 UI 树的元素，React DOM 只会更新实际改变了的内容，也就是计时器例子中的仅关于时间的文本节点。

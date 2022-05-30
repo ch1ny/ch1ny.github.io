@@ -21,11 +21,8 @@
 		/>
 		<%- open_graph({twitter_id: theme.twitter, google_plus: theme.google_plus, fb_admins:
 		theme.fb_admins, fb_app_id: theme.fb_app_id}) %>
-		<link
-			rel="stylesheet"
-			href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,npm/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css?v=233"
-			crossorigin
-		/>
+		<link rel="stylesheet" href="https://assets.aiolia.top/lib/blog/iconfont.css" crossorigin />
+		<link rel="stylesheet" href="https://assets.aiolia.top/lib/blog/mdui.css" crossorigin />
 		<%- css_auto_version('css/style') %> <% if (theme.function.darkmode) { %> <%-
 		css_auto_version('css/dark') %> <% } %> <% if (theme.iconlib) { %>
 		<link rel="stylesheet" href="<%= theme.iconlib %>" />
@@ -91,6 +88,6 @@
 		</div>
 		<%- partial('_partial/searchbox') %> <%- partial('_partial/after-footer') %> <%-
 		partial('_partial/analytics') %>
-		<script src="https://cdn.jsdelivr.net/npm/smooth-scrolling.js@latest"></script>
+		<script src="https://unpkg.com/smooth-scrolling.js@latest"></script>
 	</body>
 </html>
