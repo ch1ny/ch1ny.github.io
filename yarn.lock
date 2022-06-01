@@ -1827,10 +1827,10 @@ hexo-tag-aplayer@^3.0.4:
     hexo-util "^0.1.7"
     meting "^1.2.0"
 
-hexo-theme-nexmoe@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.npmmirror.com/hexo-theme-nexmoe/-/hexo-theme-nexmoe-4.0.0.tgz#02a7bea5547f1dfb3b0a17e0ec5d2d396a447ffe"
-  integrity sha512-IEY3gnduoaVdijmb8lB1ziFk/Bk2qy+3KiH6MAkTv7RZ6aiVSwkx5RZuC/3pKfOpWJalIhFNw99SfVhmrxcRwg==
+hexo-theme-nexmoe@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/hexo-theme-nexmoe/-/hexo-theme-nexmoe-4.0.1.tgz#4b86404568d7e3bc067db0a4210b8fa448df729e"
+  integrity sha512-3Qf/NOYQuiC/wlF+uiKTj73hgDEmoSXIiLtzTYdqjbXmGlZS1BGMbsUKt/vGaBsgS0H9mW39Dq7H0GaxgJZDtA==
   dependencies:
     hexo-generator-json-content "^4.2.3"
 
