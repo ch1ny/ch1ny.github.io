@@ -80,4 +80,4 @@ console.log('Welcome to Node.js');
 node HelloWorld.js
 ```
 
-![执行结果](http://47.101.165.106:8080/assets/Pictures/Others/20220402205833.png)
+![执行结果](https://raw.githubusercontent.com/ch1ny/PictureCDN/master/others/20220402205833.png)
