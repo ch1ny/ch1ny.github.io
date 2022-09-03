@@ -114,6 +114,6 @@ layout: friends
     <div style="width: 100%; font-size: 1.5rem; line-height: 4rem;" id='text'>我的朋友呢？</div>
     <button class="button" onclick="const self = this.classList.add('button_cannot_seen'); document.querySelector('.sob').classList.remove('sob_hidden'); document.querySelector('#text').innerText = '破案了，原来德布罗煜没有朋友';">你能帮德布罗煜找到朋友吗</button>
     <div style="width: 100%; display: flex; justify-content: space-around;">
-        <img class="sob sob_hidden" src="https://assets.aiolia.top/Pictures/Others/20220401192619.jpg"/>
+        <img class="sob sob_hidden" src="https://assets.kira.host/Pictures/Others/20220401192619.jpg"/>
     </div>
 </div>
