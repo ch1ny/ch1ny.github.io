@@ -1,10 +1,10 @@
-avatar: https://assets.kira.host/Pictures/Others/116359b4ccf19917.jpg # 网站 Logo
+avatar: http://47.101.165.106:8080/assets/Pictures/Others/116359b4ccf19917.jpg # 网站 Logo
 background: # 既是博客的背景，又是文章默认头图
-    path: https://assets.kira.host/Pictures/Others/f0d5cc34c6e5aa7.jpg
+    path: http://47.101.165.106:8080/assets/Pictures/Others/f0d5cc34c6e5aa7.jpg
     width: 1280
     height: 720
 favicon:
-    href: https://assets.kira.host/Pictures/Others/116359b4ccf19917.jpg # 网站图标
+    href: http://47.101.165.106:8080/assets/Pictures/Others/116359b4ccf19917.jpg # 网站图标
     type: image/png # 图标类型，可能的值有(image/png, image/vnd.microsoft.icon, image/x-icon, image/gif)
 
 # 附加图标库 使用说明：https://docs.kira.com/config/icon
