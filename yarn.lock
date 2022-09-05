@@ -1832,12 +1832,13 @@ hexo-tag-aplayer@^3.0.4:
     hexo-util "^0.1.7"
     meting "^1.2.0"
 
-hexo-theme-kira@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.npmjs.org/hexo-theme-kira/-/hexo-theme-kira-1.0.0.tgz#1f18cda238900a1266ae26a1bc11efa11e69abac"
-  integrity sha512-ZBeEUtJQlcE9swqhorzIyqGkp8ah8mS/VAKStg+2j3OjkjQDF2qjGHvRSiKPt1V3rBhTbD4EjrDAn+zuEk9Thg==
+hexo-theme-kira@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/hexo-theme-kira/-/hexo-theme-kira-1.0.3.tgz#5bccbfb143a679396c3396fb7a86487e29038f5b"
+  integrity sha512-g7moJmIAS9uiQiGayPjJ5Vs+V7an4Y4AS3tlXN8ipBxLG0cCnz9SVCfPz9HLBTs15mCU+C7aPiuDu5cD3XQ6oA==
   dependencies:
     hexo-tag-aplayer "^3.0.4"
+    hexo-toc "^1.1.0"
     hexo-wordcount "^6.0.1"
 
 hexo-toc@^1.1.0:
