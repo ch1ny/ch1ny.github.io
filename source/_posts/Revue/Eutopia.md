@@ -3,13 +3,13 @@ title: Eutopia
 date: 2022-04-07 13:38:28
 tags: [Revue]
 categories: [Revue]
-cover: https://raw.githubusercontent.com/ch1ny/PictureCDN/master/others/Eutopia_AS.jpg
+cover: https://assets.aiolia.top/Pictures/Others/Eutopia_AS.jpg
 coverWidth: 400
 coverHeight: 400
 ---
 
 {% myplayer %}
-{% aplayerlrc "Eutopia" "钟岚珠（法元明菜）" "http://47.101.165.106:8080/assets/Audios/565807693_nb2-1-112.mp3" "https://raw.githubusercontent.com/ch1ny/PictureCDN/master/others/Eutopia_AS.jpg" %}
+{% aplayerlrc "Eutopia" "钟岚珠（法元明菜）" "https://assets.aiolia.top/Audios/565807693_nb2-1-112.mp3" "https://assets.aiolia.top/Pictures/Others/Eutopia_AS.jpg" %}
 [00:00.50] 鐘嵐珠（法元明菜） - Eutopia
 [00:01.00]作词：Ayaka Miyake
 [00:01.50]作曲、编曲：\*Luna、角野寿和

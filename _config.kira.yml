@@ -1,10 +1,10 @@
-avatar: https://raw.githubusercontent.com/ch1ny/PictureCDN/master/others/116359b4ccf19917.jpg # 网站 Logo
+avatar: https://assets.aiolia.top/Pictures/Others/116359b4ccf19917.jpg # 网站 Logo
 background: # 既是博客的背景，又是文章默认头图
-    path: https://raw.githubusercontent.com/ch1ny/PictureCDN/master/others/f0d5cc34c6e5aa7.jpg
+    path: https://assets.aiolia.top/Pictures/Others/f0d5cc34c6e5aa7.jpg
     width: 1280
     height: 720
 favicon:
-    href: https://raw.githubusercontent.com/ch1ny/PictureCDN/master/others/116359b4ccf19917.jpg # 网站图标
+    href: https://assets.aiolia.top/Pictures/Others/116359b4ccf19917.jpg # 网站图标
     type: image/png # 图标类型，可能的值有(image/png, image/vnd.microsoft.icon, image/x-icon, image/gif)
 
 # 附加图标库 使用说明：https://docs.kira.com/config/icon
@@ -24,6 +24,8 @@ cdn: # 这里可以修改站点使用的库的CDN
         js: https://unpkg.com/gitalk@latest/dist/gitalk.min.js
     # valine:
     #     js: https://unpkg.com/valine
+
+beian: 赣ICP备2021007955号 # 备案号（选填）
 
 menu:
     回到首页:
@@ -103,24 +105,9 @@ color: # 配色方案，从first到seventh为优先级为1-7的颜色，默认�
         g: 144
         b: 255
 
-# 向搜索引擎验证你对站点的所有权，用于向搜索引擎提交 sitemap 和管理站点被搜索引擎收录的情况。
-site_verification:
-    google:
-    baidu:
-
-# 统计系统，目前支持 Google analytics.js 统计、Google Tag Manager 统计、CNZZ 统计、腾讯统计、51.La统计、百度统计
-analytics:
-    google_site_id: #<ID>
-    gtags_site_id: #<ID>
-    cnzz_site_id: #<ID>
-    tencent_site_id: #<ID>
-    la_site_id: #<ID>
-    baidu_site_id: #<ID>
-    gtm_container_id: #<ID>
-
-# 评论框，目前支持 gitalk,gitment,valine,disqus,disqusjs,changyan,livere,DiscussBot 使用 false 可以关闭
-comment: gitalk
+# 评论区
 gitalk:
+    active: true
     admin: ch1ny # 拥有对该repo进行操作的 GitHub username
     owner: ch1ny # 持有该 repo 的 GitHub username
     repo: ch1ny.github.io # 存放评论的 issue 所在的 repo
