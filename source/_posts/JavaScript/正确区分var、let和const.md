@@ -2,7 +2,7 @@
 title: 正确区分var、let和const
 date: 2021-09-12 12:35:47
 tags: JavaScript
-categories: [JavaScript]
+categories: [编程]
 cover: https://pic1.zhimg.com/v2-535e92c65ddaff1a55f11df10c680c75_720w.jpg?source=172ae18b
 ---
 

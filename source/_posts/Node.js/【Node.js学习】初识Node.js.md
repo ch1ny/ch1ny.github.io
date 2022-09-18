@@ -2,7 +2,7 @@
 title: 【Node.js学习】初识Node.js
 date: 2022-04-02 19:54:30
 tags: [Node.js]
-categories: [Node.js]
+categories: [编程]
 cover: https://i1.wp.com/subrutin.com/wp-content/uploads/2019/01/2400%D1%851260-rw-blog-node-js.png
 ---
 

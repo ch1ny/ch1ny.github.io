@@ -2,7 +2,7 @@
 title: js原型链
 date: 2022-01-08 18:24:04
 tags: JavaScript
-categories: [JavaScript]
+categories: [编程]
 cover: https://pic1.zhimg.com/v2-535e92c65ddaff1a55f11df10c680c75_720w.jpg?source=172ae18b
 ---
 

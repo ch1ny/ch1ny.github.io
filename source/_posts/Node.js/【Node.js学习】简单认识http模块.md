@@ -2,7 +2,7 @@
 title: 【Node.js学习】简单认识http模块
 date: 2022-04-03 15:02:50
 tags: [Node.js]
-categories: [Node.js]
+categories: [编程]
 ---
 
 这里我们回顾一下我们学习 Node.js 的目的：是为了将 Node.js 作为后端开发的工具才去学习它的，那么要使它能够代替传统的后端开发语言，Node.js 必须要具备基本的 HTTP 通信的功能。要实现 HTTP 通信，就要用到我们今天介绍的这个模块—— **http 模块**了。

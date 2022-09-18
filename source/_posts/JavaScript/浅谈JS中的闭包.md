@@ -2,7 +2,7 @@
 title: 浅谈JS中的闭包
 date: 2021-09-28 10:36:15
 tags: JavaScript
-categories: [JavaScript]
+categories: [编程]
 cover: https://pic1.zhimg.com/v2-535e92c65ddaff1a55f11df10c680c75_720w.jpg?source=172ae18b
 ---
 

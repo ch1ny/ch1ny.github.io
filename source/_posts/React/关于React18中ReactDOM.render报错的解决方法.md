@@ -2,7 +2,7 @@
 title: 关于React18中ReactDOM.render报错的解决方法
 date: 2022-04-08 19:00:52
 tags: [React]
-categories: [React]
+categories: [编程]
 cover: https://tse1-mm.cn.bing.net/th/id/R-C.bc71c1c1c50551a1d65e7b529ea29d08?rik=EU42gCFH4J%2bBZA&riu=http%3a%2f%2fwww.goodworklabs.com%2fwp-content%2fuploads%2f2016%2f10%2freactjs.png&ehk=qvQ5EVoUnJZ7k5L347zsU3f87YTckr1iQBzKdwXJd0w%3d&risl=&pid=ImgRaw&r=0
 ---
 

@@ -1,8 +1,11 @@
 ---
 title: TypeScript IOC 设计模式初探
 date: 2022-09-10 23:57:20
-tags: ['TypeScript']
+tags: [TypeScript]
+categories: [编程]
 ---
+
+<!-- toc -->
 
 # 什么是 IOC？
 IOC 的全称是 Inversion of Control ，中文名为**「控制反转」**，是一种在面向对象开发中用来降低系统耦合度的一种**设计模式**。最常见的实现方式是**「依赖注入」（Dependency Injection）**，也就是 DI ；还有一种实现方式叫做**「依赖查询」（Dependency Lookup）**。

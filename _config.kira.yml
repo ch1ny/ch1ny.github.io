@@ -25,7 +25,7 @@ cdn: # 这里可以修改站点使用的库的CDN
     # valine:
     #     js: https://unpkg.com/valine
 
-beian: 赣ICP备2021007955号 # 备案号（选填）
+beian: 赣ICP备2021007955号-2 # 备案号（选填）
 
 menu:
     回到首页:
@@ -73,8 +73,6 @@ social:
         - rgb(165, 15, 15)
         - rgba(165, 15, 15, .15)
 
-# 自定义样式，启用后可在站点的source文件夹下新建custom.css自定义站点样式
-customstyle: false
 color: # 配色方案，从first到seventh为优先级为1-7的颜色，默认为彩虹配色
     first: # 同时作为主题色
         r: 49

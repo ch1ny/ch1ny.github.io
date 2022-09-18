@@ -2,7 +2,7 @@
 title: 【Node.js学习】简单认识fs文件系统模块
 date: 2022-04-02 21:03:53
 tags: [Node.js]
-categories: [Node.js]
+categories: [编程]
 ---
 
 在本文中，我们将对 Node.js 提供的 fs 文件系统模块进行初步的认识
