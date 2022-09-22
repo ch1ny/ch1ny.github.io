@@ -3,7 +3,7 @@ title: 【Fira Code】一款为程序员量身打造的字体
 date: 2022-09-18 12:17:22
 tags: [VSCODE]
 categories: [编程]
-cover: https://raw.githubusercontent.com/tonsky/FiraCode/ab2aaf3e732fe14d4b1a5a20edd2086eb2ba4177/extras/logo.svg
+cover: https://assets.aiolia.top/Pictures/Others/FiraCodeLogo.svg
 ---
 
 今天给大家介绍一款非常炫酷的等宽字体—— **Fira Code**。

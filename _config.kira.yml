@@ -1,6 +1,6 @@
-avatar: https://assets.aiolia.top/Pictures/Others/116359b4ccf19917.jpg # 网站 Logo
+avatar: https://assets.aiolia.top/Pictures/Others/20220922230447.jpg # 网站 Logo
 background: # 既是博客的背景，又是文章默认头图
-    path: https://assets.aiolia.top/Pictures/Others/f0d5cc34c6e5aa7.jpg
+    path: https://assets.aiolia.top/Pictures/Others/-f0d5cc34c6e5aa7_compressed.jpg
     width: 1280
     height: 720
 favicon:
