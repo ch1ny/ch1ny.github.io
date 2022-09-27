@@ -4,7 +4,7 @@ layout: friends
 ---
 
 {% myplayer %}
-{% aplayerlrc "You are a ghost, I am a ghost 〜劇場のゴースト〜" "スタァライト九九組" "https://assets.aiolia.top/Audios/YouGhostIGhost.mp3" "https://p3.music.126.net/7DUwlk6F0Lfj9TgL36yNfA==/109951163778883762.jpg?param=90y90" %}
+{% aplayerlrc "You are a ghost, I am a ghost 〜劇場のゴースト〜" "スタァライト九九組" "https://assets.kira.host/Audios/YouGhostIGhost.mp3" "https://p3.music.126.net/7DUwlk6F0Lfj9TgL36yNfA==/109951163778883762.jpg?param=90y90" %}
 [00:00.000]作词 : 中村彼方
 [00:01.000]作曲 : 叶人 / 藤井亮太
 [00:06.671]
@@ -114,6 +114,6 @@ layout: friends
     <div style="width: 100%; font-size: 1.5rem; line-height: 4rem;" id='text'>我的朋友呢？</div>
     <button class="button" onclick="const self = this.classList.add('button_cannot_seen'); document.querySelector('.sob').classList.remove('sob_hidden'); document.querySelector('#text').innerText = '破案了，原来德布罗煜没有朋友';">你能帮德布罗煜找到朋友吗</button>
     <div style="width: 100%; display: flex; justify-content: space-around;">
-        <img class="sob sob_hidden" src="https://assets.aiolia.top/Pictures/Others/20220401192619.jpg"/>
+        <img class="sob sob_hidden" src="https://assets.kira.host/Pictures/Others/20220401192619.jpg"/>
     </div>
 </div>
