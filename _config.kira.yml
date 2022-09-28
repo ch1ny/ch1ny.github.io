@@ -25,7 +25,7 @@ cdn: # 这里可以修改站点使用的库的CDN
     # valine:
     #     js: https://unpkg.com/valine
 
-beian: 赣ICP备2021007955号-2 # 备案号（选填）
+beian: 赣ICP备2021007955号-3 # 备案号（选填）
 
 menu:
     回到首页:
@@ -109,8 +109,8 @@ gitalk:
     admin: ch1ny # 拥有对该repo进行操作的 GitHub username
     owner: ch1ny # 持有该 repo 的 GitHub username
     repo: ch1ny.github.io # 存放评论的 issue 所在的 repo
-    clientID: ff29a03a84dced426b94 # GitHub Client ID
-    clientSecret: 00ca8566cf149a9557cfa902eaa4dc0bccf3a667 # GitHub Client Secret
+    clientID: 33eb909f05225d8d04f5 # GitHub Client ID
+    clientSecret: e78ac2d59752883c661bb6e7139846fc1a009ab3 # GitHub Client Secret
     title: 'Ch1nyBlogComment' # Gitalk Issue Title
 
 copyright: '<strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可'
