@@ -5,13 +5,16 @@
 	"scripts": {
 		"build": "hexo generate",
 		"clean": "hexo clean",
+		"dev": "hexo server",
+		"predeploy": "hexo clean&&hexo generate",
+		"deploy": "hexo deploy",
 		"server": "hexo server",
 		"start": "hexo server",
-		"dist": "hexo clean&&hexo generate&&hexo deploy",
-		"new": "hexo new"
+		"new": "hexo new",
+		"yalc": "yalc remove hexo-theme-kira&&yalc add hexo-theme-kira&&yarn"
 	},
 	"hexo": {
-		"version": "6.1.0"
+		"version": "6.3.0"
 	},
 	"dependencies": {
 		"hexo": "^6.0.0",
@@ -26,6 +29,7 @@
 		"hexo-renderer-marked": "^5.0.0",
 		"hexo-renderer-stylus": "^2.1.0",
 		"hexo-server": "^3.0.0",
+		"hexo-theme-kira": "^1.1.9",
 		"hexo-toc": "^1.1.0"
 	},
 	"devDependencies": {
