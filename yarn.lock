@@ -1829,10 +1829,10 @@ hexo-tag-aplayer@^3.0.4:
     hexo-util "^0.1.7"
     meting "^1.2.0"
 
-hexo-theme-kira@^1.1.9:
-  version "1.1.9"
-  resolved "https://registry.npmmirror.com/hexo-theme-kira/-/hexo-theme-kira-1.1.9.tgz#8bc4b33caa4c3788300414d9fd293a3a6e9fff21"
-  integrity sha512-bUyQfJ9ePuPHnJ7Dha07zI6uZGSGxelO2m9TPtxAPXJmOv8n9Tt+JfKrv790JDdS0unlaNFigPaos09uhoyn8g==
+hexo-theme-kira@^1.3.1:
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/hexo-theme-kira/-/hexo-theme-kira-1.3.1.tgz#476afee3827765b33e305a013becfe1192639e10"
+  integrity sha512-oSTUZjq2bAOXYfRnN1wutsjeAWUSKFHEDoqDjekVotw5qNiy1xD/sv8IzRUjDFDTu7E00AzEYHlTDvPP938YPQ==
   dependencies:
     hexo-tag-aplayer "^3.0.4"
     hexo-toc "^1.1.0"
