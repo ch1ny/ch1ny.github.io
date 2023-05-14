@@ -17,7 +17,7 @@ categories: [编程]
 
 简单的 clash 节点不需要过高的服务器配置，选择腾讯云的轻量应用服务器即可，建议网络计费采用按量计费，带宽可以拉大一点。
 
-这里我们建议使用 `Ubuntu 22.04 LTS` 作为系统镜像。
+建议使用 `Ubuntu 22.04 LTS` 作为系统镜像。
 
 ## 更新源和软件
 
@@ -34,7 +34,7 @@ sudo apt install shadowsocks-libev
 
 ## 安装 simple-obfs
 
-本人曾经在一台阿里云的服务器上搭建了 shadowsocks 机场，结果没两天就惨遭 **TGW** 毒手，直接封禁 IP 。因此建议各位多执行这一步对流量进行混淆加密。
+本人曾经在一台阿里云的服务器上搭建了 shadowsocks 机场，结果没两天就惨遭 **TGW** 毒手，直接封禁 IP 。因此建议多执行这一步对流量进行混淆加密。
 
 ```bash
 sudo apt-get install --no-install-recommends build-essential autoconf libtool libssl-dev libpcre3-dev libc-ares-dev libev-dev asciidoc xmlto automake git
@@ -70,7 +70,7 @@ sudo vim /etc/shadowsocks-libev/config.json
 }
 ```
 
-**注意：**记得将上面的 `your.hostname` 改为你自己的域名，`ssl_cert` 和 `ssl_key` 改为你自己的域名SSL证书和密钥文件路径。
+**注意：**记得将上面的 `your.hostname` 改为自己的域名，`ssl_cert` 和 `ssl_key` 改为自己的域名SSL证书和密钥文件路径。
 
 ## 开机启动配置
 
