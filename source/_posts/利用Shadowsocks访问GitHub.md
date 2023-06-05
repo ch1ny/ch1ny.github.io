@@ -1,15 +1,17 @@
 ---
-title: Ubuntu搭建Clash节点
-date: 2023-05-11 22:49:03
-tags: [机场, clash]
+title: 利用Shadowsocks访问GitHub
+date: 2022-09-11 22:49:03
+tags: [clash, shadowsocks, github]
 categories: [编程]
 ---
 
-> 懂自懂
+> 本文无不良倾向，本人爱国爱党，此文章仅作为技术分享，为无法正常访问 GitHub 的开发者提供访问方法。
 
 <!-- more -->
 
 <!-- toc -->
+
+本文采用 Clash 对 GitHub 进行访问。
 
 ## 采购服务器
 
@@ -34,7 +36,7 @@ sudo apt install shadowsocks-libev
 
 ## 安装 simple-obfs
 
-本人曾经在一台阿里云的服务器上搭建了 shadowsocks 机场，结果没两天就惨遭 **TGW** 毒手，直接封禁 IP 。因此建议多执行这一步对流量进行混淆加密。
+本人曾经在一台阿里云的服务器上搭建了 shadowsocks 节点，结果没两天就惨遭 **TGW** 毒手，直接封禁 IP 。因此建议多执行这一步对流量进行混淆加密。
 
 ```bash
 sudo apt-get install --no-install-recommends build-essential autoconf libtool libssl-dev libpcre3-dev libc-ares-dev libev-dev asciidoc xmlto automake git
