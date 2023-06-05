@@ -11,7 +11,7 @@ categories: [编程]
 
 <!-- toc -->
 
-# fs 文件系统模块简介
+## fs 文件系统模块简介
 
 **fs 模块**是 Node.js 官方提供的、用来操作文件的模块。它提供了一系列的方法和属性，用来满足用户对文件操作的需求。
 例如：
@@ -25,11 +25,11 @@ categories: [编程]
 const fs = require('fs');
 ```
 
-# 使用 fs 文件系统模块
+## 使用 fs 文件系统模块
 
-## 读取指定文件中的内容
+### 读取指定文件中的内容
 
-### fs.readFile()的语法格式
+#### fs.readFile()的语法格式
 
 使用 fs.readFile()方法，可以读取指定文件中的内容，语法格式如下：
 
@@ -42,7 +42,7 @@ const fs = require('fs');
 fs.readFile(path[, options], callback)
 ```
 
-### fs.readFile()的示例代码
+#### fs.readFile()的示例代码
 
 以 utf-8 的编码格式，读取指定文件的内容，并打印 err 和 data 的值
 
@@ -62,7 +62,7 @@ fs.readFile('./text.txt', 'utf8', function (err, data) {
 ![执行结果](https://assets.kira.host/Pictures/Others/20220402212716.png)
 可以看到，当发生错误时，`err`值为一个保存了错误信息的对象，`data`的值为`undefined`。
 
-### 判断文件是否读取成功
+#### 判断文件是否读取成功
 
 经过上面的示例代码，我们可以发现：
 
@@ -82,9 +82,9 @@ fs.readFile('./text.txt', 'utf8', function (err, data) {
 });
 ```
 
-## 向指定文件中写入内容
+### 向指定文件中写入内容
 
-### fs.writeFile()的语法格式
+#### fs.writeFile()的语法格式
 
 使用 fs.writeFile()方法，可以向指定的文件中写入内容，语法格式如下：
 
@@ -98,7 +98,7 @@ fs.readFile('./text.txt', 'utf8', function (err, data) {
 fs.writeFile(path, data[, options], callback)
 ```
 
-### fs.writeFile()的示例代码
+#### fs.writeFile()的示例代码
 
 向指定文件中写入内容：
 
@@ -112,7 +112,7 @@ fs.writeFile('./HelloNode.txt', 'Hello Node.js!', function (err) {
 如果文件写入成功，则`err`的值为`null`（若文件不存在会自行创建文件并写入内容）。
 如果文件写入失败（比如写入不存在的盘符），则`err`的值为一个错误对象。
 
-### 判断文件是否写入成功
+#### 判断文件是否写入成功
 
 同 fs.readFile()的判断方法一样，我们只需要判断`err`的值能否转换为`true`就能判断出文件是否写入成功。
 
@@ -127,7 +127,7 @@ fs.writeFile('./HelloNode.txt', 'Hello Node.js!', function (err) {
 });
 ```
 
-# 动态路径拼接问题
+## 动态路径拼接问题
 
 在使用 fs 等依赖于文件路径的模块时，我们必然会遇到动态路径拼接的问题。
 当我们过度依赖诸如 `./` 或 `../` 这类相对路径时，可能会有某些文件的相对路径指向错误的情况发生。这是因为 Node.js 的相对路径依赖于执行脚本的终端执行命令时所在的位置。

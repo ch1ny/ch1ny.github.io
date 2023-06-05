@@ -11,7 +11,7 @@ categories: [编程]
 
 <!-- toc -->
 
-# http 模块简介
+## http 模块简介
 
 在介绍 http 模块之前，我们先来回顾一下**客户端**和**服务器端**的概念。
 
@@ -26,22 +26,22 @@ categories: [编程]
 const http = require('http');
 ```
 
-# 进一步理解 http 模块的作用
+## 进一步理解 http 模块的作用
 
 服务器与普通计算机的**区别**在于，服务器上安装了 **web 服务器软件**，如：IIS、Apache 等。通过安装这些服务器软件，就能把一台普通的电脑变成一台 web 服务器。
 
 而有了 Node.js，我们便不再需要 IIS、Apache 这些第三方 web 服务器软件。因为我们可以基于 Node.js 提供的 http 模块自行搭建一个 Web 服务器，对外提供 Web 服务。
 
-# 创建基本的 web 服务器
+## 创建基本的 web 服务器
 
-## 创建 web 服务器的基本步骤
+### 创建 web 服务器的基本步骤
 
 1. <a href="#步骤一-导入-http-模块">导入 http 模块</a>
 2. <a href="#步骤二-创建-web-服务器实例">创建 web 服务器实例</a>
 3. <a href="#步骤三-为服务器实例绑定-request-事件">为服务器实例绑定 **request** 事件，监听客户端的请求</a>
 4. <a href="#步骤四-启动服务器">启动服务器</a>
 
-### 步骤一 - 导入 http 模块
+#### 步骤一 - 导入 http 模块
 
 如果希望在计算机上创建一个 web 服务器，从而对外提供 web 服务，首先需要导入 http 模块。
 
@@ -49,7 +49,7 @@ const http = require('http');
 const http = require('http');
 ```
 
-### 步骤二 - 创建 web 服务器实例
+#### 步骤二 - 创建 web 服务器实例
 
 调用 `http.createServer()` 方法，即可快速创建一个 web 服务器实例。
 
@@ -57,7 +57,7 @@ const http = require('http');
 const server = http.createServer();
 ```
 
-### 步骤三 - 为服务器实例绑定 request 事件
+#### 步骤三 - 为服务器实例绑定 request 事件
 
 为服务器实例绑定 request 事件，即可监听客户端发来的网络请求。
 
@@ -70,7 +70,7 @@ server.on('request', (req, resp) => {
 
 我们通过 `server.on()` 绑定监听事件，监听 `request` 事件，并给第二个参数传入一个回调函数。该回调函数接收请求对象和响应对象作为形参，用于在监听到 `request` 请求后执行回调。
 
-### 步骤四 - 启动服务器
+#### 步骤四 - 启动服务器
 
 调用服务器实例的 `listen()` 方法，即可启动当前的 web 服务器实例。
 
@@ -80,7 +80,7 @@ server.listen(80, () => {
 });
 ```
 
-### 完整代码
+#### 完整代码
 
 创建一个基本的 web 服务器的完整代码如下：
 
@@ -103,7 +103,7 @@ server.listen(80, () => {
 });
 ```
 
-## req 对象<http.IncomingMessage>
+### req 对象<http.IncomingMessage>
 
 我们可以通过 request 请求对象提取出客户端发送的请求中的信息，示例代码：
 
@@ -117,7 +117,7 @@ server.on('request', (req, resp) => {
 });
 ```
 
-## resp 对象<http.ServerResponse>
+### resp 对象<http.ServerResponse>
 
 在服务器的 request 事件处理函数中，如果想访问与服务器相关的属性或数据可以使用 response 响应对象。
 
@@ -140,7 +140,7 @@ server.on('request', (req, resp) => {
 });
 ```
 
-# 根据不同的 URL 响应不同的内容
+## 根据不同的 URL 响应不同的内容
 
 通过上面的步骤，我们已经实现了基本的 web 服务器搭建。但是这样一个简单的服务器还存在一个问题，那就是它只能监听发送到某个端口的所有请求，而不能区分发向不同地址的请求。接下来，我们将实现根据不同的 URL 返回不同的响应。
 

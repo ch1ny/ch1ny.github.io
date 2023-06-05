@@ -16,7 +16,7 @@ cover: https://wayou.gallerycdn.vsassets.io/extensions/wayou/vscode-todo-highlig
 **插件作者**：Wayou Liu
 **下载量**：2,451,400+ （统计于 2022 年 4 月 9 日 14:25:37）
 
-# 基本使用方法
+## 基本使用方法
 
 在编写代码时，遇到突然发现的小 bug 时，根据代码编写规范，一般来说应该在代码中加一个 TODO 注释，就像下面这样：
 
@@ -37,7 +37,7 @@ _安装插件的方法就不用我来介绍了吧_
 ![默认样式](https://assets.kira.host/Pictures/Others/20220409143727.png)
 这就是 TODO Highlight 的默认样式，它会自动匹配代码中的 `TODO:` 和 `FIXME:` ，并显示不同的颜色。
 
-# 自定义关键字及样式
+## 自定义关键字及样式
 
 当然，你也可以通过 settings.json 自行配置该插件。下面我们来尝试修改一下 settings.json 匹配的关键字及样式。
 打开 settings.json ，找到 `todohighlight.defaultStyle` 字段，这里是 TODOHighlight 的默认样式定义。我的配置是这样的：
