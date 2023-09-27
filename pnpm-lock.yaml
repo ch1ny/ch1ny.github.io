@@ -27,8 +27,8 @@ dependencies:
     specifier: ^6.1.1
     version: 6.1.1
   hexo-renderer-stylus:
-    specifier: ^2.1.0
-    version: 2.1.0
+    specifier: ^3.0.0
+    version: 3.0.0
   hexo-server:
     specifier: ^3.0.0
     version: 3.0.0
@@ -45,6 +45,10 @@ devDependencies:
     version: 0.2.1
 
 packages:
+
+  /@adobe/css-tools@4.3.1:
+    resolution: {integrity: sha512-/62yikz7NLScCGAAST5SHdnjaDJQBDq0M2muyRTpf2VQhw6StBg2ALiu73zSJQ4fMVLA+0uBhBHAle7Wg+2kSg==}
+    dev: false
 
   /@tootallnate/once@2.0.0:
     resolution: {integrity: sha512-XCuKFP5PS55gnMVu3dty8KPatLqUoy/ZYzDzAGCQ8JNFCkLXzmI7vNHCR+XpbZaMWQK/vQubr7PkYq8g470J/A==}
@@ -626,14 +630,6 @@ packages:
 
   /css-what@1.0.0:
     resolution: {integrity: sha512-60SUMPBreXrLXgvpM8kYpO0AOyMRhdRlXFX5BMQbZq1SIJCyNE56nqFQhmvREQdUJpedbGRYZ5wOyq3/F6q5Zw==}
-    dev: false
-
-  /css@3.0.0:
-    resolution: {integrity: sha512-DG9pFfwOrzc+hawpmqX/dHYHJG+Bsdb0klhyi1sDneOgGOXy9wQIC8hzyVp1e4NRYDBdxcylvywPkkXCHAzTyQ==}
-    dependencies:
-      inherits: 2.0.4
-      source-map: 0.6.1
-      source-map-resolve: 0.6.0
     dev: false
 
   /cssom@0.3.8:
@@ -1446,12 +1442,12 @@ packages:
       - utf-8-validate
     dev: false
 
-  /hexo-renderer-stylus@2.1.0:
-    resolution: {integrity: sha512-Nef4YCr7JX8jaRaByhzXMSsWnDed+RgJj6aU/ARnYu3Bn5xz/qRz52VJG7KqD0Xuysxa9TIBdVUgNzBrSFn3DQ==}
-    engines: {node: '>=12.13.0'}
+  /hexo-renderer-stylus@3.0.0:
+    resolution: {integrity: sha512-wgKOcjUzq1i4Y70luoyYDbh91QeQcDzJO+v1598LgY+IdREFAm+vy1MWtl/TZsVXyPaEtsULNi3Vi22hdsPUSA==}
+    engines: {node: '>=14'}
     dependencies:
-      nib: 1.2.0(stylus@0.57.0)
-      stylus: 0.57.0
+      nib: 1.2.0(stylus@0.59.0)
+      stylus: 0.59.0
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -2348,12 +2344,12 @@ packages:
     engines: {node: '>= 0.6'}
     dev: false
 
-  /nib@1.2.0(stylus@0.57.0):
+  /nib@1.2.0(stylus@0.59.0):
     resolution: {integrity: sha512-7HgrnMl/3yOmWykueO8/D0q+0iWwe7Z+CK2Eaq/xQV8w1hK80WN1oReRQkfkrztbAAnp/nTHkUSl5EcVkor6JQ==}
     peerDependencies:
       stylus: '*'
     dependencies:
-      stylus: 0.57.0
+      stylus: 0.59.0
     dev: false
 
   /nice-try@1.0.5:
@@ -2962,14 +2958,6 @@ packages:
       urix: 0.1.0
     dev: false
 
-  /source-map-resolve@0.6.0:
-    resolution: {integrity: sha512-KXBr9d/fO/bWo97NXsPIAW1bFSBOuCnjbNTBMO7N59hsv5i9yzRDfcYwwt0l04+VqnKC+EwzvJZIP/qkuMgR/w==}
-    deprecated: See https://github.com/lydell/source-map-resolve#deprecated
-    dependencies:
-      atob: 2.1.2
-      decode-uri-component: 0.2.2
-    dev: false
-
   /source-map-url@0.4.1:
     resolution: {integrity: sha512-cPiFOTLUKvJFIg4SKVScy4ilPPW6rFgMgfuZJPNoDuMs3nC1HbMUycBoJw77xFIp6z1UJQJOfx6C9GMH80DiTw==}
     deprecated: See https://github.com/lydell/source-map-url#deprecated
@@ -3093,14 +3081,13 @@ packages:
     dependencies:
       min-indent: 1.0.1
 
-  /stylus@0.57.0:
-    resolution: {integrity: sha512-yOI6G8WYfr0q8v8rRvE91wbxFU+rJPo760Va4MF6K0I6BZjO4r+xSynkvyPBP9tV1CIEUeRsiidjIs2rzb1CnQ==}
+  /stylus@0.59.0:
+    resolution: {integrity: sha512-lQ9w/XIOH5ZHVNuNbWW8D822r+/wBSO/d6XvtyHLF7LW4KaCIDeVbvn5DF8fGCJAUCwVhVi/h6J0NUcnylUEjg==}
     hasBin: true
     dependencies:
-      css: 3.0.0
+      '@adobe/css-tools': 4.3.1
       debug: 4.3.4
       glob: 7.2.3
-      safer-buffer: 2.1.2
       sax: 1.2.4
       source-map: 0.7.4
     transitivePeerDependencies:
