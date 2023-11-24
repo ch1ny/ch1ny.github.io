@@ -33,8 +33,8 @@ dependencies:
     specifier: ^3.0.0
     version: 3.0.0
   hexo-theme-kira:
-    specifier: ^1.4.3
-    version: 1.4.3
+    specifier: ^1.4.5
+    version: 1.4.5
 
 devDependencies:
   hexo-deployer-git:
@@ -318,6 +318,7 @@ packages:
 
   /brace-expansion@1.1.11:
     resolution: {integrity: sha512-iCuPHDFgrHX7H2vEI/5xpz07zSHB00TpugqhmYtVmMO6518mCuRMoOYFldEBl0g187ufozdaHgWKcYFb61qGiA==}
+    requiresBuild: true
     dependencies:
       balanced-match: 1.0.2
       concat-map: 0.0.1
@@ -551,6 +552,7 @@ packages:
 
   /concat-map@0.0.1:
     resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
+    requiresBuild: true
     dev: false
 
   /concat-stream@1.6.2:
@@ -1485,8 +1487,8 @@ packages:
       - supports-color
     dev: false
 
-  /hexo-theme-kira@1.4.3:
-    resolution: {integrity: sha512-vOp1CxFESUIzbcuPQJyz2eJGQQ2JgmKsRq+QEBKtyoVHdT9wqgePPQnmWKI9MZ2ioRe+x+/lS2RZK0MTsHQ5YQ==}
+  /hexo-theme-kira@1.4.5:
+    resolution: {integrity: sha512-Y+hsFBMYGyBpPxHjt6boqnp1cv47SR4A/QeWGM5EXE7cOzvbdVwq89Ya8fogYRWt14nuE2RXMUMffbRvijfPGQ==}
     dependencies:
       hexo-tag-aplayer: 3.0.4
       hexo-toc: 1.1.0
@@ -3376,6 +3378,7 @@ packages:
 
   /wrappy@1.0.2:
     resolution: {integrity: sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==}
+    requiresBuild: true
     dev: false
 
   /ws@8.13.0:
