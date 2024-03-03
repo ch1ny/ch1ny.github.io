@@ -64,9 +64,9 @@ cover: https://pic1.zhimg.com/v2-535e92c65ddaff1a55f11df10c680c75_720w.jpg?sourc
 ```
 
 通过以上代码，我们构造了一个简单的函数被频繁触发的 demo 。
-![在这里插入图片描述](https://assets.kira.host/Pictures/Others/a9127a35ad0047789b2892135ed3bf96.png)
+![在这里插入图片描述](https://kira.host/assets/Pictures/Others/a9127a35ad0047789b2892135ed3bf96.png)
 这是一个灰色的 `div` ，当鼠标在它里面移动时，其内容会加一，效果如下：
-![在这里插入图片描述](https://assets.kira.host/Pictures/Others/8a0a38e3a5454aafbab6062aa9263468.gif)
+![在这里插入图片描述](https://kira.host/assets/Pictures/Others/8a0a38e3a5454aafbab6062aa9263468.gif)
 可以看到，当我们对这个函数不作任何处理时，我们每滑动一次鼠标，都会频繁地触发函数。当该函数执行一次的开销变得很大时（比如发送 AJAX 请求），这样的执行方式将会给用户带来地狱般的使用体验。
 下面我们来看看如何通过**防抖**（**debounce**）和**节流**（**throttle**）来解决这个问题。
 
@@ -113,7 +113,7 @@ cover: https://pic1.zhimg.com/v2-535e92c65ddaff1a55f11df10c680c75_720w.jpg?sourc
 
 在**防抖**解决方案中，我们为函数添加了两个新的变量：`noMove` 和 `timeout` 。其中，`noMove` 是一个布尔值，用来记录在一定时间范围内函数是否没有被触发，一旦触发函数将会把 `noMove` 置为 `false` 。同时启动一个计时器，赋给 `timeout` 变量，它负责在指定时间过后将 `noMove` 的值再次恢复为 `true` ，以使函数能够正常执行。当然，每当函数在规定时长内再次被触发时，我们会移除上一轮函数执行中赋值给 `timeout` 的计时器，并重新计时。
 以上便是**防抖**技术的基本思想。下面我们来看看实际效果。
-![在这里插入图片描述](https://assets.kira.host/Pictures/Others/63e5779d43f743f7be350ff1ce7fcb4d.gif)
+![在这里插入图片描述](https://kira.host/assets/Pictures/Others/63e5779d43f743f7be350ff1ce7fcb4d.gif)
 通过防抖的实现后，我们可以看见 demo 中的 `div` 依旧会因为鼠标的移动而使自身的内容加一，但是执行远没有最初那么频繁了。而且在函数执行一次后，只有当一段时间没有再次执行函数之后，该函数才会再次生效，否则，频繁地触发函数将会导致函数永远无法执行。
 
 **节流**
@@ -151,7 +151,7 @@ cover: https://pic1.zhimg.com/v2-535e92c65ddaff1a55f11df10c680c75_720w.jpg?sourc
 ```
 
 **节流**的基本思想是让函数触发保持在一定的速率下，以免频繁地执行。在这个方案下，我们同样引入了变量 `noMove` 。当触发并执行相关函数后，我们让 `noMove` 置为 `false` ，并启动一个计时器，让它在一定时间后将 `noMove` 恢复为 `true` 。下面是**节流**的实现效果：
-![在这里插入图片描述](https://assets.kira.host/Pictures/Others/49fd57d5bbd04aa0bd3190eacb240637.gif)
+![在这里插入图片描述](https://kira.host/assets/Pictures/Others/49fd57d5bbd04aa0bd3190eacb240637.gif)
 
 现在，我们还可以对**防抖**函数与**节流**函数做进一步封装，使其更加偏向实际开发使用。封装如下：
 
