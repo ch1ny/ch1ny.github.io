@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html 
+	lang="zh_CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		
+<link rel="stylesheet" href="/blog/css/layout.css">
+
+		
+		<title> 正确区分var、let和const -  德布罗煜</title>
+		<!-- <link rel="stylesheet" href="https://unpkg.com/mdui@1.0.2/dist/css/mdui.min.css" /> -->
+		<!-- <script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script> -->
+		
+<link rel="stylesheet" href="/blog/lib/mdui/mdui.min.css">
+
+		
+<script src="/blog/lib/mdui/mdui.min.js"></script>
+
+		<!-- lazyload -->
+		
+<script src="/blog/lib/lazysizes.js"></script>
+
+		<!-- smooth-scrolling -->
+		
+<script src="/blog/lib/smooth-scrolling.js"></script>
+
+		<!-- highlight -->
+		
+<link rel="stylesheet" href="/blog/lib/highlight/atom-one-dark.min.css">
+
+		
+<script src="/blog/lib/highlight/highlight.min.js"></script>
+
+		<!-- 预置 kiraicon -->
+		
+<link rel="stylesheet" href="/blog/lib/iconfont/iconfont.css">
+
+		
+		<link
+			rel="shortcut icon"
+			href="https://kira.host/assets/Pictures/Others/116359b4ccf19917.jpg"
+			type="image/png"
+		/>
+		
+<link rel="stylesheet" href="/blog/deps/css/APlayer.min.css">
+
+		
+		
+<script src="/blog/deps/js/APlayer.min.js"></script>
+<script src="/blog/deps/js/Meting.min.js"></script>
+
+	<meta name="generator" content="Hexo 6.3.0"></head>
+
+	<body>
+		<div
+			class="kira-background"
+			style="background-image: url('https://kira.host/assets/Pictures/Others/-f0d5cc34c6e5aa7_compressed.jpg')"
+		></div>
+		<div class="kira-header">
+    <a
+        class="kira-drawer-button mdui-ripple"
+        title="导航栏"
+        onclick="document.querySelector('.kira-sidebar-modal').classList.add('show');document.querySelector('.kira-sidebar#sidebar').classList.add('show');"
+    >
+        <i class="kirafont icon-menu"></i>
+    </a>
+    <a href="/blog/" title="德布罗煜">
+        <img
+			src="https://kira.host/assets/Pictures/Others/20220922230447.jpg"
+			alt="德布罗煜"
+		/>
+    </a>
+</div>
+		<div class="kira-body">
+			<div class="kira-sidebar" id="sidebar">
+	<div class="kira-avatar mdui-ripple">
+		<a href="https://kira.host/assets/Pictures/Others/20220922230447.jpg" title="德布罗煜">
+			<img
+				src="https://kira.host/assets/Pictures/Others/20220922230447.jpg"
+				alt="德布罗煜"
+			/>
+		</a>
+	</div>
+	<div class="kira-count">
+		<div><span>文章</span>30</div>
+		<div><span>标签</span>14</div>
+		<div><span>分类</span>3</div>
+	</div>
+	<div class="kira-list">
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/blog/"
+			title="回到首页"
+		>
+			<i
+				class="kirafont
+					
+						icon-home
+					"
+			></i>
+			<div class="kira-list-item-content">
+				回到首页
+			</div>
+		</a>
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/blog/archive.html"
+			title="文章归档"
+		>
+			<i
+				class="kirafont
+					
+						icon-container
+					"
+			></i>
+			<div class="kira-list-item-content">
+				文章归档
+			</div>
+		</a>
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/blog/about.html"
+			title="关于本人"
+		>
+			<i
+				class="kirafont
+					
+						icon-user
+					"
+			></i>
+			<div class="kira-list-item-content">
+				关于本人
+			</div>
+		</a>
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/blog/friends.html"
+			title="我的朋友"
+		>
+			<i
+				class="kirafont
+					
+						icon-team
+					"
+			></i>
+			<div class="kira-list-item-content">
+				我的朋友
+			</div>
+		</a>
+		
+	</div>
+	<aside id="kira-sidebar">
+		
+			<div class="kira-widget-wrap">
+	<div class="kira-widget kira-social">
+		
+			<a
+				class="mdui-ripple"
+				href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=1056317718&website=www.oicqzone.com"
+				target="_blank"
+				mdui-tooltip="{content: 'QQ'}"
+				style="color: rgb(49, 174, 255); background-color: rgba(49, 174, 255, .1);"
+			>
+				<i
+					class="kirafont
+					
+						icon-QQ
+					"
+				></i>
+			</a>
+		
+			<a
+				class="mdui-ripple"
+				href="https://space.bilibili.com/27905679"
+				target="_blank"
+				mdui-tooltip="{content: '哔哩哔哩'}"
+				style="color: rgb(231, 106, 141); background-color: rgba(231, 106, 141, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-bilibili
+					"
+				></i>
+			</a>
+		
+			<a
+				class="mdui-ripple"
+				href="https://github.com/ch1ny/"
+				target="_blank"
+				mdui-tooltip="{content: 'GitHub'}"
+				style="color: rgb(25, 23, 23); background-color: rgba(25, 23, 23, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-github
+					"
+				></i>
+			</a>
+		
+			<a
+				class="mdui-ripple"
+				href="https://gitee.com/ch1ny"
+				target="_blank"
+				mdui-tooltip="{content: 'Gitee'}"
+				style="color: rgb(165, 15, 15); background-color: rgba(165, 15, 15, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-gitee
+					"
+				></i>
+			</a>
+		
+	</div>
+</div>
+
+		
+			
+  <div class="kira-widget-wrap">
+    <h3 class="kira-widget-title">分类</h3>
+    <div class="kira-widget">
+      <ul class="category-list">
+        
+        
+
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/blog/categories/Revue/">
+              Revue
+            </a>
+            <span class="category-list-count">5</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/blog/categories/编程/">
+              编程
+            </a>
+            <span class="category-list-count">23</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/blog/categories/面经/">
+              面经
+            </a>
+            <span class="category-list-count">2</span>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+		
+			
+	<div class="kira-widget-wrap">
+		<div id="randomtagcloud" class="kira-widget tagcloud kira-rainbow">
+			<a href="/blog/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/blog/tags/Node-js/" style="font-size: 16px;">Node.js</a> <a href="/blog/tags/React/" style="font-size: 18px;">React</a> <a href="/blog/tags/Revue/" style="font-size: 18px;">Revue</a> <a href="/blog/tags/Rust/" style="font-size: 14px;">Rust</a> <a href="/blog/tags/TypeScript/" style="font-size: 10px;">TypeScript</a> <a href="/blog/tags/Unity3D/" style="font-size: 10px;">Unity3D</a> <a href="/blog/tags/VSCODE/" style="font-size: 12px;">VSCODE</a> <a href="/blog/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/blog/tags/electron/" style="font-size: 10px;">electron</a> <a href="/blog/tags/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8/" style="font-size: 10px;">字节跳动</a> <a href="/blog/tags/%E8%9A%82%E8%9A%81/" style="font-size: 10px;">蚂蚁</a> <a href="/blog/tags/%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4/" style="font-size: 10px;">阿里巴巴</a> <a href="/blog/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 12px;">面试</a>
+		</div>
+		
+	</div>
+
+
+		
+	</aside>
+	<div class="kira-copyright">
+		&copy; 2024
+		<a href="/blog/">德布罗煜</a>
+		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> &
+		<a href="https://github.com/ch1ny/kira-hexo/" target="_blank">Kira-Hexo</a>
+		<br />
+		
+			<a
+				href="https://beian.miit.gov.cn/"
+				target="_blank"
+			>
+				赣ICP备2021007955号-3
+			</a>
+		
+		<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div><span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span></div><div><span id="busuanzi_container_site_uv">共接待访客<span id="busuanzi_value_site_uv"></span>位</span></div>
+	</div>
+</div>
+<div
+	class="kira-sidebar-modal"
+	id="sidebar-modal"
+	onclick="(function(self) {
+		self.classList.remove('show');
+		document.querySelector('.kira-sidebar.show#sidebar').classList.remove('show');
+	})(this)"
+></div>
+			<div class="kira-content">
+				<div id="kira-top-header"></div>
+				<div class="kira-main-content">
+					
+<link rel="stylesheet" href="/blog/css/kira-image.css">
+
+
+<script src="/blog/js/kira-image.js"></script>
+
+<div class="kira-image">
+    <div class="kira-image-modal">
+        <div class="kira-image-header">
+            <div class="kira-image-counter"></div>
+            <div class="kira-image-title"></div>
+            <div class="kira-image-operation">
+                <div class="kira-image-operation-button" id="kira-image-operation-button-zoom">
+                    <i class="kirafont icon-zoom-in"></i>
+                </div>
+                <div class="kira-image-operation-button" id="kira-image-operation-button-close">
+                    <i class="kirafont icon-close"></i>
+                </div>
+            </div>
+        </div>
+        <div class="kira-image-container">
+            <div class="kira-image-prev-button-panel">
+                <div class="kira-image-exchange-button">
+                    <i class="kirafont icon-left"></i>
+                </div>
+            </div>
+            <div class="kira-image-list">
+                <div class="kira-image-prev">
+                    <img />
+                </div>
+                <div class="kira-image-now">
+                    <img />
+                </div>
+                <div class="kira-image-next">
+                    <img />
+                </div>
+            </div>
+            <div class="kira-image-next-button-panel">
+                <div class="kira-image-exchange-button">
+                    <i class="kirafont icon-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+	
+<link rel="stylesheet" href="/blog/css/kira-code-copy.css">
+
+	
+<script src="/blog/js/kira-code-copy.js"></script>
+
+
+<div class="kira-post">
+	<article>
+		
+		<div class="kira-post-cover">
+			<img
+				data-src="https://pic1.zhimg.com/v2-535e92c65ddaff1a55f11df10c680c75_720w.jpg?source=172ae18b"
+				data-sizes="auto"
+				alt="正确区分var、let和const"
+				class="lazyload kira-post-cover-image disabled-kira-image"
+			/>
+			<h1>正确区分var、let和const</h1>
+		</div>
+		
+		<div class="kira-post-meta kira-rainbow" style="margin:10px 0!important;">
+			<a><i class="kirafont icon-calendar-fill"></i>2021年09月12日</a>
+			<a><i class="kirafont icon-edit-fill"></i>1.8k 字</a>
+			<a><i class="kirafont icon-time-circle-fill"></i>大概 8 分钟</a>
+		</div>
+		<html><head></head><body><p>var、let 和 const 都是 JavaScript 中用来声明变量的关键字，并且 let 和 const 关键字是在 ES6 中才新增的。既然都是用来声明变量的，那它们之间有什么区别呢？</p>
+<span id="more"></span>
+
+<!-- toc -->
+
+<ul>
+<li><a href="#var-%E5%92%8C-letconst-%E7%9A%84%E5%8C%BA%E5%88%AB">var 和 let/const 的区别</a><ul>
+<li><a href="#%E4%BD%9C%E7%94%A8%E5%9F%9F">作用域</a></li>
+<li><a href="#%E9%87%8D%E5%A4%8D%E5%A3%B0%E6%98%8E">重复声明</a></li>
+<li><a href="#%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87%E4%B8%8E%E6%9A%82%E6%97%B6%E6%80%A7%E6%AD%BB%E5%8C%BA">变量提升与暂时性死区</a><ul>
+<li><a href="#%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87">变量提升</a></li>
+<li><a href="#%E6%9A%82%E6%97%B6%E6%80%A7%E6%AD%BB%E5%8C%BA">暂时性死区</a></li>
+</ul>
+</li>
+<li><a href="#varlet-%E5%B0%8F%E7%BB%93">var/let 小结</a></li>
+</ul>
+</li>
+<li><a href="#const">const</a></li>
+<li><a href="#%E5%A3%B0%E6%98%8E%E9%A3%8E%E6%A0%BC%E5%8F%8A%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5">声明风格及最佳实践</a><ul>
+<li><a href="#%E4%B8%8D%E4%BD%BF%E7%94%A8-var">不使用 var</a></li>
+<li><a href="#const-%E4%BC%98%E5%85%88">const 优先</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+<h2><span id="var-%E5%92%8C-letconst-%E7%9A%84%E5%8C%BA%E5%88%AB">var 和 let/const 的区别</span></h2><h3><span id="%E4%BD%9C%E7%94%A8%E5%9F%9F">作用域</span></h3><p>对于 <strong>var</strong> 来说，它声明的变量的作用域是它当前的执行上下文。具体来说就是，当 <strong>var</strong>处于函数内部，则是该函数执行上下文；如果在函数外部，则是全局执行上下文。换句话说，对于使用<strong>var</strong>声明的变量，其作用域只能是函数块的或是全局的。</p>
+<p>而使用<strong>let、const</strong>声明的变量，在除去全局作用域以及函数块作用域外，还新增了新的作用域限定范围，即使用 <code>{}</code> 包裹起来的代码块（被称作<strong>块作用域</strong>，可以是 if、while、switch 等关键字形成的代码块，也可以是单独使用<code>{}</code>形成的代码块）。</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> varStr = <span class="hljs-string">'outside'</span>;<br><span class="hljs-keyword">function</span> <span class="hljs-title function_">testVar</span>(<span class="hljs-params"></span>) {<br>    <span class="hljs-keyword">var</span> varStr = <span class="hljs-string">'inside'</span>;<br>    {<br>        <span class="hljs-keyword">var</span> varStr = <span class="hljs-string">'var不具有块作用域，我会把上面的inside覆盖掉'</span>;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(varStr); <span class="hljs-comment">// var不具有块作用域，我会把上面的inside覆盖掉</span><br>    }<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(varStr); <span class="hljs-comment">// var不具有块作用域，我会把上面的inside覆盖掉</span><br>}<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(varStr); <span class="hljs-comment">// outside</span><br></code></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> letStr = <span class="hljs-string">'outside'</span>;<br><span class="hljs-keyword">function</span> <span class="hljs-title function_">testLet</span>(<span class="hljs-params"></span>) {<br>    <span class="hljs-keyword">let</span> letStr = <span class="hljs-string">'inside'</span>;<br>    {<br>        <span class="hljs-keyword">let</span> letStr = <span class="hljs-string">'let存在块作用域，我只在块作用域里有效'</span>;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(letStr); <span class="hljs-comment">// let存在块作用域，我只在块作用域里有效</span><br>    }<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(letStr); <span class="hljs-comment">// inside</span><br>}<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(letStr); <span class="hljs-comment">// outside</span><br></code></pre></td></tr></tbody></table></figure>
+
+<h3><span id="%E9%87%8D%E5%A4%8D%E5%A3%B0%E6%98%8E">重复声明</span></h3><p>对于 <strong>var</strong>声明的变量可以重复声明，而<strong>let</strong>重复声明已存在的变量则会报错。</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> v = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">var</span> v = <span class="hljs-string">'str'</span>;<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(v); <span class="hljs-comment">// str</span><br><span class="hljs-keyword">let</span> l = <span class="hljs-number">1</span>;<br><span class="hljs-keyword">let</span> l = <span class="hljs-string">'l'</span>; <span class="hljs-comment">// ERROR: Identifier 'l' has already been declared</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(l);<br></code></pre></td></tr></tbody></table></figure>
+
+<p>至于为什么<strong>var</strong>能够重复声明变量则要提到<strong>var</strong>的变量提升机制了。</p>
+<h3><span id="%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87%E4%B8%8E%E6%9A%82%E6%97%B6%E6%80%A7%E6%AD%BB%E5%8C%BA">变量提升与暂时性死区</span></h3><p>要讨论 var 和 let 的区别，这两个概念是无法绕过的。我们首先来看看什么叫做**变量提升(hoist)**。</p>
+<h4><span id="%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87">变量提升</span></h4><p>让我们先看一段代码：</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">testVar</span>(<span class="hljs-params"></span>) {<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(v);<br>    <span class="hljs-keyword">var</span> v = <span class="hljs-number">0</span>;<br>}<br><span class="hljs-title function_">testVar</span>(); <span class="hljs-comment">// undefined</span><br></code></pre></td></tr></tbody></table></figure>
+
+<p>有没有觉得很奇怪？在函数中，我们明明在<code>var v = 0;</code> 之前就访问了变量 <code>v</code>，但是这段代码并没有报错，而是打印了 <code>undefined</code>。<br>这是因为在 JavaScript 中，使用<strong>var</strong>声明变量时，会自动将声明提升到作用域的顶部。因此，在<strong>ECMAScript</strong>运行上面的这段代码时，它会被等价为如下代码：</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">testVar</span>(<span class="hljs-params"></span>) {<br>    <span class="hljs-keyword">var</span> v; <span class="hljs-comment">// 默认值为 undefined</span><br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(v);<br>    v = <span class="hljs-number">0</span>;<br>}<br><span class="hljs-title function_">testVar</span>(); <span class="hljs-comment">// undefined</span><br></code></pre></td></tr></tbody></table></figure>
+
+<p>同时，如果在作用域内某个变量被重复声明，也会把所有的声明都统一提升到顶部：</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">func</span>(<span class="hljs-params"></span>) {<br>    <span class="hljs-keyword">var</span> a = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span>;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a);<br>}<br><span class="hljs-comment">// 其实等价于</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">_func</span>(<span class="hljs-params"></span>) {<br>    <span class="hljs-keyword">var</span> a;<br>    a = <span class="hljs-number">0</span>;<br>    a = <span class="hljs-number">1</span>;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a);<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<p>因此，使用<strong>var</strong>重复声明变量也就不会造成报错。</p>
+<h4><span id="%E6%9A%82%E6%97%B6%E6%80%A7%E6%AD%BB%E5%8C%BA">暂时性死区</span></h4><p>而对于<strong>let</strong>来说，是不存在所谓的“变量提升”的。那么，当我们尝试在使用<strong>let</strong>声明变量之前去访问变量会发生什么呢？</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(l); <span class="hljs-comment">// ReferenceError: a is not defined</span><br><span class="hljs-keyword">let</span> l = <span class="hljs-number">5</span>;<br></code></pre></td></tr></tbody></table></figure>
+
+<p>这种情况下，毋庸置疑会甩出未定义变量的异常，因为 let 不具有变量提升的特性。那么接下来，我们再来看看另一段代码：</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>;<br>{<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(i); <span class="hljs-comment">// ReferenceError: Cannot access 'i' before initialization</span><br>    <span class="hljs-keyword">let</span> i = <span class="hljs-number">5</span>;<br>}<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(i);<br></code></pre></td></tr></tbody></table></figure>
+
+<p>在上面这段代码中，我们通过块作用域将代码分为内外两部分。当执行至第三行时，因为我们已经声明了变量 <code>i</code>，理论上是不会报错的，如果此时又没有新的用 let 声明的 i ，因此，它应该会向上寻找上一个作用域中的变量 i 。然而，在这个例子中，我们在块作用域的调用代码后面重新声明了变量<code>i</code>，JavaScript 引擎也发现了这个新的声明，因此在这个块作用域中将不会再使用上一层作用域的变量，此时第三行的这个调用就显得有点尴尬了。于是，JavaScript 引擎甩出异常：<span style="color: red;"><code>ReferenceError: Cannot access 'i' before initialization</code></span><br>提示我们不要在这个变量初始化之前去访问它。<br>而所谓的<strong>暂时性死区</strong>（<strong>temporal dead zone</strong>）就是指在使用<strong>let</strong>声明变量之前的整个执行瞬间。</p>
+<h3><span id="varlet-%E5%B0%8F%E7%BB%93">var/let 小结</span></h3><p>在讲述了上述几个不同之后，我们来看一段代码：</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">varLoop</span>(<span class="hljs-params"></span>) {<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; i++) {<br>        <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {<br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(i);<br>        }, i * <span class="hljs-number">1000</span>);<br>    }<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<p>我们想用这段代码每隔 1s 打印一个递增的数字，但是记住我们上面说的变量提升，这段代码在<strong>ECMAScript</strong>看来实际上是这样的：</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">varLoop</span>(<span class="hljs-params"></span>) {<br>    <span class="hljs-keyword">var</span> i;<br>    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; i++) {<br>        <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {<br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(i);<br>        }, i * <span class="hljs-number">1000</span>);<br>    }<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<p>它实际上做到的，是每隔 1s 打印一个<span style="color: blue;">5</span>。<br>要进行修改，我们可以选择使用<strong>let</strong>来声明变量：</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">letLoop</span>(<span class="hljs-params"></span>) {<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; i++) {<br>        <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {<br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(i);<br>        }, i * <span class="hljs-number">1000</span>);<br>    }<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<p>之所以<strong>let</strong>能起作用是因为<strong>let</strong>具有块作用域，变量<code>i</code>被限制在了<code>for</code>的循环体内，同时也涉及到了一些闭包的特性。<br>如果用闭包理解上述两种代码，可以理解为使用<strong>var</strong>是创建了一个闭包被调用了 5 次，而<strong>let</strong>是创建了 5 个独立的闭包各自被调用一次。<br>最后给大家提供一个使用<strong>var</strong>的纯闭包解法，很多公司面试的时候可能会问到：</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">varLoop</span>(<span class="hljs-params"></span>) {<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; i++) {<br>        (<span class="hljs-keyword">function</span> (<span class="hljs-params">i</span>) {<br>            <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {<br>                <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(i);<br>            }, i * <span class="hljs-number">1000</span>);<br>        })(i);<br>    }<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<p>至于<strong>闭包</strong>，以后再和大家介绍吧。</p>
+<h2><span id="const">const</span></h2><p>最后来讲讲 const。<br>const 的行为其实和 let 是基本一致的，唯一一个重要区别是用 const 声明变量时必须同时赋值，且 const 声明的是一个常量，任何尝试修改 const 声明的变量的行为都会报错。</p>
+<p>但是，如果 const 声明的变量指向的是一个对象的话，对象内部的属性依旧是可以修改的，这是因为此时的 const 指向的是对象的指针的地址，而对象内部的数据存在于内存的其他地方。</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> obj = {<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">'德布罗煜'</span>,<br>    <span class="hljs-attr">age</span>: <span class="hljs-number">20</span>,<br>};<br>obj.<span class="hljs-property">age</span> += <span class="hljs-number">1</span>;<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(obj); <span class="hljs-comment">// { name: '德布罗煜', age: 21 }</span><br>obj = {}; <span class="hljs-comment">// TypeError: Assignment to constant variable.</span><br></code></pre></td></tr></tbody></table></figure>
+
+<h2><span id="%E5%A3%B0%E6%98%8E%E9%A3%8E%E6%A0%BC%E5%8F%8A%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5">声明风格及最佳实践</span></h2><h3><span id="%E4%B8%8D%E4%BD%BF%E7%94%A8-var">不使用 var</span></h3><p>有了 let 和 const 之后。其实很多开发者会发现不再需要 var 了。同时，由于 let 和 const 拥有了明确的、新的作用域、声明位置以及常量的不变值，限制自己在代码中只使用 let 和 const 可以显著提高代码的质量。</p>
+<h3><span id="const-%E4%BC%98%E5%85%88">const 优先</span></h3><p>使用 const 声明变量可以让浏览器强制要求变量在运行时保持不变，也可以让静态代码分析工具提前发现非法的赋值操作。因此建议只对明确了未来会存在改变值的变量使用 let。</p>
+</body></html>
+	</article>
+
+	 
+    <div class="kira-post-copyright">
+        <strong>本文作者：</strong>德布罗煜<br>
+        <strong>本文链接：</strong><a href="https://kira.host/blog/JavaScript/%E6%AD%A3%E7%A1%AE%E5%8C%BA%E5%88%86var%E3%80%81let%E5%92%8Cconst/" title="https:&#x2F;&#x2F;kira.host&#x2F;blog&#x2F;JavaScript&#x2F;正确区分var、let和const&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;kira.host&#x2F;blog&#x2F;JavaScript&#x2F;正确区分var、let和const&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+  
+	<div class="kira-post-nav">
+		<nav class="post-nav">
+			  
+			<!-- 先找到与当前文字相同的目录 -->
+			   
+			<!-- 在找到当前文章所在的 index -->
+			       
+			<!-- 下一篇文章 -->
+			<div class="new">
+				<span>下一章</span>
+				<a href="/blog/JavaScript/%E6%B5%85%E8%B0%88JS%E4%B8%AD%E7%9A%84%E9%97%AD%E5%8C%85/"> 浅谈JS中的闭包</a>
+			</div>
+			                                                                                                                                                                     
+		</nav>
+	</div>
+	
+	<div class="kira-post-meta kira-rainbow">
+		
+			<a class="kirafont icon-container-fill -link" href="/blog/categories/%E7%BC%96%E7%A8%8B/">编程</a>
+		
+		
+			<a class="kirafont icon-tag-fill -none-link" href="/blog/tags/JavaScript/" rel="tag">JavaScript</a>
+		
+	</div>
+	
+	<div class="kira-post-footer">
+		
+
+		
+	<div class="giscus"></div>
+  
+    <script src="https://giscus.app/client.js"
+      data-repo="ch1ny/ch1ny.github.io"
+      data-repo-id="R_kgDOHGgizw"
+      data-category="General"
+      data-category-id="DIC_kwDOHGgiz84CU88t"
+      data-mapping="pathname"
+      data-strict="0"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="top"
+      data-theme="light"
+      data-lang="en"
+      data-loading="lazy"
+      crossorigin="anonymous"
+      async  
+    ></script>
+  
+
+	</div>
+	
+</div>
+
+				</div>
+			</div>
+			<div class="kira-right-column">
+	<a onclick="document.querySelector('#kira-top-header').scrollIntoView({behavior: 'smooth'});" class="kira-backtotop" aria-label="回到顶部" title="回到顶部">
+		<button class="mdui-fab mdui-ripple">
+			<i class="kirafont icon-caret-up"></i>
+		</button>
+	</a>
+</div>
+
+		</div>
+	</body>
+</html>

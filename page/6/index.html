@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html 
+	lang="zh_CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		
+<link rel="stylesheet" href="/blog/css/layout.css">
+
+		
+		<title> 德布罗煜</title>
+		<!-- <link rel="stylesheet" href="https://unpkg.com/mdui@1.0.2/dist/css/mdui.min.css" /> -->
+		<!-- <script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script> -->
+		
+<link rel="stylesheet" href="/blog/lib/mdui/mdui.min.css">
+
+		
+<script src="/blog/lib/mdui/mdui.min.js"></script>
+
+		<!-- lazyload -->
+		
+<script src="/blog/lib/lazysizes.js"></script>
+
+		<!-- smooth-scrolling -->
+		
+<script src="/blog/lib/smooth-scrolling.js"></script>
+
+		<!-- highlight -->
+		
+<link rel="stylesheet" href="/blog/lib/highlight/atom-one-dark.min.css">
+
+		
+<script src="/blog/lib/highlight/highlight.min.js"></script>
+
+		<!-- 预置 kiraicon -->
+		
+<link rel="stylesheet" href="/blog/lib/iconfont/iconfont.css">
+
+		
+		<link
+			rel="shortcut icon"
+			href="https://kira.host/assets/Pictures/Others/116359b4ccf19917.jpg"
+			type="image/png"
+		/>
+		
+<link rel="stylesheet" href="/blog/deps/css/APlayer.min.css">
+
+		
+		
+<script src="/blog/deps/js/APlayer.min.js"></script>
+<script src="/blog/deps/js/Meting.min.js"></script>
+
+	<meta name="generator" content="Hexo 6.3.0"></head>
+
+	<body>
+		<div
+			class="kira-background"
+			style="background-image: url('https://kira.host/assets/Pictures/Others/-f0d5cc34c6e5aa7_compressed.jpg')"
+		></div>
+		<div class="kira-header">
+    <a
+        class="kira-drawer-button mdui-ripple"
+        title="导航栏"
+        onclick="document.querySelector('.kira-sidebar-modal').classList.add('show');document.querySelector('.kira-sidebar#sidebar').classList.add('show');"
+    >
+        <i class="kirafont icon-menu"></i>
+    </a>
+    <a href="/blog/" title="德布罗煜">
+        <img
+			src="https://kira.host/assets/Pictures/Others/20220922230447.jpg"
+			alt="德布罗煜"
+		/>
+    </a>
+</div>
+		<div class="kira-body">
+			<div class="kira-sidebar" id="sidebar">
+	<div class="kira-avatar mdui-ripple">
+		<a href="https://kira.host/assets/Pictures/Others/20220922230447.jpg" title="德布罗煜">
+			<img
+				src="https://kira.host/assets/Pictures/Others/20220922230447.jpg"
+				alt="德布罗煜"
+			/>
+		</a>
+	</div>
+	<div class="kira-count">
+		<div><span>文章</span>30</div>
+		<div><span>标签</span>14</div>
+		<div><span>分类</span>3</div>
+	</div>
+	<div class="kira-list">
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/blog/"
+			title="回到首页"
+		>
+			<i
+				class="kirafont
+					
+						icon-home
+					"
+			></i>
+			<div class="kira-list-item-content">
+				回到首页
+			</div>
+		</a>
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/blog/archive.html"
+			title="文章归档"
+		>
+			<i
+				class="kirafont
+					
+						icon-container
+					"
+			></i>
+			<div class="kira-list-item-content">
+				文章归档
+			</div>
+		</a>
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/blog/about.html"
+			title="关于本人"
+		>
+			<i
+				class="kirafont
+					
+						icon-user
+					"
+			></i>
+			<div class="kira-list-item-content">
+				关于本人
+			</div>
+		</a>
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/blog/friends.html"
+			title="我的朋友"
+		>
+			<i
+				class="kirafont
+					
+						icon-team
+					"
+			></i>
+			<div class="kira-list-item-content">
+				我的朋友
+			</div>
+		</a>
+		
+	</div>
+	<aside id="kira-sidebar">
+		
+			<div class="kira-widget-wrap">
+	<div class="kira-widget kira-social">
+		
+			<a
+				class="mdui-ripple"
+				href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=1056317718&website=www.oicqzone.com"
+				target="_blank"
+				mdui-tooltip="{content: 'QQ'}"
+				style="color: rgb(49, 174, 255); background-color: rgba(49, 174, 255, .1);"
+			>
+				<i
+					class="kirafont
+					
+						icon-QQ
+					"
+				></i>
+			</a>
+		
+			<a
+				class="mdui-ripple"
+				href="https://space.bilibili.com/27905679"
+				target="_blank"
+				mdui-tooltip="{content: '哔哩哔哩'}"
+				style="color: rgb(231, 106, 141); background-color: rgba(231, 106, 141, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-bilibili
+					"
+				></i>
+			</a>
+		
+			<a
+				class="mdui-ripple"
+				href="https://github.com/ch1ny/"
+				target="_blank"
+				mdui-tooltip="{content: 'GitHub'}"
+				style="color: rgb(25, 23, 23); background-color: rgba(25, 23, 23, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-github
+					"
+				></i>
+			</a>
+		
+			<a
+				class="mdui-ripple"
+				href="https://gitee.com/ch1ny"
+				target="_blank"
+				mdui-tooltip="{content: 'Gitee'}"
+				style="color: rgb(165, 15, 15); background-color: rgba(165, 15, 15, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-gitee
+					"
+				></i>
+			</a>
+		
+	</div>
+</div>
+
+		
+			
+  <div class="kira-widget-wrap">
+    <h3 class="kira-widget-title">分类</h3>
+    <div class="kira-widget">
+      <ul class="category-list">
+        
+        
+
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/blog/categories/Revue/">
+              Revue
+            </a>
+            <span class="category-list-count">5</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/blog/categories/编程/">
+              编程
+            </a>
+            <span class="category-list-count">23</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/blog/categories/面经/">
+              面经
+            </a>
+            <span class="category-list-count">2</span>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+		
+			
+	<div class="kira-widget-wrap">
+		<div id="randomtagcloud" class="kira-widget tagcloud kira-rainbow">
+			<a href="/blog/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/blog/tags/Node-js/" style="font-size: 16px;">Node.js</a> <a href="/blog/tags/React/" style="font-size: 18px;">React</a> <a href="/blog/tags/Revue/" style="font-size: 18px;">Revue</a> <a href="/blog/tags/Rust/" style="font-size: 14px;">Rust</a> <a href="/blog/tags/TypeScript/" style="font-size: 10px;">TypeScript</a> <a href="/blog/tags/Unity3D/" style="font-size: 10px;">Unity3D</a> <a href="/blog/tags/VSCODE/" style="font-size: 12px;">VSCODE</a> <a href="/blog/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/blog/tags/electron/" style="font-size: 10px;">electron</a> <a href="/blog/tags/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8/" style="font-size: 10px;">字节跳动</a> <a href="/blog/tags/%E8%9A%82%E8%9A%81/" style="font-size: 10px;">蚂蚁</a> <a href="/blog/tags/%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4/" style="font-size: 10px;">阿里巴巴</a> <a href="/blog/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 12px;">面试</a>
+		</div>
+		
+	</div>
+
+
+		
+	</aside>
+	<div class="kira-copyright">
+		&copy; 2024
+		<a href="/blog/">德布罗煜</a>
+		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> &
+		<a href="https://github.com/ch1ny/kira-hexo/" target="_blank">Kira-Hexo</a>
+		<br />
+		
+			<a
+				href="https://beian.miit.gov.cn/"
+				target="_blank"
+			>
+				赣ICP备2021007955号-3
+			</a>
+		
+		<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div><span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span></div><div><span id="busuanzi_container_site_uv">共接待访客<span id="busuanzi_value_site_uv"></span>位</span></div>
+	</div>
+</div>
+<div
+	class="kira-sidebar-modal"
+	id="sidebar-modal"
+	onclick="(function(self) {
+		self.classList.remove('show');
+		document.querySelector('.kira-sidebar.show#sidebar').classList.remove('show');
+	})(this)"
+></div>
+			<div class="kira-content">
+				<div id="kira-top-header"></div>
+				<div class="kira-main-content">
+					<div class="kira-posts">
+    
+        <div class="kira-post">
+            <a href="/blog/JavaScript/%E6%B5%85%E8%B0%88JS%E4%B8%AD%E7%9A%84%E9%97%AD%E5%8C%85/">
+                
+                <div
+                    class="kira-post-cover mdui-ripple"
+                    style="padding-bottom: '56.25%'"
+                >
+                    <img
+                        data-src="https://pic1.zhimg.com/v2-535e92c65ddaff1a55f11df10c680c75_720w.jpg?source=172ae18b"
+                        data-sizes="auto"
+                        alt="浅谈JS中的闭包"
+                        class="lazyload kira-post-cover-image"
+                    />
+                    <h1>浅谈JS中的闭包</h1>
+                </div>
+                
+            </a>
+
+            <div class="kira-post-meta kira-rainbow">
+                <a>
+                    <i class="kirafont icon-calendar-fill"></i>
+                    2021年09月28日
+                </a>
+                <a>
+                    <i class="kirafont icon-edit-fill"></i>
+                    1.3k 字
+                </a>
+                <a>
+                    <i class="kirafont icon-time-circle-fill"></i>大概
+                    5 分钟
+                </a>
+            </div>
+    
+            
+                <article>
+                    <p>对于 JavaScript 初学者来说，JavaScript 有着这样一个概念十分重要，几乎是每个前端工程师面试时必然会遇到的一个问题，JS 的<strong>闭包（closure）</strong>。今天我们就来浅谈一下 JS 中的闭包究竟是怎样的东西。</p>
+                </article>
+            
+        </div>
+        <div class="kira-hr"></div>
+    
+        <div class="kira-post">
+            <a href="/blog/Revue/%E8%AA%87%E3%82%8A%E3%81%A8%E9%A9%95%E3%82%8A/">
+                
+                <div
+                    class="kira-post-cover mdui-ripple"
+                    style="padding-bottom: '56.25%'"
+                >
+                    <img
+                        data-src="https://p2.music.126.net/cq6eYBjoH3Y89EyvBoZhCg==/109951164730429128.jpg"
+                        data-sizes="auto"
+                        alt="誇りと驕り"
+                        class="lazyload kira-post-cover-image"
+                    />
+                    <h1>誇りと驕り</h1>
+                </div>
+                
+            </a>
+
+            <div class="kira-post-meta kira-rainbow">
+                <a>
+                    <i class="kirafont icon-calendar-fill"></i>
+                    2021年09月25日
+                </a>
+                <a>
+                    <i class="kirafont icon-edit-fill"></i>
+                    1.1k 字
+                </a>
+                <a>
+                    <i class="kirafont icon-time-circle-fill"></i>大概
+                    5 分钟
+                </a>
+            </div>
+    
+            
+                <article>
+                    <div class="kira-aplayer-container"><div id="aplayer-UUfKdXUw" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+				<pre class="aplayer-lrc-content">[00:00.000]誇りと驕り (movie ver.) - 小山百代/富田麻帆
+[00:03.650]词：中村彼方
+[00:05.150]曲：藤澤慶昌
+[00:06.980]编曲：藤澤慶昌
+[00:09.310]Orchestral Arrangement：藤澤慶昌
+[00:10.650]私にも見えるはず (我应该也可以看到)
+[00:16.740]いいえ 見えはしない (不 你见不到)
+[00:22.460]塔の頂の景色 (塔顶的景色)
+[00:33.330]あなたの心に何があるの? (你心中怀揣的是什么?)
+[00:38.370]瞬く瞳がとらえる先 (闪动的眼眸注视的前方)
+[00:43.190]いまだ届かぬ星でも (即使那颗星还无法触及)
+[00:48.170]約束のためなら (为了约定)
+[00:52.110]走り続けるの (我会一直向它奔跑)
+[01:20.330]女神の呼び声 空の玉座 (女神的呼声 天空的玉座)
+[01:27.180]舞い降りる星は そう一つのみ (飘落的星 是的 只有一颗)
+[01:48.600]登ってきなさい 意地があるなら (登上来 若你有坚强的意志)
+[01:53.570]切ってみなさい 怒り見せて (跨越我 让我看看你的愤怒)
+[01:57.590]心に巣くう大きな獣 (不要被栖居心中的)
+[02:02.650]振り回されてないで (巨兽摆布)
+[02:06.690]未完成の覚悟なんていらない (这里不需未完成的觉悟)
+[02:11.230]見たいのは 誇り懸け戦う (想看到的是拼上骄傲而战的)
+[02:15.900]その眼差し (眼神)
+[02:22.440]より高く より輝く (飞得更高 更为闪耀)
+[02:27.220]地平線 照らして (将地平线照亮)
+[02:32.040]一つ進んで 一つ近づく夢 (一步一步 迈向梦想)
+[02:37.480]それが誇り (这就是骄傲)
+[02:40.820]より高く より輝く (飞得更高 更为闪耀)
+[02:45.280]届かない場所へ (到那众人无法触及的地方)
+[02:50.240]それが私の誇り (这就是我的骄傲)</pre>
+			</div>
+			<script>
+				var ap = new APlayer({
+					element: document.getElementById("aplayer-UUfKdXUw"),
+					narrow: false,
+					autoplay: false,
+					showlrc: 2,
+					music: {
+						title: "誇りと驕り",
+						author: "小山百代 / 富田麻帆",
+						url: "https://kira.host/assets/Audios/M500004PPGTt3J0AQQ.mp3",
+						pic: "https://p2.music.126.net/cq6eYBjoH3Y89EyvBoZhCg==/109951164730429128.jpg",
+					}
+				});
+				window.aplayers || (window.aplayers = []);
+				window.aplayers.push(ap);
+			</script></div>
+                </article>
+            
+        </div>
+        <div class="kira-hr"></div>
+    
+        <div class="kira-post">
+            <a href="/blog/Revue/Star-Divine-%E3%83%95%E3%82%A3%E3%83%8A%E3%83%BC%E3%83%AC/">
+                
+                <div
+                    class="kira-post-cover mdui-ripple"
+                    style="padding-bottom: '56.25%'"
+                >
+                    <img
+                        data-src="https://kira.host/assets/Pictures/Others/Star_Divine.jpg"
+                        data-sizes="auto"
+                        alt="Star Divine フィナーレ"
+                        class="lazyload kira-post-cover-image"
+                    />
+                    <h1>Star Divine フィナーレ</h1>
+                </div>
+                
+            </a>
+
+            <div class="kira-post-meta kira-rainbow">
+                <a>
+                    <i class="kirafont icon-calendar-fill"></i>
+                    2021年09月25日
+                </a>
+                <a>
+                    <i class="kirafont icon-edit-fill"></i>
+                    1.5k 字
+                </a>
+                <a>
+                    <i class="kirafont icon-time-circle-fill"></i>大概
+                    7 分钟
+                </a>
+            </div>
+    
+            
+                <article>
+                    <div class="kira-aplayer-container"><div id="aplayer-VrFHLRyI" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+				<pre class="aplayer-lrc-content">[00:00.550]-Star Divine- フィナーレ (《少女 ☆ 歌剧 Revue Starlight》TV 动画第 10 集插曲) - 小山百代/三森すずこ (三森铃子)/富田麻帆/相羽あいな
+[00:02.600]词：中村彼方
+[00:03.480]曲：本多友紀
+[00:04.750]编曲：本多友紀
+[00:13.480]躊躇う暇はない (无暇踌躇)
+[00:16.410]回り出した歯車 (齿轮已经开始转动)
+[00:19.320]覚悟と言う名の剣を (来吧)
+[00:22.900]さあ掲げて (举起名为觉悟之剑)
+[00:25.450]結末も知らずに (尚未知晓结局之时)
+[00:28.460]レヴューの幕が開けた (舞台的幕布已然揭开)
+[00:31.419]私は私を再び造りあげる (我再次重铸自我)
+[00:37.400]心染めた願いを (将浸染心灵的愿望)
+[00:40.280]そっと呟いた時 (低语念出时)
+[00:43.450]瞬くは導きの星 (转瞬就会化作指引之星)
+[00:49.240]輝くの star divine (闪耀的 star divine)
+[00:52.260]生まれたての光で (用那初生的光芒)
+[00:55.320]切り開け star divine (开拓吧 star divine)
+[00:58.120]譲れない未来へ (向着那绝不退让的未来)
+[01:01.540]切っ先に栄光止まれ (让荣光落于刀锋之上)
+[01:19.470]それぞれの心に (各人的心中)
+[01:22.380]それぞれ秘めた想い (蕴藏着各自的感情)
+[01:25.360]凛々しい横顔 (在凛然的侧脸前)
+[01:27.880]激しく火花散らす (闪烁的火花剧烈飞溅)
+[01:31.430]まばたきもできない (不允许眨眼)
+[01:34.420]この瞳をそらせない (不容视线移开)
+[01:37.360]ぶつかり合っても (即使碰撞)
+[01:39.890]貴女のこと信じてる (仍旧相信着你)
+[01:43.320]舞台の真ん中には (舞台的正中)
+[01:46.400]たった一人の場所 (只容得下一人的位置)
+[01:49.340]だけどもう孤独じゃないよ (但不会是孤独一人)
+[01:55.160]負けないで star divine (不要认输 star divine)
+[01:58.250]未来を見捨てないで (不要舍弃未来)
+[02:01.260]立ち上がれ star divine (振奋起来 star divine)
+[02:04.260]何度傷ついても (无论受伤了多少次)
+[02:07.640]舞台に生かされている (舞台赋予了我们生存的意义)
+[02:43.150]宇宙の砂になった (在遥远星空紧密相连的星座)
+[02:49.400]遠い空で繋ぐ星座 (已变为了宇宙中的砂砾)
+[02:55.460]それは運命 (那就是命运)
+[02:58.320]それは本能 (那就是本能)
+[03:01.360]今もう一度 (如今我将再一次)
+[03:02.800]私になっていくから (变回我自己)
+[03:08.750]輝くの star divine (闪耀的 star divine)
+[03:11.810]生まれたての光で (用那初生的光芒)
+[03:14.880]切り開け star divine (开拓吧 star divine)
+[03:17.770]譲れない未来へ (向着那绝不退让的未来)
+[03:22.340]負けないで star divine (不要认输 star divine)
+[03:25.330]未来を見捨てないで (不要舍弃未来)
+[03:28.300]立ち上がれ star divine (振奋起来 star divine)
+[03:31.260]何度傷ついても (无论受伤了多少次)
+[03:34.550]舞台に生かされている (舞台赋予了我们生存的意义)
+[03:40.570]切っ先に栄光止まれ (让荣光落于刀锋之上)</pre>
+			</div>
+			<script>
+				var ap = new APlayer({
+					element: document.getElementById("aplayer-VrFHLRyI"),
+					narrow: false,
+					autoplay: false,
+					showlrc: 2,
+					music: {
+						title: "-Star Divine- フィナーレ",
+						author: "小山百代 / 三森铃子 / 富田麻帆 / 相羽あいな",
+						url: "https://kira.host/assets/Audios/M5000001Bif12b4u3H.mp3",
+						pic: "https://kira.host/assets/Pictures/Others/Star_Divine.jpg",
+					}
+				});
+				window.aplayers || (window.aplayers = []);
+				window.aplayers.push(ap);
+			</script></div>
+                </article>
+            
+        </div>
+        <div class="kira-hr"></div>
+    
+        <div class="kira-post">
+            <a href="/blog/Revue/%E8%8A%B1%E5%92%B2%E3%81%8B%E5%94%84/">
+                
+                <div
+                    class="kira-post-cover mdui-ripple"
+                    style="padding-bottom: '56.25%'"
+                >
+                    <img
+                        data-src="https://p2.music.126.net/KYJwgniEBAIuC5IkqbRfhw==/109951163940856502.jpg"
+                        data-sizes="auto"
+                        alt="花咲か唄"
+                        class="lazyload kira-post-cover-image"
+                    />
+                    <h1>花咲か唄</h1>
+                </div>
+                
+            </a>
+
+            <div class="kira-post-meta kira-rainbow">
+                <a>
+                    <i class="kirafont icon-calendar-fill"></i>
+                    2021年09月23日
+                </a>
+                <a>
+                    <i class="kirafont icon-edit-fill"></i>
+                    974 字
+                </a>
+                <a>
+                    <i class="kirafont icon-time-circle-fill"></i>大概
+                    4 分钟
+                </a>
+            </div>
+    
+            
+                <article>
+                    <div class="kira-aplayer-container"><div id="aplayer-RIsFRtEM" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+				<pre class="aplayer-lrc-content">[00:00.000]作词 : 中村彼方
+[00:01.000]作曲 : 大川茂伸
+[01:18.379]いつまでもそばにいると/约定永远在一起
+[01:21.873]幼い小指を絡めた/幼小的手指交叉相扣
+[01:25.626]あの時から どれくらいの月日過ぎたのでしょう/从那一天 已经过了多少岁月
+[01:33.125]ふいに 見上げた 花びら とても眩しかった/抬头以外看到的花瓣 是多么的耀眼
+[01:40.625]腕を伸ばしても 届かないような気がした/感觉即使伸出手 再也够不到
+[01:48.625]別々の道を行く気ならば/你想走另一条路
+[01:52.872]あたしは止めたりしない/我不会阻止
+[01:55.879]幸せがもしここにないならば/若你的幸福不在这
+[02:00.130]他所の場所で咲くがいいさ/到别处开花也无妨
+[02:03.380]咲き誇る その瞬間だけ 一番に 見たくて/只为你盛开的那一刻 我想最先看到
+[02:42.876]守り抜いてくれること 疑わず信じてたけど/守护到最后 我不曾怀疑
+[02:49.877]籠の鳥は 青い空に ずっと憧れていた/笼中之鸟 一直憧憬着蓝天
+[02:57.378]いつの間にやら雛鳥 凛々しく鳴いている/不知不觉 雏鸟已能发出凛凛的叫声
+[03:04.623]花も 翼も ゆらり揺れ風に乗る/花还是翅膀 都随风飘扬
+[03:13.134]さようなら うちは旅発ちます/再见
+[03:17.128]今すぐにあんたから/我这就马上离开你
+[03:20.376]思い出を忘れられぬように/为了回忆永存
+[03:24.382]こころ抉つて行きます/揪着心亦离去
+[03:53.372]瀬を早み 岩にせかるる川/急流岩上碎 无奈两离分
+[03:57.377]割れても末に逄はむ/早晚终相会 忧思情愈深
+[04:00.630]別々に分かれた花道も/分别的花道
+[04:04.625]やがては一本道に/也终将汇成一条
+[04:07.873]花咲かせ たった一人のため 限りある命を/花绽放 仅仅为了唯一的她 献上我此生</pre>
+			</div>
+			<script>
+				var ap = new APlayer({
+					element: document.getElementById("aplayer-RIsFRtEM"),
+					narrow: false,
+					autoplay: false,
+					showlrc: 2,
+					music: {
+						title: "花咲か唄",
+						author: "生田辉 / 伊藤彩沙",
+						url: "https://kira.host/assets/Audios/60143682-1-112.mp3",
+						pic: "https://p2.music.126.net/KYJwgniEBAIuC5IkqbRfhw==/109951163940856502.jpg",
+					}
+				});
+				window.aplayers || (window.aplayers = []);
+				window.aplayers.push(ap);
+			</script></div>
+                </article>
+            
+        </div>
+        <div class="kira-hr"></div>
+    
+        <div class="kira-post">
+            <a href="/blog/JavaScript/%E6%AD%A3%E7%A1%AE%E5%8C%BA%E5%88%86var%E3%80%81let%E5%92%8Cconst/">
+                
+                <div
+                    class="kira-post-cover mdui-ripple"
+                    style="padding-bottom: '56.25%'"
+                >
+                    <img
+                        data-src="https://pic1.zhimg.com/v2-535e92c65ddaff1a55f11df10c680c75_720w.jpg?source=172ae18b"
+                        data-sizes="auto"
+                        alt="正确区分var、let和const"
+                        class="lazyload kira-post-cover-image"
+                    />
+                    <h1>正确区分var、let和const</h1>
+                </div>
+                
+            </a>
+
+            <div class="kira-post-meta kira-rainbow">
+                <a>
+                    <i class="kirafont icon-calendar-fill"></i>
+                    2021年09月12日
+                </a>
+                <a>
+                    <i class="kirafont icon-edit-fill"></i>
+                    1.8k 字
+                </a>
+                <a>
+                    <i class="kirafont icon-time-circle-fill"></i>大概
+                    8 分钟
+                </a>
+            </div>
+    
+            
+                <article>
+                    <p>var、let 和 const 都是 JavaScript 中用来声明变量的关键字，并且 let 和 const 关键字是在 ES6 中才新增的。既然都是用来声明变量的，那它们之间有什么区别呢？</p>
+                </article>
+            
+        </div>
+        <div class="kira-hr"></div>
+    
+</div>
+
+    <div class="kira-page-nav">
+        <a class="extend prev" rel="prev" href="/blog/page/5/"><i class="kirafont icon-left"></i></a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/4/">4</a><a class="page-number" href="/blog/page/5/">5</a><span class="page-number current">6</span>
+    </div>
+
+				</div>
+			</div>
+			<div class="kira-right-column">
+	<a onclick="document.querySelector('#kira-top-header').scrollIntoView({behavior: 'smooth'});" class="kira-backtotop" aria-label="回到顶部" title="回到顶部">
+		<button class="mdui-fab mdui-ripple">
+			<i class="kirafont icon-caret-up"></i>
+		</button>
+	</a>
+</div>
+
+		</div>
+	</body>
+</html>

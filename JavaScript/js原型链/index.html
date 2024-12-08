@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html 
+	lang="zh_CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		
+<link rel="stylesheet" href="/blog/css/layout.css">
+
+		
+		<title> js原型链 -  德布罗煜</title>
+		<!-- <link rel="stylesheet" href="https://unpkg.com/mdui@1.0.2/dist/css/mdui.min.css" /> -->
+		<!-- <script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script> -->
+		
+<link rel="stylesheet" href="/blog/lib/mdui/mdui.min.css">
+
+		
+<script src="/blog/lib/mdui/mdui.min.js"></script>
+
+		<!-- lazyload -->
+		
+<script src="/blog/lib/lazysizes.js"></script>
+
+		<!-- smooth-scrolling -->
+		
+<script src="/blog/lib/smooth-scrolling.js"></script>
+
+		<!-- highlight -->
+		
+<link rel="stylesheet" href="/blog/lib/highlight/atom-one-dark.min.css">
+
+		
+<script src="/blog/lib/highlight/highlight.min.js"></script>
+
+		<!-- 预置 kiraicon -->
+		
+<link rel="stylesheet" href="/blog/lib/iconfont/iconfont.css">
+
+		
+		<link
+			rel="shortcut icon"
+			href="https://kira.host/assets/Pictures/Others/116359b4ccf19917.jpg"
+			type="image/png"
+		/>
+		
+<link rel="stylesheet" href="/blog/deps/css/APlayer.min.css">
+
+		
+		
+<script src="/blog/deps/js/APlayer.min.js"></script>
+<script src="/blog/deps/js/Meting.min.js"></script>
+
+	<meta name="generator" content="Hexo 6.3.0"></head>
+
+	<body>
+		<div
+			class="kira-background"
+			style="background-image: url('https://kira.host/assets/Pictures/Others/-f0d5cc34c6e5aa7_compressed.jpg')"
+		></div>
+		<div class="kira-header">
+    <a
+        class="kira-drawer-button mdui-ripple"
+        title="导航栏"
+        onclick="document.querySelector('.kira-sidebar-modal').classList.add('show');document.querySelector('.kira-sidebar#sidebar').classList.add('show');"
+    >
+        <i class="kirafont icon-menu"></i>
+    </a>
+    <a href="/blog/" title="德布罗煜">
+        <img
+			src="https://kira.host/assets/Pictures/Others/20220922230447.jpg"
+			alt="德布罗煜"
+		/>
+    </a>
+</div>
+		<div class="kira-body">
+			<div class="kira-sidebar" id="sidebar">
+	<div class="kira-avatar mdui-ripple">
+		<a href="https://kira.host/assets/Pictures/Others/20220922230447.jpg" title="德布罗煜">
+			<img
+				src="https://kira.host/assets/Pictures/Others/20220922230447.jpg"
+				alt="德布罗煜"
+			/>
+		</a>
+	</div>
+	<div class="kira-count">
+		<div><span>文章</span>30</div>
+		<div><span>标签</span>14</div>
+		<div><span>分类</span>3</div>
+	</div>
+	<div class="kira-list">
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/blog/"
+			title="回到首页"
+		>
+			<i
+				class="kirafont
+					
+						icon-home
+					"
+			></i>
+			<div class="kira-list-item-content">
+				回到首页
+			</div>
+		</a>
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/blog/archive.html"
+			title="文章归档"
+		>
+			<i
+				class="kirafont
+					
+						icon-container
+					"
+			></i>
+			<div class="kira-list-item-content">
+				文章归档
+			</div>
+		</a>
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/blog/about.html"
+			title="关于本人"
+		>
+			<i
+				class="kirafont
+					
+						icon-user
+					"
+			></i>
+			<div class="kira-list-item-content">
+				关于本人
+			</div>
+		</a>
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/blog/friends.html"
+			title="我的朋友"
+		>
+			<i
+				class="kirafont
+					
+						icon-team
+					"
+			></i>
+			<div class="kira-list-item-content">
+				我的朋友
+			</div>
+		</a>
+		
+	</div>
+	<aside id="kira-sidebar">
+		
+			<div class="kira-widget-wrap">
+	<div class="kira-widget kira-social">
+		
+			<a
+				class="mdui-ripple"
+				href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=1056317718&website=www.oicqzone.com"
+				target="_blank"
+				mdui-tooltip="{content: 'QQ'}"
+				style="color: rgb(49, 174, 255); background-color: rgba(49, 174, 255, .1);"
+			>
+				<i
+					class="kirafont
+					
+						icon-QQ
+					"
+				></i>
+			</a>
+		
+			<a
+				class="mdui-ripple"
+				href="https://space.bilibili.com/27905679"
+				target="_blank"
+				mdui-tooltip="{content: '哔哩哔哩'}"
+				style="color: rgb(231, 106, 141); background-color: rgba(231, 106, 141, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-bilibili
+					"
+				></i>
+			</a>
+		
+			<a
+				class="mdui-ripple"
+				href="https://github.com/ch1ny/"
+				target="_blank"
+				mdui-tooltip="{content: 'GitHub'}"
+				style="color: rgb(25, 23, 23); background-color: rgba(25, 23, 23, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-github
+					"
+				></i>
+			</a>
+		
+			<a
+				class="mdui-ripple"
+				href="https://gitee.com/ch1ny"
+				target="_blank"
+				mdui-tooltip="{content: 'Gitee'}"
+				style="color: rgb(165, 15, 15); background-color: rgba(165, 15, 15, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-gitee
+					"
+				></i>
+			</a>
+		
+	</div>
+</div>
+
+		
+			
+  <div class="kira-widget-wrap">
+    <h3 class="kira-widget-title">分类</h3>
+    <div class="kira-widget">
+      <ul class="category-list">
+        
+        
+
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/blog/categories/Revue/">
+              Revue
+            </a>
+            <span class="category-list-count">5</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/blog/categories/编程/">
+              编程
+            </a>
+            <span class="category-list-count">23</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/blog/categories/面经/">
+              面经
+            </a>
+            <span class="category-list-count">2</span>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+		
+			
+	<div class="kira-widget-wrap">
+		<div id="randomtagcloud" class="kira-widget tagcloud kira-rainbow">
+			<a href="/blog/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/blog/tags/Node-js/" style="font-size: 16px;">Node.js</a> <a href="/blog/tags/React/" style="font-size: 18px;">React</a> <a href="/blog/tags/Revue/" style="font-size: 18px;">Revue</a> <a href="/blog/tags/Rust/" style="font-size: 14px;">Rust</a> <a href="/blog/tags/TypeScript/" style="font-size: 10px;">TypeScript</a> <a href="/blog/tags/Unity3D/" style="font-size: 10px;">Unity3D</a> <a href="/blog/tags/VSCODE/" style="font-size: 12px;">VSCODE</a> <a href="/blog/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/blog/tags/electron/" style="font-size: 10px;">electron</a> <a href="/blog/tags/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8/" style="font-size: 10px;">字节跳动</a> <a href="/blog/tags/%E8%9A%82%E8%9A%81/" style="font-size: 10px;">蚂蚁</a> <a href="/blog/tags/%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4/" style="font-size: 10px;">阿里巴巴</a> <a href="/blog/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 12px;">面试</a>
+		</div>
+		
+	</div>
+
+
+		
+	</aside>
+	<div class="kira-copyright">
+		&copy; 2024
+		<a href="/blog/">德布罗煜</a>
+		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> &
+		<a href="https://github.com/ch1ny/kira-hexo/" target="_blank">Kira-Hexo</a>
+		<br />
+		
+			<a
+				href="https://beian.miit.gov.cn/"
+				target="_blank"
+			>
+				赣ICP备2021007955号-3
+			</a>
+		
+		<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div><span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span></div><div><span id="busuanzi_container_site_uv">共接待访客<span id="busuanzi_value_site_uv"></span>位</span></div>
+	</div>
+</div>
+<div
+	class="kira-sidebar-modal"
+	id="sidebar-modal"
+	onclick="(function(self) {
+		self.classList.remove('show');
+		document.querySelector('.kira-sidebar.show#sidebar').classList.remove('show');
+	})(this)"
+></div>
+			<div class="kira-content">
+				<div id="kira-top-header"></div>
+				<div class="kira-main-content">
+					
+<link rel="stylesheet" href="/blog/css/kira-image.css">
+
+
+<script src="/blog/js/kira-image.js"></script>
+
+<div class="kira-image">
+    <div class="kira-image-modal">
+        <div class="kira-image-header">
+            <div class="kira-image-counter"></div>
+            <div class="kira-image-title"></div>
+            <div class="kira-image-operation">
+                <div class="kira-image-operation-button" id="kira-image-operation-button-zoom">
+                    <i class="kirafont icon-zoom-in"></i>
+                </div>
+                <div class="kira-image-operation-button" id="kira-image-operation-button-close">
+                    <i class="kirafont icon-close"></i>
+                </div>
+            </div>
+        </div>
+        <div class="kira-image-container">
+            <div class="kira-image-prev-button-panel">
+                <div class="kira-image-exchange-button">
+                    <i class="kirafont icon-left"></i>
+                </div>
+            </div>
+            <div class="kira-image-list">
+                <div class="kira-image-prev">
+                    <img />
+                </div>
+                <div class="kira-image-now">
+                    <img />
+                </div>
+                <div class="kira-image-next">
+                    <img />
+                </div>
+            </div>
+            <div class="kira-image-next-button-panel">
+                <div class="kira-image-exchange-button">
+                    <i class="kirafont icon-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+	
+<link rel="stylesheet" href="/blog/css/kira-code-copy.css">
+
+	
+<script src="/blog/js/kira-code-copy.js"></script>
+
+
+<div class="kira-post">
+	<article>
+		
+		<div class="kira-post-cover">
+			<img
+				data-src="https://pic1.zhimg.com/v2-535e92c65ddaff1a55f11df10c680c75_720w.jpg?source=172ae18b"
+				data-sizes="auto"
+				alt="js原型链"
+				class="lazyload kira-post-cover-image disabled-kira-image"
+			/>
+			<h1>js原型链</h1>
+		</div>
+		
+		<div class="kira-post-meta kira-rainbow" style="margin:10px 0!important;">
+			<a><i class="kirafont icon-calendar-fill"></i>2022年01月08日</a>
+			<a><i class="kirafont icon-edit-fill"></i>1.1k 字</a>
+			<a><i class="kirafont icon-time-circle-fill"></i>大概 4 分钟</a>
+		</div>
+		<html><head></head><body><p>在前端的面试中，JS 的原型链可谓是一个经久不衰的问题了，翻看各大厂的前端面经你几乎都能看到原型链的身影。这篇文章中我就来归纳一下这个知识点。</p>
+<span id="more"></span>
+
+<!-- toc -->
+
+<ul>
+<li><a href="#%E8%AE%A4%E8%AF%86%E5%8E%9F%E5%9E%8B%E9%93%BE">认识原型链</a></li>
+<li><a href="#%E9%BB%98%E8%AE%A4%E5%8E%9F%E5%9E%8B">默认原型</a></li>
+<li><a href="#%E5%8E%9F%E5%9E%8B%E9%93%BE%E7%9A%84%E9%97%AE%E9%A2%98">原型链的问题</a></li>
+</ul>
+<!-- tocstop -->
+
+<h2><span id="%E8%AE%A4%E8%AF%86%E5%8E%9F%E5%9E%8B%E9%93%BE">认识原型链</span></h2><p>其实在前面的文章中，我们也已经多次提到了<strong>原型链</strong>这个名词，所谓<strong>原型链</strong>其实就是一条由 JavaScript 实例向原型不断延伸从而构成的一条链状结构。<br>让我们来复习一下我们前两篇文章中提到的<strong>构造函数</strong>、<strong>原型</strong>和<strong>实例</strong>之间的关系：<br>每个<strong>构造函数</strong>都会自动地创建一个<strong>原型对象</strong>，这个对象有一个叫做<strong>constructor</strong>的属性指回<strong>构造函数</strong>。我们可以使用<strong>new</strong>操作符通过<strong>构造函数</strong>创建一个<strong>实例对象</strong>，每个<strong>实例</strong>内部都有一个指针（主流浏览器中可以使用 <strong>__proto__</strong> 获取这个指针）指向<strong>原型对象</strong>。而此时，如果<strong>原型对象</strong>本身也是另一种类型的实例，那么这个原型对象的 <strong>__proto__</strong> 又指向了<strong>另一个原型对象</strong>，而这<strong>另一个原型对象</strong>也有一个<strong>constructor</strong>指针指向<strong>另一个构造函数</strong>。<br>就这样依次不断地向上溯源，最终能构成一条链状结构，这就是<strong>原型链</strong>的基本思想。<br>光看上面的文字似乎会非常得绕，所以下面我们来通过一段代码让大家更好地感受一下什么是原型链：</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 构建一个父类</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">Father</span>(<span class="hljs-params"></span>) {}<br><span class="hljs-title class_">Father</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">father</span> = <span class="hljs-literal">true</span>;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 构建一个子类构造函数</span><br><span class="hljs-comment"> * 子类的原型对象定义为一个父类的实例</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">Son</span>(<span class="hljs-params"></span>) {}<br><span class="hljs-title class_">Son</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Father</span>();<br><br><span class="hljs-comment">// 子类实例化</span><br><span class="hljs-keyword">const</span> instance = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Son</span>();<br></code></pre></td></tr></tbody></table></figure>
+
+<p>在上面这个例子中，<code>instance</code> 是 <code>Son</code> 的实例，因此它们之间具有这样的关系：</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">instance.<span class="hljs-property">__proto__</span> === <span class="hljs-title class_">Son</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>;<br></code></pre></td></tr></tbody></table></figure>
+
+<p>我们看到，<code>Son.prototype</code> 是一个 <code>Father</code> 的实例，因此它们之间又具有这样的关系：</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title class_">Son</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">__proto__</span> === <span class="hljs-title class_">Father</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>;<br><span class="hljs-title class_">Son</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">__proto__</span>.<span class="hljs-property">constructor</span> === <span class="hljs-title class_">Father</span>;<br></code></pre></td></tr></tbody></table></figure>
+
+<p>我们把这两组关系结合起来，就能得到 <code>instance</code> 实例到我们写在代码中的最高类 <code>Father</code> 之间的关系：</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">instance.<span class="hljs-property">__proto__</span>.<span class="hljs-property">__proto__</span> === <span class="hljs-title class_">Father</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>;<br></code></pre></td></tr></tbody></table></figure>
+
+<p>像这样，从<strong>实例（instance）</strong>向上，通过若干个 <strong>__proto__</strong> 组成的一条链，我们可以逐步建立起它到其所有父类之间的联系，这就是<strong>原型链</strong>。</p>
+<h2><span id="%E9%BB%98%E8%AE%A4%E5%8E%9F%E5%9E%8B">默认原型</span></h2><p>实际上，原型链中还存在一环。默认情况下，所有的引用类型都继承自 Object ，这也是通过原型链实现的。所有函数的默认原型都是一个 Object 实例，这意味着这个实例的一个内部指针指向了 Object.prototype ，而 Object.prototype 的 __proto__ 指针最终指向了 <strong>null</strong> 。因此，上面的例子中，还存在了一层额外的隐式的继承关系，我们来尝试将这条原型链补全：</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title class_">Father</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">__proto__</span> === <span class="hljs-title class_">Object</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>;<br><span class="hljs-title class_">Object</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">__proto__</span> === <span class="hljs-literal">null</span>;<br>instance.<span class="hljs-property">__proto__</span>.<span class="hljs-property">__proto__</span>.<span class="hljs-property">__proto__</span>.<span class="hljs-property">constructor</span> === <span class="hljs-title class_">Object</span>;<br></code></pre></td></tr></tbody></table></figure>
+
+<h2><span id="%E5%8E%9F%E5%9E%8B%E9%93%BE%E7%9A%84%E9%97%AE%E9%A2%98">原型链的问题</span></h2><p>通过上面的介绍，我们发现我们可以通过原型链来实现简单的继承，但是这样实现的继承也存在着问题。<br>首要问题就是当原型包含引用类型的时候，引用值会在所有实例之间共享，正如我们上一篇文章中提到的那样，因此我们通常在构造函数中为属性赋值，原型中只定义函数。<br>而且，在我们使用原型实现继承时，原型实际上是另一个类型的实例，这意味着其他类型中原本应该是实例的属性变成了原型的属性，就像我们下面给出的这个例子一样：</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">SuperClass</span>(<span class="hljs-params"></span>) {<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">arr</span> = [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>];<br>}<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">SubClass</span>(<span class="hljs-params"></span>) {}<br><span class="hljs-title class_">SubClass</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">SuperClass</span>();<br><br><span class="hljs-keyword">const</span> instance1 = <span class="hljs-keyword">new</span> <span class="hljs-title class_">SubClass</span>();<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(instance1.<span class="hljs-property">arr</span>); <span class="hljs-comment">// [0,1,2]</span><br><br><span class="hljs-keyword">const</span> instance2 = <span class="hljs-keyword">new</span> <span class="hljs-title class_">SubClass</span>();<br>instance2.<span class="hljs-property">arr</span>.<span class="hljs-title function_">push</span>(<span class="hljs-number">3</span>);<br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(instance1.<span class="hljs-property">arr</span>); <span class="hljs-comment">// [0,1,2,3]</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(instance2.<span class="hljs-property">arr</span>); <span class="hljs-comment">// [0,1,2,3]</span><br></code></pre></td></tr></tbody></table></figure>
+
+<p>原型链的另一个问题是，子类在实例化时无法向父类的构造函数传参。即使非要传参，我们也不可能做到对不同的实例传递不同的参数。</p>
+<p>结合上述两种问题，我们一般不会单独使用原型链来实现继承。</p>
+</body></html>
+	</article>
+
+	 
+    <div class="kira-post-copyright">
+        <strong>本文作者：</strong>德布罗煜<br>
+        <strong>本文链接：</strong><a href="https://kira.host/blog/JavaScript/js%E5%8E%9F%E5%9E%8B%E9%93%BE/" title="https:&#x2F;&#x2F;kira.host&#x2F;blog&#x2F;JavaScript&#x2F;js原型链&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;kira.host&#x2F;blog&#x2F;JavaScript&#x2F;js原型链&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+  
+	<div class="kira-post-nav">
+		<nav class="post-nav">
+			  
+			<!-- 先找到与当前文字相同的目录 -->
+			                                 
+			<!-- 在找到当前文章所在的 index -->
+			                                        
+			<!-- 上一篇文章 -->
+			<div class="old">
+				<span>上一章</span>
+				<a href="/blog/JavaScript/%E4%BA%86%E8%A7%A3js%E7%9A%84%E5%8E%9F%E5%9E%8B/"> 了解js的原型</a>
+			</div>
+			       
+			<!-- 下一篇文章 -->
+			<div class="new">
+				<span>下一章</span>
+				<a href="/blog/JavaScript/%E7%90%86%E8%A7%A3JS%E4%B8%AD%E7%9A%84%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81/"> 理解 JS 中的防抖与节流</a>
+			</div>
+			                                                                                               
+		</nav>
+	</div>
+	
+	<div class="kira-post-meta kira-rainbow">
+		
+			<a class="kirafont icon-container-fill -link" href="/blog/categories/%E7%BC%96%E7%A8%8B/">编程</a>
+		
+		
+			<a class="kirafont icon-tag-fill -none-link" href="/blog/tags/JavaScript/" rel="tag">JavaScript</a>
+		
+	</div>
+	
+	<div class="kira-post-footer">
+		
+
+		
+	<div class="giscus"></div>
+  
+    <script src="https://giscus.app/client.js"
+      data-repo="ch1ny/ch1ny.github.io"
+      data-repo-id="R_kgDOHGgizw"
+      data-category="General"
+      data-category-id="DIC_kwDOHGgiz84CU88t"
+      data-mapping="pathname"
+      data-strict="0"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="top"
+      data-theme="light"
+      data-lang="en"
+      data-loading="lazy"
+      crossorigin="anonymous"
+      async  
+    ></script>
+  
+
+	</div>
+	
+</div>
+
+				</div>
+			</div>
+			<div class="kira-right-column">
+	<a onclick="document.querySelector('#kira-top-header').scrollIntoView({behavior: 'smooth'});" class="kira-backtotop" aria-label="回到顶部" title="回到顶部">
+		<button class="mdui-fab mdui-ripple">
+			<i class="kirafont icon-caret-up"></i>
+		</button>
+	</a>
+</div>
+
+		</div>
+	</body>
+</html>

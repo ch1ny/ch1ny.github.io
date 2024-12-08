@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html 
+	lang="zh_CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		
+<link rel="stylesheet" href="/blog/css/layout.css">
+
+		
+		<title> Unity使用Newtonsoft报错的解决方案 -  德布罗煜</title>
+		<!-- <link rel="stylesheet" href="https://unpkg.com/mdui@1.0.2/dist/css/mdui.min.css" /> -->
+		<!-- <script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script> -->
+		
+<link rel="stylesheet" href="/blog/lib/mdui/mdui.min.css">
+
+		
+<script src="/blog/lib/mdui/mdui.min.js"></script>
+
+		<!-- lazyload -->
+		
+<script src="/blog/lib/lazysizes.js"></script>
+
+		<!-- smooth-scrolling -->
+		
+<script src="/blog/lib/smooth-scrolling.js"></script>
+
+		<!-- highlight -->
+		
+<link rel="stylesheet" href="/blog/lib/highlight/atom-one-dark.min.css">
+
+		
+<script src="/blog/lib/highlight/highlight.min.js"></script>
+
+		<!-- 预置 kiraicon -->
+		
+<link rel="stylesheet" href="/blog/lib/iconfont/iconfont.css">
+
+		
+		<link
+			rel="shortcut icon"
+			href="https://kira.host/assets/Pictures/Others/116359b4ccf19917.jpg"
+			type="image/png"
+		/>
+		
+<link rel="stylesheet" href="/blog/deps/css/APlayer.min.css">
+
+		
+		
+<script src="/blog/deps/js/APlayer.min.js"></script>
+<script src="/blog/deps/js/Meting.min.js"></script>
+
+	<meta name="generator" content="Hexo 6.3.0"></head>
+
+	<body>
+		<div
+			class="kira-background"
+			style="background-image: url('https://kira.host/assets/Pictures/Others/-f0d5cc34c6e5aa7_compressed.jpg')"
+		></div>
+		<div class="kira-header">
+    <a
+        class="kira-drawer-button mdui-ripple"
+        title="导航栏"
+        onclick="document.querySelector('.kira-sidebar-modal').classList.add('show');document.querySelector('.kira-sidebar#sidebar').classList.add('show');"
+    >
+        <i class="kirafont icon-menu"></i>
+    </a>
+    <a href="/blog/" title="德布罗煜">
+        <img
+			src="https://kira.host/assets/Pictures/Others/20220922230447.jpg"
+			alt="德布罗煜"
+		/>
+    </a>
+</div>
+		<div class="kira-body">
+			<div class="kira-sidebar" id="sidebar">
+	<div class="kira-avatar mdui-ripple">
+		<a href="https://kira.host/assets/Pictures/Others/20220922230447.jpg" title="德布罗煜">
+			<img
+				src="https://kira.host/assets/Pictures/Others/20220922230447.jpg"
+				alt="德布罗煜"
+			/>
+		</a>
+	</div>
+	<div class="kira-count">
+		<div><span>文章</span>30</div>
+		<div><span>标签</span>14</div>
+		<div><span>分类</span>3</div>
+	</div>
+	<div class="kira-list">
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/blog/"
+			title="回到首页"
+		>
+			<i
+				class="kirafont
+					
+						icon-home
+					"
+			></i>
+			<div class="kira-list-item-content">
+				回到首页
+			</div>
+		</a>
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/blog/archive.html"
+			title="文章归档"
+		>
+			<i
+				class="kirafont
+					
+						icon-container
+					"
+			></i>
+			<div class="kira-list-item-content">
+				文章归档
+			</div>
+		</a>
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/blog/about.html"
+			title="关于本人"
+		>
+			<i
+				class="kirafont
+					
+						icon-user
+					"
+			></i>
+			<div class="kira-list-item-content">
+				关于本人
+			</div>
+		</a>
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/blog/friends.html"
+			title="我的朋友"
+		>
+			<i
+				class="kirafont
+					
+						icon-team
+					"
+			></i>
+			<div class="kira-list-item-content">
+				我的朋友
+			</div>
+		</a>
+		
+	</div>
+	<aside id="kira-sidebar">
+		
+			<div class="kira-widget-wrap">
+	<div class="kira-widget kira-social">
+		
+			<a
+				class="mdui-ripple"
+				href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=1056317718&website=www.oicqzone.com"
+				target="_blank"
+				mdui-tooltip="{content: 'QQ'}"
+				style="color: rgb(49, 174, 255); background-color: rgba(49, 174, 255, .1);"
+			>
+				<i
+					class="kirafont
+					
+						icon-QQ
+					"
+				></i>
+			</a>
+		
+			<a
+				class="mdui-ripple"
+				href="https://space.bilibili.com/27905679"
+				target="_blank"
+				mdui-tooltip="{content: '哔哩哔哩'}"
+				style="color: rgb(231, 106, 141); background-color: rgba(231, 106, 141, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-bilibili
+					"
+				></i>
+			</a>
+		
+			<a
+				class="mdui-ripple"
+				href="https://github.com/ch1ny/"
+				target="_blank"
+				mdui-tooltip="{content: 'GitHub'}"
+				style="color: rgb(25, 23, 23); background-color: rgba(25, 23, 23, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-github
+					"
+				></i>
+			</a>
+		
+			<a
+				class="mdui-ripple"
+				href="https://gitee.com/ch1ny"
+				target="_blank"
+				mdui-tooltip="{content: 'Gitee'}"
+				style="color: rgb(165, 15, 15); background-color: rgba(165, 15, 15, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-gitee
+					"
+				></i>
+			</a>
+		
+	</div>
+</div>
+
+		
+			
+  <div class="kira-widget-wrap">
+    <h3 class="kira-widget-title">分类</h3>
+    <div class="kira-widget">
+      <ul class="category-list">
+        
+        
+
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/blog/categories/Revue/">
+              Revue
+            </a>
+            <span class="category-list-count">5</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/blog/categories/编程/">
+              编程
+            </a>
+            <span class="category-list-count">23</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/blog/categories/面经/">
+              面经
+            </a>
+            <span class="category-list-count">2</span>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+		
+			
+	<div class="kira-widget-wrap">
+		<div id="randomtagcloud" class="kira-widget tagcloud kira-rainbow">
+			<a href="/blog/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/blog/tags/Node-js/" style="font-size: 16px;">Node.js</a> <a href="/blog/tags/React/" style="font-size: 18px;">React</a> <a href="/blog/tags/Revue/" style="font-size: 18px;">Revue</a> <a href="/blog/tags/Rust/" style="font-size: 14px;">Rust</a> <a href="/blog/tags/TypeScript/" style="font-size: 10px;">TypeScript</a> <a href="/blog/tags/Unity3D/" style="font-size: 10px;">Unity3D</a> <a href="/blog/tags/VSCODE/" style="font-size: 12px;">VSCODE</a> <a href="/blog/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/blog/tags/electron/" style="font-size: 10px;">electron</a> <a href="/blog/tags/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8/" style="font-size: 10px;">字节跳动</a> <a href="/blog/tags/%E8%9A%82%E8%9A%81/" style="font-size: 10px;">蚂蚁</a> <a href="/blog/tags/%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4/" style="font-size: 10px;">阿里巴巴</a> <a href="/blog/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 12px;">面试</a>
+		</div>
+		
+	</div>
+
+
+		
+	</aside>
+	<div class="kira-copyright">
+		&copy; 2024
+		<a href="/blog/">德布罗煜</a>
+		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> &
+		<a href="https://github.com/ch1ny/kira-hexo/" target="_blank">Kira-Hexo</a>
+		<br />
+		
+			<a
+				href="https://beian.miit.gov.cn/"
+				target="_blank"
+			>
+				赣ICP备2021007955号-3
+			</a>
+		
+		<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div><span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span></div><div><span id="busuanzi_container_site_uv">共接待访客<span id="busuanzi_value_site_uv"></span>位</span></div>
+	</div>
+</div>
+<div
+	class="kira-sidebar-modal"
+	id="sidebar-modal"
+	onclick="(function(self) {
+		self.classList.remove('show');
+		document.querySelector('.kira-sidebar.show#sidebar').classList.remove('show');
+	})(this)"
+></div>
+			<div class="kira-content">
+				<div id="kira-top-header"></div>
+				<div class="kira-main-content">
+					
+<link rel="stylesheet" href="/blog/css/kira-image.css">
+
+
+<script src="/blog/js/kira-image.js"></script>
+
+<div class="kira-image">
+    <div class="kira-image-modal">
+        <div class="kira-image-header">
+            <div class="kira-image-counter"></div>
+            <div class="kira-image-title"></div>
+            <div class="kira-image-operation">
+                <div class="kira-image-operation-button" id="kira-image-operation-button-zoom">
+                    <i class="kirafont icon-zoom-in"></i>
+                </div>
+                <div class="kira-image-operation-button" id="kira-image-operation-button-close">
+                    <i class="kirafont icon-close"></i>
+                </div>
+            </div>
+        </div>
+        <div class="kira-image-container">
+            <div class="kira-image-prev-button-panel">
+                <div class="kira-image-exchange-button">
+                    <i class="kirafont icon-left"></i>
+                </div>
+            </div>
+            <div class="kira-image-list">
+                <div class="kira-image-prev">
+                    <img />
+                </div>
+                <div class="kira-image-now">
+                    <img />
+                </div>
+                <div class="kira-image-next">
+                    <img />
+                </div>
+            </div>
+            <div class="kira-image-next-button-panel">
+                <div class="kira-image-exchange-button">
+                    <i class="kirafont icon-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+	
+<link rel="stylesheet" href="/blog/css/kira-code-copy.css">
+
+	
+<script src="/blog/js/kira-code-copy.js"></script>
+
+
+<div class="kira-post">
+	<article>
+		
+		<div class="kira-post-cover">
+			<img
+				data-src="https://tse1-mm.cn.bing.net/th/id/R-C.1c06375ca9292528fe62ed3c027090b7?rik=V9YxI7dFI9A3WA&riu=http%3a%2f%2fuploadfile.qikuedu.com%2f2019%2f0520%2f20190520104330150.jpg&ehk=cohtMwwyzbmXZI7ZW%2fQBo3NAw%2f5hkB%2fem9%2fnqDfRXDc%3d&risl=&pid=ImgRaw&r=0"
+				data-sizes="auto"
+				alt="Unity使用Newtonsoft报错的解决方案"
+				class="lazyload kira-post-cover-image disabled-kira-image"
+			/>
+			<h1>Unity使用Newtonsoft报错的解决方案</h1>
+		</div>
+		
+		<div class="kira-post-meta kira-rainbow" style="margin:10px 0!important;">
+			<a><i class="kirafont icon-calendar-fill"></i>2021年11月26日</a>
+			<a><i class="kirafont icon-edit-fill"></i>570 字</a>
+			<a><i class="kirafont icon-time-circle-fill"></i>大概 2 分钟</a>
+		</div>
+		<html><head></head><body><p>最近在做人机交互课的实验，主要开发工具选择了 Unity3D 。把做好的项目通过 <strong>git</strong> 上传后，又用 <code>git clone</code> 了下来来测试项目上传是否成功。结果发现 clone 回来的项目，出现了一些问题。</p>
+<span id="more"></span>
+
+<!-- toc -->
+
+<ul>
+<li><a href="#unity-%E4%BD%BF%E7%94%A8-newtonsoft-%E6%8A%A5%E9%94%99%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88">Unity 使用 Newtonsoft 报错的解决方案</a><ul>
+<li><a href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0">问题描述</a></li>
+<li><a href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95">解决方法</a><ul>
+<li><a href="#%E6%96%B9%E6%B3%95%E4%B8%80%E4%BD%BF%E7%94%A8-unity-%E7%9A%84-package-manager-%E8%87%AA%E5%8A%A8%E5%AF%BC%E5%85%A5">方法一：使用 Unity 的 Package Manager 自动导入</a></li>
+<li><a href="#%E6%96%B9%E6%B3%95%E4%BA%8C%E8%AE%BF%E9%97%AE-github-%E4%B8%8B%E8%BD%BD-unitypackage-%E6%96%87%E4%BB%B6%E6%89%8B%E5%8A%A8%E5%AF%BC%E5%85%A5">方法二：访问 GitHub 下载 unitypackage 文件手动导入</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+<h1><span id="unity-%E4%BD%BF%E7%94%A8-newtonsoft-%E6%8A%A5%E9%94%99%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88">Unity 使用 Newtonsoft 报错的解决方案</span></h1><h2><span id="%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0">问题描述</span></h2><p>在项目中，我用到了 <strong>Newtonsoft.Json</strong> 这个包来处理我需要的 Json 数据。</p>
+<figure class="highlight csharp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">using</span> Newtonsoft.Json;<br><span class="hljs-keyword">using</span> Newtonsoft.Json.Linq;<br></code></pre></td></tr></tbody></table></figure>
+
+<p>在原项目中并没有出现什么问题（这里是因为之前设置了一些东西，具体我会在<strong>解决方法</strong>部分的<strong>方法一</strong>提到），但是在<strong>克隆</strong>回来的项目中 Unity3D 的控制台直接甩了个错误给我：<br><code>The type or namespace name 'Newtonsoft' could not be found (are you missing a using directive or an assembly reference?)</code><br><img data-fancybox="gallery" data-sizes="auto" data-src="https://img-blog.csdnimg.cn/481bd4a571584ed9b0222f2b59bcfd30.png" alt="在这里插入图片描述" class="lazyload"></p>
+<p>这是因为 Json.NET 官方没有直接支持 Unity ，导致 Unity 无法找到正确的程序集。</p>
+<h2><span id="%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95">解决方法</span></h2><p>下面我将给出两种解决方案，两种方案都是可行的。</p>
+<h3><span id="%E6%96%B9%E6%B3%95%E4%B8%80%E4%BD%BF%E7%94%A8-unity-%E7%9A%84-package-manager-%E8%87%AA%E5%8A%A8%E5%AF%BC%E5%85%A5">方法一：使用 Unity 的 Package Manager 自动导入</span></h3><p>在 <strong>Project</strong> 标签页中，右键点击 <strong>Packages</strong>。<br><img data-fancybox="gallery" data-sizes="auto" data-src="https://img-blog.csdnimg.cn/ce4a3c81de7a4997a3141eba363f8f2b.png" alt="在这里插入图片描述" class="lazyload"><br>在打开的菜单栏中点击 <strong>View in Package Manager</strong> 。<br><img data-fancybox="gallery" data-sizes="auto" data-src="https://img-blog.csdnimg.cn/8a7f605ac9034b7986689808b6c8ab36.png" alt="在这里插入图片描述" class="lazyload"><br>在打开的 <strong>Package Manager</strong> 中，点击左上角的<strong>加号</strong>，选择通过名称添加。<br><img data-fancybox="gallery" data-sizes="auto" data-src="https://img-blog.csdnimg.cn/5facb010b9e34904b596fa077bb8487b.png#pic_center" alt="在这里插入图片描述" class="lazyload"><br>包名是 <strong>com.unity.nuget.newtonsoft-json</strong> ，我发这篇博客时，版本号为 <strong>2.0.2</strong>，各位读者也可以填该版本号，导入后 unity 会提示你进行更新。<br><img data-fancybox="gallery" data-sizes="auto" data-src="https://img-blog.csdnimg.cn/02b8e6a2adc243fa8c9ce9fee05ec5cf.png" alt="在这里插入图片描述" class="lazyload"><br><img data-fancybox="gallery" data-sizes="auto" data-src="https://img-blog.csdnimg.cn/2d0ad8bec8544e28b7873d3a82ee0a0a.png" alt="在这里插入图片描述" class="lazyload"><br>添加成功后 Unity 的报错信息就消失了。</p>
+<h3><span id="%E6%96%B9%E6%B3%95%E4%BA%8C%E8%AE%BF%E9%97%AE-github-%E4%B8%8B%E8%BD%BD-unitypackage-%E6%96%87%E4%BB%B6%E6%89%8B%E5%8A%A8%E5%AF%BC%E5%85%A5">方法二：访问 GitHub 下载 unitypackage 文件手动导入</span></h3><p>访问 GitHub 下载相应的支持 Unity 的 Newtonsoft.Json 资源包。<a target="_blank" rel="noopener" href="https://github.com/SaladLab/Json.Net.Unity3D/releases">点我跳转</a><br><img data-fancybox="gallery" data-sizes="auto" data-src="https://img-blog.csdnimg.cn/3ccd69afc8ed4acbb89df49f40fdfc65.png" alt="在这里插入图片描述" class="lazyload"></p>
+<p>选择需要的版本进行下载（由于我使用到了 <code>Newtonsoft.Json.Linq</code> ，因此我需要下载的是 <code>JsonNet.9.0.1.unitypackage</code> ）。<br><img data-fancybox="gallery" data-sizes="auto" data-src="https://img-blog.csdnimg.cn/e603d8a638d6423980fdf418d4dbdccd.png" alt="在这里插入图片描述" class="lazyload"><br>打开报错的 Unity 项目，双击下载好的 <strong>unitypackage</strong> 文件，使用 <strong>Unity Editor</strong> 打开。<br><img data-fancybox="gallery" data-sizes="auto" data-src="https://img-blog.csdnimg.cn/52bdfa6bef544914b123f3a9abfb96ba.png" alt="在这里插入图片描述" class="lazyload"><br>将所有包都勾选好点击“导入”即可。此时 Unity 会重新编译一遍脚本。<br><img data-fancybox="gallery" data-sizes="auto" data-src="https://img-blog.csdnimg.cn/9622959061f64ffd853ced64e275e3e9.png" alt="在这里插入图片描述" class="lazyload"><br>编译成功后你就会发现控制台里已经没有报错的信息了。<br><img data-fancybox="gallery" data-sizes="auto" data-src="https://img-blog.csdnimg.cn/84963310156d4a0ca3b62d82dc0fd176.png" alt="在这里插入图片描述" class="lazyload"></p>
+</body></html>
+	</article>
+
+	 
+    <div class="kira-post-copyright">
+        <strong>本文作者：</strong>德布罗煜<br>
+        <strong>本文链接：</strong><a href="https://kira.host/blog/Unity%E4%BD%BF%E7%94%A8Newtonsoft%E6%8A%A5%E9%94%99%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" title="https:&#x2F;&#x2F;kira.host&#x2F;blog&#x2F;Unity使用Newtonsoft报错的解决方案&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;kira.host&#x2F;blog&#x2F;Unity使用Newtonsoft报错的解决方案&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+  
+	<div class="kira-post-nav">
+		<nav class="post-nav">
+			  
+			<!-- 先找到与当前文字相同的目录 -->
+			         
+			<!-- 在找到当前文章所在的 index -->
+			        
+			<!-- 上一篇文章 -->
+			<div class="old">
+				<span>上一章</span>
+				<a href="/blog/JavaScript/%E6%B5%85%E8%B0%88JS%E4%B8%AD%E7%9A%84%E9%97%AD%E5%8C%85/"> 浅谈JS中的闭包</a>
+			</div>
+			       
+			<!-- 下一篇文章 -->
+			<div class="new">
+				<span>下一章</span>
+				<a href="/blog/%E4%BD%BF%E7%94%A8Vue%E5%92%8CElectron%E5%BC%80%E5%8F%91%E4%B8%80%E6%AC%BE%E7%AE%80%E5%8D%95%E7%9A%84Markdown%E7%BC%96%E8%BE%91%E5%99%A8/"> 使用Vue和Electron开发一款简单的Markdown编辑器</a>
+			</div>
+			                                                                                                                                                       
+		</nav>
+	</div>
+	
+	<div class="kira-post-meta kira-rainbow">
+		
+			<a class="kirafont icon-container-fill -link" href="/blog/categories/%E7%BC%96%E7%A8%8B/">编程</a>
+		
+		
+			<a class="kirafont icon-tag-fill -none-link" href="/blog/tags/Unity3D/" rel="tag">Unity3D</a>
+		
+	</div>
+	
+	<div class="kira-post-footer">
+		
+
+		
+	<div class="giscus"></div>
+  
+    <script src="https://giscus.app/client.js"
+      data-repo="ch1ny/ch1ny.github.io"
+      data-repo-id="R_kgDOHGgizw"
+      data-category="General"
+      data-category-id="DIC_kwDOHGgiz84CU88t"
+      data-mapping="pathname"
+      data-strict="0"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="top"
+      data-theme="light"
+      data-lang="en"
+      data-loading="lazy"
+      crossorigin="anonymous"
+      async  
+    ></script>
+  
+
+	</div>
+	
+</div>
+
+				</div>
+			</div>
+			<div class="kira-right-column">
+	<a onclick="document.querySelector('#kira-top-header').scrollIntoView({behavior: 'smooth'});" class="kira-backtotop" aria-label="回到顶部" title="回到顶部">
+		<button class="mdui-fab mdui-ripple">
+			<i class="kirafont icon-caret-up"></i>
+		</button>
+	</a>
+</div>
+
+		</div>
+	</body>
+</html>

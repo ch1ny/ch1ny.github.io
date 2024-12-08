@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html 
+	lang="zh_CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		
+<link rel="stylesheet" href="/blog/css/layout.css">
+
+		
+		<title> TypeScript IOC 设计模式初探 -  德布罗煜</title>
+		<!-- <link rel="stylesheet" href="https://unpkg.com/mdui@1.0.2/dist/css/mdui.min.css" /> -->
+		<!-- <script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script> -->
+		
+<link rel="stylesheet" href="/blog/lib/mdui/mdui.min.css">
+
+		
+<script src="/blog/lib/mdui/mdui.min.js"></script>
+
+		<!-- lazyload -->
+		
+<script src="/blog/lib/lazysizes.js"></script>
+
+		<!-- smooth-scrolling -->
+		
+<script src="/blog/lib/smooth-scrolling.js"></script>
+
+		<!-- highlight -->
+		
+<link rel="stylesheet" href="/blog/lib/highlight/atom-one-dark.min.css">
+
+		
+<script src="/blog/lib/highlight/highlight.min.js"></script>
+
+		<!-- 预置 kiraicon -->
+		
+<link rel="stylesheet" href="/blog/lib/iconfont/iconfont.css">
+
+		
+		<link
+			rel="shortcut icon"
+			href="https://kira.host/assets/Pictures/Others/116359b4ccf19917.jpg"
+			type="image/png"
+		/>
+		
+<link rel="stylesheet" href="/blog/deps/css/APlayer.min.css">
+
+		
+		
+<script src="/blog/deps/js/APlayer.min.js"></script>
+<script src="/blog/deps/js/Meting.min.js"></script>
+
+	<meta name="generator" content="Hexo 6.3.0"></head>
+
+	<body>
+		<div
+			class="kira-background"
+			style="background-image: url('https://kira.host/assets/Pictures/Others/-f0d5cc34c6e5aa7_compressed.jpg')"
+		></div>
+		<div class="kira-header">
+    <a
+        class="kira-drawer-button mdui-ripple"
+        title="导航栏"
+        onclick="document.querySelector('.kira-sidebar-modal').classList.add('show');document.querySelector('.kira-sidebar#sidebar').classList.add('show');"
+    >
+        <i class="kirafont icon-menu"></i>
+    </a>
+    <a href="/blog/" title="德布罗煜">
+        <img
+			src="https://kira.host/assets/Pictures/Others/20220922230447.jpg"
+			alt="德布罗煜"
+		/>
+    </a>
+</div>
+		<div class="kira-body">
+			<div class="kira-sidebar" id="sidebar">
+	<div class="kira-avatar mdui-ripple">
+		<a href="https://kira.host/assets/Pictures/Others/20220922230447.jpg" title="德布罗煜">
+			<img
+				src="https://kira.host/assets/Pictures/Others/20220922230447.jpg"
+				alt="德布罗煜"
+			/>
+		</a>
+	</div>
+	<div class="kira-count">
+		<div><span>文章</span>30</div>
+		<div><span>标签</span>14</div>
+		<div><span>分类</span>3</div>
+	</div>
+	<div class="kira-list">
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/blog/"
+			title="回到首页"
+		>
+			<i
+				class="kirafont
+					
+						icon-home
+					"
+			></i>
+			<div class="kira-list-item-content">
+				回到首页
+			</div>
+		</a>
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/blog/archive.html"
+			title="文章归档"
+		>
+			<i
+				class="kirafont
+					
+						icon-container
+					"
+			></i>
+			<div class="kira-list-item-content">
+				文章归档
+			</div>
+		</a>
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/blog/about.html"
+			title="关于本人"
+		>
+			<i
+				class="kirafont
+					
+						icon-user
+					"
+			></i>
+			<div class="kira-list-item-content">
+				关于本人
+			</div>
+		</a>
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/blog/friends.html"
+			title="我的朋友"
+		>
+			<i
+				class="kirafont
+					
+						icon-team
+					"
+			></i>
+			<div class="kira-list-item-content">
+				我的朋友
+			</div>
+		</a>
+		
+	</div>
+	<aside id="kira-sidebar">
+		
+			<div class="kira-widget-wrap">
+	<div class="kira-widget kira-social">
+		
+			<a
+				class="mdui-ripple"
+				href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=1056317718&website=www.oicqzone.com"
+				target="_blank"
+				mdui-tooltip="{content: 'QQ'}"
+				style="color: rgb(49, 174, 255); background-color: rgba(49, 174, 255, .1);"
+			>
+				<i
+					class="kirafont
+					
+						icon-QQ
+					"
+				></i>
+			</a>
+		
+			<a
+				class="mdui-ripple"
+				href="https://space.bilibili.com/27905679"
+				target="_blank"
+				mdui-tooltip="{content: '哔哩哔哩'}"
+				style="color: rgb(231, 106, 141); background-color: rgba(231, 106, 141, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-bilibili
+					"
+				></i>
+			</a>
+		
+			<a
+				class="mdui-ripple"
+				href="https://github.com/ch1ny/"
+				target="_blank"
+				mdui-tooltip="{content: 'GitHub'}"
+				style="color: rgb(25, 23, 23); background-color: rgba(25, 23, 23, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-github
+					"
+				></i>
+			</a>
+		
+			<a
+				class="mdui-ripple"
+				href="https://gitee.com/ch1ny"
+				target="_blank"
+				mdui-tooltip="{content: 'Gitee'}"
+				style="color: rgb(165, 15, 15); background-color: rgba(165, 15, 15, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-gitee
+					"
+				></i>
+			</a>
+		
+	</div>
+</div>
+
+		
+			
+  <div class="kira-widget-wrap">
+    <h3 class="kira-widget-title">分类</h3>
+    <div class="kira-widget">
+      <ul class="category-list">
+        
+        
+
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/blog/categories/Revue/">
+              Revue
+            </a>
+            <span class="category-list-count">5</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/blog/categories/编程/">
+              编程
+            </a>
+            <span class="category-list-count">23</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/blog/categories/面经/">
+              面经
+            </a>
+            <span class="category-list-count">2</span>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+		
+			
+	<div class="kira-widget-wrap">
+		<div id="randomtagcloud" class="kira-widget tagcloud kira-rainbow">
+			<a href="/blog/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/blog/tags/Node-js/" style="font-size: 16px;">Node.js</a> <a href="/blog/tags/React/" style="font-size: 18px;">React</a> <a href="/blog/tags/Revue/" style="font-size: 18px;">Revue</a> <a href="/blog/tags/Rust/" style="font-size: 14px;">Rust</a> <a href="/blog/tags/TypeScript/" style="font-size: 10px;">TypeScript</a> <a href="/blog/tags/Unity3D/" style="font-size: 10px;">Unity3D</a> <a href="/blog/tags/VSCODE/" style="font-size: 12px;">VSCODE</a> <a href="/blog/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/blog/tags/electron/" style="font-size: 10px;">electron</a> <a href="/blog/tags/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8/" style="font-size: 10px;">字节跳动</a> <a href="/blog/tags/%E8%9A%82%E8%9A%81/" style="font-size: 10px;">蚂蚁</a> <a href="/blog/tags/%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4/" style="font-size: 10px;">阿里巴巴</a> <a href="/blog/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 12px;">面试</a>
+		</div>
+		
+	</div>
+
+
+		
+	</aside>
+	<div class="kira-copyright">
+		&copy; 2024
+		<a href="/blog/">德布罗煜</a>
+		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> &
+		<a href="https://github.com/ch1ny/kira-hexo/" target="_blank">Kira-Hexo</a>
+		<br />
+		
+			<a
+				href="https://beian.miit.gov.cn/"
+				target="_blank"
+			>
+				赣ICP备2021007955号-3
+			</a>
+		
+		<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div><span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span></div><div><span id="busuanzi_container_site_uv">共接待访客<span id="busuanzi_value_site_uv"></span>位</span></div>
+	</div>
+</div>
+<div
+	class="kira-sidebar-modal"
+	id="sidebar-modal"
+	onclick="(function(self) {
+		self.classList.remove('show');
+		document.querySelector('.kira-sidebar.show#sidebar').classList.remove('show');
+	})(this)"
+></div>
+			<div class="kira-content">
+				<div id="kira-top-header"></div>
+				<div class="kira-main-content">
+					
+<link rel="stylesheet" href="/blog/css/kira-image.css">
+
+
+<script src="/blog/js/kira-image.js"></script>
+
+<div class="kira-image">
+    <div class="kira-image-modal">
+        <div class="kira-image-header">
+            <div class="kira-image-counter"></div>
+            <div class="kira-image-title"></div>
+            <div class="kira-image-operation">
+                <div class="kira-image-operation-button" id="kira-image-operation-button-zoom">
+                    <i class="kirafont icon-zoom-in"></i>
+                </div>
+                <div class="kira-image-operation-button" id="kira-image-operation-button-close">
+                    <i class="kirafont icon-close"></i>
+                </div>
+            </div>
+        </div>
+        <div class="kira-image-container">
+            <div class="kira-image-prev-button-panel">
+                <div class="kira-image-exchange-button">
+                    <i class="kirafont icon-left"></i>
+                </div>
+            </div>
+            <div class="kira-image-list">
+                <div class="kira-image-prev">
+                    <img />
+                </div>
+                <div class="kira-image-now">
+                    <img />
+                </div>
+                <div class="kira-image-next">
+                    <img />
+                </div>
+            </div>
+            <div class="kira-image-next-button-panel">
+                <div class="kira-image-exchange-button">
+                    <i class="kirafont icon-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+	
+<link rel="stylesheet" href="/blog/css/kira-code-copy.css">
+
+	
+<script src="/blog/js/kira-code-copy.js"></script>
+
+
+<div class="kira-post">
+	<article>
+		
+		<div
+			class="kira-post-cover"
+			style="padding-bottom: '56.25%'"
+		>
+			<img
+				data-src="https://kira.host/assets/Pictures/Others/-f0d5cc34c6e5aa7_compressed.jpg"
+				data-sizes="auto"
+				alt="TypeScript IOC 设计模式初探"
+				class="lazyload kira-post-cover-image disabled-kira-image"
+			/>
+			<h1>TypeScript IOC 设计模式初探</h1>
+		</div>
+		
+		<div class="kira-post-meta kira-rainbow" style="margin:10px 0!important;">
+			<a><i class="kirafont icon-calendar-fill"></i>2022年09月10日</a>
+			<a><i class="kirafont icon-edit-fill"></i>3.1k 字</a>
+			<a><i class="kirafont icon-time-circle-fill"></i>大概 14 分钟</a>
+		</div>
+		<!-- toc --><html><head></head><body><ul>
+<li><a href="#%E4%BB%80%E4%B9%88%E6%98%AF-ioc">什么是 IOC？</a></li>
+<li><a href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E6%8E%A7%E5%88%B6%E5%8F%8D%E8%BD%AC">为什么需要控制反转</a></li>
+<li><a href="#ioc-%E5%AE%B9%E5%99%A8">IOC 容器</a><ul>
+<li><a href="#typescript-%E8%A3%85%E9%A5%B0%E5%99%A8">TypeScript 装饰器</a></li>
+<li><a href="#%E5%AE%9E%E7%8E%B0-ioc-%E5%AE%B9%E5%99%A8">实现 IOC 容器</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BD%A0%E5%B9%B6%E4%B8%8D%E9%9C%80%E8%A6%81%E4%BD%BF%E7%94%A8-ioc">你并不需要使用 IOC</a></li>
+</ul>
+<!-- tocstop -->
+
+<h1><span id="%E4%BB%80%E4%B9%88%E6%98%AF-ioc">什么是 IOC？</span></h1><p>IOC 的全称是 Inversion of Control ，中文名为<strong>「控制反转」</strong>，是一种在面向对象开发中用来降低系统耦合度的一种<strong>设计模式</strong>。最常见的实现方式是<strong>「依赖注入」（Dependency Injection）</strong>，也就是 DI ；还有一种实现方式叫做<strong>「依赖查询」（Dependency Lookup）</strong>。<br>实现 IOC 的方式也很简单：通常来说是由系统内维护一个容器，我们不需要主动创建对象，而是将对象的控制权交由该容器，由容器将其注入到指定对象中，以此实现对象之间的依赖解耦。</p>
+<h1><span id="%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E6%8E%A7%E5%88%B6%E5%8F%8D%E8%BD%AC">为什么需要控制反转</span></h1><p>我们不妨来看这样一个例子：我们假设存在下面三个接口，Soldier 士兵、Gun 枪、Ammo 弹药。</p>
+<figure class="highlight ts"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">Ammo</span> {}<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">Gun</span> {<br>  <span class="hljs-title function_">fire</span>(): <span class="hljs-built_in">void</span>;<br>  <span class="hljs-title function_">reload</span>(<span class="hljs-attr">ammos</span>: <span class="hljs-title class_">Ammo</span>[]): <span class="hljs-title class_">Ammo</span>[];<br>}<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">Soldier</span> {<br>  <span class="hljs-title function_">trigger</span>(): <span class="hljs-built_in">void</span>;<br>  <span class="hljs-title function_">reload</span>(<span class="hljs-attr">ammos</span>: <span class="hljs-built_in">number</span>): <span class="hljs-built_in">void</span>;<br>}<br></code></pre></td></tr></tbody></table></figure>
+<p>我们分别对应这三个接口实现了三个类：Sniper 狙击手、Rifle 来复枪、Magnum 马格南弹。</p>
+<figure class="highlight ts"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Magnum</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Ammo</span> {}<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Rifle</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Gun</span> {<br>  <span class="hljs-keyword">private</span> <span class="hljs-variable constant_">MAX_AMMO_NUMBER</span> = <span class="hljs-number">5</span>;<br>  <span class="hljs-keyword">private</span> <span class="hljs-attr">_ammos</span>: <span class="hljs-title class_">Magnum</span>[] = [];<br><br>  <span class="hljs-title function_">fire</span>(<span class="hljs-params"></span>) {<br>    <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">_ammos</span>.<span class="hljs-property">length</span> === <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">'\x1B[33m%s\x1B[39m'</span>, <span class="hljs-string">'No ammo!'</span>);<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">_ammos</span>.<span class="hljs-title function_">shift</span>();<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">'biu~'</span>);<br>  }<br><br>  <span class="hljs-title function_">reload</span>(<span class="hljs-params"><span class="hljs-attr">ammos</span>: <span class="hljs-title class_">Magnum</span>[]</span>) {<br>    <span class="hljs-keyword">return</span> ammos.<span class="hljs-title function_">slice</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">MAX_AMMO_NUMBER</span> - <span class="hljs-variable language_">this</span>.<span class="hljs-property">_ammos</span>.<span class="hljs-property">length</span>);<br>  }<br>}<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Sniper</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Soldier</span> {<br>  <span class="hljs-keyword">private</span> <span class="hljs-attr">_rifle</span>: <span class="hljs-title class_">Rifle</span>;<br>  <span class="hljs-keyword">private</span> <span class="hljs-attr">_ammos</span>: <span class="hljs-title class_">Magnum</span>[];<br><br>  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"></span>) {<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">_rifle</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Rifle</span>();<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">_ammos</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Array</span>(<span class="hljs-number">30</span>).<span class="hljs-title function_">fill</span>().<span class="hljs-title function_">map</span>(<span class="hljs-function">() =&gt;</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Magnum</span>());<br>  }<br><br>  <span class="hljs-title function_">trigger</span>(<span class="hljs-params"></span>) {<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">_rifle</span>.<span class="hljs-title function_">fire</span>();<br>  }<br><br>  <span class="hljs-title function_">reload</span>(<span class="hljs-params"><span class="hljs-attr">ammos</span>: <span class="hljs-built_in">number</span></span>) {<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">_rifle</span>.<span class="hljs-title function_">reload</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">_ammos</span>.<span class="hljs-title function_">splice</span>(<span class="hljs-number">0</span>, ammos));<br>  }<br>}<br></code></pre></td></tr></tbody></table></figure>
+<p>通过上面这个例子可以很清晰地看到 Sniper 是依赖了 Rifle 和 Magnum 类的。对我们来说这样一种依赖关系很常见，但是随着系统不断增大，各个类对应的能力也会不断地增加。在我们这个例子中，Rifle 也可能进一步增加对 Magnum 类的依赖。这套系统会随着后续的开发变得越来越累赘，各个类之间的耦合度越来越高，随着时间的流逝，最后整个项目都将会发展成沉重的历史债务。<br>因此，我们需要对复杂系统进行解耦，解耦的方式之一就是以 IOC 的设计模式改写系统。</p>
+<h1><span id="ioc-%E5%AE%B9%E5%99%A8">IOC 容器</span></h1><p>众所周知，在我们国家，军队的管理方式是人枪分离、枪弹分离。军人需要使用枪支时，需要向军械部进行申请（我没当过兵，具体是不是军械部不清楚，这边先假定是军械部），由军械部向军人发放枪支；同时，武器的弹药也是从军械部的库房中拿的。<br>我们可以将上述的军械库库房看作是一个 IOC 容器。解放军同志不需要自己保管枪支弹药，他只是知道自己需要这么一件物品，等到要使用的时候再去库房取。这样一来，我们就可以将上面的 Sniper 类改写为下面的样子：</p>
+<figure class="highlight ts"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">IRifle</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Gun</span> {}<br><span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">IAmmos</span> {<br>  <span class="hljs-attr">ammos</span>: <span class="hljs-title class_">Ammo</span>[];<br>}<br><span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">IMagnums</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">IAmmos</span> {<br>  <span class="hljs-attr">ammos</span>: <span class="hljs-title class_">Magnum</span>[];<br>}<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Sniper</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Soldier</span> {<br>  <span class="hljs-meta">@DRifle</span> <span class="hljs-keyword">private</span> _rifle!: <span class="hljs-title class_">IRifle</span>;<br>  <span class="hljs-meta">@DAmmos</span> <span class="hljs-keyword">private</span> _ammos!: <span class="hljs-title class_">IMagnums</span>;<br><br>  <span class="hljs-title function_">trigger</span>(): <span class="hljs-built_in">void</span> {<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">_rifle</span>.<span class="hljs-title function_">fire</span>();<br>  }<br><br>  <span class="hljs-title function_">reload</span>(<span class="hljs-attr">ammos</span>: <span class="hljs-built_in">number</span>): <span class="hljs-built_in">void</span> {<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">_rifle</span>.<span class="hljs-title function_">reload</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">_ammos</span>.<span class="hljs-property">ammos</span>.<span class="hljs-title function_">splice</span>(<span class="hljs-number">0</span>, ammos));<br>  }<br>}<br></code></pre></td></tr></tbody></table></figure>
+<p>可能有些同学看到这里会一脸懵逼，没关系<del>，我最早看到这里的时候也是一脸懵逼</del>，我们下面就来解释一下。<br>还记得我们刚才说的军械部的概念吗？我们可以把这里的 <code>@DRifle</code> 和 <code>@DAmmos</code> 理解成是一个狙击手 Sniper 对这两件装备的声明，他向军械部声明自己需要这两件装备，但自己并不持有。我们可以把 <code>@DRifle</code> 理解成士兵的持枪证，当狙击手扣动扳机 <code>trigger</code> 的时候会使用到 rifle ，他便凭借 DRifle 向军械部索取一把步枪。<br>那么我们是如何实现这样一个持枪证的呢？</p>
+<h2><span id="typescript-%E8%A3%85%E9%A5%B0%E5%99%A8">TypeScript 装饰器</span></h2><p>感谢 TypeScript 内置了装饰器能力，使得我们运用 IOC 设计模式进行编程成为了可能。不过在使用装饰器之前，我们需要先在项目的 tsconfig.json 当中添加一项配置：</p>
+<figure class="highlight ts"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs ts">{<br>  <span class="hljs-string">"compilerOptions"</span>: {<br>    <span class="hljs-string">"experimentalDecorators"</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 添加这一行</span><br>  },<br>}<br></code></pre></td></tr></tbody></table></figure>
+<p>添加这一条配置能够使得编译出来的 js 代码具有类型声明，这是 TypeScript 通过 <code>Reflect Metadata</code> 实现的。 <code>Reflect Metadata</code> 是 ES7 的一项提案，它主要用来在声明的时候添加和读取元数据。我们这里不再过多赘述，有兴趣的读者可以自行查阅资料进行学习。<br>下面我们来实现一个装饰器工厂函数，它将被用来生产士兵的持枪证并发放给士兵。</p>
+<figure class="highlight ts"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">Identifier</span>&lt;T&gt; {<br>  (...<span class="hljs-attr">args</span>: <span class="hljs-built_in">any</span>[]): <span class="hljs-built_in">void</span>;<br>  <span class="hljs-attr">type</span>: T;<br>}<br><span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> createGunDecorator&lt;T&gt;(<span class="hljs-attr">gunId</span>: <span class="hljs-built_in">string</span>): <span class="hljs-title class_">Identifier</span>&lt;T&gt; {<br>  <span class="hljs-keyword">const</span> identifier = &lt;<span class="hljs-title class_">Identifier</span>&lt;T&gt;&gt;<span class="hljs-keyword">function</span> (<span class="hljs-params"><span class="hljs-attr">target</span>: <span class="hljs-built_in">object</span>, <span class="hljs-attr">key</span>: <span class="hljs-built_in">string</span></span>) {<br>    (&lt;<span class="hljs-built_in">any</span>&gt;target)[key] = {}; <span class="hljs-comment">// 这边只创建了一个空对象</span><br>  };<br>  identifier.<span class="hljs-property">toString</span> = <span class="hljs-function">() =&gt;</span> gunId;<br>  <span class="hljs-keyword">return</span> identifier;<br>}<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">IRifle</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Gun</span> {}<br><span class="hljs-keyword">const</span> <span class="hljs-title class_">DRifle</span> = createGunDecorator&lt;<span class="hljs-title class_">IRifle</span>&gt;(<span class="hljs-string">'rifle_01'</span>);<br></code></pre></td></tr></tbody></table></figure>
+<p>在上面的代码块中，我们实现了一个识别接口 <code>Identifier</code> ；一个用来生产枪支描述符（持枪证）的函数 <code>createGunDecorator</code> ，它通过传入一个枪支 ID 来给发放的持枪证做上标记，通过函数的泛型传入对应的枪支类型。在下方我们也使用该函数创建出了一枚名叫 <code>rifle_01</code> 的步枪持枪证，下面我们回到 Sniper 类当中，看看我们的狙击手是怎么使用这枚持枪证的。<br>还记得在 Sniper 类当中，我们让狙击手私人持有了这枚持枪证吗？</p>
+<figure class="highlight ts"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">const</span> <span class="hljs-title class_">DRifle</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"><span class="hljs-attr">target</span>: <span class="hljs-built_in">object</span>, <span class="hljs-attr">key</span>: <span class="hljs-built_in">string</span></span>) {<br>  (&lt;<span class="hljs-built_in">any</span>&gt;target)[key] = {};<br>}<br><span class="hljs-title class_">DRifle</span>.<span class="hljs-property">toString</span> = <span class="hljs-function">() =&gt;</span> <span class="hljs-string">'rifle_01'</span>;<br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 上面是原原本本地生成了一个持枪证，方便讲解</span><br><span class="hljs-comment"> */</span><br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Sniper</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Soldier</span> {<br>  <span class="hljs-meta">@DRifle</span> <span class="hljs-keyword">private</span> _rifle!: <span class="hljs-title class_">IRifle</span>;<br>}<br></code></pre></td></tr></tbody></table></figure>
+<p>我们这枚持枪证是如何在狙击手的手中发挥出它的作用的呢？我们来具体看一下 DRifle 的实现。DRifle 函数接受了两个参数，分别是 <code>object</code> 类型的 <code>target</code> 以及 <code>string</code> 类型的 <code>key</code> 。在 Sniper 中我们以 <code>@DRifle private _rifle!: IRifle;</code> 的方式使用了这个函数，实际 DRifle 接受的参数分别是实例化时的 Sniper 对象以及字符串形式的 <code>'_rifle'</code> 。所以 DRifle 函数 真正的作用是在 Sniper 实例化时为实例化后的狙击手对象挂载上了一个键值为 <code>'_rifle'</code> 的空对象。<br>这么解释可能比较拗口，我们不妨通过一个实际例子来演示一下：</p>
+<figure class="highlight ts"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">Identifier</span>&lt;T&gt; {<br>  (...<span class="hljs-attr">args</span>: <span class="hljs-built_in">any</span>[]): <span class="hljs-built_in">void</span>;<br>  <span class="hljs-attr">type</span>: T;<br>}<br><span class="hljs-keyword">function</span> createGunDecorator&lt;T&gt;(<span class="hljs-attr">gunId</span>: <span class="hljs-built_in">string</span>): <span class="hljs-title class_">Identifier</span>&lt;T&gt; {<br>  <span class="hljs-keyword">const</span> identifier = &lt;<span class="hljs-title class_">Identifier</span>&lt;T&gt;&gt;<span class="hljs-keyword">function</span> (<span class="hljs-params"><span class="hljs-attr">target</span>: <span class="hljs-built_in">object</span>, <span class="hljs-attr">key</span>: <span class="hljs-built_in">string</span></span>) {<br>    (&lt;<span class="hljs-built_in">any</span>&gt;target)[key] = {<br>        gunId, <span class="hljs-comment">// 此处为了方便演示时比较直观而做了改写</span><br>    };<br>  };<br>  identifier.<span class="hljs-property">toString</span> = <span class="hljs-function">() =&gt;</span> gunId;<br>  <span class="hljs-keyword">return</span> identifier;<br>}<br><br><span class="hljs-keyword">interface</span> <span class="hljs-title class_">IRifle</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Gun</span> {}<br><span class="hljs-keyword">const</span> <span class="hljs-title class_">DRifle</span> = createGunDecorator&lt;<span class="hljs-title class_">IRifle</span>&gt;(<span class="hljs-string">'rifle_01'</span>);<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Sniper</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Soldier</span> {<br>  <span class="hljs-meta">@DRifle</span> <span class="hljs-keyword">public</span> _rifle!: <span class="hljs-title class_">Gun</span>;<br>  <span class="hljs-meta">@DAmmos</span> <span class="hljs-keyword">private</span> _ammos!: <span class="hljs-title class_">IMagnums</span>;<br><br>  <span class="hljs-title function_">trigger</span>(): <span class="hljs-built_in">void</span> {<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">_rifle</span>.<span class="hljs-title function_">fire</span>();<br>  }<br><br>  <span class="hljs-title function_">reload</span>(<span class="hljs-attr">ammos</span>: <span class="hljs-built_in">number</span>): <span class="hljs-built_in">void</span> {<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">_rifle</span>.<span class="hljs-title function_">reload</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">_ammos</span>.<span class="hljs-property">ammos</span>.<span class="hljs-title function_">splice</span>(<span class="hljs-number">0</span>, ammos));<br>  }<br>}<br><br><span class="hljs-keyword">const</span> sniper = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Sniper</span>();<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(sniper.<span class="hljs-property">_rifle</span>);<br></code></pre></td></tr></tbody></table></figure>
+<p>执行结果：<br><img data-fancybox="gallery" data-sizes="auto" data-src="https://kira.host/assets/Pictures/Others/1661827643113-6d1a0248-64a7-4585-858b-226b73fccb53.png" alt="执行结果" class="lazyload"><br>可以看到，我们这枚持枪证实际上是在 Sniper 实例化时被挂在了实例对象上。<br>但是，目前我们只实现了生成发放持枪证，士兵并不能使用这枚持枪证去拿到真正的枪支。那么下面我们将来实现军械部的函数。</p>
+<h2><span id="%E5%AE%9E%E7%8E%B0-ioc-%E5%AE%B9%E5%99%A8">实现 IOC 容器</span></h2><p>现在是不是要对军械部进行实现了？诶，先别急，军械部的武器也是从<strong>兵工厂</strong>生产出来的啊，没有兵工厂，军械库上哪获得武器呢？<br>所以我们现在实际上先来实现一个兵工厂函数：</p>
+<figure class="highlight ts"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Factory</span> {<br>    <span class="hljs-keyword">private</span> _entries = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>&lt;<span class="hljs-title class_">Identifier</span>&lt;<span class="hljs-built_in">any</span>&gt;, <span class="hljs-built_in">any</span>&gt;();<br><br>    <span class="hljs-title function_">constructor</span>(<span class="hljs-params">...<span class="hljs-attr">entries</span>: [<span class="hljs-title class_">Identifier</span>&lt;<span class="hljs-built_in">any</span>&gt;, <span class="hljs-built_in">any</span>][]</span>) {<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> [id, service] <span class="hljs-keyword">of</span> entries) {<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">set</span>(id, service);<br>        }<br>    }<br><br>    set&lt;T&gt;(<br>        <span class="hljs-attr">id</span>: <span class="hljs-title class_">Identifier</span>&lt;T&gt;,<br>        <span class="hljs-attr">instance</span>: T<br>    ): T {<br>        <span class="hljs-keyword">const</span> result = <span class="hljs-variable language_">this</span>.<span class="hljs-property">_entries</span>.<span class="hljs-title function_">get</span>(id);<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">_entries</span>.<span class="hljs-title function_">set</span>(id, instance);<br>        <span class="hljs-keyword">return</span> result;<br>    }<br><br>    <span class="hljs-title function_">has</span>(<span class="hljs-attr">id</span>: <span class="hljs-title class_">Identifier</span>&lt;<span class="hljs-built_in">any</span>&gt;): <span class="hljs-built_in">boolean</span> {<br>        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">_entries</span>.<span class="hljs-title function_">has</span>(id);<br>    }<br><br>    get&lt;T&gt;(<span class="hljs-attr">id</span>: <span class="hljs-title class_">Identifier</span>&lt;T&gt;): T {<br>        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">_entries</span>.<span class="hljs-title function_">get</span>(id);<br>    }<br>}<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> factory = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Factory</span>();<br></code></pre></td></tr></tbody></table></figure>
+<p>整个兵工厂的函数非常简单，就是很单纯的存取的功能。与其说是兵工厂，倒不如说它更像是军火库。<br>接下来，我们再实现一个用来调度武器装备的军械部：</p>
+<figure class="highlight ts"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">IArsenal</span> {<br>  get&lt;T&gt;(<span class="hljs-attr">id</span>: <span class="hljs-title class_">Identifier</span>&lt;T&gt;): T;<br>  <span class="hljs-attr">wareHouse</span>: <span class="hljs-title class_">Map</span>&lt;<span class="hljs-title class_">Identifier</span>&lt;<span class="hljs-built_in">any</span>&gt;, <span class="hljs-built_in">any</span>&gt;;<br>}<br><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-attr">arsenal</span>: <span class="hljs-title class_">IArsenal</span> = {<br>  get&lt;T&gt;(<span class="hljs-attr">id</span>: <span class="hljs-title class_">Identifier</span>&lt;T&gt;) {<br>    <span class="hljs-keyword">return</span> (<br>      <span class="hljs-variable language_">this</span>.<span class="hljs-property">wareHouse</span>.<span class="hljs-title function_">get</span>(id) ||<br>      (<span class="hljs-function">() =&gt;</span> {<br>        <span class="hljs-keyword">let</span> serviceInstance = <span class="hljs-literal">undefined</span> <span class="hljs-keyword">as</span> <span class="hljs-literal">undefined</span> | T;<br><br>        <span class="hljs-keyword">const</span> service = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Proxy</span>(<br>          {},<br>          {<br>            <span class="hljs-title function_">get</span>(<span class="hljs-params">_, <span class="hljs-attr">property</span>: <span class="hljs-built_in">string</span></span>) {<br>              <span class="hljs-keyword">if</span> (!serviceInstance) {<br>                serviceInstance = factory.<span class="hljs-title function_">get</span>(id);<br>              }<br>              <span class="hljs-keyword">const</span> target = (serviceInstance <span class="hljs-keyword">as</span> <span class="hljs-built_in">any</span>)[property];<br>              <span class="hljs-keyword">return</span> <span class="hljs-keyword">typeof</span> target === <span class="hljs-string">'function'</span><br>                ? <span class="hljs-function">(<span class="hljs-params">...<span class="hljs-attr">args</span>: <span class="hljs-built_in">any</span>[]</span>) =&gt;</span> {<br>                    <span class="hljs-keyword">return</span> target.<span class="hljs-title function_">call</span>(serviceInstance, ...args);<br>                  }<br>                : target;<br>            },<br>          }<br>        );<br><br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">wareHouse</span>.<span class="hljs-title function_">set</span>(id, service);<br>        <span class="hljs-keyword">return</span> service <span class="hljs-keyword">as</span> T;<br>      })()<br>    );<br>  },<br>  <span class="hljs-attr">wareHouse</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>&lt;<span class="hljs-title class_">Identifier</span>&lt;<span class="hljs-built_in">any</span>&gt;, <span class="hljs-built_in">any</span>&gt;(),<br>};<br></code></pre></td></tr></tbody></table></figure>
+<p>接下来，我们结合创建一把步枪到士兵开火的过程，来解释一下上面这两段代码在整个流程中占据的生态位：</p>
+<figure class="highlight ts"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ts">factory.<span class="hljs-title function_">set</span>(<span class="hljs-title class_">DRifle</span>, <span class="hljs-keyword">new</span> <span class="hljs-title class_">Rifle</span>());<br></code></pre></td></tr></tbody></table></figure>
+<p>我们这边直接创建一把步枪，将一份持枪证的副本和枪支一起塞进兵工厂，让持枪证对应一把步枪。当狙击手去调用 _rifle 时，会通过持枪证的逻辑去尝试领取枪支，但是目前我们的持枪证只是给狙击手塞了一张空头支票，下面我们对持枪证的代码进行修改，让它能够拿到真正的枪支：</p>
+<figure class="highlight ts"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> createGunDecorator&lt;T&gt;(<span class="hljs-attr">gunId</span>: <span class="hljs-built_in">string</span>): <span class="hljs-title class_">Identifier</span>&lt;T&gt; {<br>  <span class="hljs-keyword">const</span> identifier = &lt;<span class="hljs-title class_">Identifier</span>&lt;T&gt;&gt;<span class="hljs-keyword">function</span> (<span class="hljs-params"><span class="hljs-attr">target</span>: <span class="hljs-built_in">object</span>, <span class="hljs-attr">key</span>: <span class="hljs-built_in">string</span></span>) {<br>    (&lt;<span class="hljs-built_in">any</span>&gt;target)[key] = arsenal.<span class="hljs-title function_">get</span>(identifier);<br>  };<br>  identifier.<span class="hljs-property">toString</span> = <span class="hljs-function">() =&gt;</span> gunId;<br>  <span class="hljs-keyword">return</span> identifier;<br>}<br></code></pre></td></tr></tbody></table></figure>
+<p>这样一来，持枪证的逻辑就变成实例化士兵时，我们直接从军械部调取持枪证对应的步枪交给士兵。现在的士兵已经可以开枪射击了：</p>
+<figure class="highlight ts"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">const</span> sniper = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Sniper</span>();<br>sniper.<span class="hljs-title function_">trigger</span>();<br></code></pre></td></tr></tbody></table></figure>
+<p><img src="https://kira.host/assets/Pictures/Others/1661830223752-1d47f742-5121-4d5c-8f9d-0bdd4d858415.png"></p>
+<p>现在，这一套流程就非常清楚了：</p>
+<ol>
+<li>生产出枪支后，为枪支指定一本持枪证，加入到军械部的库房中；</li>
+<li>当士兵入伍（实例化）时，通过自己持有的持枪证，向军械部申请一把步枪；</li>
+<li>军械部考虑到安全问题，并没有直接将枪支交给士兵，而是变相地给了士兵一个使用该枪支的权限（Proxy）；</li>
+<li>可怜的新兵并不知道自己被军械部糊弄了，以为自己手上真的拿到了一把步枪，乐乐呵呵地跑去靶场准备开枪；</li>
+<li>实际上，只有在新兵对枪支进行操作时，军械部才会火急火燎地从库房中找出士兵的持枪权限对应的那把步枪，并代理为新兵执行操作（对，没错，真正扣扳机的是军械部，只是它让新兵感知不到是别人在帮他开枪）。</li>
+</ol>
+<p>懂了，所以新兵其实是 <a target="_blank" rel="noopener" href="https://zh.moegirl.org.cn/%E6%9B%BF%E8%BA%AB(JOJO%E7%9A%84%E5%A5%87%E5%A6%99%E5%86%92%E9%99%A9)#"><strong>替身使者</strong></a>！(bushi</p>
+<blockquote>
+<p><strong>大家这里可以思考一个问题：</strong>真正意义上的 IOC 连创建对象的过程也交给了 IOC 容器，但在我们上面的实例代码中，我们是人为显式地通过 <code>factory.set(DRifle, new Rifle());</code> 实例化了一把步枪。<br>实际上，我们可以通过对代码进行一些修改，使得 IOC 容器能够代替我们去对对象进行实例化，那么这部分的具体实现就交给读者们自己尝试了。<br>如果有读者没能想出解决方案，可以参考我目前正在做的一个 React + Electron + TypeScript 的快速开发模板项目的仓库，里面给出了一种设计方法：<a target="_blank" rel="noopener" href="https://github.com/ch1ny/react-electron-typescript-template/tree/master/src/main/core">https://github.com/ch1ny/react-electron-typescript-template/tree/master/src/main/core</a></p>
+</blockquote>
+<h1><span id="%E4%BD%A0%E5%B9%B6%E4%B8%8D%E9%9C%80%E8%A6%81%E4%BD%BF%E7%94%A8-ioc">你并不需要使用 IOC</span></h1><p>上文只是对 TypeScript 实现 IOC 设计模式做了一个简单的介绍，只是为读者引入了这样的一个概念，所以上面的实例代码还比较粗糙。<br>在开发中使用 IOC 能够实现组件之间的解耦，提高程序的灵活性和可维护性。但这并不意味着你必须要在项目当中使用 IOC 的设计模式。我们要了解到 IOC 同样具有它的缺点：</p>
+<ol>
+<li>生成一个对象的步骤变复杂了，原本由我们手动创建的对象现在交给了 IOC 容器进行实例化。对于不习惯这种方式的人，会觉得有些别扭和不直观。</li>
+<li>对象生成因为是使用反射编程，在效率上有些损耗。但相对于IoC提高的维护性和灵活性来说，这点损耗是微不足道的，除非某对象的生成对效率要求特别高。<br>因此，你的项目中到底有没有使用 IOC 的必要，就需要由各位自行评估了。</li>
+</ol>
+</body></html>
+	</article>
+
+	 
+    <div class="kira-post-copyright">
+        <strong>本文作者：</strong>德布罗煜<br>
+        <strong>本文链接：</strong><a href="https://kira.host/blog/TypeScript-IOC-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%88%9D%E6%8E%A2/" title="https:&#x2F;&#x2F;kira.host&#x2F;blog&#x2F;TypeScript-IOC-设计模式初探&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;kira.host&#x2F;blog&#x2F;TypeScript-IOC-设计模式初探&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+  
+	<div class="kira-post-nav">
+		<nav class="post-nav">
+			  
+			<!-- 先找到与当前文字相同的目录 -->
+			                                                         
+			<!-- 在找到当前文章所在的 index -->
+			                                                                        
+			<!-- 上一篇文章 -->
+			<div class="old">
+				<span>上一章</span>
+				<a href="/blog/%E3%80%90VSCODE%E6%8F%92%E4%BB%B6%E6%8E%A8%E8%8D%90%E3%80%91TODO-Highlight/"> 【VSCODE插件推荐】TODO Highlight</a>
+			</div>
+			       
+			<!-- 下一篇文章 -->
+			<div class="new">
+				<span>下一章</span>
+				<a href="/blog/%E3%80%90Fira-Code%E3%80%91%E4%B8%80%E6%AC%BE%E4%B8%BA%E7%A8%8B%E5%BA%8F%E5%91%98%E9%87%8F%E8%BA%AB%E6%89%93%E9%80%A0%E7%9A%84%E5%AD%97%E4%BD%93/"> 【Fira Code】一款为程序员量身打造的字体</a>
+			</div>
+			                                       
+		</nav>
+	</div>
+	
+	<div class="kira-post-meta kira-rainbow">
+		
+			<a class="kirafont icon-container-fill -link" href="/blog/categories/%E7%BC%96%E7%A8%8B/">编程</a>
+		
+		
+			<a class="kirafont icon-tag-fill -none-link" href="/blog/tags/TypeScript/" rel="tag">TypeScript</a>
+		
+	</div>
+	
+	<div class="kira-post-footer">
+		
+
+		
+	<div class="giscus"></div>
+  
+    <script src="https://giscus.app/client.js"
+      data-repo="ch1ny/ch1ny.github.io"
+      data-repo-id="R_kgDOHGgizw"
+      data-category="General"
+      data-category-id="DIC_kwDOHGgiz84CU88t"
+      data-mapping="pathname"
+      data-strict="0"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="top"
+      data-theme="light"
+      data-lang="en"
+      data-loading="lazy"
+      crossorigin="anonymous"
+      async  
+    ></script>
+  
+
+	</div>
+	
+</div>
+
+				</div>
+			</div>
+			<div class="kira-right-column">
+	<a onclick="document.querySelector('#kira-top-header').scrollIntoView({behavior: 'smooth'});" class="kira-backtotop" aria-label="回到顶部" title="回到顶部">
+		<button class="mdui-fab mdui-ripple">
+			<i class="kirafont icon-caret-up"></i>
+		</button>
+	</a>
+</div>
+
+		</div>
+	</body>
+</html>

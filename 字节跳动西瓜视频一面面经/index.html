@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html 
+	lang="zh_CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		
+<link rel="stylesheet" href="/blog/css/layout.css">
+
+		
+		<title> 字节跳动西瓜视频一面面经 -  德布罗煜</title>
+		<!-- <link rel="stylesheet" href="https://unpkg.com/mdui@1.0.2/dist/css/mdui.min.css" /> -->
+		<!-- <script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script> -->
+		
+<link rel="stylesheet" href="/blog/lib/mdui/mdui.min.css">
+
+		
+<script src="/blog/lib/mdui/mdui.min.js"></script>
+
+		<!-- lazyload -->
+		
+<script src="/blog/lib/lazysizes.js"></script>
+
+		<!-- smooth-scrolling -->
+		
+<script src="/blog/lib/smooth-scrolling.js"></script>
+
+		<!-- highlight -->
+		
+<link rel="stylesheet" href="/blog/lib/highlight/atom-one-dark.min.css">
+
+		
+<script src="/blog/lib/highlight/highlight.min.js"></script>
+
+		<!-- 预置 kiraicon -->
+		
+<link rel="stylesheet" href="/blog/lib/iconfont/iconfont.css">
+
+		
+		<link
+			rel="shortcut icon"
+			href="https://kira.host/assets/Pictures/Others/116359b4ccf19917.jpg"
+			type="image/png"
+		/>
+		
+<link rel="stylesheet" href="/blog/deps/css/APlayer.min.css">
+
+		
+		
+<script src="/blog/deps/js/APlayer.min.js"></script>
+<script src="/blog/deps/js/Meting.min.js"></script>
+
+	<meta name="generator" content="Hexo 6.3.0"></head>
+
+	<body>
+		<div
+			class="kira-background"
+			style="background-image: url('https://kira.host/assets/Pictures/Others/-f0d5cc34c6e5aa7_compressed.jpg')"
+		></div>
+		<div class="kira-header">
+    <a
+        class="kira-drawer-button mdui-ripple"
+        title="导航栏"
+        onclick="document.querySelector('.kira-sidebar-modal').classList.add('show');document.querySelector('.kira-sidebar#sidebar').classList.add('show');"
+    >
+        <i class="kirafont icon-menu"></i>
+    </a>
+    <a href="/blog/" title="德布罗煜">
+        <img
+			src="https://kira.host/assets/Pictures/Others/20220922230447.jpg"
+			alt="德布罗煜"
+		/>
+    </a>
+</div>
+		<div class="kira-body">
+			<div class="kira-sidebar" id="sidebar">
+	<div class="kira-avatar mdui-ripple">
+		<a href="https://kira.host/assets/Pictures/Others/20220922230447.jpg" title="德布罗煜">
+			<img
+				src="https://kira.host/assets/Pictures/Others/20220922230447.jpg"
+				alt="德布罗煜"
+			/>
+		</a>
+	</div>
+	<div class="kira-count">
+		<div><span>文章</span>30</div>
+		<div><span>标签</span>14</div>
+		<div><span>分类</span>3</div>
+	</div>
+	<div class="kira-list">
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/blog/"
+			title="回到首页"
+		>
+			<i
+				class="kirafont
+					
+						icon-home
+					"
+			></i>
+			<div class="kira-list-item-content">
+				回到首页
+			</div>
+		</a>
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/blog/archive.html"
+			title="文章归档"
+		>
+			<i
+				class="kirafont
+					
+						icon-container
+					"
+			></i>
+			<div class="kira-list-item-content">
+				文章归档
+			</div>
+		</a>
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/blog/about.html"
+			title="关于本人"
+		>
+			<i
+				class="kirafont
+					
+						icon-user
+					"
+			></i>
+			<div class="kira-list-item-content">
+				关于本人
+			</div>
+		</a>
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/blog/friends.html"
+			title="我的朋友"
+		>
+			<i
+				class="kirafont
+					
+						icon-team
+					"
+			></i>
+			<div class="kira-list-item-content">
+				我的朋友
+			</div>
+		</a>
+		
+	</div>
+	<aside id="kira-sidebar">
+		
+			<div class="kira-widget-wrap">
+	<div class="kira-widget kira-social">
+		
+			<a
+				class="mdui-ripple"
+				href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=1056317718&website=www.oicqzone.com"
+				target="_blank"
+				mdui-tooltip="{content: 'QQ'}"
+				style="color: rgb(49, 174, 255); background-color: rgba(49, 174, 255, .1);"
+			>
+				<i
+					class="kirafont
+					
+						icon-QQ
+					"
+				></i>
+			</a>
+		
+			<a
+				class="mdui-ripple"
+				href="https://space.bilibili.com/27905679"
+				target="_blank"
+				mdui-tooltip="{content: '哔哩哔哩'}"
+				style="color: rgb(231, 106, 141); background-color: rgba(231, 106, 141, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-bilibili
+					"
+				></i>
+			</a>
+		
+			<a
+				class="mdui-ripple"
+				href="https://github.com/ch1ny/"
+				target="_blank"
+				mdui-tooltip="{content: 'GitHub'}"
+				style="color: rgb(25, 23, 23); background-color: rgba(25, 23, 23, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-github
+					"
+				></i>
+			</a>
+		
+			<a
+				class="mdui-ripple"
+				href="https://gitee.com/ch1ny"
+				target="_blank"
+				mdui-tooltip="{content: 'Gitee'}"
+				style="color: rgb(165, 15, 15); background-color: rgba(165, 15, 15, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-gitee
+					"
+				></i>
+			</a>
+		
+	</div>
+</div>
+
+		
+			
+  <div class="kira-widget-wrap">
+    <h3 class="kira-widget-title">分类</h3>
+    <div class="kira-widget">
+      <ul class="category-list">
+        
+        
+
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/blog/categories/Revue/">
+              Revue
+            </a>
+            <span class="category-list-count">5</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/blog/categories/编程/">
+              编程
+            </a>
+            <span class="category-list-count">23</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/blog/categories/面经/">
+              面经
+            </a>
+            <span class="category-list-count">2</span>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+		
+			
+	<div class="kira-widget-wrap">
+		<div id="randomtagcloud" class="kira-widget tagcloud kira-rainbow">
+			<a href="/blog/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/blog/tags/Node-js/" style="font-size: 16px;">Node.js</a> <a href="/blog/tags/React/" style="font-size: 18px;">React</a> <a href="/blog/tags/Revue/" style="font-size: 18px;">Revue</a> <a href="/blog/tags/Rust/" style="font-size: 14px;">Rust</a> <a href="/blog/tags/TypeScript/" style="font-size: 10px;">TypeScript</a> <a href="/blog/tags/Unity3D/" style="font-size: 10px;">Unity3D</a> <a href="/blog/tags/VSCODE/" style="font-size: 12px;">VSCODE</a> <a href="/blog/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/blog/tags/electron/" style="font-size: 10px;">electron</a> <a href="/blog/tags/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8/" style="font-size: 10px;">字节跳动</a> <a href="/blog/tags/%E8%9A%82%E8%9A%81/" style="font-size: 10px;">蚂蚁</a> <a href="/blog/tags/%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4/" style="font-size: 10px;">阿里巴巴</a> <a href="/blog/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 12px;">面试</a>
+		</div>
+		
+	</div>
+
+
+		
+	</aside>
+	<div class="kira-copyright">
+		&copy; 2024
+		<a href="/blog/">德布罗煜</a>
+		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> &
+		<a href="https://github.com/ch1ny/kira-hexo/" target="_blank">Kira-Hexo</a>
+		<br />
+		
+			<a
+				href="https://beian.miit.gov.cn/"
+				target="_blank"
+			>
+				赣ICP备2021007955号-3
+			</a>
+		
+		<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div><span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span></div><div><span id="busuanzi_container_site_uv">共接待访客<span id="busuanzi_value_site_uv"></span>位</span></div>
+	</div>
+</div>
+<div
+	class="kira-sidebar-modal"
+	id="sidebar-modal"
+	onclick="(function(self) {
+		self.classList.remove('show');
+		document.querySelector('.kira-sidebar.show#sidebar').classList.remove('show');
+	})(this)"
+></div>
+			<div class="kira-content">
+				<div id="kira-top-header"></div>
+				<div class="kira-main-content">
+					
+<link rel="stylesheet" href="/blog/css/kira-image.css">
+
+
+<script src="/blog/js/kira-image.js"></script>
+
+<div class="kira-image">
+    <div class="kira-image-modal">
+        <div class="kira-image-header">
+            <div class="kira-image-counter"></div>
+            <div class="kira-image-title"></div>
+            <div class="kira-image-operation">
+                <div class="kira-image-operation-button" id="kira-image-operation-button-zoom">
+                    <i class="kirafont icon-zoom-in"></i>
+                </div>
+                <div class="kira-image-operation-button" id="kira-image-operation-button-close">
+                    <i class="kirafont icon-close"></i>
+                </div>
+            </div>
+        </div>
+        <div class="kira-image-container">
+            <div class="kira-image-prev-button-panel">
+                <div class="kira-image-exchange-button">
+                    <i class="kirafont icon-left"></i>
+                </div>
+            </div>
+            <div class="kira-image-list">
+                <div class="kira-image-prev">
+                    <img />
+                </div>
+                <div class="kira-image-now">
+                    <img />
+                </div>
+                <div class="kira-image-next">
+                    <img />
+                </div>
+            </div>
+            <div class="kira-image-next-button-panel">
+                <div class="kira-image-exchange-button">
+                    <i class="kirafont icon-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+	
+<link rel="stylesheet" href="/blog/css/kira-code-copy.css">
+
+	
+<script src="/blog/js/kira-code-copy.js"></script>
+
+
+<div class="kira-post">
+	<article>
+		
+		<div class="kira-post-cover">
+			<img
+				data-src="https://lf1-cdn-tos.bytescm.com/obj/static/ies/bytedance_official/_next/static/images/0-390b5def140dc370854c98b8e82ad394.png"
+				data-sizes="auto"
+				alt="字节跳动西瓜视频一面面经"
+				class="lazyload kira-post-cover-image disabled-kira-image"
+			/>
+			<h1>字节跳动西瓜视频一面面经</h1>
+		</div>
+		
+		<div class="kira-post-meta kira-rainbow" style="margin:10px 0!important;">
+			<a><i class="kirafont icon-calendar-fill"></i>2021年09月30日</a>
+			<a><i class="kirafont icon-edit-fill"></i>1.7k 字</a>
+			<a><i class="kirafont icon-time-circle-fill"></i>大概 7 分钟</a>
+		</div>
+		<html><head></head><body><p>今天人生第一次面试给了字节跳动，面试前非常紧张，从投递简历到正式面试之间只隔了三天。<br>感觉这三天看的博客比三个月学的都多（-_-||）。<br>正式面试的时候也发生了很多状况，包括但不限于对方听不见我说话（面试前明明特地调试了话筒来着），害得人家面试官小哥哥还特地打了一通长达 1 个小时的电话来和我语音面试。<br>不过面试官人挺好的，一直都在认真听我回答问题，虽然我面试回答得稀烂，面试结束后也立刻给我发了短信通知我准备二面。</p>
+<span id="more"></span>
+
+<!-- toc -->
+
+<ul>
+<li><a href="#%E9%9D%A2%E8%AF%95%E6%A6%82%E5%86%B5">面试概况</a></li>
+<li><a href="#%E9%9D%A2%E8%AF%95%E7%9A%84%E9%97%AE%E9%A2%98">面试的问题</a></li>
+<li><a href="#%E6%84%9F%E6%83%B3">感想</a></li>
+</ul>
+<!-- tocstop -->
+
+<h2><span id="%E9%9D%A2%E8%AF%95%E6%A6%82%E5%86%B5">面试概况</span></h2><ul>
+<li><strong>部门</strong>：字节跳动西瓜视频前端开发</li>
+<li><strong>Base</strong>：厦门</li>
+</ul>
+<h2><span id="%E9%9D%A2%E8%AF%95%E7%9A%84%E9%97%AE%E9%A2%98">面试的问题</span></h2><p><strong>以下是个人回忆的面试时问到的问题（后悔没有录音了）</strong></p>
+<ol>
+<li>自我介绍</li>
+<li>你是怎么学习前端的<br>我就回答了：官方文档、大神写的博客（如阮一峰），遇到自己解决不了的问题就去 CSDN 或者 StackOverflow 上查</li>
+<li>讲一下 jQuery、React、Vue.js 之间的区别</li>
+<li>简要描述一下操作系统中的页表概念 √</li>
+<li>简要介绍一下操作系统中的虚拟内存 √</li>
+<li>讲一下你对数据库索引的了解 √<br>这里还顺带问了一下数据库中所有属性是否都应该添加索引</li>
+<li>说一下数据库中的事务，并举一个例子说明 √</li>
+<li>问了一个简单的算法题：找出数组中前三大的数字<br>这个地方我没太想明白，我感觉直接定义一个长为 3 的数组，遍历一遍原数组好像就已经能够在 O(n)的时间复杂度内完成这个流程了。面试官也没说什么，就又问了一句这个算法的空间复杂度是多少。话说这个还有更快的算法吗？</li>
+<li>你知道 javascript 的数组排序算法怎么实现的吗？<br>答：没有看过 js 的 sort 方法，但是看过 java 的源码，接着把 java 的 sort 方法的源码解释了一下。</li>
+<li>讲一下什么是稳定排序，什么是非稳定排序，举例说明。</li>
+<li>知道 TCP 和 UDP 之间的区别吗？ √</li>
+<li>说一下你对 Http 的了解 √<br>Http 状态码、三次握手、四次挥手、Http 结构 balabala 能说的全说了一遍</li>
+<li>因为简历上写了一个 H5+的 App 项目，所以面试官问了一句你知道 WebView 和底层的 java 怎么通信的吗？<br>这段直接给我干蒙了，确实没了解过通信的原理，于是小哥哥让我解释了一下 WebView 是什么东西。</li>
+<li>为什么 Vue 的 data 被定义成方法而不是对象？<br>这段其实是知道的，但是一直没回答到重点上，很尴尬</li>
+<li>解释一下浏览器渲染页面的过程 √<br>这里因为我说了 script 标签是串行执行的，所以面试官特地问了一句如果把 script 标签提前到 head 怎么保证执行 script 的同时不阻塞浏览器渲染 html 正文（给 script 标签加 async 属性）</li>
+<li>既然提到了 async，面试官就让我解释一下 async 是什么，有什么作用</li>
+<li>因为上面一题的回答涉及到了 Promise 对象，所以面试官又问了一道 js 事件循环的机制，给了一串代码让我写输出。具体代码记不太清了，只要弄明白了 js 事件循环机制和宏任务微任务的话还是蛮简单的，网上有很多这种代码。</li>
+<li>面试官让我举几个 css 中表示尺寸的单位，我随口答了几个。接着问我知不知道 rem，我回答说是相对于父元素字体的大小，他说我的回答是错的，雀食，em 才是相对于父元素字体的大小，rem 是相对于根元素字体的大小。</li>
+<li>然后让我通过纯 css 做一个动画，我问能不能通过 js 实现……（CSS 一生之敌了属于是）</li>
+<li>虚拟 DOM 和真实 DOM 之间的关系 √</li>
+<li>简历上有提到过 Nginx，所以面试官问了一句除了反向代理，你有用 Nginx 实现过负载均衡吗 ×</li>
+<li>解释一下浏览器创建 AJAX 请求的过程 √<br>顺便手写了一下原生的 JS 代码</li>
+<li>AJAX 怎么携带 cookie √</li>
+<li>说明一下 v-show 和 v-if 的区别，并问如果让你实现 v-show 你会怎么做 √</li>
+<li>http 请求有哪些方法？GET、POST、OPTIONS、PUT 等</li>
+<li>说一下 OPTIONS 和 PUT 是做什么的 （寄了，这些基本没用过，回答得也并不好）×</li>
+<li>说一下 GET 和 POST 之间的区别 √</li>
+<li>介绍一下 fetch（只听过，没用过，了解得并不多） ×</li>
+<li>说一下 http 和 websocket 的区别</li>
+<li>最后让我写了一道算法题：<blockquote>
+<p>输入一段数组表示许多格子<br>每一个格子中都有一个数字，表示在这个格子可以向前挪动几步，问从第一个格子出发能否到达最后一个格子<br><strong>输入样例一</strong> &gt; <strong>[ 2, 3, 1, 1, 4 ]</strong> &gt; <strong>输出样例一</strong> &gt; <strong>true</strong></p>
+<p><strong>输入样例二</strong> &gt; <strong>[ 3, 2, 1, 0, 4]</strong> &gt; <strong>输出样例二</strong> &gt; <strong>false</strong></p>
+</blockquote>
+</li>
+</ol>
+<p>以下是我给出的代码：</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">canReach</span><span class="hljs-params">(<span class="hljs-type">int</span>[] arr)</span> {<br>    <span class="hljs-type">int</span> <span class="hljs-variable">index</span> <span class="hljs-operator">=</span> arr.length - <span class="hljs-number">2</span>;<br>    <span class="hljs-keyword">while</span>(index &gt;= <span class="hljs-number">0</span>){<br>        <span class="hljs-keyword">while</span>(arr[index] != <span class="hljs-number">0</span>){<br>            <span class="hljs-keyword">if</span>(--index &lt; <span class="hljs-number">0</span>){<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>            }<br>        }<br>        <span class="hljs-type">int</span> <span class="hljs-variable">zeroIndex</span> <span class="hljs-operator">=</span> index;<br>        <span class="hljs-keyword">while</span>(index &gt;= <span class="hljs-number">0</span> &amp;&amp; arr[index] + index &lt;= zeroIndex){<br>            <span class="hljs-keyword">if</span>(--index &lt; <span class="hljs-number">0</span>){<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>            }<br>        }<br>    }<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<p>我的想法是，从后往前依次遍历数组，如果遇到了 0，就往前看有没有元素能够跨过这个位置。如果没有就说明到不了末尾元素。<br>这题给的时间不太多，只给了差不多 5 分钟吧，这段代码只测试了用例，有没有其他 bug 还不是很清楚。</p>
+<h2><span id="%E6%84%9F%E6%83%B3">感想</span></h2><p>这毕竟是人生第一次面试，心里非常紧张。不过面试官小哥人非常好，一直都非常有耐心。<br>最后我在明知自己面试表现稀烂的情况下还是斗胆问了一句，“能不能评价一下我今天的表现？”。<br>面试官哥哥尴尬而不失礼貌地笑了一下，然后说你计算机方面的基础还是挺扎实的，算法也还可以，就是下次多看下 CSS 方面的知识。只能说<strong>大厂不愧是大厂</strong>，是我高攀不起了。<br>本来以为这轮面试寄了，结果中午去食堂吃饭的时候 HR 直接帮我约了二面和三面，字节跳动速度雀食快，只能说<strong>大厂不愧是大厂</strong>。<br><img data-fancybox="gallery" data-sizes="auto" data-src="https://kira.host/assets/Pictures/Others/24ed78b1812c43e089c26b75a515a102.jpg" alt="在这里插入图片描述" class="lazyload"></p>
+</body></html>
+	</article>
+
+	 
+    <div class="kira-post-copyright">
+        <strong>本文作者：</strong>德布罗煜<br>
+        <strong>本文链接：</strong><a href="https://kira.host/blog/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8%E8%A5%BF%E7%93%9C%E8%A7%86%E9%A2%91%E4%B8%80%E9%9D%A2%E9%9D%A2%E7%BB%8F/" title="https:&#x2F;&#x2F;kira.host&#x2F;blog&#x2F;字节跳动西瓜视频一面面经&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;kira.host&#x2F;blog&#x2F;字节跳动西瓜视频一面面经&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+  
+	<div class="kira-post-nav">
+		<nav class="post-nav">
+			      
+			<!-- 先找到与当前文字相同的目录 -->
+			   
+			<!-- 在找到当前文章所在的 index -->
+			       
+			<!-- 下一篇文章 -->
+			<div class="new">
+				<span>下一章</span>
+				<a href="/blog/%E8%9A%82%E8%9A%81%E9%9B%86%E5%9B%A2-%E6%95%B0%E5%AD%97%E9%87%91%E8%9E%8D%E7%BA%BF-%E4%BD%93%E9%AA%8C%E6%8A%80%E6%9C%AF%E9%83%A8%E5%89%8D%E7%AB%AF%E4%B8%80%E9%9D%A2%E9%9D%A2%E7%BB%8F/"> 蚂蚁集团-数字金融线-体验技术部前端一面面经</a>
+			</div>
+			              
+		</nav>
+	</div>
+	
+	<div class="kira-post-meta kira-rainbow">
+		
+			<a class="kirafont icon-container-fill -link" href="/blog/categories/%E9%9D%A2%E7%BB%8F/">面经</a>
+		
+		
+			<a class="kirafont icon-tag-fill -none-link" href="/blog/tags/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8/" rel="tag">字节跳动</a> <a class="kirafont icon-tag-fill -none-link" href="/blog/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a>
+		
+	</div>
+	
+	<div class="kira-post-footer">
+		
+
+		
+	<div class="giscus"></div>
+  
+    <script src="https://giscus.app/client.js"
+      data-repo="ch1ny/ch1ny.github.io"
+      data-repo-id="R_kgDOHGgizw"
+      data-category="General"
+      data-category-id="DIC_kwDOHGgiz84CU88t"
+      data-mapping="pathname"
+      data-strict="0"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="top"
+      data-theme="light"
+      data-lang="en"
+      data-loading="lazy"
+      crossorigin="anonymous"
+      async  
+    ></script>
+  
+
+	</div>
+	
+</div>
+
+				</div>
+			</div>
+			<div class="kira-right-column">
+	<a onclick="document.querySelector('#kira-top-header').scrollIntoView({behavior: 'smooth'});" class="kira-backtotop" aria-label="回到顶部" title="回到顶部">
+		<button class="mdui-fab mdui-ripple">
+			<i class="kirafont icon-caret-up"></i>
+		</button>
+	</a>
+</div>
+
+		</div>
+	</body>
+</html>

@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html 
+	lang="zh_CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		
+<link rel="stylesheet" href="/blog/css/layout.css">
+
+		
+		<title> Rust中通用的编程概念 -  德布罗煜</title>
+		<!-- <link rel="stylesheet" href="https://unpkg.com/mdui@1.0.2/dist/css/mdui.min.css" /> -->
+		<!-- <script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script> -->
+		
+<link rel="stylesheet" href="/blog/lib/mdui/mdui.min.css">
+
+		
+<script src="/blog/lib/mdui/mdui.min.js"></script>
+
+		<!-- lazyload -->
+		
+<script src="/blog/lib/lazysizes.js"></script>
+
+		<!-- smooth-scrolling -->
+		
+<script src="/blog/lib/smooth-scrolling.js"></script>
+
+		<!-- highlight -->
+		
+<link rel="stylesheet" href="/blog/lib/highlight/atom-one-dark.min.css">
+
+		
+<script src="/blog/lib/highlight/highlight.min.js"></script>
+
+		<!-- 预置 kiraicon -->
+		
+<link rel="stylesheet" href="/blog/lib/iconfont/iconfont.css">
+
+		
+		<link
+			rel="shortcut icon"
+			href="https://kira.host/assets/Pictures/Others/116359b4ccf19917.jpg"
+			type="image/png"
+		/>
+		
+<link rel="stylesheet" href="/blog/deps/css/APlayer.min.css">
+
+		
+		
+<script src="/blog/deps/js/APlayer.min.js"></script>
+<script src="/blog/deps/js/Meting.min.js"></script>
+
+	<meta name="generator" content="Hexo 6.3.0"></head>
+
+	<body>
+		<div
+			class="kira-background"
+			style="background-image: url('https://kira.host/assets/Pictures/Others/-f0d5cc34c6e5aa7_compressed.jpg')"
+		></div>
+		<div class="kira-header">
+    <a
+        class="kira-drawer-button mdui-ripple"
+        title="导航栏"
+        onclick="document.querySelector('.kira-sidebar-modal').classList.add('show');document.querySelector('.kira-sidebar#sidebar').classList.add('show');"
+    >
+        <i class="kirafont icon-menu"></i>
+    </a>
+    <a href="/blog/" title="德布罗煜">
+        <img
+			src="https://kira.host/assets/Pictures/Others/20220922230447.jpg"
+			alt="德布罗煜"
+		/>
+    </a>
+</div>
+		<div class="kira-body">
+			<div class="kira-sidebar" id="sidebar">
+	<div class="kira-avatar mdui-ripple">
+		<a href="https://kira.host/assets/Pictures/Others/20220922230447.jpg" title="德布罗煜">
+			<img
+				src="https://kira.host/assets/Pictures/Others/20220922230447.jpg"
+				alt="德布罗煜"
+			/>
+		</a>
+	</div>
+	<div class="kira-count">
+		<div><span>文章</span>30</div>
+		<div><span>标签</span>14</div>
+		<div><span>分类</span>3</div>
+	</div>
+	<div class="kira-list">
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/blog/"
+			title="回到首页"
+		>
+			<i
+				class="kirafont
+					
+						icon-home
+					"
+			></i>
+			<div class="kira-list-item-content">
+				回到首页
+			</div>
+		</a>
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/blog/archive.html"
+			title="文章归档"
+		>
+			<i
+				class="kirafont
+					
+						icon-container
+					"
+			></i>
+			<div class="kira-list-item-content">
+				文章归档
+			</div>
+		</a>
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/blog/about.html"
+			title="关于本人"
+		>
+			<i
+				class="kirafont
+					
+						icon-user
+					"
+			></i>
+			<div class="kira-list-item-content">
+				关于本人
+			</div>
+		</a>
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/blog/friends.html"
+			title="我的朋友"
+		>
+			<i
+				class="kirafont
+					
+						icon-team
+					"
+			></i>
+			<div class="kira-list-item-content">
+				我的朋友
+			</div>
+		</a>
+		
+	</div>
+	<aside id="kira-sidebar">
+		
+			<div class="kira-widget-wrap">
+	<div class="kira-widget kira-social">
+		
+			<a
+				class="mdui-ripple"
+				href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=1056317718&website=www.oicqzone.com"
+				target="_blank"
+				mdui-tooltip="{content: 'QQ'}"
+				style="color: rgb(49, 174, 255); background-color: rgba(49, 174, 255, .1);"
+			>
+				<i
+					class="kirafont
+					
+						icon-QQ
+					"
+				></i>
+			</a>
+		
+			<a
+				class="mdui-ripple"
+				href="https://space.bilibili.com/27905679"
+				target="_blank"
+				mdui-tooltip="{content: '哔哩哔哩'}"
+				style="color: rgb(231, 106, 141); background-color: rgba(231, 106, 141, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-bilibili
+					"
+				></i>
+			</a>
+		
+			<a
+				class="mdui-ripple"
+				href="https://github.com/ch1ny/"
+				target="_blank"
+				mdui-tooltip="{content: 'GitHub'}"
+				style="color: rgb(25, 23, 23); background-color: rgba(25, 23, 23, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-github
+					"
+				></i>
+			</a>
+		
+			<a
+				class="mdui-ripple"
+				href="https://gitee.com/ch1ny"
+				target="_blank"
+				mdui-tooltip="{content: 'Gitee'}"
+				style="color: rgb(165, 15, 15); background-color: rgba(165, 15, 15, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-gitee
+					"
+				></i>
+			</a>
+		
+	</div>
+</div>
+
+		
+			
+  <div class="kira-widget-wrap">
+    <h3 class="kira-widget-title">分类</h3>
+    <div class="kira-widget">
+      <ul class="category-list">
+        
+        
+
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/blog/categories/Revue/">
+              Revue
+            </a>
+            <span class="category-list-count">5</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/blog/categories/编程/">
+              编程
+            </a>
+            <span class="category-list-count">23</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/blog/categories/面经/">
+              面经
+            </a>
+            <span class="category-list-count">2</span>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+		
+			
+	<div class="kira-widget-wrap">
+		<div id="randomtagcloud" class="kira-widget tagcloud kira-rainbow">
+			<a href="/blog/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/blog/tags/Node-js/" style="font-size: 16px;">Node.js</a> <a href="/blog/tags/React/" style="font-size: 18px;">React</a> <a href="/blog/tags/Revue/" style="font-size: 18px;">Revue</a> <a href="/blog/tags/Rust/" style="font-size: 14px;">Rust</a> <a href="/blog/tags/TypeScript/" style="font-size: 10px;">TypeScript</a> <a href="/blog/tags/Unity3D/" style="font-size: 10px;">Unity3D</a> <a href="/blog/tags/VSCODE/" style="font-size: 12px;">VSCODE</a> <a href="/blog/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/blog/tags/electron/" style="font-size: 10px;">electron</a> <a href="/blog/tags/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8/" style="font-size: 10px;">字节跳动</a> <a href="/blog/tags/%E8%9A%82%E8%9A%81/" style="font-size: 10px;">蚂蚁</a> <a href="/blog/tags/%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4/" style="font-size: 10px;">阿里巴巴</a> <a href="/blog/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 12px;">面试</a>
+		</div>
+		
+	</div>
+
+
+		
+	</aside>
+	<div class="kira-copyright">
+		&copy; 2024
+		<a href="/blog/">德布罗煜</a>
+		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> &
+		<a href="https://github.com/ch1ny/kira-hexo/" target="_blank">Kira-Hexo</a>
+		<br />
+		
+			<a
+				href="https://beian.miit.gov.cn/"
+				target="_blank"
+			>
+				赣ICP备2021007955号-3
+			</a>
+		
+		<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div><span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span></div><div><span id="busuanzi_container_site_uv">共接待访客<span id="busuanzi_value_site_uv"></span>位</span></div>
+	</div>
+</div>
+<div
+	class="kira-sidebar-modal"
+	id="sidebar-modal"
+	onclick="(function(self) {
+		self.classList.remove('show');
+		document.querySelector('.kira-sidebar.show#sidebar').classList.remove('show');
+	})(this)"
+></div>
+			<div class="kira-content">
+				<div id="kira-top-header"></div>
+				<div class="kira-main-content">
+					
+<link rel="stylesheet" href="/blog/css/kira-image.css">
+
+
+<script src="/blog/js/kira-image.js"></script>
+
+<div class="kira-image">
+    <div class="kira-image-modal">
+        <div class="kira-image-header">
+            <div class="kira-image-counter"></div>
+            <div class="kira-image-title"></div>
+            <div class="kira-image-operation">
+                <div class="kira-image-operation-button" id="kira-image-operation-button-zoom">
+                    <i class="kirafont icon-zoom-in"></i>
+                </div>
+                <div class="kira-image-operation-button" id="kira-image-operation-button-close">
+                    <i class="kirafont icon-close"></i>
+                </div>
+            </div>
+        </div>
+        <div class="kira-image-container">
+            <div class="kira-image-prev-button-panel">
+                <div class="kira-image-exchange-button">
+                    <i class="kirafont icon-left"></i>
+                </div>
+            </div>
+            <div class="kira-image-list">
+                <div class="kira-image-prev">
+                    <img />
+                </div>
+                <div class="kira-image-now">
+                    <img />
+                </div>
+                <div class="kira-image-next">
+                    <img />
+                </div>
+            </div>
+            <div class="kira-image-next-button-panel">
+                <div class="kira-image-exchange-button">
+                    <i class="kirafont icon-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+	
+<link rel="stylesheet" href="/blog/css/kira-code-copy.css">
+
+	
+<script src="/blog/js/kira-code-copy.js"></script>
+
+
+<div class="kira-post">
+	<article>
+		
+		<div class="kira-post-cover">
+			<img
+				data-src="https://pic2.zhimg.com/v2-839798432500b3aec901cba0efb93bf7_720w.jpg?source=172ae18b"
+				data-sizes="auto"
+				alt="Rust中通用的编程概念"
+				class="lazyload kira-post-cover-image disabled-kira-image"
+			/>
+			<h1>Rust中通用的编程概念</h1>
+		</div>
+		
+		<div class="kira-post-meta kira-rainbow" style="margin:10px 0!important;">
+			<a><i class="kirafont icon-calendar-fill"></i>2023年02月19日</a>
+			<a><i class="kirafont icon-edit-fill"></i>2.5k 字</a>
+			<a><i class="kirafont icon-time-circle-fill"></i>大概 11 分钟</a>
+		</div>
+		<html><head></head><body><p>在这篇文章中，我们将学习一些在 Rust 中通用的编程概念：</p>
+<ul>
+<li>变量与可变性</li>
+<li>数据类型<ul>
+<li>标量类型</li>
+<li>复合类型</li>
+</ul>
+</li>
+<li>函数</li>
+<li>控制流</li>
+</ul>
+<span id="more"></span>
+
+<!-- toc -->
+
+<ul>
+<li><a href="#%E5%8F%98%E9%87%8F%E4%B8%8E%E5%8F%AF%E5%8F%98%E6%80%A7">变量与可变性</a><ul>
+<li><a href="#%E5%8F%98%E9%87%8F%E6%97%B6%E4%B8%8D%E5%8F%AF%E5%8F%98%E7%9A%84">变量时不可变的</a></li>
+<li><a href="#%E5%8F%98%E9%87%8F%E4%B8%8E%E5%B8%B8%E9%87%8F">变量与常量</a></li>
+<li><a href="#%E9%9A%90%E8%97%8F---shadowing">隐藏 - Shadowing</a></li>
+</ul>
+</li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B">数据类型</a><ul>
+<li><a href="#%E6%A0%87%E9%87%8F%E7%B1%BB%E5%9E%8B">标量类型</a><ul>
+<li><a href="#%E6%95%B4%E6%95%B0%E7%B1%BB%E5%9E%8B">整数类型</a></li>
+<li><a href="#%E6%B5%AE%E7%82%B9%E7%B1%BB%E5%9E%8B">浮点类型</a></li>
+<li><a href="#%E5%B8%83%E5%B0%94%E7%B1%BB%E5%9E%8B">布尔类型</a></li>
+<li><a href="#%E5%AD%97%E7%AC%A6%E7%B1%BB%E5%9E%8B">字符类型</a></li>
+</ul>
+</li>
+<li><a href="#%E5%A4%8D%E5%90%88%E7%B1%BB%E5%9E%8B">复合类型</a></li>
+<li><a href="#%E5%85%83%E7%BB%84">元组</a></li>
+<li><a href="#%E6%95%B0%E7%BB%84">数组</a></li>
+</ul>
+</li>
+<li><a href="#%E5%87%BD%E6%95%B0">函数</a><ul>
+<li><a href="#%E5%87%BD%E6%95%B0%E7%9A%84%E5%8F%82%E6%95%B0">函数的参数</a></li>
+<li><a href="#%E8%AF%AD%E5%8F%A5%E5%92%8C%E8%A1%A8%E8%BE%BE%E5%BC%8F">语句和表达式</a></li>
+<li><a href="#%E5%87%BD%E6%95%B0%E7%9A%84%E8%BF%94%E5%9B%9E%E5%80%BC">函数的返回值</a></li>
+</ul>
+</li>
+<li><a href="#%E6%8E%A7%E5%88%B6%E6%B5%81">控制流</a><ul>
+<li><a href="#if-%E8%A1%A8%E8%BE%BE%E5%BC%8F">if 表达式</a></li>
+<li><a href="#rust-%E7%9A%84%E5%BE%AA%E7%8E%AF">Rust 的循环</a><ul>
+<li><a href="#loop-%E5%BE%AA%E7%8E%AF">loop 循环</a></li>
+<li><a href="#while-%E5%BE%AA%E7%8E%AF">while 循环</a></li>
+<li><a href="#for-%E5%BE%AA%E7%8E%AF">for 循环</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+<h1><span id="%E5%8F%98%E9%87%8F%E4%B8%8E%E5%8F%AF%E5%8F%98%E6%80%A7">变量与可变性</span></h1><h2><span id="%E5%8F%98%E9%87%8F%E6%97%B6%E4%B8%8D%E5%8F%AF%E5%8F%98%E7%9A%84">变量时不可变的</span></h2><p>在 Rust 中，我们通过关键字 <code>let</code> 来声明变量。默认情况下，变量处于<strong>不可变（immutable）</strong>的状态。<br>这里的不可变意思是，当我们通过<strong>赋值</strong>操作，将一个值<strong>绑定</strong>到了一个变量上后，这个变量就<strong>不可以</strong>被重新赋值了。<br>如果我们需要对这个变量重新赋值，则需要在声明变量的同时，声明变量为<strong>可变（mutable）</strong>的，声明的方式为在变量名前加上 <code>mut</code> 关键字。<br>下面我们来看一个例子：</p>
+<figure class="highlight rust"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() {<br>  <span class="hljs-keyword">let</span> <span class="hljs-variable">a</span> = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">b</span> = <span class="hljs-number">0</span>;<br>  b = <span class="hljs-number">1</span>;<br>  <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}, {}"</span>, a, b); <span class="hljs-comment">// 0, 1</span><br>}<br><br></code></pre></td></tr></tbody></table></figure>
+
+<p>在上面的代码中，我们声明了变量 <code>b</code> 为 <code>mut</code>，也就是可变的，因此我们才能在声明并赋值变量后，再通过赋值语句 <code>b = 1;</code> 将其绑定的值修改为 <code>1</code>。<br>而对于变量 <code>a</code>，我们没有为其声明可变。如果我们在后面强行加上 <code>a = 1;</code> 的话，编译器则会报错，编译无法通过。</p>
+<h2><span id="%E5%8F%98%E9%87%8F%E4%B8%8E%E5%B8%B8%E9%87%8F">变量与常量</span></h2><p>虽然在 Rust 中，变量默认是不可变的，但是请不要将它与<strong>常量</strong>的概念进行混淆。在 Rust 中，是有专门的叫做<strong>常量（constant）</strong>的概念的。<br>常量在绑定值后也是不可变的，但是它和不可变变量也有很多区别：</p>
+<ul>
+<li>首先，声明常量时不能加上 <code>mut</code>，无论在何种情况下，常量都是不能改变的。</li>
+<li>声明常量需要使用 <code>const</code> 关键字，同时其类型必须在声明常量时<strong>显式</strong>标注。</li>
+<li>常量可以在任意作用域进行声明，包括全局作用域。</li>
+<li>常量只可以绑定到常量表达式，无法绑定到函数的调用结果或是只能在运行时才能计算出的值。</li>
+</ul>
+<p>在 Rust 中，常量的命名规范是 全部使用大写字母，单词之间以下划线分割开来，比如：</p>
+<ul>
+<li>APP_VERSION</li>
+<li>MAX_SCORE</li>
+</ul>
+<h2><span id="%E9%9A%90%E8%97%8F---shadowing">隐藏 - Shadowing</span></h2><p>在 Rust 中，<strong>Shadow</strong> 是一个比较重要的概念。<br>我们可以使用相同的名字声明新的变量，新的变量就会 <strong>shadow</strong> 掉之前声明的同名变量。<br>我们来看下面这个例子：</p>
+<figure class="highlight rust"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() {<br>  <span class="hljs-keyword">let</span> <span class="hljs-variable">x</span> = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">let</span> <span class="hljs-variable">x</span> = x + <span class="hljs-number">1</span>;<br>  <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, x);<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<p>我们前面说过，一个变量声明后默认是不可变的。如果我们在声明 <code>let x = 0;</code> 之后，通过语句 <code>x = x + 1</code> 重新为其赋值是不符合 Rust 的语法规则的。<br>但是在这段代码中，我们通过 <code>let x = x + 1;</code> 重新声明了一个 <code>x</code>，并通过这个新的声明覆盖（隐藏）掉了最开始声明的变量 <code>x</code>。后续我们再使用这个变量则会指向我们最新声明的 <code>x</code>。</p>
+<p>但是需要注意的是，shadow 这个行为与声明变量为 <code>mut</code> 是不一样的。<br>不管新旧变量，如果没用 <code>mut</code> 进行标记，则都是不可变的；同时，通过 shadow 声明的新变量，它的类型可以与之前的不同。</p>
+<h1><span id="%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B">数据类型</span></h1><p>Rust 是一门静态类型语言，在编译时必须知道所有变量的类型。基于使用的值，编译器通常能够<strong>自行</strong>推断出变量的具体类型。但是，如果可能的类型比较多，就必须添加显式的类型标注，否则编译会报错。<br>类型的声明方式为在声明变量时，在变量名后面加上英文冒号。冒号后面写上声明的类型。比如 <code>let x: u32 = 0;</code>。</p>
+<h2><span id="%E6%A0%87%E9%87%8F%E7%B1%BB%E5%9E%8B">标量类型</span></h2><p>一个标量类型代表一个单个的值。Rust 有四个标量类型：</p>
+<ul>
+<li>整数类型</li>
+<li>浮点类型</li>
+<li>布尔类型</li>
+<li>字符类型</li>
+</ul>
+<h3><span id="%E6%95%B4%E6%95%B0%E7%B1%BB%E5%9E%8B">整数类型</span></h3><p>整数类型是没有小数部分的，类型通常以 <code>u/i</code> 开头。其中 u 表示无符号整数类型，i 表示有符号整数类型。<br>比如 <code>u32</code> 就是无符号32位整数类型，<code>i8</code> 就是有符号8位整数类型。<br>同时，还有 <code>usize</code> 与 <code>isize</code> 类型，它们的位宽与程序运行时的计算机架构所决定的，如果是64位计算机，那就是64位的。</p>
+<h3><span id="%E6%B5%AE%E7%82%B9%E7%B1%BB%E5%9E%8B">浮点类型</span></h3><p>在 Rust 中，有两种基础的浮点类型，分别是 <code>f32</code> 和 <code>f64</code>。</p>
+<ul>
+<li>f32，32位，单精度浮点类型</li>
+<li>f64，64位，双精度浮点类型</li>
+</ul>
+<blockquote>
+<p>Rust 的浮点类型使用 IEEE-754 标准进行表述。</p>
+</blockquote>
+<h3><span id="%E5%B8%83%E5%B0%94%E7%B1%BB%E5%9E%8B">布尔类型</span></h3><p>Rust 的布尔类型也具有 <code>true</code> 和 <code>false</code> 两个值。占据一个字节大小。</p>
+<h3><span id="%E5%AD%97%E7%AC%A6%E7%B1%BB%E5%9E%8B">字符类型</span></h3><p>Rust 语言中，char 类型被用来描述语言中最基础的单个字符。<br>字符类型的字面值使用单引号。<br>char 类型占据四个字节大小，是 Unicode 标量值。</p>
+<h2><span id="%E5%A4%8D%E5%90%88%E7%B1%BB%E5%9E%8B">复合类型</span></h2><p>复合类型可以将多个值放在一个类型里。<br>Rust 提供了两种基础的复合类型：元组（tuple）和数组。</p>
+<h2><span id="%E5%85%83%E7%BB%84">元组</span></h2><p>Tuple 可以将多个类型的多个值放在一个类型里。Tuple 的长度是固定的，一旦声明就无法改变其长度。<br>创建 Tuple 只需要将多个值写在小括号里，每个值用逗号分开：</p>
+<figure class="highlight rust"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() {<br>  <span class="hljs-keyword">let</span> <span class="hljs-variable">tup</span>: (<span class="hljs-type">i32</span>, <span class="hljs-type">f64</span>, <span class="hljs-type">bool</span>, <span class="hljs-type">char</span>) = (<span class="hljs-number">16</span>, <span class="hljs-number">3.14</span>, <span class="hljs-literal">true</span>, <span class="hljs-string">'δ'</span>);<br>  <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}, {}, {}, {}"</span>, tup.<span class="hljs-number">0</span>, tup.<span class="hljs-number">1</span>, tup.<span class="hljs-number">2</span>, tup.<span class="hljs-number">3</span>); <span class="hljs-comment">// 16, 3.14, true, δ</span><br>}<br><br></code></pre></td></tr></tbody></table></figure>
+
+<p>除了上面的例子中给出的根据<strong>索引号</strong>获取 tuple 中对应值的方法外，我们还可以通过<strong>模式匹配</strong>来<strong>解构（destructure）</strong> tuple 中的值，比如上面的代码我们也可以写成下面这种样子：</p>
+<figure class="highlight rust"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() {<br>  <span class="hljs-keyword">let</span> <span class="hljs-variable">tup</span>: (<span class="hljs-type">i32</span>, <span class="hljs-type">f64</span>, <span class="hljs-type">bool</span>, <span class="hljs-type">char</span>) = (<span class="hljs-number">16</span>, <span class="hljs-number">3.14</span>, <span class="hljs-literal">true</span>, <span class="hljs-string">'δ'</span>);<br>  <span class="hljs-keyword">let</span> (a, b, c, d) = tup;<br>  <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}, {}, {}, {}"</span>, a, b, c, d); <span class="hljs-comment">// 16, 3.14, true, δ</span><br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<h2><span id="%E6%95%B0%E7%BB%84">数组</span></h2><p>数组也可以将多个值放在一个类型中，但是它只能存放类型相同的元素，同时其长度也是固定的。声明数组时，只需要像这样通过中括号括起来所有需要的元素即可：<code>let arr = [1, 2, 3];</code>。</p>
+<p>如果要对数组进行类型声明，则应当采用这种形式 —— **[类型; 长度]**。<br>例如：<code>let arr: [u8; 3] = [1, 2, 3];</code>。</p>
+<p>如果数组内所有元素值都相同，那么可以通过下面的方式进行声明：</p>
+<figure class="highlight rust"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">let</span> <span class="hljs-variable">arr</span> = [<span class="hljs-number">0</span>; <span class="hljs-number">3</span>]; <span class="hljs-comment">// 它相当于 let arr = [0, 0, 0];</span><br></code></pre></td></tr></tbody></table></figure>
+
+<h1><span id="%E5%87%BD%E6%95%B0">函数</span></h1><p>接下来我们介绍一下 Rust 中的函数。</p>
+<p>在 Rust 中，声明函数需要用到 <code>fn</code> 关键字，比如 <code>fn callback() {}</code> 。同时，和对变量命名的规范相同，函数的命名也使用 snake case 命名规范，所有的字母都是小写的，单词之间使用下划线(<code>_</code>)进行连接。</p>
+<h2><span id="%E5%87%BD%E6%95%B0%E7%9A%84%E5%8F%82%E6%95%B0">函数的参数</span></h2><p>在 Rust 中，必须为函数的签名里的每个变量声明类型，就像下面这样：</p>
+<figure class="highlight rust"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">fn</span> <span class="hljs-title function_">print_string</span>(s: <span class="hljs-type">String</span>) {<br>  <span class="hljs-built_in">print!</span>(<span class="hljs-string">"{}"</span>, s);<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<h2><span id="%E8%AF%AD%E5%8F%A5%E5%92%8C%E8%A1%A8%E8%BE%BE%E5%BC%8F">语句和表达式</span></h2><p>Rust 的函数体由一系列的语句组成，可以由一个表达式结束（也可以不以表达式结束）。</p>
+<ul>
+<li><strong>语句</strong>：语句是执行一些动作的指令 <code>let x = 6; let y = 7;</code></li>
+<li><strong>表达式</strong>：表达式会运算得到一个值 <code>x + y</code></li>
+</ul>
+<p>函数的定义也是一个语句。语句没有返回值，所以我们不可以用 <code>let</code> 将一个语句赋给一个变量。</p>
+<figure class="highlight rust"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() {<br>  <span class="hljs-keyword">let</span> <span class="hljs-variable">x</span> = <span class="hljs-number">3</span>;<br>  <span class="hljs-keyword">let</span> <span class="hljs-variable">y</span> = {<br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">z</span> = <span class="hljs-number">1</span>;<br>    x + z <span class="hljs-comment">// 没有 “;” 是一个表达式</span><br>  };<br><br>  <span class="hljs-built_in">println!</span>(<span class="hljs-string">"y =&gt; {}"</span>, y);<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<h2><span id="%E5%87%BD%E6%95%B0%E7%9A%84%E8%BF%94%E5%9B%9E%E5%80%BC">函数的返回值</span></h2><p>在 Rust 中声明的函数如果存在返回值，需要通过符号 <code>-&gt;</code> 在函数参数后声明返回值类型。返回值就是函数体里最后一个表达式的值，或第一个通过 <code>return</code> 关键字返回的值。</p>
+<figure class="highlight rust"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">fn</span> <span class="hljs-title function_">return_zero</span>() <span class="hljs-punctuation">-&gt;</span> <span class="hljs-type">usize</span> {<br>  <span class="hljs-number">0</span><br>}<br><br><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() {<br>  <span class="hljs-built_in">println!</span>(<span class="hljs-string">"value =&gt; {}"</span>, <span class="hljs-title function_ invoke__">return_zero</span>()); <span class="hljs-comment">// value =&gt; 0</span><br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<h1><span id="%E6%8E%A7%E5%88%B6%E6%B5%81">控制流</span></h1><h2><span id="if-%E8%A1%A8%E8%BE%BE%E5%BC%8F">if 表达式</span></h2><p>if 表达式允许您根据条件来执行不同的代码分支，这个条件必须是 bool 类型。<br>if 表达式中，与条件相关联的代码块被称作**分支(arm)**，可以在后面加上 <code>else</code> 表达式。</p>
+<figure class="highlight rust"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() {<br>  <span class="hljs-keyword">let</span> <span class="hljs-variable">x</span> = <span class="hljs-number">0</span>;<br><br>  <span class="hljs-keyword">if</span> x &lt; <span class="hljs-number">0</span> {<br>    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"x &lt; 0"</span>);<br>  } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> x == <span class="hljs-number">0</span> {<br>    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"x = 0"</span>);<br>  } <span class="hljs-keyword">else</span> {<br>    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"x &gt; 0"</span>);<br>  }<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<p>因为 if 是一种表达式，所以可以使用 <code>let</code> 将 if 赋值给变量。在 Rust 中，不存在<strong>三目运算符</strong>，因此无法像编写 JavaScript 那样使用方便的三目运算：</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> y = <span class="hljs-number">3</span>;<br><span class="hljs-keyword">let</span> x = y &gt; <span class="hljs-number">5</span> ? y - <span class="hljs-number">5</span> : y;<br></code></pre></td></tr></tbody></table></figure>
+
+<p>但是通过 if 表达式，我们就可以巧妙地实现三目运算符的效果：</p>
+<figure class="highlight rust"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() {<br>  <span class="hljs-keyword">let</span> <span class="hljs-variable">y</span> = <span class="hljs-number">3</span>;<br>  <span class="hljs-keyword">let</span> <span class="hljs-variable">x</span> = <span class="hljs-keyword">if</span> y &gt; <span class="hljs-number">5</span> { y - <span class="hljs-number">5</span> } <span class="hljs-keyword">else</span> { y };<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<h2><span id="rust-%E7%9A%84%E5%BE%AA%E7%8E%AF">Rust 的循环</span></h2><p>在 Rust 中，提供了三种循环类型：<code>loop</code>、<code>while</code>、<code>for</code>。</p>
+<h3><span id="loop-%E5%BE%AA%E7%8E%AF">loop 循环</span></h3><p><code>loop</code> 关键字告诉 Rust 反复执行一段代码，直到你主动跳出循环，实际效果类似 <code>while(true)</code> 。</p>
+<figure class="highlight rust"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() {<br>  <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">times</span> = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">let</span> <span class="hljs-variable">result</span> = <span class="hljs-keyword">loop</span> {<br>    times += <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">if</span> times == <span class="hljs-number">10</span> {<br>      <span class="hljs-keyword">break</span> times * <span class="hljs-number">3</span>;<br>    }<br>  };<br><br>  <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, times); <span class="hljs-comment">// 30</span><br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<h3><span id="while-%E5%BE%AA%E7%8E%AF">while 循环</span></h3><p>while 循环的写法与其他主流的高级语言写法基本类似，在 <code>while</code> 关键字后写上条件表达式，当表达式为 <code>false</code> 时跳出循环：</p>
+<figure class="highlight rust"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() {<br>  <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">count</span> = <span class="hljs-number">10</span>;<br><br>  <span class="hljs-keyword">while</span> count &gt; <span class="hljs-number">0</span> {<br>    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, count);<br>    count -= <span class="hljs-number">1</span>;<br>  }<br><br>  <span class="hljs-built_in">println!</span>(<span class="hljs-string">"FIRE"</span>);<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<h3><span id="for-%E5%BE%AA%E7%8E%AF">for 循环</span></h3><p>在 Rust 中，for 循环一般被用来遍历集合体。</p>
+<figure class="highlight rust"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() {<br>  <span class="hljs-keyword">let</span> <span class="hljs-variable">arr</span> = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span> , <span class="hljs-number">4</span>, <span class="hljs-number">5</span>];<br><br>  <span class="hljs-keyword">for</span> <span class="hljs-variable">i</span> <span class="hljs-keyword">in</span> arr.<span class="hljs-title function_ invoke__">iter</span>() {<br>    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, i);<br>  }<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<p>除了集合体，我们也可以通过标准库提供的 <code>Range</code> 类型执行指定次数的 for 循环。声明一个 Range 只需要指定起始的数字和结束的数字，Range会生成 <code>[起始数字, 结束数字)</code> 区间内的数字集合。同时，通过 <code>rev</code> 方法可以反转 <code>Range</code> 。</p>
+<figure class="highlight rust"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() {<br>  <span class="hljs-keyword">for</span> <span class="hljs-variable">i</span> <span class="hljs-keyword">in</span> (<span class="hljs-number">0</span>..<span class="hljs-number">10</span>).<span class="hljs-title function_ invoke__">rev</span>() {<br>    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, i);<br>  }<br>}<br></code></pre></td></tr></tbody></table></figure>
+</body></html>
+	</article>
+
+	 
+    <div class="kira-post-copyright">
+        <strong>本文作者：</strong>德布罗煜<br>
+        <strong>本文链接：</strong><a href="https://kira.host/blog/Rust/Rust%E4%B8%AD%E9%80%9A%E7%94%A8%E7%9A%84%E7%BC%96%E7%A8%8B%E6%A6%82%E5%BF%B5/" title="https:&#x2F;&#x2F;kira.host&#x2F;blog&#x2F;Rust&#x2F;Rust中通用的编程概念&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;kira.host&#x2F;blog&#x2F;Rust&#x2F;Rust中通用的编程概念&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+  
+	<div class="kira-post-nav">
+		<nav class="post-nav">
+			  
+			<!-- 先找到与当前文字相同的目录 -->
+			                                                                  
+			<!-- 在找到当前文章所在的 index -->
+			                                                                                    
+			<!-- 上一篇文章 -->
+			<div class="old">
+				<span>上一章</span>
+				<a href="/blog/Rust/%E5%88%9D%E8%AF%86Rust/"> 初识Rust</a>
+			</div>
+			       
+			<!-- 下一篇文章 -->
+			<div class="new">
+				<span>下一章</span>
+				<a href="/blog/Rust/Rust%E4%B8%8E%E6%89%80%E6%9C%89%E6%9D%83/"> Rust与所有权</a>
+			</div>
+			                  
+		</nav>
+	</div>
+	
+	<div class="kira-post-meta kira-rainbow">
+		
+			<a class="kirafont icon-container-fill -link" href="/blog/categories/%E7%BC%96%E7%A8%8B/">编程</a>
+		
+		
+			<a class="kirafont icon-tag-fill -none-link" href="/blog/tags/Rust/" rel="tag">Rust</a>
+		
+	</div>
+	
+	<div class="kira-post-footer">
+		
+
+		
+	<div class="giscus"></div>
+  
+    <script src="https://giscus.app/client.js"
+      data-repo="ch1ny/ch1ny.github.io"
+      data-repo-id="R_kgDOHGgizw"
+      data-category="General"
+      data-category-id="DIC_kwDOHGgiz84CU88t"
+      data-mapping="pathname"
+      data-strict="0"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="top"
+      data-theme="light"
+      data-lang="en"
+      data-loading="lazy"
+      crossorigin="anonymous"
+      async  
+    ></script>
+  
+
+	</div>
+	
+</div>
+
+				</div>
+			</div>
+			<div class="kira-right-column">
+	<a onclick="document.querySelector('#kira-top-header').scrollIntoView({behavior: 'smooth'});" class="kira-backtotop" aria-label="回到顶部" title="回到顶部">
+		<button class="mdui-fab mdui-ripple">
+			<i class="kirafont icon-caret-up"></i>
+		</button>
+	</a>
+</div>
+
+		</div>
+	</body>
+</html>

@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html 
+	lang="zh_CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		
+<link rel="stylesheet" href="/blog/css/layout.css">
+
+		
+		<title> 初识Rust -  德布罗煜</title>
+		<!-- <link rel="stylesheet" href="https://unpkg.com/mdui@1.0.2/dist/css/mdui.min.css" /> -->
+		<!-- <script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script> -->
+		
+<link rel="stylesheet" href="/blog/lib/mdui/mdui.min.css">
+
+		
+<script src="/blog/lib/mdui/mdui.min.js"></script>
+
+		<!-- lazyload -->
+		
+<script src="/blog/lib/lazysizes.js"></script>
+
+		<!-- smooth-scrolling -->
+		
+<script src="/blog/lib/smooth-scrolling.js"></script>
+
+		<!-- highlight -->
+		
+<link rel="stylesheet" href="/blog/lib/highlight/atom-one-dark.min.css">
+
+		
+<script src="/blog/lib/highlight/highlight.min.js"></script>
+
+		<!-- 预置 kiraicon -->
+		
+<link rel="stylesheet" href="/blog/lib/iconfont/iconfont.css">
+
+		
+		<link
+			rel="shortcut icon"
+			href="https://kira.host/assets/Pictures/Others/116359b4ccf19917.jpg"
+			type="image/png"
+		/>
+		
+<link rel="stylesheet" href="/blog/deps/css/APlayer.min.css">
+
+		
+		
+<script src="/blog/deps/js/APlayer.min.js"></script>
+<script src="/blog/deps/js/Meting.min.js"></script>
+
+	<meta name="generator" content="Hexo 6.3.0"></head>
+
+	<body>
+		<div
+			class="kira-background"
+			style="background-image: url('https://kira.host/assets/Pictures/Others/-f0d5cc34c6e5aa7_compressed.jpg')"
+		></div>
+		<div class="kira-header">
+    <a
+        class="kira-drawer-button mdui-ripple"
+        title="导航栏"
+        onclick="document.querySelector('.kira-sidebar-modal').classList.add('show');document.querySelector('.kira-sidebar#sidebar').classList.add('show');"
+    >
+        <i class="kirafont icon-menu"></i>
+    </a>
+    <a href="/blog/" title="德布罗煜">
+        <img
+			src="https://kira.host/assets/Pictures/Others/20220922230447.jpg"
+			alt="德布罗煜"
+		/>
+    </a>
+</div>
+		<div class="kira-body">
+			<div class="kira-sidebar" id="sidebar">
+	<div class="kira-avatar mdui-ripple">
+		<a href="https://kira.host/assets/Pictures/Others/20220922230447.jpg" title="德布罗煜">
+			<img
+				src="https://kira.host/assets/Pictures/Others/20220922230447.jpg"
+				alt="德布罗煜"
+			/>
+		</a>
+	</div>
+	<div class="kira-count">
+		<div><span>文章</span>30</div>
+		<div><span>标签</span>14</div>
+		<div><span>分类</span>3</div>
+	</div>
+	<div class="kira-list">
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/blog/"
+			title="回到首页"
+		>
+			<i
+				class="kirafont
+					
+						icon-home
+					"
+			></i>
+			<div class="kira-list-item-content">
+				回到首页
+			</div>
+		</a>
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/blog/archive.html"
+			title="文章归档"
+		>
+			<i
+				class="kirafont
+					
+						icon-container
+					"
+			></i>
+			<div class="kira-list-item-content">
+				文章归档
+			</div>
+		</a>
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/blog/about.html"
+			title="关于本人"
+		>
+			<i
+				class="kirafont
+					
+						icon-user
+					"
+			></i>
+			<div class="kira-list-item-content">
+				关于本人
+			</div>
+		</a>
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/blog/friends.html"
+			title="我的朋友"
+		>
+			<i
+				class="kirafont
+					
+						icon-team
+					"
+			></i>
+			<div class="kira-list-item-content">
+				我的朋友
+			</div>
+		</a>
+		
+	</div>
+	<aside id="kira-sidebar">
+		
+			<div class="kira-widget-wrap">
+	<div class="kira-widget kira-social">
+		
+			<a
+				class="mdui-ripple"
+				href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=1056317718&website=www.oicqzone.com"
+				target="_blank"
+				mdui-tooltip="{content: 'QQ'}"
+				style="color: rgb(49, 174, 255); background-color: rgba(49, 174, 255, .1);"
+			>
+				<i
+					class="kirafont
+					
+						icon-QQ
+					"
+				></i>
+			</a>
+		
+			<a
+				class="mdui-ripple"
+				href="https://space.bilibili.com/27905679"
+				target="_blank"
+				mdui-tooltip="{content: '哔哩哔哩'}"
+				style="color: rgb(231, 106, 141); background-color: rgba(231, 106, 141, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-bilibili
+					"
+				></i>
+			</a>
+		
+			<a
+				class="mdui-ripple"
+				href="https://github.com/ch1ny/"
+				target="_blank"
+				mdui-tooltip="{content: 'GitHub'}"
+				style="color: rgb(25, 23, 23); background-color: rgba(25, 23, 23, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-github
+					"
+				></i>
+			</a>
+		
+			<a
+				class="mdui-ripple"
+				href="https://gitee.com/ch1ny"
+				target="_blank"
+				mdui-tooltip="{content: 'Gitee'}"
+				style="color: rgb(165, 15, 15); background-color: rgba(165, 15, 15, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-gitee
+					"
+				></i>
+			</a>
+		
+	</div>
+</div>
+
+		
+			
+  <div class="kira-widget-wrap">
+    <h3 class="kira-widget-title">分类</h3>
+    <div class="kira-widget">
+      <ul class="category-list">
+        
+        
+
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/blog/categories/Revue/">
+              Revue
+            </a>
+            <span class="category-list-count">5</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/blog/categories/编程/">
+              编程
+            </a>
+            <span class="category-list-count">23</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/blog/categories/面经/">
+              面经
+            </a>
+            <span class="category-list-count">2</span>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+		
+			
+	<div class="kira-widget-wrap">
+		<div id="randomtagcloud" class="kira-widget tagcloud kira-rainbow">
+			<a href="/blog/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/blog/tags/Node-js/" style="font-size: 16px;">Node.js</a> <a href="/blog/tags/React/" style="font-size: 18px;">React</a> <a href="/blog/tags/Revue/" style="font-size: 18px;">Revue</a> <a href="/blog/tags/Rust/" style="font-size: 14px;">Rust</a> <a href="/blog/tags/TypeScript/" style="font-size: 10px;">TypeScript</a> <a href="/blog/tags/Unity3D/" style="font-size: 10px;">Unity3D</a> <a href="/blog/tags/VSCODE/" style="font-size: 12px;">VSCODE</a> <a href="/blog/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/blog/tags/electron/" style="font-size: 10px;">electron</a> <a href="/blog/tags/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8/" style="font-size: 10px;">字节跳动</a> <a href="/blog/tags/%E8%9A%82%E8%9A%81/" style="font-size: 10px;">蚂蚁</a> <a href="/blog/tags/%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4/" style="font-size: 10px;">阿里巴巴</a> <a href="/blog/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 12px;">面试</a>
+		</div>
+		
+	</div>
+
+
+		
+	</aside>
+	<div class="kira-copyright">
+		&copy; 2024
+		<a href="/blog/">德布罗煜</a>
+		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> &
+		<a href="https://github.com/ch1ny/kira-hexo/" target="_blank">Kira-Hexo</a>
+		<br />
+		
+			<a
+				href="https://beian.miit.gov.cn/"
+				target="_blank"
+			>
+				赣ICP备2021007955号-3
+			</a>
+		
+		<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div><span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span></div><div><span id="busuanzi_container_site_uv">共接待访客<span id="busuanzi_value_site_uv"></span>位</span></div>
+	</div>
+</div>
+<div
+	class="kira-sidebar-modal"
+	id="sidebar-modal"
+	onclick="(function(self) {
+		self.classList.remove('show');
+		document.querySelector('.kira-sidebar.show#sidebar').classList.remove('show');
+	})(this)"
+></div>
+			<div class="kira-content">
+				<div id="kira-top-header"></div>
+				<div class="kira-main-content">
+					
+<link rel="stylesheet" href="/blog/css/kira-image.css">
+
+
+<script src="/blog/js/kira-image.js"></script>
+
+<div class="kira-image">
+    <div class="kira-image-modal">
+        <div class="kira-image-header">
+            <div class="kira-image-counter"></div>
+            <div class="kira-image-title"></div>
+            <div class="kira-image-operation">
+                <div class="kira-image-operation-button" id="kira-image-operation-button-zoom">
+                    <i class="kirafont icon-zoom-in"></i>
+                </div>
+                <div class="kira-image-operation-button" id="kira-image-operation-button-close">
+                    <i class="kirafont icon-close"></i>
+                </div>
+            </div>
+        </div>
+        <div class="kira-image-container">
+            <div class="kira-image-prev-button-panel">
+                <div class="kira-image-exchange-button">
+                    <i class="kirafont icon-left"></i>
+                </div>
+            </div>
+            <div class="kira-image-list">
+                <div class="kira-image-prev">
+                    <img />
+                </div>
+                <div class="kira-image-now">
+                    <img />
+                </div>
+                <div class="kira-image-next">
+                    <img />
+                </div>
+            </div>
+            <div class="kira-image-next-button-panel">
+                <div class="kira-image-exchange-button">
+                    <i class="kirafont icon-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+	
+<link rel="stylesheet" href="/blog/css/kira-code-copy.css">
+
+	
+<script src="/blog/js/kira-code-copy.js"></script>
+
+
+<div class="kira-post">
+	<article>
+		
+		<div class="kira-post-cover">
+			<img
+				data-src="https://pic2.zhimg.com/v2-839798432500b3aec901cba0efb93bf7_720w.jpg?source=172ae18b"
+				data-sizes="auto"
+				alt="初识Rust"
+				class="lazyload kira-post-cover-image disabled-kira-image"
+			/>
+			<h1>初识Rust</h1>
+		</div>
+		
+		<div class="kira-post-meta kira-rainbow" style="margin:10px 0!important;">
+			<a><i class="kirafont icon-calendar-fill"></i>2023年02月18日</a>
+			<a><i class="kirafont icon-edit-fill"></i>1.8k 字</a>
+			<a><i class="kirafont icon-time-circle-fill"></i>大概 7 分钟</a>
+		</div>
+		<html><head></head><body><p>Rust 是目前一门较为热门的系统级编程语言，其具备着无GC、高性能、强工程性以及从语法保证的内存安全性等优势是一门非常值得学习的编程语言。我将通过这篇文章带着各位与 Rust 初次见面并学习如何通过 Rust 写出一个简单的 Hello World 程序。</p>
+<span id="more"></span>
+
+<!-- toc -->
+
+<ul>
+<li><a href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%AD%A6%E4%B9%A0-rust">为什么要学习 Rust</a><ul>
+<li><a href="#%E4%B8%8E%E5%85%B6%E4%BB%96%E7%83%AD%E9%97%A8%E8%AF%AD%E8%A8%80%E6%AF%94%E8%BE%83">与其他热门语言比较</a></li>
+<li><a href="#rust-%E7%89%B9%E5%88%AB%E6%93%85%E9%95%BF%E7%9A%84%E9%A2%86%E5%9F%9F">Rust 特别擅长的领域</a></li>
+</ul>
+</li>
+<li><a href="#%E5%AE%89%E8%A3%85-rust">安装 Rust</a></li>
+<li><a href="#%E7%BC%96%E5%86%99-hello-world">编写 Hello World</a><ul>
+<li><a href="#%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE">创建项目</a></li>
+<li><a href="#%E7%BC%96%E5%86%99%E4%BB%A3%E7%A0%81">编写代码</a></li>
+<li><a href="#%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8C">编译运行</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BD%BF%E7%94%A8-cargo">使用 Cargo</a><ul>
+<li><a href="#%E8%AE%A4%E8%AF%86-cargo">认识 Cargo</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8-cargo-%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE">使用 Cargo 创建项目</a></li>
+<li><a href="#cargotoml">Cargo.toml</a></li>
+<li><a href="#%E4%BF%AE%E6%94%B9%E4%BB%A3%E7%A0%81%E5%B9%B6%E7%BC%96%E8%AF%91%E6%89%A7%E8%A1%8C">修改代码并编译执行</a></li>
+<li><a href="#%E5%BC%80%E5%8F%91%E6%97%B6%E6%A3%80%E6%9F%A5">开发时检查</a></li>
+<li><a href="#%E6%9E%84%E5%BB%BA-release-%E7%89%88%E6%9C%AC">构建 release 版本</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+<h1><span id="%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%AD%A6%E4%B9%A0-rust">为什么要学习 Rust</span></h1><p>Rust 是一种新的编程语言，它可以让每个人编写高效且可靠的软件。它被视作 C/C++ 的替代品，因为 Rust 具有同它们一样的性能，而且很多常见 bug 在编译时即可被解决。</p>
+<p>Rust 是一种通用的编程语言，但是它更善于应付以下几种场景：</p>
+<ul>
+<li>需要运行时的速度</li>
+<li>需要内存安全</li>
+<li>Rust 可以更好地利用多处理器</li>
+</ul>
+<h2><span id="%E4%B8%8E%E5%85%B6%E4%BB%96%E7%83%AD%E9%97%A8%E8%AF%AD%E8%A8%80%E6%AF%94%E8%BE%83">与其他热门语言比较</span></h2><p>我们这里可以将 Rust 与其他几门热门的编程语言相比：</p>
+<ul>
+<li><b>C/C++</b>：它们的性能非常好，但是类型系统和内存都不太安全。</li>
+<li><b>Java/C#</b>：它们拥有GC，可以保证内存安全，但是性能相对弱。</li>
+</ul>
+<p>相比来说，Rust 的优势就非常大：</p>
+<ul>
+<li>安全</li>
+<li>无需GC，提高性能</li>
+<li>易于维护、调试，代码安全高效</li>
+</ul>
+<p>而 Rust 唯一的缺点就是 —— <strong>“难学”</strong>。<br>Rust 有很多独有的概念，它们和大部分主流语言不同，学习阶段需要注意。</p>
+<h2><span id="rust-%E7%89%B9%E5%88%AB%E6%93%85%E9%95%BF%E7%9A%84%E9%A2%86%E5%9F%9F">Rust 特别擅长的领域</span></h2><ul>
+<li>高性能 Web Service</li>
+<li>WebAssembly</li>
+<li>命令行工具</li>
+<li>网络编程</li>
+<li>嵌入式设备</li>
+<li>系统编程</li>
+</ul>
+<h1><span id="%E5%AE%89%E8%A3%85-rust">安装 Rust</span></h1><p>首先，我们来到 <a target="_blank" rel="noopener" href="https://rust-lang.org/">Rust 的官方网站</a> 。</p>
+<p>Windows 用户可以根据官网的指示完成 Rust 的安装。</p>
+<p>如果是 Linux 或是 MacOS 的用户可以直接在终端中输入 <code>curl https://sh.rustup.rs -sSf| sh</code> 安装 <code>rustup</code> 。</p>
+<p>如果是 Windows Linux 子系统的用户可以执行 <code>curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh</code> 完成安装。</p>
+<blockquote>
+<p>Rust 的更新与卸载：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">rustup update <span class="hljs-comment"># 更新</span><br>rustup self uninstall <span class="hljs-comment"># 卸载</span><br></code></pre></td></tr></tbody></table></figure>
+</blockquote>
+<p>安装完毕后，可以在终端执行 <code>rustc --version</code> 指令打印安装的 rust 版本号来检查是否安装成功。</p>
+<blockquote>
+<p>博主采用的开发工具是 VS Code，需要安装 Rust 插件以提升 Rust 开发体验。插件名为：<code>rust-analyzer</code>。</p>
+</blockquote>
+<h1><span id="%E7%BC%96%E5%86%99-hello-world">编写 Hello World</span></h1><h2><span id="%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE">创建项目</span></h2><p>当我们安装好 rust 后，来到我们的工作目录下。创建一个 <code>hello_world</code> 文件夹作为我们的 Hello World 程序的根目录，并创建好 <code>.rs</code> 文件。注意 rust 语言规范中文件及文件夹名应当采用<strong>蛇形命名法</strong>，即用<strong>下划线（ _ ）</strong>分割开来。</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> hello_world<br><span class="hljs-built_in">cd</span> hello_world<br><span class="hljs-built_in">touch</span> hello_world.rs<br></code></pre></td></tr></tbody></table></figure>
+
+<h2><span id="%E7%BC%96%E5%86%99%E4%BB%A3%E7%A0%81">编写代码</span></h2><p>Hello World 程序的代码非常简单，如下所示：</p>
+<figure class="highlight rust"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() {<br>  <span class="hljs-built_in">println!</span>(<span class="hljs-string">"Hello World!"</span>);<br>}<br><br></code></pre></td></tr></tbody></table></figure>
+
+<p>在 rust 中，程序的入口函数名为 <code>main</code> 函数，定义函数则使用 <code>fn</code> 关键字。<br>这里打印字符串我们使用了 <code>println!</code> 方法。这里需要注意方法名后跟了一个<strong>感叹号</strong>，在 rust 中这种写法被称为 <strong>宏（macro）</strong> 。它提供了类似函数的功能，但是没有运行时开销。我们这里不去过多解读它，未来我们将对<strong>宏</strong>展开进行详细的介绍。</p>
+<h2><span id="%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8C">编译运行</span></h2><p>下面我们对 Hello World 进行编译并执行。<br>首先，在根目录下执行如下指令：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">rustc .\hello_world.rs<br></code></pre></td></tr></tbody></table></figure>
+
+<p>在 windows 平台下，该指令会将我们的 <code>hello_world.rs</code> 文件进行编译，并在根目录下生成可执行文件 <code>hello_world.exe</code> 和一个包含调试信息的 <code>hello_world.pdb</code> 文件。</p>
+<blockquote>
+<p>如果是 Linux 或 MacOS，则会生成一个叫做 <code>hello_world</code> 的无后缀可执行文件。</p>
+</blockquote>
+<p>接下来我们在终端中执行指令 <code>.\hello_world.exe</code> ，即可在控制台中输出 <code>Hello World!</code> 了。</p>
+<h1><span id="%E4%BD%BF%E7%94%A8-cargo">使用 Cargo</span></h1><p>恭喜你！你现在已经又熟练掌握了一门语言的 Hello World 了！（bushi</p>
+<p>但是你是否觉得这样的开发步骤较为繁琐。<code>rustc</code> 只适合较为简单的 Rust 程序，而对一些较大的项目我们必须使用一些其他的工具，比如 <code>Cargo</code>。</p>
+<h2><span id="%E8%AE%A4%E8%AF%86-cargo">认识 Cargo</span></h2><p>Cargo 是 Rust 的构建系统以及包管理工具，它能够：</p>
+<ul>
+<li>构建代码</li>
+<li>下载依赖的库</li>
+<li>构建这些库</li>
+<li><strong>…</strong></li>
+</ul>
+<p>在安装 Rust 的时候会自动安装 Cargo 。要验证 Cargo 是否安装，可以执行 <code>cargo --version</code> 查看是否打印了 cargo 的版本号。</p>
+<h2><span id="%E4%BD%BF%E7%94%A8-cargo-%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE">使用 Cargo 创建项目</span></h2><p>下面，我们通过 Cargo 开发一个 <strong>Hello Cargo</strong> 应用。</p>
+<p>首先执行下面的指令来创建名为 <code>hello_cargo</code> 的项目：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">cargo new hello_cargo<br></code></pre></td></tr></tbody></table></figure>
+
+<p>上述指令将生成如下的项目目录结构：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">hello_cargo  <br>└───src<br>    └───main.rs<br>└───.gitignore<br>└───Cargo.toml<br></code></pre></td></tr></tbody></table></figure>
+
+<p>其中 <code>src</code> 存放着我们的源代码，默认生成的 <code>main.rs</code> 中的代码如下：</p>
+<figure class="highlight rust"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span> () {<br>  <span class="hljs-built_in">println!</span>(<span class="hljs-string">"Hello, world!"</span>);<br>}<br><br></code></pre></td></tr></tbody></table></figure>
+
+<h2><span id="cargotoml">Cargo.toml</span></h2><p>TOML(Tom’s Obvious, Minimal Language) 是 Cargo 的配置格式。<br><code>[package]</code> 是一个区域标题，表示下方的配置是用来配置包(package)的：</p>
+<ul>
+<li>name: 项目名</li>
+<li>version: 项目版本</li>
+<li>authors: 项目作者</li>
+<li>edition: 使用的 Rust 版本</li>
+</ul>
+<figure class="highlight toml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs toml"><span class="hljs-section">[package]</span><br><span class="hljs-attr">name</span> = <span class="hljs-string">"hello_cargo"</span><br><span class="hljs-attr">version</span> = <span class="hljs-string">"0.1.0"</span><br><span class="hljs-attr">authors</span> = [<span class="hljs-string">"HanshinKira &lt;1056317718@qq.com&gt;"</span>]<br><span class="hljs-attr">edition</span> = <span class="hljs-string">"2021"</span><br></code></pre></td></tr></tbody></table></figure>
+
+<p><code>[dependencies]</code> 是另一个区域的开始，它会列出项目的依赖项。在 Rust 中，代码的<strong>包</strong>（或者说<strong>库</strong>）被称为 <strong>crate</strong> 。</p>
+<h2><span id="%E4%BF%AE%E6%94%B9%E4%BB%A3%E7%A0%81%E5%B9%B6%E7%BC%96%E8%AF%91%E6%89%A7%E8%A1%8C">修改代码并编译执行</span></h2><p>下面我们对 <code>src/main.rs</code> 内的代码做一点调整：</p>
+<figure class="highlight rust"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span> () {<br>  <span class="hljs-built_in">println!</span>(<span class="hljs-string">"Hello, cargo!"</span>);<br>}<br><br></code></pre></td></tr></tbody></table></figure>
+
+<p>下面我们执行 <code>cargo build</code> 创建一个可执行文件。可执行文件将会位于 <code>hello_cargo/target/debug/hello_cargo.exe</code> 。</p>
+<p>首次运行 <code>cargo build</code> 会在顶层目录生成一个 <code>cargo.lock</code> 文件。</p>
+<ul>
+<li>该文件负责精确追踪项目依赖的具体版本</li>
+<li>不要手动修改该文件</li>
+</ul>
+<p>运行项目则只需要执行 <code>cargo run</code> 命令，该命令会执行<strong>构建和运行</strong>的操作。如果之前成功编译过，且源码未发生改变，则会直接运行之前的二进制文件。</p>
+<h2><span id="%E5%BC%80%E5%8F%91%E6%97%B6%E6%A3%80%E6%9F%A5">开发时检查</span></h2><p>假设我们开发了一个非常复杂的 Rust 应用，我们想要查看我们开发的源码中是否存在潜在的错误，我们可能会通过执行 <code>cargo build</code> 来查看能否通过编译。但是 <code>cargo build</code> 的时间可能会非常漫长。</p>
+<p>这个时候我们就可以执行 <code>cargo check</code> 来检查我们的代码，确认是否能通过编译，但同时不会生成可执行文件。因此它要比 <code>cargo build</code> 快得多。</p>
+<p>在我们编写代码时可以反复使用 <code>cargo check</code> 来检查代码，提高效率。</p>
+<h2><span id="%E6%9E%84%E5%BB%BA-release-%E7%89%88%E6%9C%AC">构建 release 版本</span></h2><p>上面的编译指令是用于编译 debug 版本的，如果要投入发布使用，则需要在编译时加上 flag ，完整的指令为 <code>cargo build --release</code>，也可以简写为 <code>cargo build -r</code>。</p>
+<p>它在编译时会进行优化，代码运行速度更快，但是编译时间也会更长。</p>
+<p>它生成的可执行文件位于 <code>target/release/hello_cargo.exe</code>。</p>
+</body></html>
+	</article>
+
+	 
+    <div class="kira-post-copyright">
+        <strong>本文作者：</strong>德布罗煜<br>
+        <strong>本文链接：</strong><a href="https://kira.host/blog/Rust/%E5%88%9D%E8%AF%86Rust/" title="https:&#x2F;&#x2F;kira.host&#x2F;blog&#x2F;Rust&#x2F;初识Rust&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;kira.host&#x2F;blog&#x2F;Rust&#x2F;初识Rust&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+  
+	<div class="kira-post-nav">
+		<nav class="post-nav">
+			  
+			<!-- 先找到与当前文字相同的目录 -->
+			                                                               
+			<!-- 在找到当前文章所在的 index -->
+			                                                                                
+			<!-- 上一篇文章 -->
+			<div class="old">
+				<span>上一章</span>
+				<a href="/blog/%E3%80%90Fira-Code%E3%80%91%E4%B8%80%E6%AC%BE%E4%B8%BA%E7%A8%8B%E5%BA%8F%E5%91%98%E9%87%8F%E8%BA%AB%E6%89%93%E9%80%A0%E7%9A%84%E5%AD%97%E4%BD%93/"> 【Fira Code】一款为程序员量身打造的字体</a>
+			</div>
+			       
+			<!-- 下一篇文章 -->
+			<div class="new">
+				<span>下一章</span>
+				<a href="/blog/Rust/Rust%E4%B8%AD%E9%80%9A%E7%94%A8%E7%9A%84%E7%BC%96%E7%A8%8B%E6%A6%82%E5%BF%B5/"> Rust中通用的编程概念</a>
+			</div>
+			                         
+		</nav>
+	</div>
+	
+	<div class="kira-post-meta kira-rainbow">
+		
+			<a class="kirafont icon-container-fill -link" href="/blog/categories/%E7%BC%96%E7%A8%8B/">编程</a>
+		
+		
+			<a class="kirafont icon-tag-fill -none-link" href="/blog/tags/Rust/" rel="tag">Rust</a>
+		
+	</div>
+	
+	<div class="kira-post-footer">
+		
+
+		
+	<div class="giscus"></div>
+  
+    <script src="https://giscus.app/client.js"
+      data-repo="ch1ny/ch1ny.github.io"
+      data-repo-id="R_kgDOHGgizw"
+      data-category="General"
+      data-category-id="DIC_kwDOHGgiz84CU88t"
+      data-mapping="pathname"
+      data-strict="0"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="top"
+      data-theme="light"
+      data-lang="en"
+      data-loading="lazy"
+      crossorigin="anonymous"
+      async  
+    ></script>
+  
+
+	</div>
+	
+</div>
+
+				</div>
+			</div>
+			<div class="kira-right-column">
+	<a onclick="document.querySelector('#kira-top-header').scrollIntoView({behavior: 'smooth'});" class="kira-backtotop" aria-label="回到顶部" title="回到顶部">
+		<button class="mdui-fab mdui-ripple">
+			<i class="kirafont icon-caret-up"></i>
+		</button>
+	</a>
+</div>
+
+		</div>
+	</body>
+</html>

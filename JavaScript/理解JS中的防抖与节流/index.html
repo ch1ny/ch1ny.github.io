@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html 
+	lang="zh_CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		
+<link rel="stylesheet" href="/blog/css/layout.css">
+
+		
+		<title> 理解 JS 中的防抖与节流 -  德布罗煜</title>
+		<!-- <link rel="stylesheet" href="https://unpkg.com/mdui@1.0.2/dist/css/mdui.min.css" /> -->
+		<!-- <script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script> -->
+		
+<link rel="stylesheet" href="/blog/lib/mdui/mdui.min.css">
+
+		
+<script src="/blog/lib/mdui/mdui.min.js"></script>
+
+		<!-- lazyload -->
+		
+<script src="/blog/lib/lazysizes.js"></script>
+
+		<!-- smooth-scrolling -->
+		
+<script src="/blog/lib/smooth-scrolling.js"></script>
+
+		<!-- highlight -->
+		
+<link rel="stylesheet" href="/blog/lib/highlight/atom-one-dark.min.css">
+
+		
+<script src="/blog/lib/highlight/highlight.min.js"></script>
+
+		<!-- 预置 kiraicon -->
+		
+<link rel="stylesheet" href="/blog/lib/iconfont/iconfont.css">
+
+		
+		<link
+			rel="shortcut icon"
+			href="https://kira.host/assets/Pictures/Others/116359b4ccf19917.jpg"
+			type="image/png"
+		/>
+		
+<link rel="stylesheet" href="/blog/deps/css/APlayer.min.css">
+
+		
+		
+<script src="/blog/deps/js/APlayer.min.js"></script>
+<script src="/blog/deps/js/Meting.min.js"></script>
+
+	<meta name="generator" content="Hexo 6.3.0"></head>
+
+	<body>
+		<div
+			class="kira-background"
+			style="background-image: url('https://kira.host/assets/Pictures/Others/-f0d5cc34c6e5aa7_compressed.jpg')"
+		></div>
+		<div class="kira-header">
+    <a
+        class="kira-drawer-button mdui-ripple"
+        title="导航栏"
+        onclick="document.querySelector('.kira-sidebar-modal').classList.add('show');document.querySelector('.kira-sidebar#sidebar').classList.add('show');"
+    >
+        <i class="kirafont icon-menu"></i>
+    </a>
+    <a href="/blog/" title="德布罗煜">
+        <img
+			src="https://kira.host/assets/Pictures/Others/20220922230447.jpg"
+			alt="德布罗煜"
+		/>
+    </a>
+</div>
+		<div class="kira-body">
+			<div class="kira-sidebar" id="sidebar">
+	<div class="kira-avatar mdui-ripple">
+		<a href="https://kira.host/assets/Pictures/Others/20220922230447.jpg" title="德布罗煜">
+			<img
+				src="https://kira.host/assets/Pictures/Others/20220922230447.jpg"
+				alt="德布罗煜"
+			/>
+		</a>
+	</div>
+	<div class="kira-count">
+		<div><span>文章</span>30</div>
+		<div><span>标签</span>14</div>
+		<div><span>分类</span>3</div>
+	</div>
+	<div class="kira-list">
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/blog/"
+			title="回到首页"
+		>
+			<i
+				class="kirafont
+					
+						icon-home
+					"
+			></i>
+			<div class="kira-list-item-content">
+				回到首页
+			</div>
+		</a>
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/blog/archive.html"
+			title="文章归档"
+		>
+			<i
+				class="kirafont
+					
+						icon-container
+					"
+			></i>
+			<div class="kira-list-item-content">
+				文章归档
+			</div>
+		</a>
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/blog/about.html"
+			title="关于本人"
+		>
+			<i
+				class="kirafont
+					
+						icon-user
+					"
+			></i>
+			<div class="kira-list-item-content">
+				关于本人
+			</div>
+		</a>
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/blog/friends.html"
+			title="我的朋友"
+		>
+			<i
+				class="kirafont
+					
+						icon-team
+					"
+			></i>
+			<div class="kira-list-item-content">
+				我的朋友
+			</div>
+		</a>
+		
+	</div>
+	<aside id="kira-sidebar">
+		
+			<div class="kira-widget-wrap">
+	<div class="kira-widget kira-social">
+		
+			<a
+				class="mdui-ripple"
+				href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=1056317718&website=www.oicqzone.com"
+				target="_blank"
+				mdui-tooltip="{content: 'QQ'}"
+				style="color: rgb(49, 174, 255); background-color: rgba(49, 174, 255, .1);"
+			>
+				<i
+					class="kirafont
+					
+						icon-QQ
+					"
+				></i>
+			</a>
+		
+			<a
+				class="mdui-ripple"
+				href="https://space.bilibili.com/27905679"
+				target="_blank"
+				mdui-tooltip="{content: '哔哩哔哩'}"
+				style="color: rgb(231, 106, 141); background-color: rgba(231, 106, 141, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-bilibili
+					"
+				></i>
+			</a>
+		
+			<a
+				class="mdui-ripple"
+				href="https://github.com/ch1ny/"
+				target="_blank"
+				mdui-tooltip="{content: 'GitHub'}"
+				style="color: rgb(25, 23, 23); background-color: rgba(25, 23, 23, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-github
+					"
+				></i>
+			</a>
+		
+			<a
+				class="mdui-ripple"
+				href="https://gitee.com/ch1ny"
+				target="_blank"
+				mdui-tooltip="{content: 'Gitee'}"
+				style="color: rgb(165, 15, 15); background-color: rgba(165, 15, 15, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-gitee
+					"
+				></i>
+			</a>
+		
+	</div>
+</div>
+
+		
+			
+  <div class="kira-widget-wrap">
+    <h3 class="kira-widget-title">分类</h3>
+    <div class="kira-widget">
+      <ul class="category-list">
+        
+        
+
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/blog/categories/Revue/">
+              Revue
+            </a>
+            <span class="category-list-count">5</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/blog/categories/编程/">
+              编程
+            </a>
+            <span class="category-list-count">23</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/blog/categories/面经/">
+              面经
+            </a>
+            <span class="category-list-count">2</span>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+		
+			
+	<div class="kira-widget-wrap">
+		<div id="randomtagcloud" class="kira-widget tagcloud kira-rainbow">
+			<a href="/blog/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/blog/tags/Node-js/" style="font-size: 16px;">Node.js</a> <a href="/blog/tags/React/" style="font-size: 18px;">React</a> <a href="/blog/tags/Revue/" style="font-size: 18px;">Revue</a> <a href="/blog/tags/Rust/" style="font-size: 14px;">Rust</a> <a href="/blog/tags/TypeScript/" style="font-size: 10px;">TypeScript</a> <a href="/blog/tags/Unity3D/" style="font-size: 10px;">Unity3D</a> <a href="/blog/tags/VSCODE/" style="font-size: 12px;">VSCODE</a> <a href="/blog/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/blog/tags/electron/" style="font-size: 10px;">electron</a> <a href="/blog/tags/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8/" style="font-size: 10px;">字节跳动</a> <a href="/blog/tags/%E8%9A%82%E8%9A%81/" style="font-size: 10px;">蚂蚁</a> <a href="/blog/tags/%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4/" style="font-size: 10px;">阿里巴巴</a> <a href="/blog/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 12px;">面试</a>
+		</div>
+		
+	</div>
+
+
+		
+	</aside>
+	<div class="kira-copyright">
+		&copy; 2024
+		<a href="/blog/">德布罗煜</a>
+		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> &
+		<a href="https://github.com/ch1ny/kira-hexo/" target="_blank">Kira-Hexo</a>
+		<br />
+		
+			<a
+				href="https://beian.miit.gov.cn/"
+				target="_blank"
+			>
+				赣ICP备2021007955号-3
+			</a>
+		
+		<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div><span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span></div><div><span id="busuanzi_container_site_uv">共接待访客<span id="busuanzi_value_site_uv"></span>位</span></div>
+	</div>
+</div>
+<div
+	class="kira-sidebar-modal"
+	id="sidebar-modal"
+	onclick="(function(self) {
+		self.classList.remove('show');
+		document.querySelector('.kira-sidebar.show#sidebar').classList.remove('show');
+	})(this)"
+></div>
+			<div class="kira-content">
+				<div id="kira-top-header"></div>
+				<div class="kira-main-content">
+					
+<link rel="stylesheet" href="/blog/css/kira-image.css">
+
+
+<script src="/blog/js/kira-image.js"></script>
+
+<div class="kira-image">
+    <div class="kira-image-modal">
+        <div class="kira-image-header">
+            <div class="kira-image-counter"></div>
+            <div class="kira-image-title"></div>
+            <div class="kira-image-operation">
+                <div class="kira-image-operation-button" id="kira-image-operation-button-zoom">
+                    <i class="kirafont icon-zoom-in"></i>
+                </div>
+                <div class="kira-image-operation-button" id="kira-image-operation-button-close">
+                    <i class="kirafont icon-close"></i>
+                </div>
+            </div>
+        </div>
+        <div class="kira-image-container">
+            <div class="kira-image-prev-button-panel">
+                <div class="kira-image-exchange-button">
+                    <i class="kirafont icon-left"></i>
+                </div>
+            </div>
+            <div class="kira-image-list">
+                <div class="kira-image-prev">
+                    <img />
+                </div>
+                <div class="kira-image-now">
+                    <img />
+                </div>
+                <div class="kira-image-next">
+                    <img />
+                </div>
+            </div>
+            <div class="kira-image-next-button-panel">
+                <div class="kira-image-exchange-button">
+                    <i class="kirafont icon-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+	
+<link rel="stylesheet" href="/blog/css/kira-code-copy.css">
+
+	
+<script src="/blog/js/kira-code-copy.js"></script>
+
+
+<div class="kira-post">
+	<article>
+		
+		<div class="kira-post-cover">
+			<img
+				data-src="https://pic1.zhimg.com/v2-535e92c65ddaff1a55f11df10c680c75_720w.jpg?source=172ae18b"
+				data-sizes="auto"
+				alt="理解 JS 中的防抖与节流"
+				class="lazyload kira-post-cover-image disabled-kira-image"
+			/>
+			<h1>理解 JS 中的防抖与节流</h1>
+		</div>
+		
+		<div class="kira-post-meta kira-rainbow" style="margin:10px 0!important;">
+			<a><i class="kirafont icon-calendar-fill"></i>2022年01月11日</a>
+			<a><i class="kirafont icon-edit-fill"></i>1.3k 字</a>
+			<a><i class="kirafont icon-time-circle-fill"></i>大概 6 分钟</a>
+		</div>
+		<html><head></head><body><blockquote>
+<p>在前端项目开发中，在合适的地方做好<strong>防抖</strong>与<strong>节流</strong>是十分重要的。首先我们要知道，哪些地方适合采用防抖节流进行开发。一个重要的特征就是——<strong>某个函数在短时间内被频繁持续地执行</strong>。</p>
+</blockquote>
+<span id="more"></span>
+
+<p>下面将给大家展示一个例子，方便理解：</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"zh"</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span> /&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">"X-UA-Compatible"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"IE=edge"</span> /&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width, initial-scale=1.0"</span> /&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>防抖节流<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css"></span><br><span class="language-css">            <span class="hljs-selector-tag">body</span> {</span><br><span class="language-css">                <span class="hljs-attribute">text-align</span>: center;</span><br><span class="language-css">                <span class="hljs-attribute">margin</span>: <span class="hljs-number">0%</span>;</span><br><span class="language-css">            }</span><br><span class="language-css"></span><br><span class="language-css">            <span class="hljs-selector-tag">div</span> {</span><br><span class="language-css">                <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;</span><br><span class="language-css">                <span class="hljs-attribute">height</span>: <span class="hljs-number">75px</span>;</span><br><span class="language-css">                <span class="hljs-attribute">text-align</span>: center;</span><br><span class="language-css">                <span class="hljs-attribute">background-color</span>: gray;</span><br><span class="language-css">                <span class="hljs-attribute">color</span>: white;</span><br><span class="language-css">                <span class="hljs-attribute">font-size</span>: <span class="hljs-number">75px</span>;</span><br><span class="language-css">                <span class="hljs-attribute">line-height</span>: <span class="hljs-number">75px</span>;</span><br><span class="language-css">                <span class="hljs-attribute">position</span>: relative;</span><br><span class="language-css">                <span class="hljs-attribute">left</span>: <span class="hljs-number">50%</span>;</span><br><span class="language-css">                <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate</span>(-<span class="hljs-number">50%</span>);</span><br><span class="language-css">                user-<span class="hljs-selector-tag">select</span>: none;</span><br><span class="language-css">            }</span><br><span class="language-css">        </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>未采用防抖与节流，函数被频繁触发<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"number"</span>&gt;</span>0<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">        {</span><br><span class="language-javascript">            <span class="hljs-keyword">let</span> num = <span class="hljs-number">0</span>;</span><br><span class="language-javascript"></span><br><span class="language-javascript">            <span class="hljs-keyword">function</span> <span class="hljs-title function_">movemouse</span>(<span class="hljs-params"></span>) {</span><br><span class="language-javascript">                <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">'#number'</span>).<span class="hljs-property">onmousemove</span> = <span class="hljs-function">() =&gt;</span> {</span><br><span class="language-javascript">                    <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">'#number'</span>).<span class="hljs-property">innerText</span> = ++num;</span><br><span class="language-javascript">                };</span><br><span class="language-javascript">            }</span><br><span class="language-javascript"></span><br><span class="language-javascript">            <span class="hljs-title function_">movemouse</span>();</span><br><span class="language-javascript">        }</span><br><span class="language-javascript">    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></tbody></table></figure>
+
+<p>通过以上代码，我们构造了一个简单的函数被频繁触发的 demo 。<br><img data-fancybox="gallery" data-sizes="auto" data-src="https://kira.host/assets/Pictures/Others/a9127a35ad0047789b2892135ed3bf96.png" alt="在这里插入图片描述" class="lazyload"><br>这是一个灰色的 <code>div</code> ，当鼠标在它里面移动时，其内容会加一，效果如下：<br><img data-fancybox="gallery" data-sizes="auto" data-src="https://kira.host/assets/Pictures/Others/8a0a38e3a5454aafbab6062aa9263468.gif" alt="在这里插入图片描述" class="lazyload"><br>可以看到，当我们对这个函数不作任何处理时，我们每滑动一次鼠标，都会频繁地触发函数。当该函数执行一次的开销变得很大时（比如发送 AJAX 请求），这样的执行方式将会给用户带来地狱般的使用体验。<br>下面我们来看看如何通过<strong>防抖</strong>（<strong>debounce</strong>）和<strong>节流</strong>（<strong>throttle</strong>）来解决这个问题。</p>
+<p><strong>防抖</strong><br>所谓防抖（debounce），是指让函数保持一定的时间间隔触发。当某函数触发过一次后，要求其等待一段时间后才能再次执行。<br>下面我来演示一下如何通过防抖技术解决我们上面给出的样例中出现的问题。</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- 为节省时间，多余的部分就不写了，只关注防抖部分的代码实现 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>这是防抖<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"debounce"</span>&gt;</span>0<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    {</span><br><span class="language-javascript">        <span class="hljs-keyword">let</span> num = <span class="hljs-number">0</span>;</span><br><span class="language-javascript">        <span class="hljs-keyword">let</span> noMove = <span class="hljs-literal">true</span>;</span><br><span class="language-javascript">        <span class="hljs-keyword">let</span> timeout;</span><br><span class="language-javascript"></span><br><span class="language-javascript">        <span class="hljs-comment">/*</span></span><br><span class="hljs-comment"><span class="language-javascript">         * 防抖 debounce</span></span><br><span class="hljs-comment"><span class="language-javascript">         */</span></span><br><span class="language-javascript">        <span class="hljs-keyword">function</span> <span class="hljs-title function_">debounce</span>(<span class="hljs-params"></span>) {</span><br><span class="language-javascript">            <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">'#debounce'</span>).<span class="hljs-property">onmousemove</span> = <span class="hljs-function">() =&gt;</span> {</span><br><span class="language-javascript">                <span class="hljs-keyword">if</span> (noMove) {</span><br><span class="language-javascript">                    noMove = <span class="hljs-literal">false</span>;</span><br><span class="language-javascript">                    <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">'#debounce'</span>).<span class="hljs-property">innerText</span> = ++num;</span><br><span class="language-javascript">                } <span class="hljs-keyword">else</span> {</span><br><span class="language-javascript">                    <span class="hljs-keyword">if</span> (timeout) {</span><br><span class="language-javascript">                        <span class="hljs-built_in">clearTimeout</span>(timeout);</span><br><span class="language-javascript">                    }</span><br><span class="language-javascript">                }</span><br><span class="language-javascript">                timeout = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {</span><br><span class="language-javascript">                    noMove = <span class="hljs-literal">true</span>;</span><br><span class="language-javascript">                }, <span class="hljs-number">1000</span>);</span><br><span class="language-javascript">            };</span><br><span class="language-javascript">        }</span><br><span class="language-javascript"></span><br><span class="language-javascript">        <span class="hljs-title function_">debounce</span>();</span><br><span class="language-javascript">    }</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></tbody></table></figure>
+
+<p>在<strong>防抖</strong>解决方案中，我们为函数添加了两个新的变量：<code>noMove</code> 和 <code>timeout</code> 。其中，<code>noMove</code> 是一个布尔值，用来记录在一定时间范围内函数是否没有被触发，一旦触发函数将会把 <code>noMove</code> 置为 <code>false</code> 。同时启动一个计时器，赋给 <code>timeout</code> 变量，它负责在指定时间过后将 <code>noMove</code> 的值再次恢复为 <code>true</code> ，以使函数能够正常执行。当然，每当函数在规定时长内再次被触发时，我们会移除上一轮函数执行中赋值给 <code>timeout</code> 的计时器，并重新计时。<br>以上便是<strong>防抖</strong>技术的基本思想。下面我们来看看实际效果。<br><img data-fancybox="gallery" data-sizes="auto" data-src="https://kira.host/assets/Pictures/Others/63e5779d43f743f7be350ff1ce7fcb4d.gif" alt="在这里插入图片描述" class="lazyload"><br>通过防抖的实现后，我们可以看见 demo 中的 <code>div</code> 依旧会因为鼠标的移动而使自身的内容加一，但是执行远没有最初那么频繁了。而且在函数执行一次后，只有当一段时间没有再次执行函数之后，该函数才会再次生效，否则，频繁地触发函数将会导致函数永远无法执行。</p>
+<p><strong>节流</strong><br>防抖与节流都能解决前端页面函数触发过于频繁的问题，但两者的基本思想并不完全相同，下面我们把<strong>防抖</strong>的代码修改为<strong>节流</strong>的解决方案：</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>这是节流<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"throttle"</span>&gt;</span>0<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    {</span><br><span class="language-javascript">        <span class="hljs-keyword">let</span> num = <span class="hljs-number">0</span>;</span><br><span class="language-javascript">        <span class="hljs-keyword">let</span> noMove = <span class="hljs-literal">true</span>;</span><br><span class="language-javascript"></span><br><span class="language-javascript">        <span class="hljs-comment">/*</span></span><br><span class="hljs-comment"><span class="language-javascript">         * 节流 (throttle)</span></span><br><span class="hljs-comment"><span class="language-javascript">         */</span></span><br><span class="language-javascript">        <span class="hljs-keyword">function</span> <span class="hljs-title function_">throttle</span>(<span class="hljs-params"></span>) {</span><br><span class="language-javascript">            <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">'throttle'</span>).<span class="hljs-property">onmousemove</span> = <span class="hljs-function">() =&gt;</span> {</span><br><span class="language-javascript">                <span class="hljs-keyword">if</span> (noMove) {</span><br><span class="language-javascript">                    <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">'throttle'</span>).<span class="hljs-property">innerText</span> = ++num;</span><br><span class="language-javascript">                    noMove = <span class="hljs-literal">false</span>;</span><br><span class="language-javascript">                    <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {</span><br><span class="language-javascript">                        noMove = <span class="hljs-literal">true</span>;</span><br><span class="language-javascript">                    }, <span class="hljs-number">1000</span>);</span><br><span class="language-javascript">                }</span><br><span class="language-javascript">            };</span><br><span class="language-javascript">        }</span><br><span class="language-javascript"></span><br><span class="language-javascript">        <span class="hljs-title function_">throttle</span>();</span><br><span class="language-javascript">    }</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></tbody></table></figure>
+
+<p><strong>节流</strong>的基本思想是让函数触发保持在一定的速率下，以免频繁地执行。在这个方案下，我们同样引入了变量 <code>noMove</code> 。当触发并执行相关函数后，我们让 <code>noMove</code> 置为 <code>false</code> ，并启动一个计时器，让它在一定时间后将 <code>noMove</code> 恢复为 <code>true</code> 。下面是<strong>节流</strong>的实现效果：<br><img data-fancybox="gallery" data-sizes="auto" data-src="https://kira.host/assets/Pictures/Others/49fd57d5bbd04aa0bd3190eacb240637.gif" alt="在这里插入图片描述" class="lazyload"></p>
+<p>现在，我们还可以对<strong>防抖</strong>函数与<strong>节流</strong>函数做进一步封装，使其更加偏向实际开发使用。封装如下：</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">debounce</span>(<span class="hljs-params">func, wait</span>) {<br>    <span class="hljs-keyword">let</span> timeout;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {<br>        <span class="hljs-keyword">if</span> (timeout) {<br>            <span class="hljs-built_in">clearTimeout</span>(timeout);<br>        } <span class="hljs-keyword">else</span> {<br>            func.<span class="hljs-title function_">apply</span>(<span class="hljs-variable language_">this</span>, <span class="hljs-variable language_">arguments</span>);<br>        }<br>        timeout = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {<br>            timeout = <span class="hljs-literal">null</span>;<br>        }, wait);<br>    };<br>}<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">throttle</span>(<span class="hljs-params">func, wait</span>) {<br>    <span class="hljs-keyword">let</span> timeout;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {<br>        <span class="hljs-keyword">if</span> (!timeout) {<br>            func.<span class="hljs-title function_">apply</span>(<span class="hljs-variable language_">this</span>, <span class="hljs-variable language_">arguments</span>);<br>            timeout = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {<br>                timeout = <span class="hljs-literal">null</span>;<br>            }, wait);<br>        }<br>    };<br>}<br><br><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">'#debounce'</span>).<span class="hljs-property">onmousemove</span> = <span class="hljs-title function_">debounce</span>(<span class="hljs-function">() =&gt;</span> {<br>    <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">'debounce'</span>).<span class="hljs-property">innerText</span> = ++<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">'debounce'</span>).<span class="hljs-property">innerText</span>;<br>}, <span class="hljs-number">1000</span>);<br><br><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">'#throttle'</span>).<span class="hljs-property">onmousemove</span> = <span class="hljs-title function_">throttle</span>(<span class="hljs-function">() =&gt;</span> {<br>    <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">'throttle'</span>).<span class="hljs-property">innerText</span> = ++<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">'throttle'</span>).<span class="hljs-property">innerText</span>;<br>}, <span class="hljs-number">1000</span>);<br></code></pre></td></tr></tbody></table></figure>
+
+<p>以上就是<strong>防抖</strong>与<strong>节流</strong>的基本思想的介绍，读者应该根据自己开发项目中的实际需要选择不同的解决方案，同时上面给出的代码也仅供参考，真正重要的是两种解决方案的基本思想，开发者应该根据实际开发来调整具体的实现逻辑。</p>
+</body></html>
+	</article>
+
+	 
+    <div class="kira-post-copyright">
+        <strong>本文作者：</strong>德布罗煜<br>
+        <strong>本文链接：</strong><a href="https://kira.host/blog/JavaScript/%E7%90%86%E8%A7%A3JS%E4%B8%AD%E7%9A%84%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81/" title="https:&#x2F;&#x2F;kira.host&#x2F;blog&#x2F;JavaScript&#x2F;理解JS中的防抖与节流&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;kira.host&#x2F;blog&#x2F;JavaScript&#x2F;理解JS中的防抖与节流&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+  
+	<div class="kira-post-nav">
+		<nav class="post-nav">
+			  
+			<!-- 先找到与当前文字相同的目录 -->
+			                                    
+			<!-- 在找到当前文章所在的 index -->
+			                                            
+			<!-- 上一篇文章 -->
+			<div class="old">
+				<span>上一章</span>
+				<a href="/blog/JavaScript/js%E5%8E%9F%E5%9E%8B%E9%93%BE/"> js原型链</a>
+			</div>
+			       
+			<!-- 下一篇文章 -->
+			<div class="new">
+				<span>下一章</span>
+				<a href="/blog/Node.js/%E3%80%90Node.js%E5%AD%A6%E4%B9%A0%E3%80%91%E5%88%9D%E8%AF%86Node.js/"> 【Node.js学习】初识Node.js</a>
+			</div>
+			                                                                                        
+		</nav>
+	</div>
+	
+	<div class="kira-post-meta kira-rainbow">
+		
+			<a class="kirafont icon-container-fill -link" href="/blog/categories/%E7%BC%96%E7%A8%8B/">编程</a>
+		
+		
+			<a class="kirafont icon-tag-fill -none-link" href="/blog/tags/JavaScript/" rel="tag">JavaScript</a>
+		
+	</div>
+	
+	<div class="kira-post-footer">
+		
+
+		
+	<div class="giscus"></div>
+  
+    <script src="https://giscus.app/client.js"
+      data-repo="ch1ny/ch1ny.github.io"
+      data-repo-id="R_kgDOHGgizw"
+      data-category="General"
+      data-category-id="DIC_kwDOHGgiz84CU88t"
+      data-mapping="pathname"
+      data-strict="0"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="top"
+      data-theme="light"
+      data-lang="en"
+      data-loading="lazy"
+      crossorigin="anonymous"
+      async  
+    ></script>
+  
+
+	</div>
+	
+</div>
+
+				</div>
+			</div>
+			<div class="kira-right-column">
+	<a onclick="document.querySelector('#kira-top-header').scrollIntoView({behavior: 'smooth'});" class="kira-backtotop" aria-label="回到顶部" title="回到顶部">
+		<button class="mdui-fab mdui-ripple">
+			<i class="kirafont icon-caret-up"></i>
+		</button>
+	</a>
+</div>
+
+		</div>
+	</body>
+</html>

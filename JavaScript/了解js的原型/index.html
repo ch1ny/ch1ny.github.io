@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html 
+	lang="zh_CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		
+<link rel="stylesheet" href="/blog/css/layout.css">
+
+		
+		<title> 了解js的原型 -  德布罗煜</title>
+		<!-- <link rel="stylesheet" href="https://unpkg.com/mdui@1.0.2/dist/css/mdui.min.css" /> -->
+		<!-- <script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script> -->
+		
+<link rel="stylesheet" href="/blog/lib/mdui/mdui.min.css">
+
+		
+<script src="/blog/lib/mdui/mdui.min.js"></script>
+
+		<!-- lazyload -->
+		
+<script src="/blog/lib/lazysizes.js"></script>
+
+		<!-- smooth-scrolling -->
+		
+<script src="/blog/lib/smooth-scrolling.js"></script>
+
+		<!-- highlight -->
+		
+<link rel="stylesheet" href="/blog/lib/highlight/atom-one-dark.min.css">
+
+		
+<script src="/blog/lib/highlight/highlight.min.js"></script>
+
+		<!-- 预置 kiraicon -->
+		
+<link rel="stylesheet" href="/blog/lib/iconfont/iconfont.css">
+
+		
+		<link
+			rel="shortcut icon"
+			href="https://kira.host/assets/Pictures/Others/116359b4ccf19917.jpg"
+			type="image/png"
+		/>
+		
+<link rel="stylesheet" href="/blog/deps/css/APlayer.min.css">
+
+		
+		
+<script src="/blog/deps/js/APlayer.min.js"></script>
+<script src="/blog/deps/js/Meting.min.js"></script>
+
+	<meta name="generator" content="Hexo 6.3.0"></head>
+
+	<body>
+		<div
+			class="kira-background"
+			style="background-image: url('https://kira.host/assets/Pictures/Others/-f0d5cc34c6e5aa7_compressed.jpg')"
+		></div>
+		<div class="kira-header">
+    <a
+        class="kira-drawer-button mdui-ripple"
+        title="导航栏"
+        onclick="document.querySelector('.kira-sidebar-modal').classList.add('show');document.querySelector('.kira-sidebar#sidebar').classList.add('show');"
+    >
+        <i class="kirafont icon-menu"></i>
+    </a>
+    <a href="/blog/" title="德布罗煜">
+        <img
+			src="https://kira.host/assets/Pictures/Others/20220922230447.jpg"
+			alt="德布罗煜"
+		/>
+    </a>
+</div>
+		<div class="kira-body">
+			<div class="kira-sidebar" id="sidebar">
+	<div class="kira-avatar mdui-ripple">
+		<a href="https://kira.host/assets/Pictures/Others/20220922230447.jpg" title="德布罗煜">
+			<img
+				src="https://kira.host/assets/Pictures/Others/20220922230447.jpg"
+				alt="德布罗煜"
+			/>
+		</a>
+	</div>
+	<div class="kira-count">
+		<div><span>文章</span>30</div>
+		<div><span>标签</span>14</div>
+		<div><span>分类</span>3</div>
+	</div>
+	<div class="kira-list">
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/blog/"
+			title="回到首页"
+		>
+			<i
+				class="kirafont
+					
+						icon-home
+					"
+			></i>
+			<div class="kira-list-item-content">
+				回到首页
+			</div>
+		</a>
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/blog/archive.html"
+			title="文章归档"
+		>
+			<i
+				class="kirafont
+					
+						icon-container
+					"
+			></i>
+			<div class="kira-list-item-content">
+				文章归档
+			</div>
+		</a>
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/blog/about.html"
+			title="关于本人"
+		>
+			<i
+				class="kirafont
+					
+						icon-user
+					"
+			></i>
+			<div class="kira-list-item-content">
+				关于本人
+			</div>
+		</a>
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/blog/friends.html"
+			title="我的朋友"
+		>
+			<i
+				class="kirafont
+					
+						icon-team
+					"
+			></i>
+			<div class="kira-list-item-content">
+				我的朋友
+			</div>
+		</a>
+		
+	</div>
+	<aside id="kira-sidebar">
+		
+			<div class="kira-widget-wrap">
+	<div class="kira-widget kira-social">
+		
+			<a
+				class="mdui-ripple"
+				href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=1056317718&website=www.oicqzone.com"
+				target="_blank"
+				mdui-tooltip="{content: 'QQ'}"
+				style="color: rgb(49, 174, 255); background-color: rgba(49, 174, 255, .1);"
+			>
+				<i
+					class="kirafont
+					
+						icon-QQ
+					"
+				></i>
+			</a>
+		
+			<a
+				class="mdui-ripple"
+				href="https://space.bilibili.com/27905679"
+				target="_blank"
+				mdui-tooltip="{content: '哔哩哔哩'}"
+				style="color: rgb(231, 106, 141); background-color: rgba(231, 106, 141, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-bilibili
+					"
+				></i>
+			</a>
+		
+			<a
+				class="mdui-ripple"
+				href="https://github.com/ch1ny/"
+				target="_blank"
+				mdui-tooltip="{content: 'GitHub'}"
+				style="color: rgb(25, 23, 23); background-color: rgba(25, 23, 23, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-github
+					"
+				></i>
+			</a>
+		
+			<a
+				class="mdui-ripple"
+				href="https://gitee.com/ch1ny"
+				target="_blank"
+				mdui-tooltip="{content: 'Gitee'}"
+				style="color: rgb(165, 15, 15); background-color: rgba(165, 15, 15, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-gitee
+					"
+				></i>
+			</a>
+		
+	</div>
+</div>
+
+		
+			
+  <div class="kira-widget-wrap">
+    <h3 class="kira-widget-title">分类</h3>
+    <div class="kira-widget">
+      <ul class="category-list">
+        
+        
+
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/blog/categories/Revue/">
+              Revue
+            </a>
+            <span class="category-list-count">5</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/blog/categories/编程/">
+              编程
+            </a>
+            <span class="category-list-count">23</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/blog/categories/面经/">
+              面经
+            </a>
+            <span class="category-list-count">2</span>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+		
+			
+	<div class="kira-widget-wrap">
+		<div id="randomtagcloud" class="kira-widget tagcloud kira-rainbow">
+			<a href="/blog/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/blog/tags/Node-js/" style="font-size: 16px;">Node.js</a> <a href="/blog/tags/React/" style="font-size: 18px;">React</a> <a href="/blog/tags/Revue/" style="font-size: 18px;">Revue</a> <a href="/blog/tags/Rust/" style="font-size: 14px;">Rust</a> <a href="/blog/tags/TypeScript/" style="font-size: 10px;">TypeScript</a> <a href="/blog/tags/Unity3D/" style="font-size: 10px;">Unity3D</a> <a href="/blog/tags/VSCODE/" style="font-size: 12px;">VSCODE</a> <a href="/blog/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/blog/tags/electron/" style="font-size: 10px;">electron</a> <a href="/blog/tags/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8/" style="font-size: 10px;">字节跳动</a> <a href="/blog/tags/%E8%9A%82%E8%9A%81/" style="font-size: 10px;">蚂蚁</a> <a href="/blog/tags/%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4/" style="font-size: 10px;">阿里巴巴</a> <a href="/blog/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 12px;">面试</a>
+		</div>
+		
+	</div>
+
+
+		
+	</aside>
+	<div class="kira-copyright">
+		&copy; 2024
+		<a href="/blog/">德布罗煜</a>
+		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> &
+		<a href="https://github.com/ch1ny/kira-hexo/" target="_blank">Kira-Hexo</a>
+		<br />
+		
+			<a
+				href="https://beian.miit.gov.cn/"
+				target="_blank"
+			>
+				赣ICP备2021007955号-3
+			</a>
+		
+		<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div><span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span></div><div><span id="busuanzi_container_site_uv">共接待访客<span id="busuanzi_value_site_uv"></span>位</span></div>
+	</div>
+</div>
+<div
+	class="kira-sidebar-modal"
+	id="sidebar-modal"
+	onclick="(function(self) {
+		self.classList.remove('show');
+		document.querySelector('.kira-sidebar.show#sidebar').classList.remove('show');
+	})(this)"
+></div>
+			<div class="kira-content">
+				<div id="kira-top-header"></div>
+				<div class="kira-main-content">
+					
+<link rel="stylesheet" href="/blog/css/kira-image.css">
+
+
+<script src="/blog/js/kira-image.js"></script>
+
+<div class="kira-image">
+    <div class="kira-image-modal">
+        <div class="kira-image-header">
+            <div class="kira-image-counter"></div>
+            <div class="kira-image-title"></div>
+            <div class="kira-image-operation">
+                <div class="kira-image-operation-button" id="kira-image-operation-button-zoom">
+                    <i class="kirafont icon-zoom-in"></i>
+                </div>
+                <div class="kira-image-operation-button" id="kira-image-operation-button-close">
+                    <i class="kirafont icon-close"></i>
+                </div>
+            </div>
+        </div>
+        <div class="kira-image-container">
+            <div class="kira-image-prev-button-panel">
+                <div class="kira-image-exchange-button">
+                    <i class="kirafont icon-left"></i>
+                </div>
+            </div>
+            <div class="kira-image-list">
+                <div class="kira-image-prev">
+                    <img />
+                </div>
+                <div class="kira-image-now">
+                    <img />
+                </div>
+                <div class="kira-image-next">
+                    <img />
+                </div>
+            </div>
+            <div class="kira-image-next-button-panel">
+                <div class="kira-image-exchange-button">
+                    <i class="kirafont icon-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+	
+<link rel="stylesheet" href="/blog/css/kira-code-copy.css">
+
+	
+<script src="/blog/js/kira-code-copy.js"></script>
+
+
+<div class="kira-post">
+	<article>
+		
+		<div class="kira-post-cover">
+			<img
+				data-src="https://pic1.zhimg.com/v2-535e92c65ddaff1a55f11df10c680c75_720w.jpg?source=172ae18b"
+				data-sizes="auto"
+				alt="了解js的原型"
+				class="lazyload kira-post-cover-image disabled-kira-image"
+			/>
+			<h1>了解js的原型</h1>
+		</div>
+		
+		<div class="kira-post-meta kira-rainbow" style="margin:10px 0!important;">
+			<a><i class="kirafont icon-calendar-fill"></i>2022年01月08日</a>
+			<a><i class="kirafont icon-edit-fill"></i>3.1k 字</a>
+			<a><i class="kirafont icon-time-circle-fill"></i>大概 13 分钟</a>
+		</div>
+		<html><head></head><body><p>在上一篇文章中，我们介绍了 JS 的对象设计。文章的最后我们留下了一个问题，而我们能在这篇文章中找到解决这个问题的方法。</p>
+<span id="more"></span>
+
+<!-- toc -->
+
+<ul>
+<li><a href="#%E7%90%86%E8%A7%A3%E5%8E%9F%E5%9E%8B">理解原型</a></li>
+<li><a href="#%E5%8E%9F%E5%9E%8B%E5%B1%82%E7%BA%A7">原型层级</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E5%8E%9F%E5%9E%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E6%8A%80%E5%B7%A7">使用原型的一些小技巧</a><ul>
+<li><a href="#%E5%85%B6%E4%BB%96%E5%8E%9F%E5%9E%8B%E8%AF%AD%E6%B3%95">其他原型语法</a></li>
+<li><a href="#%E5%8E%9F%E5%9E%8B%E7%9A%84%E5%8A%A8%E6%80%81%E6%80%A7">原型的动态性</a></li>
+<li><a href="#%E5%8E%9F%E5%9E%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98">原型的一些问题</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+<h2><span id="%E7%90%86%E8%A7%A3%E5%8E%9F%E5%9E%8B">理解原型</span></h2><p>在 js 中，当我们创建一个函数时，就会按照特定的规则给这个函数创建一个 <strong>prototype</strong> 属性（指向原型对象）。通常情况下，所有的原型对象都会自动获得一个名为 constructor 的属性，指回与之关联的构造函数。<br>我们拿上一篇文章中的 <strong>Person</strong> 举例， <code>Person.prototype.constructor</code> 指向 <code>Person</code> 。由于构造函数不同，原型对象也可能会拥有其他的属性和方法。换个角度，当我们向 <strong>prototype</strong> 属性指向的原型对象上挂载新的方法时，该原型对象也会具有新的方法。<br>因此，我们可以通过<strong>原型模式</strong>来解决我们上一篇文章中的遗留问题：</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">Person</span>(<span class="hljs-params">name, age, sex</span>) {<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">name</span> = name;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">age</span> = age;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">sex</span> = sex;<br>}<br><br><span class="hljs-title class_">Person</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">introduceSelf</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`我叫<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.name}</span>，是个<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.age}</span>岁的<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.sex}</span>生。`</span>);<br>};<br><br><span class="hljs-keyword">const</span> 小明 = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Person</span>(<span class="hljs-string">'小明'</span>, <span class="hljs-number">16</span>, <span class="hljs-string">'男'</span>);<br><span class="hljs-keyword">const</span> 小红 = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Person</span>(<span class="hljs-string">'小红'</span>, <span class="hljs-number">15</span>, <span class="hljs-string">'女'</span>);<br><br>小明.<span class="hljs-title function_">introduceSelf</span>(); <span class="hljs-comment">// 我叫小明，是个16岁的男生。</span><br>小红.<span class="hljs-title function_">introduceSelf</span>(); <span class="hljs-comment">// 我叫小红，是个15岁的女生。</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(小明.<span class="hljs-property">introduceSelf</span> === 小红.<span class="hljs-property">introduceSelf</span>); <span class="hljs-comment">// true</span><br></code></pre></td></tr></tbody></table></figure>
+
+<p>通过原型对象，我们将 <code>introduceSelf</code> 函数成功挂载到了 <code>Person</code> 的 <code>prototype</code> 属性上。而且通过这种方式挂载的属性和方法，是所有实例都能共享的。因此我们可以看到 <code>小明.introduceSelf</code> 和 <code>小红.introduceSelf</code> 指向的是相同的 Function 实例。<br>如此一来，我们便解决了重复创建 Function 实例以及破坏全局作用域的问题了。</p>
+<p>在自定义构造函数时，原型对象默认只有一个 constructor 属性，其他方法都继承自 Object。每次调用构造函数创建一个新实例，这个实例的 <code>__proto__</code> 属性就会被赋值为构造函数的原型对象。通过这种联系，我们可以明白实例和其构造函数的原型之间存在着直接的联系，而与其构造函数没有直接的联系。<br>我们可以通过下面这段代码来体会一下这种关系：</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 声明一个构造函数</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">Person</span>(<span class="hljs-params"></span>) {}<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 构造函数声明之后，</span><br><span class="hljs-comment"> * 就有了一个与之关联的原型对象</span><br><span class="hljs-comment"> */</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">Person</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>);<br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * {</span><br><span class="hljs-comment"> *      constructor: {Function} Person(),</span><br><span class="hljs-comment"> *      __proto__: Object</span><br><span class="hljs-comment"> * }</span><br><span class="hljs-comment"> */</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-keyword">typeof</span> <span class="hljs-title class_">Person</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>); <span class="hljs-comment">// Object</span><br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 构造函数的原型对象拥有一个 constructor 属性</span><br><span class="hljs-comment"> * constructor 属性指向该构造函数</span><br><span class="hljs-comment"> */</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">Person</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">constructor</span> === <span class="hljs-title class_">Person</span>); <span class="hljs-comment">// true</span><br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 大多数原型链都会终止于 Object 的原型对象</span><br><span class="hljs-comment"> * Object 原型的原型是 null</span><br><span class="hljs-comment"> */</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">Person</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">__proto__</span> === <span class="hljs-title class_">Object</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>); <span class="hljs-comment">// true</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">Person</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">__proto__</span>.<span class="hljs-property">constructor</span> === <span class="hljs-title class_">Object</span>); <span class="hljs-comment">// true</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">Person</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">__proto__</span>.<span class="hljs-property">__proto__</span> === <span class="hljs-literal">null</span>); <span class="hljs-comment">// true</span><br><br><span class="hljs-keyword">const</span> person = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Person</span>();<br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 实例通过 __proto__ 链接到原型对象</span><br><span class="hljs-comment"> * 构造函数通过 prototype 链接到原型对象</span><br><span class="hljs-comment"> * 实例与构造函数之间没有直接联系</span><br><span class="hljs-comment"> * 但都与原型对象存在联系</span><br><span class="hljs-comment"> */</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(person.<span class="hljs-property">__proto__</span> === <span class="hljs-title class_">Person</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>); <span class="hljs-comment">// true</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(person.<span class="hljs-property">__proto__</span>.<span class="hljs-property">constructor</span> === <span class="hljs-title class_">Person</span>); <span class="hljs-comment">// true</span><br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 使用 instanceof 操作符可以检查实例的原型链中</span><br><span class="hljs-comment"> * 是否包含指定的构造函数的实例</span><br><span class="hljs-comment"> */</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(person <span class="hljs-keyword">instanceof</span> <span class="hljs-title class_">Person</span>); <span class="hljs-comment">// true</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(person <span class="hljs-keyword">instanceof</span> <span class="hljs-title class_">Object</span>); <span class="hljs-comment">// true</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">Person</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span> <span class="hljs-keyword">instanceof</span> <span class="hljs-title class_">Object</span>); <span class="hljs-comment">// true</span><br></code></pre></td></tr></tbody></table></figure>
+
+<h2><span id="%E5%8E%9F%E5%9E%8B%E5%B1%82%E7%BA%A7">原型层级</span></h2><p>在通过实例对象访问属性时，会按照这个属性的名称开始搜索，搜索起始于对象实例本身。如果在这个实例上发现了给定的属性名称，则返回该属性名称对应的值。如果没有找到这个属性，则会沿着指针进入原型对象，然后在原型对象上找到该属性后返回对应的值。</p>
+<p>我们可以在原型对象上设定一个默认值，在我们创建实例对象时，可以给实例添加一个与原型对象中同名的属性。但这么做不会修改原型对象的默认值，而是在实例中添加了这个属性，这个属性会把原型对象上的属性“遮”住，从而获得优先的访问：</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">Person</span>(<span class="hljs-params"></span>) {}<br><span class="hljs-title class_">Person</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">name</span> = <span class="hljs-string">'无名氏'</span>;<br><br><span class="hljs-keyword">const</span> a = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Person</span>();<br><span class="hljs-keyword">const</span> b = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Person</span>();<br><br>a.<span class="hljs-property">name</span> = <span class="hljs-string">'A'</span>;<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a.<span class="hljs-property">name</span>); <span class="hljs-comment">// A</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(b.<span class="hljs-property">name</span>); <span class="hljs-comment">// 无名氏</span><br></code></pre></td></tr></tbody></table></figure>
+
+<p>我们实例化了一个名叫 ‘A’ 的 Person 对象，并为它添加了 <code>name</code> 属性。当我们试图取出 <code>a.name</code> 时，首先在对象实例 <code>a</code> 上发现了 <code>name</code> 属性，也就不会再进一步前往 <code>a</code> 的原型对象上获取 <code>name</code> 了。而访问 <code>b.name</code> 时，由于没有在 <code>b</code> 上发现 <code>name</code> 属性，于是沿着原型链向上找到它的原型对象，并使用定义在原型对象上的 <code>name</code> 属性。</p>
+<p>一旦我们给对象实例添加了一个属性，那么这个属性将<strong>一直覆盖</strong>其原型对象中的同名属性，即使我们将其重新赋值为 <strong>null</strong> 也无法从它的原型对象中获取该属性。不过我们可以使用 <strong>delete</strong> 操作符完全删除实例上的该属性，从而能够继续搜索原型对象：</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">Person</span>(<span class="hljs-params"></span>) {}<br><span class="hljs-title class_">Person</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">name</span> = <span class="hljs-string">'无名氏'</span>;<br><br><span class="hljs-keyword">const</span> person = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Person</span>();<br>person.<span class="hljs-property">name</span> = <span class="hljs-string">'梅铭恣'</span>;<br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(person.<span class="hljs-property">name</span>); <span class="hljs-comment">// 梅铭恣</span><br><span class="hljs-keyword">delete</span> person.<span class="hljs-property">name</span>;<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(person.<span class="hljs-property">name</span>); <span class="hljs-comment">// 无名氏</span><br></code></pre></td></tr></tbody></table></figure>
+
+<h2><span id="%E4%BD%BF%E7%94%A8%E5%8E%9F%E5%9E%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E6%8A%80%E5%B7%A7">使用原型的一些小技巧</span></h2><h3><span id="%E5%85%B6%E4%BB%96%E5%8E%9F%E5%9E%8B%E8%AF%AD%E6%B3%95">其他原型语法</span></h3><p>我们来看看这样一个例子：</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">Person</span>(<span class="hljs-params"></span>) {}<br><br><span class="hljs-title class_">Person</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">name</span> = <span class="hljs-string">'无名氏'</span>;<br><span class="hljs-title class_">Person</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">getName</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {<br>    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">name</span>;<br>};<br><span class="hljs-title class_">Person</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">age</span> = <span class="hljs-number">18</span>;<br><span class="hljs-title class_">Person</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">getAge</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {<br>    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">age</span>;<br>};<br><span class="hljs-title class_">Person</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">introduce</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`我叫<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.getName()}</span>，今年<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.getAge()}</span>岁。`</span>);<br>};<br></code></pre></td></tr></tbody></table></figure>
+
+<p>在这个例子中，我们为 <code>Person.prototype</code> 定义了许多属性和方法，但是每一次定义我们都写了一遍 <code>Person.prototype</code> 。为了减少代码冗余，我们可以直接通过一个包含这些属性和方法的对象字面量来重写原型，就像下面这样：</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">Person</span>(<span class="hljs-params"></span>) {}<br><br><span class="hljs-title class_">Person</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span> = {<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">'无名氏'</span>,<br>    <span class="hljs-attr">age</span>: <span class="hljs-number">18</span>,<br>    <span class="hljs-title function_">getName</span>(<span class="hljs-params"></span>) {<br>        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">name</span>;<br>    },<br>    <span class="hljs-title function_">getAge</span>(<span class="hljs-params"></span>) {<br>        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">age</span>;<br>    },<br>    <span class="hljs-title function_">introduce</span>(<span class="hljs-params"></span>) {<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`我叫<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.getName()}</span>，今年<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.getAge()}</span>岁。`</span>);<br>    },<br>};<br></code></pre></td></tr></tbody></table></figure>
+
+<p>通过这种写法，我们可以只书写一次 <code>Person.prototype</code> 而绑定所有需要的属性与函数。但这样写仍有一个问题：这样重写原型后， <code>Person.prototype.constructor</code> 不再指向原来的 <code>Person</code> 了。在创建函数时，也会创建它的 <code>prototype</code> 对象，同时也会自动给这个原型对象的 constructor 属性赋值。<br>但上面这种写法相当于创建了一个新的原型对象赋值给了 <code>Person.prototype</code> ，因此其 <code>constructor</code> 属性也指向了完全不同的新对象（Object 的构造函数），不再指向原来的构造函数。</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> person = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Person</span>();<br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(person <span class="hljs-keyword">instanceof</span> <span class="hljs-title class_">Object</span>); <span class="hljs-comment">// true</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(person <span class="hljs-keyword">instanceof</span> <span class="hljs-title class_">Person</span>); <span class="hljs-comment">// true</span><br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(person.<span class="hljs-property">constructor</span> === <span class="hljs-title class_">Person</span>); <span class="hljs-comment">// false</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(person.<span class="hljs-property">constructor</span> === <span class="hljs-title class_">Object</span>); <span class="hljs-comment">// true</span><br></code></pre></td></tr></tbody></table></figure>
+
+<p>可以看到，通过 <code>instanceof</code> 操作符我们还能保持实例对象与原构造函数之间的对应关系，但是我们已经无法通过 <code>constructor</code> 属性来判断实例对象的类型了。<br>如果我们很需要保证 <code>constructor</code> 属性的值，那么我们需要在重写原型对象的时候手动设置一个 <code>constructor</code> ，就像下面这样：</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">Person</span>(<span class="hljs-params"></span>) {}<br><br><span class="hljs-title class_">Person</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span> = {<br>    <span class="hljs-attr">constructor</span>: <span class="hljs-title class_">Person</span>,<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">'无名氏'</span>,<br>    <span class="hljs-attr">age</span>: <span class="hljs-number">18</span>,<br>    <span class="hljs-title function_">getName</span>(<span class="hljs-params"></span>) {<br>        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">name</span>;<br>    },<br>    <span class="hljs-title function_">getAge</span>(<span class="hljs-params"></span>) {<br>        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">age</span>;<br>    },<br>    <span class="hljs-title function_">introduce</span>(<span class="hljs-params"></span>) {<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`我叫<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.getName()}</span>，今年<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.getAge()}</span>岁。`</span>);<br>    },<br>};<br></code></pre></td></tr></tbody></table></figure>
+
+<p>但要注意，以这种方式恢复的 <code>constructor</code> 属性会创建一个 <code>[[Enumerable]]</code> 为 <code>true</code> 的属性，但是原生的 <code>constructor</code> 属性时不可枚举的。因此，使用 <code>Object.defineProperty()</code> 方法来定义 <code>constructor</code> 属性是更为规范的做法：</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title class_">Object</span>.<span class="hljs-title function_">defineProperty</span>(<span class="hljs-title class_">Person</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>, <span class="hljs-string">'constructor'</span>, {<br>    <span class="hljs-attr">enumerable</span>: <span class="hljs-literal">false</span>,<br>    <span class="hljs-attr">value</span>: <span class="hljs-title class_">Person</span>,<br>});<br></code></pre></td></tr></tbody></table></figure>
+
+<h3><span id="%E5%8E%9F%E5%9E%8B%E7%9A%84%E5%8A%A8%E6%80%81%E6%80%A7">原型的动态性</span></h3><p>当我们尝试获取实例的某个属性或方法时，我们会沿着它的原型进行搜索，这一过程是动态的。因此即使在实例化后修改了原型，对原型的修改依旧可以反映在先前的实例对象上。我们来举个简单的例子：</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">Person</span>(<span class="hljs-params"></span>) {}<br><br><span class="hljs-keyword">const</span> person = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Person</span>();<br><br><span class="hljs-title class_">Person</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">whoami</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">'我是人'</span>);<br>};<br><br>person.<span class="hljs-title function_">whoami</span>(); <span class="hljs-comment">// 我是人</span><br></code></pre></td></tr></tbody></table></figure>
+
+<p>在这个例子中，我们先创建了一个 <code>Person</code> 实例保存在 <code>person</code> 中，然后我们给 <code>Person.prototype</code> 添加了一个叫做 <code>whoami</code> 的方法。虽然 <code>person</code> 是在我们修改原型之前就已经存在的，但是我们在调用 <code>person.whoami()</code> 的时候，会首先在 <code>person</code> 实例上寻找这个方法。当我们没找到时，则会沿着原型，寻找并尝试调用 <code>person.__proto__.whoami()</code> 。<br>虽然我们能够随时给原型添加属性和方法，并能使其反映在所有对象的实例上，但当我们重写整个原型对象时，一切又都不一样了。我们来看下面这个例子：</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">Person</span>(<span class="hljs-params"></span>) {}<br><br><span class="hljs-keyword">const</span> person = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Person</span>();<br><br><span class="hljs-title class_">Person</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span> = {<br>    <span class="hljs-attr">constructor</span>: <span class="hljs-title class_">Person</span>,<br>    <span class="hljs-title function_">whoami</span>(<span class="hljs-params"></span>) {<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">'我是人'</span>);<br>    },<br>};<br><br>person.<span class="hljs-title function_">whoami</span>(); <span class="hljs-comment">// 报错: Uncaught TypeError: person.whoami is not a function</span><br></code></pre></td></tr></tbody></table></figure>
+
+<p>当我们执行这段代码时，浏览器则甩出了异常，它没办法在 person 及其原型链上找到 whoami 函数。我们可以把上面这段代码细化为下面这个样子：</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 我们先创建一个构造函数</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">Person</span>(<span class="hljs-params"></span>) {}<br><span class="hljs-comment">// 我们来保存一下此时默认创建的原型</span><br><span class="hljs-keyword">const</span> oldProto = <span class="hljs-title class_">Person</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 我们实例化一个 Person 对象</span><br><span class="hljs-comment"> * 此时 person.__proto__ 指向 oldProto</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">const</span> person = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Person</span>();<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(person.<span class="hljs-property">__proto__</span> === oldProto); <span class="hljs-comment">// true</span><br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 我们创建一个新的原型对象</span><br><span class="hljs-comment"> * 并把它赋值给 Person.prototype</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">const</span> newProto = {<br>    <span class="hljs-attr">constructor</span>: <span class="hljs-title class_">Person</span>,<br>    <span class="hljs-title function_">whoami</span>(<span class="hljs-params"></span>) {<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">'我是人'</span>);<br>    },<br>};<br><span class="hljs-title class_">Person</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span> = newProto;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 显然，oldProto !== newProto</span><br><span class="hljs-comment"> * 但 person.__proto__ 依旧指向 oldProto</span><br><span class="hljs-comment"> */</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(oldProto !== newProto); <span class="hljs-comment">// true</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(person.<span class="hljs-property">__proto__</span> === oldProto); <span class="hljs-comment">// true</span><br></code></pre></td></tr></tbody></table></figure>
+
+<p>因此，我们重写原型对象后，无法建立起实例到新原型对象之间的联系，也就没法在实例的原型链上寻找到 <code>whoami</code> 方法了。</p>
+<h3><span id="%E5%8E%9F%E5%9E%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98">原型的一些问题</span></h3><p>讲了这么多这篇文章也快要收尾了，原型模式尽管很有用，但它并不是完美的，它仍存在着一些问题。<br>首先，它弱化了向构造函数传递初始化参数的能力，这导致所有实例默认获得取了相同值的属性。不过，这并不是原型模式的最大问题。<br>原型模式真正的问题在于它的共享特性，如果是像一个函数这样的具有相同逻辑表现的属性还好。除此之外，包含原始类型的数据也还好。但是，对于<strong>引用类型</strong>的数据来说，这样的共享就不是什么好事了。<br>我们来看下面这个例子：</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">Person</span>(<span class="hljs-params">name</span>) {<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">name</span> = name;<br>}<br><br><span class="hljs-title class_">Person</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span> = {<br>    <span class="hljs-attr">limbs</span>: {<br>        <span class="hljs-attr">upperLimbs</span>: <span class="hljs-number">2</span>,<br>        <span class="hljs-attr">lowerLimbs</span>: <span class="hljs-number">2</span>,<br>    },<br>    <span class="hljs-title function_">amputation</span>(<span class="hljs-params">isUpper = <span class="hljs-literal">true</span></span>) {<br>        <span class="hljs-keyword">const</span> limb = <span class="hljs-string">`<span class="hljs-subst">${isUpper ? <span class="hljs-string">'upper'</span> : <span class="hljs-string">'lower'</span>}</span>Limbs`</span>;<br>        <span class="hljs-keyword">const</span> leftLimb = <span class="hljs-variable language_">this</span>.<span class="hljs-property">limbs</span>[limb] - <span class="hljs-number">1</span>;<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">limbs</span>[limb] = <span class="hljs-number">0</span> &gt; leftLimb ? <span class="hljs-number">0</span> : leftLimb;<br>    },<br>    <span class="hljs-title function_">howami</span>(<span class="hljs-params"></span>) {<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<br>            <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.name}</span>说：我有着<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.limbs.upperLimbs}</span>条胳膊<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.limbs.lowerLimbs}</span>条腿。`</span><br>        );<br>    },<br>};<br><span class="hljs-title class_">Object</span>.<span class="hljs-title function_">defineProperty</span>(<span class="hljs-title class_">Person</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>, <span class="hljs-string">'constructor'</span>, {<br>    <span class="hljs-attr">enumerable</span>: <span class="hljs-literal">false</span>,<br>    <span class="hljs-attr">value</span>: <span class="hljs-title class_">Person</span>,<br>});<br><br><span class="hljs-keyword">const</span> luckyDog = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Person</span>(<span class="hljs-string">'幸运的家伙'</span>);<br><span class="hljs-keyword">const</span> unfortunateGuy = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Person</span>(<span class="hljs-string">'不幸的朋友'</span>);<br>luckyDog.<span class="hljs-title function_">howami</span>(); <span class="hljs-comment">// 幸运的家伙说：我有着2条胳膊2条腿。</span><br>unfortunateGuy.<span class="hljs-title function_">howami</span>(); <span class="hljs-comment">// 不幸的朋友说：我有着2条胳膊2条腿。</span><br><br>unfortunateGuy.<span class="hljs-title function_">amputation</span>();<br>unfortunateGuy.<span class="hljs-title function_">howami</span>(); <span class="hljs-comment">// 不幸的朋友说：我有着1条胳膊2条腿。</span><br><br>luckyDog.<span class="hljs-title function_">howami</span>(); <span class="hljs-comment">// 幸运的家伙说：我有着1条胳膊2条腿。</span><br></code></pre></td></tr></tbody></table></figure>
+
+<p>在这个例子中，我们为 <code>Person</code> 默认设置了一对上肢和一对下肢，并设计了一个截肢函数。我们找来了两位“志愿者”，让他们分别扮演“幸运的家伙”和一位“不幸的朋友”。在刚实例化的时候，我们发现这两位“志愿者”都有着一对上肢和一对下肢。但是马上这位“不幸的朋友”遭遇了一些事故，不得不截去一条胳膊，于是此时的他便只有一条胳膊和两条腿了。但是我们却发现这位没有接受截肢手术的 <code>luckyDog</code> 居然也少了一只胳膊。这就是因为 <code>Person</code> 的原型对象中，肢体是一个引用类型的数据，虽然我们创建了两个 Person 实例，但实际上这两位朋友“共用”了同一个躯体。<br>因此，在使用原型模式的时候一定要注意引用类型的使用和管理，否则就会让一位健康的朋友平白无故遭受不幸了。</p>
+</body></html>
+	</article>
+
+	 
+    <div class="kira-post-copyright">
+        <strong>本文作者：</strong>德布罗煜<br>
+        <strong>本文链接：</strong><a href="https://kira.host/blog/JavaScript/%E4%BA%86%E8%A7%A3js%E7%9A%84%E5%8E%9F%E5%9E%8B/" title="https:&#x2F;&#x2F;kira.host&#x2F;blog&#x2F;JavaScript&#x2F;了解js的原型&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;kira.host&#x2F;blog&#x2F;JavaScript&#x2F;了解js的原型&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+  
+	<div class="kira-post-nav">
+		<nav class="post-nav">
+			  
+			<!-- 先找到与当前文字相同的目录 -->
+			                              
+			<!-- 在找到当前文章所在的 index -->
+			                                    
+			<!-- 上一篇文章 -->
+			<div class="old">
+				<span>上一章</span>
+				<a href="/blog/JavaScript/js%E7%9A%84%E5%AF%B9%E8%B1%A1/"> js的对象</a>
+			</div>
+			       
+			<!-- 下一篇文章 -->
+			<div class="new">
+				<span>下一章</span>
+				<a href="/blog/JavaScript/js%E5%8E%9F%E5%9E%8B%E9%93%BE/"> js原型链</a>
+			</div>
+			                                                                                                      
+		</nav>
+	</div>
+	
+	<div class="kira-post-meta kira-rainbow">
+		
+			<a class="kirafont icon-container-fill -link" href="/blog/categories/%E7%BC%96%E7%A8%8B/">编程</a>
+		
+		
+			<a class="kirafont icon-tag-fill -none-link" href="/blog/tags/JavaScript/" rel="tag">JavaScript</a>
+		
+	</div>
+	
+	<div class="kira-post-footer">
+		
+
+		
+	<div class="giscus"></div>
+  
+    <script src="https://giscus.app/client.js"
+      data-repo="ch1ny/ch1ny.github.io"
+      data-repo-id="R_kgDOHGgizw"
+      data-category="General"
+      data-category-id="DIC_kwDOHGgiz84CU88t"
+      data-mapping="pathname"
+      data-strict="0"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="top"
+      data-theme="light"
+      data-lang="en"
+      data-loading="lazy"
+      crossorigin="anonymous"
+      async  
+    ></script>
+  
+
+	</div>
+	
+</div>
+
+				</div>
+			</div>
+			<div class="kira-right-column">
+	<a onclick="document.querySelector('#kira-top-header').scrollIntoView({behavior: 'smooth'});" class="kira-backtotop" aria-label="回到顶部" title="回到顶部">
+		<button class="mdui-fab mdui-ripple">
+			<i class="kirafont icon-caret-up"></i>
+		</button>
+	</a>
+</div>
+
+		</div>
+	</body>
+</html>

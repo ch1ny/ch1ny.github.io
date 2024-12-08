@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html 
+	lang="zh_CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		
+<link rel="stylesheet" href="/blog/css/layout.css">
+
+		
+		<title> 蚂蚁集团-数字金融线-体验技术部前端一面面经 -  德布罗煜</title>
+		<!-- <link rel="stylesheet" href="https://unpkg.com/mdui@1.0.2/dist/css/mdui.min.css" /> -->
+		<!-- <script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script> -->
+		
+<link rel="stylesheet" href="/blog/lib/mdui/mdui.min.css">
+
+		
+<script src="/blog/lib/mdui/mdui.min.js"></script>
+
+		<!-- lazyload -->
+		
+<script src="/blog/lib/lazysizes.js"></script>
+
+		<!-- smooth-scrolling -->
+		
+<script src="/blog/lib/smooth-scrolling.js"></script>
+
+		<!-- highlight -->
+		
+<link rel="stylesheet" href="/blog/lib/highlight/atom-one-dark.min.css">
+
+		
+<script src="/blog/lib/highlight/highlight.min.js"></script>
+
+		<!-- 预置 kiraicon -->
+		
+<link rel="stylesheet" href="/blog/lib/iconfont/iconfont.css">
+
+		
+		<link
+			rel="shortcut icon"
+			href="https://kira.host/assets/Pictures/Others/116359b4ccf19917.jpg"
+			type="image/png"
+		/>
+		
+<link rel="stylesheet" href="/blog/deps/css/APlayer.min.css">
+
+		
+		
+<script src="/blog/deps/js/APlayer.min.js"></script>
+<script src="/blog/deps/js/Meting.min.js"></script>
+
+	<meta name="generator" content="Hexo 6.3.0"></head>
+
+	<body>
+		<div
+			class="kira-background"
+			style="background-image: url('https://kira.host/assets/Pictures/Others/-f0d5cc34c6e5aa7_compressed.jpg')"
+		></div>
+		<div class="kira-header">
+    <a
+        class="kira-drawer-button mdui-ripple"
+        title="导航栏"
+        onclick="document.querySelector('.kira-sidebar-modal').classList.add('show');document.querySelector('.kira-sidebar#sidebar').classList.add('show');"
+    >
+        <i class="kirafont icon-menu"></i>
+    </a>
+    <a href="/blog/" title="德布罗煜">
+        <img
+			src="https://kira.host/assets/Pictures/Others/20220922230447.jpg"
+			alt="德布罗煜"
+		/>
+    </a>
+</div>
+		<div class="kira-body">
+			<div class="kira-sidebar" id="sidebar">
+	<div class="kira-avatar mdui-ripple">
+		<a href="https://kira.host/assets/Pictures/Others/20220922230447.jpg" title="德布罗煜">
+			<img
+				src="https://kira.host/assets/Pictures/Others/20220922230447.jpg"
+				alt="德布罗煜"
+			/>
+		</a>
+	</div>
+	<div class="kira-count">
+		<div><span>文章</span>30</div>
+		<div><span>标签</span>14</div>
+		<div><span>分类</span>3</div>
+	</div>
+	<div class="kira-list">
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/blog/"
+			title="回到首页"
+		>
+			<i
+				class="kirafont
+					
+						icon-home
+					"
+			></i>
+			<div class="kira-list-item-content">
+				回到首页
+			</div>
+		</a>
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/blog/archive.html"
+			title="文章归档"
+		>
+			<i
+				class="kirafont
+					
+						icon-container
+					"
+			></i>
+			<div class="kira-list-item-content">
+				文章归档
+			</div>
+		</a>
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/blog/about.html"
+			title="关于本人"
+		>
+			<i
+				class="kirafont
+					
+						icon-user
+					"
+			></i>
+			<div class="kira-list-item-content">
+				关于本人
+			</div>
+		</a>
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/blog/friends.html"
+			title="我的朋友"
+		>
+			<i
+				class="kirafont
+					
+						icon-team
+					"
+			></i>
+			<div class="kira-list-item-content">
+				我的朋友
+			</div>
+		</a>
+		
+	</div>
+	<aside id="kira-sidebar">
+		
+			<div class="kira-widget-wrap">
+	<div class="kira-widget kira-social">
+		
+			<a
+				class="mdui-ripple"
+				href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=1056317718&website=www.oicqzone.com"
+				target="_blank"
+				mdui-tooltip="{content: 'QQ'}"
+				style="color: rgb(49, 174, 255); background-color: rgba(49, 174, 255, .1);"
+			>
+				<i
+					class="kirafont
+					
+						icon-QQ
+					"
+				></i>
+			</a>
+		
+			<a
+				class="mdui-ripple"
+				href="https://space.bilibili.com/27905679"
+				target="_blank"
+				mdui-tooltip="{content: '哔哩哔哩'}"
+				style="color: rgb(231, 106, 141); background-color: rgba(231, 106, 141, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-bilibili
+					"
+				></i>
+			</a>
+		
+			<a
+				class="mdui-ripple"
+				href="https://github.com/ch1ny/"
+				target="_blank"
+				mdui-tooltip="{content: 'GitHub'}"
+				style="color: rgb(25, 23, 23); background-color: rgba(25, 23, 23, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-github
+					"
+				></i>
+			</a>
+		
+			<a
+				class="mdui-ripple"
+				href="https://gitee.com/ch1ny"
+				target="_blank"
+				mdui-tooltip="{content: 'Gitee'}"
+				style="color: rgb(165, 15, 15); background-color: rgba(165, 15, 15, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-gitee
+					"
+				></i>
+			</a>
+		
+	</div>
+</div>
+
+		
+			
+  <div class="kira-widget-wrap">
+    <h3 class="kira-widget-title">分类</h3>
+    <div class="kira-widget">
+      <ul class="category-list">
+        
+        
+
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/blog/categories/Revue/">
+              Revue
+            </a>
+            <span class="category-list-count">5</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/blog/categories/编程/">
+              编程
+            </a>
+            <span class="category-list-count">23</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/blog/categories/面经/">
+              面经
+            </a>
+            <span class="category-list-count">2</span>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+		
+			
+	<div class="kira-widget-wrap">
+		<div id="randomtagcloud" class="kira-widget tagcloud kira-rainbow">
+			<a href="/blog/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/blog/tags/Node-js/" style="font-size: 16px;">Node.js</a> <a href="/blog/tags/React/" style="font-size: 18px;">React</a> <a href="/blog/tags/Revue/" style="font-size: 18px;">Revue</a> <a href="/blog/tags/Rust/" style="font-size: 14px;">Rust</a> <a href="/blog/tags/TypeScript/" style="font-size: 10px;">TypeScript</a> <a href="/blog/tags/Unity3D/" style="font-size: 10px;">Unity3D</a> <a href="/blog/tags/VSCODE/" style="font-size: 12px;">VSCODE</a> <a href="/blog/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/blog/tags/electron/" style="font-size: 10px;">electron</a> <a href="/blog/tags/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8/" style="font-size: 10px;">字节跳动</a> <a href="/blog/tags/%E8%9A%82%E8%9A%81/" style="font-size: 10px;">蚂蚁</a> <a href="/blog/tags/%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4/" style="font-size: 10px;">阿里巴巴</a> <a href="/blog/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 12px;">面试</a>
+		</div>
+		
+	</div>
+
+
+		
+	</aside>
+	<div class="kira-copyright">
+		&copy; 2024
+		<a href="/blog/">德布罗煜</a>
+		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> &
+		<a href="https://github.com/ch1ny/kira-hexo/" target="_blank">Kira-Hexo</a>
+		<br />
+		
+			<a
+				href="https://beian.miit.gov.cn/"
+				target="_blank"
+			>
+				赣ICP备2021007955号-3
+			</a>
+		
+		<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div><span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span></div><div><span id="busuanzi_container_site_uv">共接待访客<span id="busuanzi_value_site_uv"></span>位</span></div>
+	</div>
+</div>
+<div
+	class="kira-sidebar-modal"
+	id="sidebar-modal"
+	onclick="(function(self) {
+		self.classList.remove('show');
+		document.querySelector('.kira-sidebar.show#sidebar').classList.remove('show');
+	})(this)"
+></div>
+			<div class="kira-content">
+				<div id="kira-top-header"></div>
+				<div class="kira-main-content">
+					
+<link rel="stylesheet" href="/blog/css/kira-image.css">
+
+
+<script src="/blog/js/kira-image.js"></script>
+
+<div class="kira-image">
+    <div class="kira-image-modal">
+        <div class="kira-image-header">
+            <div class="kira-image-counter"></div>
+            <div class="kira-image-title"></div>
+            <div class="kira-image-operation">
+                <div class="kira-image-operation-button" id="kira-image-operation-button-zoom">
+                    <i class="kirafont icon-zoom-in"></i>
+                </div>
+                <div class="kira-image-operation-button" id="kira-image-operation-button-close">
+                    <i class="kirafont icon-close"></i>
+                </div>
+            </div>
+        </div>
+        <div class="kira-image-container">
+            <div class="kira-image-prev-button-panel">
+                <div class="kira-image-exchange-button">
+                    <i class="kirafont icon-left"></i>
+                </div>
+            </div>
+            <div class="kira-image-list">
+                <div class="kira-image-prev">
+                    <img />
+                </div>
+                <div class="kira-image-now">
+                    <img />
+                </div>
+                <div class="kira-image-next">
+                    <img />
+                </div>
+            </div>
+            <div class="kira-image-next-button-panel">
+                <div class="kira-image-exchange-button">
+                    <i class="kirafont icon-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+	
+<link rel="stylesheet" href="/blog/css/kira-code-copy.css">
+
+	
+<script src="/blog/js/kira-code-copy.js"></script>
+
+
+<div class="kira-post">
+	<article>
+		
+		<div class="kira-post-cover">
+			<img
+				data-src="https://gw.alipayobjects.com/mdn/rms_02c092/afts/img/A*5fXrSZF8be8AAAAAAAAAAAAAARQnAQ"
+				data-sizes="auto"
+				alt="蚂蚁集团-数字金融线-体验技术部前端一面面经"
+				class="lazyload kira-post-cover-image disabled-kira-image"
+			/>
+			<h1>蚂蚁集团-数字金融线-体验技术部前端一面面经</h1>
+		</div>
+		
+		<div class="kira-post-meta kira-rainbow" style="margin:10px 0!important;">
+			<a><i class="kirafont icon-calendar-fill"></i>2022年03月11日</a>
+			<a><i class="kirafont icon-edit-fill"></i>1.3k 字</a>
+			<a><i class="kirafont icon-time-circle-fill"></i>大概 5 分钟</a>
+		</div>
+		<html><head></head><body><blockquote>
+<p>大三春招试着投了份简历，没想到很顺利地拿到了 offer。</p>
+</blockquote>
+<span id="more"></span>
+
+<p>面试官 19:00 打了个电话过来，说往我邮箱里发了个链接，让我先做一个小时的笔试题。</p>
+<h1><span id="%E7%AC%94%E8%AF%95-%E9%98%BF%E9%87%8C%E4%BC%AF%E4%B9%90%E7%B3%BB%E7%BB%9F-60min">笔试 阿里伯乐系统 60min</span></h1><blockquote>
+<p>笔试是在阿里的伯乐系统上做的，三道手撕代码。</p>
+</blockquote>
+<h2><span id="%E7%AC%AC%E4%B8%80%E9%A2%98%E6%A0%B9%E6%8D%AE%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AE%A1%E7%AE%97%E5%AD%97%E6%AF%8D%E6%95%B0%E9%87%8F">第一题、根据表达式计算字母数量</span></h2><p><strong>描述</strong>：输入一串字符串，根据字符串求出每个字母的数量并返回结果对象。（数字为 1 时可省略）<br><strong>示例一</strong>：输入：A3B2，输出：{“A”: 3, “B”: 2}<br><strong>示例二</strong>：输入：A(A(A2B)2)3C2，输出：{“A”: 16, “B”: 6, “C”: 2}</p>
+<p>这题我放在最后写了，结果因为被第三题最后一个输出卡了很久只剩下五分钟写这题代码，来不及写了。</p>
+<h2><span id="%E7%AC%AC%E4%BA%8C%E9%A2%98%E6%89%8B%E5%86%99%E8%8A%82%E6%B5%81">第二题、手写节流</span></h2><p><strong>描述</strong>：参数一：执行的函数，参数二：时间间隔。要求实现即使函数被连续处罚多次也只在连续时间内执行一次。<br>我一看题面描述立马反应过来用节流，刷刷刷写出来了。</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">throttle</span>(<span class="hljs-params">func, time</span>) {<br>    <span class="hljs-keyword">let</span> timeout;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {<br>        <span class="hljs-keyword">if</span> (!timeout) {<br>            func.<span class="hljs-title function_">apply</span>(<span class="hljs-variable language_">this</span>, <span class="hljs-variable language_">arguments</span>);<br>            timeout = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {<br>                timeout = <span class="hljs-literal">null</span>;<br>            }, delay);<br>        }<br>    };<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<h2><span id="%E7%AC%AC%E4%B8%89%E9%A2%98%E5%AF%B9%E8%B1%A1%E6%89%81%E5%B9%B3%E5%8C%96">第三题、对象扁平化</span></h2><p><strong>输入</strong>：</p>
+<figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">{</span><br>    <span class="hljs-attr">"a"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"a"</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">"b"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-number">1</span><span class="hljs-punctuation">,</span> <span class="hljs-punctuation">{</span> <span class="hljs-attr">"c"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span> <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span> <span class="hljs-punctuation">[</span><span class="hljs-number">3</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">"d"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span> <span class="hljs-attr">"e"</span><span class="hljs-punctuation">:</span> undefined<span class="hljs-punctuation">,</span> <span class="hljs-attr">"f"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">3</span> <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">"g"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><br><span class="hljs-punctuation">}</span><br></code></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>输入用例记不太清了，应该大致差不多吧</p>
+</blockquote>
+<p><strong>输出</strong>：</p>
+<figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">{</span><br>    a<span class="hljs-punctuation">:</span> <span class="hljs-string">"a"</span><span class="hljs-punctuation">,</span><br>    b<span class="hljs-punctuation">[</span><span class="hljs-number">0</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span><br>    b<span class="hljs-punctuation">[</span><span class="hljs-number">1</span><span class="hljs-punctuation">]</span>.c<span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span><br>    b<span class="hljs-punctuation">[</span><span class="hljs-number">2</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">[</span><span class="hljs-number">0</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">:</span> <span class="hljs-number">3</span><span class="hljs-punctuation">,</span><br>    d.f<span class="hljs-punctuation">:</span> <span class="hljs-number">3</span><br>    <span class="hljs-comment">// null和undefined直接舍去</span><br><span class="hljs-punctuation">}</span><br></code></pre></td></tr></tbody></table></figure>
+
+<p>因为没写过这种代码所以一开始也挺没有头绪的，花了很多时间在这题上面。（代码实现挺烂的……时间来不及不够优化了）</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">flatten</span>(<span class="hljs-params">obj</span>) {<br>    <span class="hljs-keyword">const</span> res = {};<br>    <span class="hljs-keyword">const</span> _flatten = <span class="hljs-keyword">function</span> (<span class="hljs-params">o, prev = <span class="hljs-literal">null</span></span>) {<br>        <span class="hljs-keyword">if</span> (<span class="hljs-title class_">Array</span>.<span class="hljs-title function_">isArray</span>(o)) {<br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> index <span class="hljs-keyword">in</span> o) {<br>                <span class="hljs-keyword">const</span> ele = o[index];<br>                <span class="hljs-keyword">if</span> (ele <span class="hljs-keyword">instanceof</span> <span class="hljs-title class_">Object</span>) {<br>                    <span class="hljs-title function_">_flatten</span>(ele, <span class="hljs-string">`<span class="hljs-subst">${prev ? prev : <span class="hljs-string">''</span>}</span>[<span class="hljs-subst">${index}</span>]`</span>);<br>                } <span class="hljs-keyword">else</span> {<br>                    <span class="hljs-keyword">if</span> (ele) {<br>                        res[<span class="hljs-string">`<span class="hljs-subst">${prev ? prev : <span class="hljs-string">''</span>}</span>[<span class="hljs-subst">${index}</span>]`</span>] = ele;<br>                    }<br>                }<br>            }<br>            <span class="hljs-keyword">return</span>;<br>        }<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> key <span class="hljs-keyword">in</span> o) {<br>            <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> o[key] === <span class="hljs-string">'object'</span>) {<br>                <span class="hljs-keyword">if</span> (o[key] !== <span class="hljs-literal">null</span>) {<br>                    <span class="hljs-title function_">_flatten</span>(o[key], <span class="hljs-string">`<span class="hljs-subst">${prev ? prev + <span class="hljs-string">'.'</span> : <span class="hljs-string">''</span>}</span><span class="hljs-subst">${key}</span>`</span>);<br>                }<br>            } <span class="hljs-keyword">else</span> {<br>                <span class="hljs-keyword">if</span> (o[key] !== <span class="hljs-literal">undefined</span>) {<br>                    res[<span class="hljs-string">`<span class="hljs-subst">${prev ? prev + <span class="hljs-string">'.'</span> : <span class="hljs-string">''</span>}</span><span class="hljs-subst">${key}</span>`</span>] = o[key];<br>                }<br>            }<br>        }<br>    };<br>    <span class="hljs-title function_">_flatten</span>(obj);<br>    <span class="hljs-keyword">return</span> res;<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<h2><span id="%E5%90%90%E6%A7%BD%E4%B8%80%E4%B8%8B">吐槽一下</span></h2><p>阿里的伯乐系统在我写代码的时候出问题了，因为面试官说我可以在浏览器的控制台测试代码所以我是全程开着控制台的。结果我写到一半发现控制台一直在报错：<br><code>WebSocket is already in CLOSING or CLOSED state.</code><br>我当时一看人都麻了……不会是这系统觉得我一直在控制台里测试觉得我离线自动断开 ws 了吧……<br>一个小时后笔试结束，面试官问我第三题是不是没写完，我就告诉他好像 ws 断开连接了，他可能看不到我后面的代码了。<br>最后面试官就让我口述了一下第三题的思路，又问了问我有没有解第一题的思路。我就把两道题的思路说了一下，因为第三题是我已经做出来了的，所以我就解释得比较详细，第一题因为还没怎么做就只讲了基本思路，并且回答了应该使用什么数据结构来处理这道题。</p>
+<h1><span id="%E9%9D%A2%E8%AF%95-%E5%85%A8%E7%A8%8B%E7%94%B5%E8%AF%9D%E9%9D%A2-30min">面试 全程电话面 30min</span></h1><ol>
+<li>解释一下笔试题</li>
+<li>自我介绍</li>
+<li>有没有看过 React 的源码？<br>我回答说没有看过，但是了解过虚拟 DOM 和 DIFF 算法，面试官让我解释一下这两者。</li>
+<li>根据我的回答，面试官又问了一句为什么在 JSX 里循环生成 DOM 需要添加 key<br>我就从 DIFF 算法的原理特性解释了这个问题</li>
+<li>class 组件和使用 hooks 的组件有什么区别</li>
+<li>有没有用过 iframe？没有用过</li>
+<li>有做过 h5 的手机端的页面吗</li>
+<li>在手机端一般用什么单位？我就说比较喜欢用 rem、em、rpx 这些，面试官接着又让我解释一下 rem</li>
+<li>现在写代码 Promise 用的比较多哈，你能解释一下 Promise 是什么样的一个概念吗？<br>我解释了一下 Promise 的主要用途和用法，也同时讲了一下 async/await 的概念，以及它们和 Promise 之间的关系。</li>
+<li>在以往的项目里有遇到什么困难的点吗？<br>这个问题给我噎住了，一下子想不起来有什么很牛逼的难点，比较基本的不敢答，最后挑了一个现在在做的 electron 项目的一个小问题的解决办法。并且讲了一下由于项目重构后使用了更新版的 electron 导致原项目的解决方案不再适用，当时也找不到问题所在，于是通过 overstackflow 了解到 electron 这次更新是把我的这部分功能限制了的，而它的中文文档又没有更新，因此得查阅英文文档才能看到更新的细节……后面又想到了目前的解决方式解决了这个问题。</li>
+</ol>
+<p>然后问了一下我现在是大几，最后面试官说如果有后续面试会打电话通知我的。</p>
+<h1><span id="%E5%90%8E%E7%BB%AD%E8%BF%9B%E5%B1%95">后续进展</span></h1><ul>
+<li>3 月 14 日 19:30：一面通过，接到二面面试官好友请求（部门主管）</li>
+<li>3 月 15 日 18:40：二面通过，当晚二面面试官告知我会帮我约下一轮面试</li>
+<li>3 月 29 日 08:37：接到来自阿里巴巴的邮件告知已被录用</li>
+</ul>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://kira.host/assets/Pictures/Others/20220401171825.png" alt="录取邮件" class="lazyload"></p>
+</body></html>
+	</article>
+
+	 
+    <div class="kira-post-copyright">
+        <strong>本文作者：</strong>德布罗煜<br>
+        <strong>本文链接：</strong><a href="https://kira.host/blog/%E8%9A%82%E8%9A%81%E9%9B%86%E5%9B%A2-%E6%95%B0%E5%AD%97%E9%87%91%E8%9E%8D%E7%BA%BF-%E4%BD%93%E9%AA%8C%E6%8A%80%E6%9C%AF%E9%83%A8%E5%89%8D%E7%AB%AF%E4%B8%80%E9%9D%A2%E9%9D%A2%E7%BB%8F/" title="https:&#x2F;&#x2F;kira.host&#x2F;blog&#x2F;蚂蚁集团-数字金融线-体验技术部前端一面面经&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;kira.host&#x2F;blog&#x2F;蚂蚁集团-数字金融线-体验技术部前端一面面经&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+  
+	<div class="kira-post-nav">
+		<nav class="post-nav">
+			      
+			<!-- 先找到与当前文字相同的目录 -->
+			      
+			<!-- 在找到当前文章所在的 index -->
+			    
+			<!-- 上一篇文章 -->
+			<div class="old">
+				<span>上一章</span>
+				<a href="/blog/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8%E8%A5%BF%E7%93%9C%E8%A7%86%E9%A2%91%E4%B8%80%E9%9D%A2%E9%9D%A2%E7%BB%8F/"> 字节跳动西瓜视频一面面经</a>
+			</div>
+			              
+		</nav>
+	</div>
+	
+	<div class="kira-post-meta kira-rainbow">
+		
+			<a class="kirafont icon-container-fill -link" href="/blog/categories/%E9%9D%A2%E7%BB%8F/">面经</a>
+		
+		
+			<a class="kirafont icon-tag-fill -none-link" href="/blog/tags/%E8%9A%82%E8%9A%81/" rel="tag">蚂蚁</a> <a class="kirafont icon-tag-fill -none-link" href="/blog/tags/%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4/" rel="tag">阿里巴巴</a> <a class="kirafont icon-tag-fill -none-link" href="/blog/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a>
+		
+	</div>
+	
+	<div class="kira-post-footer">
+		
+
+		
+	<div class="giscus"></div>
+  
+    <script src="https://giscus.app/client.js"
+      data-repo="ch1ny/ch1ny.github.io"
+      data-repo-id="R_kgDOHGgizw"
+      data-category="General"
+      data-category-id="DIC_kwDOHGgiz84CU88t"
+      data-mapping="pathname"
+      data-strict="0"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="top"
+      data-theme="light"
+      data-lang="en"
+      data-loading="lazy"
+      crossorigin="anonymous"
+      async  
+    ></script>
+  
+
+	</div>
+	
+</div>
+
+				</div>
+			</div>
+			<div class="kira-right-column">
+	<a onclick="document.querySelector('#kira-top-header').scrollIntoView({behavior: 'smooth'});" class="kira-backtotop" aria-label="回到顶部" title="回到顶部">
+		<button class="mdui-fab mdui-ripple">
+			<i class="kirafont icon-caret-up"></i>
+		</button>
+	</a>
+</div>
+
+		</div>
+	</body>
+</html>

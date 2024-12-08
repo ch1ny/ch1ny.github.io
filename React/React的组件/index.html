@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html 
+	lang="zh_CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		
+<link rel="stylesheet" href="/blog/css/layout.css">
+
+		
+		<title> React的组件 -  德布罗煜</title>
+		<!-- <link rel="stylesheet" href="https://unpkg.com/mdui@1.0.2/dist/css/mdui.min.css" /> -->
+		<!-- <script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script> -->
+		
+<link rel="stylesheet" href="/blog/lib/mdui/mdui.min.css">
+
+		
+<script src="/blog/lib/mdui/mdui.min.js"></script>
+
+		<!-- lazyload -->
+		
+<script src="/blog/lib/lazysizes.js"></script>
+
+		<!-- smooth-scrolling -->
+		
+<script src="/blog/lib/smooth-scrolling.js"></script>
+
+		<!-- highlight -->
+		
+<link rel="stylesheet" href="/blog/lib/highlight/atom-one-dark.min.css">
+
+		
+<script src="/blog/lib/highlight/highlight.min.js"></script>
+
+		<!-- 预置 kiraicon -->
+		
+<link rel="stylesheet" href="/blog/lib/iconfont/iconfont.css">
+
+		
+		<link
+			rel="shortcut icon"
+			href="https://kira.host/assets/Pictures/Others/116359b4ccf19917.jpg"
+			type="image/png"
+		/>
+		
+<link rel="stylesheet" href="/blog/deps/css/APlayer.min.css">
+
+		
+		
+<script src="/blog/deps/js/APlayer.min.js"></script>
+<script src="/blog/deps/js/Meting.min.js"></script>
+
+	<meta name="generator" content="Hexo 6.3.0"></head>
+
+	<body>
+		<div
+			class="kira-background"
+			style="background-image: url('https://kira.host/assets/Pictures/Others/-f0d5cc34c6e5aa7_compressed.jpg')"
+		></div>
+		<div class="kira-header">
+    <a
+        class="kira-drawer-button mdui-ripple"
+        title="导航栏"
+        onclick="document.querySelector('.kira-sidebar-modal').classList.add('show');document.querySelector('.kira-sidebar#sidebar').classList.add('show');"
+    >
+        <i class="kirafont icon-menu"></i>
+    </a>
+    <a href="/blog/" title="德布罗煜">
+        <img
+			src="https://kira.host/assets/Pictures/Others/20220922230447.jpg"
+			alt="德布罗煜"
+		/>
+    </a>
+</div>
+		<div class="kira-body">
+			<div class="kira-sidebar" id="sidebar">
+	<div class="kira-avatar mdui-ripple">
+		<a href="https://kira.host/assets/Pictures/Others/20220922230447.jpg" title="德布罗煜">
+			<img
+				src="https://kira.host/assets/Pictures/Others/20220922230447.jpg"
+				alt="德布罗煜"
+			/>
+		</a>
+	</div>
+	<div class="kira-count">
+		<div><span>文章</span>30</div>
+		<div><span>标签</span>14</div>
+		<div><span>分类</span>3</div>
+	</div>
+	<div class="kira-list">
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/blog/"
+			title="回到首页"
+		>
+			<i
+				class="kirafont
+					
+						icon-home
+					"
+			></i>
+			<div class="kira-list-item-content">
+				回到首页
+			</div>
+		</a>
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/blog/archive.html"
+			title="文章归档"
+		>
+			<i
+				class="kirafont
+					
+						icon-container
+					"
+			></i>
+			<div class="kira-list-item-content">
+				文章归档
+			</div>
+		</a>
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/blog/about.html"
+			title="关于本人"
+		>
+			<i
+				class="kirafont
+					
+						icon-user
+					"
+			></i>
+			<div class="kira-list-item-content">
+				关于本人
+			</div>
+		</a>
+		
+		<a
+			class="kira-list-item mdui-ripple false"
+			href="/blog/friends.html"
+			title="我的朋友"
+		>
+			<i
+				class="kirafont
+					
+						icon-team
+					"
+			></i>
+			<div class="kira-list-item-content">
+				我的朋友
+			</div>
+		</a>
+		
+	</div>
+	<aside id="kira-sidebar">
+		
+			<div class="kira-widget-wrap">
+	<div class="kira-widget kira-social">
+		
+			<a
+				class="mdui-ripple"
+				href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=1056317718&website=www.oicqzone.com"
+				target="_blank"
+				mdui-tooltip="{content: 'QQ'}"
+				style="color: rgb(49, 174, 255); background-color: rgba(49, 174, 255, .1);"
+			>
+				<i
+					class="kirafont
+					
+						icon-QQ
+					"
+				></i>
+			</a>
+		
+			<a
+				class="mdui-ripple"
+				href="https://space.bilibili.com/27905679"
+				target="_blank"
+				mdui-tooltip="{content: '哔哩哔哩'}"
+				style="color: rgb(231, 106, 141); background-color: rgba(231, 106, 141, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-bilibili
+					"
+				></i>
+			</a>
+		
+			<a
+				class="mdui-ripple"
+				href="https://github.com/ch1ny/"
+				target="_blank"
+				mdui-tooltip="{content: 'GitHub'}"
+				style="color: rgb(25, 23, 23); background-color: rgba(25, 23, 23, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-github
+					"
+				></i>
+			</a>
+		
+			<a
+				class="mdui-ripple"
+				href="https://gitee.com/ch1ny"
+				target="_blank"
+				mdui-tooltip="{content: 'Gitee'}"
+				style="color: rgb(165, 15, 15); background-color: rgba(165, 15, 15, .15);"
+			>
+				<i
+					class="kirafont
+					
+						icon-gitee
+					"
+				></i>
+			</a>
+		
+	</div>
+</div>
+
+		
+			
+  <div class="kira-widget-wrap">
+    <h3 class="kira-widget-title">分类</h3>
+    <div class="kira-widget">
+      <ul class="category-list">
+        
+        
+
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/blog/categories/Revue/">
+              Revue
+            </a>
+            <span class="category-list-count">5</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/blog/categories/编程/">
+              编程
+            </a>
+            <span class="category-list-count">23</span>
+          </li>
+        
+          <li class="category-list-item">
+            <a class="category-list-link" href="/blog/categories/面经/">
+              面经
+            </a>
+            <span class="category-list-count">2</span>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+		
+			
+	<div class="kira-widget-wrap">
+		<div id="randomtagcloud" class="kira-widget tagcloud kira-rainbow">
+			<a href="/blog/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/blog/tags/Node-js/" style="font-size: 16px;">Node.js</a> <a href="/blog/tags/React/" style="font-size: 18px;">React</a> <a href="/blog/tags/Revue/" style="font-size: 18px;">Revue</a> <a href="/blog/tags/Rust/" style="font-size: 14px;">Rust</a> <a href="/blog/tags/TypeScript/" style="font-size: 10px;">TypeScript</a> <a href="/blog/tags/Unity3D/" style="font-size: 10px;">Unity3D</a> <a href="/blog/tags/VSCODE/" style="font-size: 12px;">VSCODE</a> <a href="/blog/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/blog/tags/electron/" style="font-size: 10px;">electron</a> <a href="/blog/tags/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8/" style="font-size: 10px;">字节跳动</a> <a href="/blog/tags/%E8%9A%82%E8%9A%81/" style="font-size: 10px;">蚂蚁</a> <a href="/blog/tags/%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4/" style="font-size: 10px;">阿里巴巴</a> <a href="/blog/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 12px;">面试</a>
+		</div>
+		
+	</div>
+
+
+		
+	</aside>
+	<div class="kira-copyright">
+		&copy; 2024
+		<a href="/blog/">德布罗煜</a>
+		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> &
+		<a href="https://github.com/ch1ny/kira-hexo/" target="_blank">Kira-Hexo</a>
+		<br />
+		
+			<a
+				href="https://beian.miit.gov.cn/"
+				target="_blank"
+			>
+				赣ICP备2021007955号-3
+			</a>
+		
+		<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div><span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span></div><div><span id="busuanzi_container_site_uv">共接待访客<span id="busuanzi_value_site_uv"></span>位</span></div>
+	</div>
+</div>
+<div
+	class="kira-sidebar-modal"
+	id="sidebar-modal"
+	onclick="(function(self) {
+		self.classList.remove('show');
+		document.querySelector('.kira-sidebar.show#sidebar').classList.remove('show');
+	})(this)"
+></div>
+			<div class="kira-content">
+				<div id="kira-top-header"></div>
+				<div class="kira-main-content">
+					
+<link rel="stylesheet" href="/blog/css/kira-image.css">
+
+
+<script src="/blog/js/kira-image.js"></script>
+
+<div class="kira-image">
+    <div class="kira-image-modal">
+        <div class="kira-image-header">
+            <div class="kira-image-counter"></div>
+            <div class="kira-image-title"></div>
+            <div class="kira-image-operation">
+                <div class="kira-image-operation-button" id="kira-image-operation-button-zoom">
+                    <i class="kirafont icon-zoom-in"></i>
+                </div>
+                <div class="kira-image-operation-button" id="kira-image-operation-button-close">
+                    <i class="kirafont icon-close"></i>
+                </div>
+            </div>
+        </div>
+        <div class="kira-image-container">
+            <div class="kira-image-prev-button-panel">
+                <div class="kira-image-exchange-button">
+                    <i class="kirafont icon-left"></i>
+                </div>
+            </div>
+            <div class="kira-image-list">
+                <div class="kira-image-prev">
+                    <img />
+                </div>
+                <div class="kira-image-now">
+                    <img />
+                </div>
+                <div class="kira-image-next">
+                    <img />
+                </div>
+            </div>
+            <div class="kira-image-next-button-panel">
+                <div class="kira-image-exchange-button">
+                    <i class="kirafont icon-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+	
+<link rel="stylesheet" href="/blog/css/kira-code-copy.css">
+
+	
+<script src="/blog/js/kira-code-copy.js"></script>
+
+
+<div class="kira-post">
+	<article>
+		
+		<div class="kira-post-cover">
+			<img
+				data-src="https://tse1-mm.cn.bing.net/th/id/R-C.bc71c1c1c50551a1d65e7b529ea29d08?rik=EU42gCFH4J%2bBZA&riu=http%3a%2f%2fwww.goodworklabs.com%2fwp-content%2fuploads%2f2016%2f10%2freactjs.png&ehk=qvQ5EVoUnJZ7k5L347zsU3f87YTckr1iQBzKdwXJd0w%3d&risl=&pid=ImgRaw&r=0"
+				data-sizes="auto"
+				alt="React的组件"
+				class="lazyload kira-post-cover-image disabled-kira-image"
+			/>
+			<h1>React的组件</h1>
+		</div>
+		
+		<div class="kira-post-meta kira-rainbow" style="margin:10px 0!important;">
+			<a><i class="kirafont icon-calendar-fill"></i>2022年01月01日</a>
+			<a><i class="kirafont icon-edit-fill"></i>3k 字</a>
+			<a><i class="kirafont icon-time-circle-fill"></i>大概 13 分钟</a>
+		</div>
+		<html><head></head><body><p>在上一篇关于 React 的博文中，我们对 react 的渲染和 JSX 的语法有了一个基本的认识。今天就让我们再深入一点，学习 React 组件的相关知识。</p>
+<span id="more"></span>
+
+<!-- toc -->
+
+<ul>
+<li><a href="#%E5%87%BD%E6%95%B0%E7%BB%84%E4%BB%B6%E4%B8%8E-class-%E7%BB%84%E4%BB%B6">函数组件与 class 组件</a><ul>
+<li><a href="#%E5%87%BD%E6%95%B0%E7%BB%84%E4%BB%B6">函数组件</a></li>
+<li><a href="#class-%E7%BB%84%E4%BB%B6">class 组件</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E7%BB%84%E4%BB%B6">使用组件</a></li>
+<li><a href="#%E7%BB%84%E5%90%88%E7%BB%84%E4%BB%B6">组合组件</a></li>
+<li><a href="#props-%E7%9A%84%E5%8F%AA%E8%AF%BB%E6%80%A7">props 的只读性</a></li>
+<li><a href="#state-%E4%B8%8E%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F">State 与生命周期</a><ul>
+<li><a href="#state">State</a></li>
+<li><a href="#%E5%88%9D%E6%AD%A5%E4%BA%86%E8%A7%A3%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F">初步了解生命周期</a></li>
+<li><a href="#%E6%AD%A3%E7%A1%AE%E5%9C%B0%E4%BD%BF%E7%94%A8-state">正确地使用 State</a><ul>
+<li><a href="#%E4%B8%8D%E8%A6%81%E7%9B%B4%E6%8E%A5%E4%BF%AE%E6%94%B9-state">不要直接修改 State</a></li>
+<li><a href="#state-%E7%9A%84%E6%9B%B4%E6%96%B0%E5%8F%AF%E8%83%BD%E6%98%AF%E5%BC%82%E6%AD%A5%E7%9A%84">State 的更新可能是异步的</a></li>
+<li><a href="#state-%E7%9A%84%E6%9B%B4%E6%96%B0%E4%BC%9A%E8%A2%AB%E5%90%88%E5%B9%B6">State 的更新会被合并</a></li>
+</ul>
+</li>
+<li><a href="#%E5%8D%95%E5%90%91%E6%95%B0%E6%8D%AE%E6%B5%81">单向数据流</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+<blockquote>
+<p>组件允许你将 UI 拆分为独立可复用的代码片段，并对每个片段进行独立构思。本指南旨在介绍组件的相关理念。</p>
+</blockquote>
+<p>组件，从概念上类似于 JavaScript 函数。它接受任意的入参（即 “props”），并返回用于描述页面展示内容的 React 元素。</p>
+<h1><span id="%E5%87%BD%E6%95%B0%E7%BB%84%E4%BB%B6%E4%B8%8E-class-%E7%BB%84%E4%BB%B6">函数组件与 class 组件</span></h1><h2><span id="%E5%87%BD%E6%95%B0%E7%BB%84%E4%BB%B6">函数组件</span></h2><p>定义一个 React 组件最简单的方式就是定义一个如下的 JavaScript 函数：</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params">props</span>) {<br>    <span class="hljs-keyword">return</span> <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>这个组件的名字是：{props.name}<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span>;<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<p>这个函数是一个有效的 React 组件，因为它接收唯一带有数据的 <code>props</code> （属性）对象，并且通过 JSX 返回了一个 React 元素。这类组件被称作<strong>函数组件</strong>，因为它本质上就是一个 JavaScript 函数。</p>
+<h2><span id="class-%E7%BB%84%E4%BB%B6">class 组件</span></h2><p>你还可以使用 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes">ES6 的类</a> 来定义组件：</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">class</span> <span class="hljs-title class_">App</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">React.Component</span> {<br>    <span class="hljs-title function_">render</span>(<span class="hljs-params"></span>) {<br>        <span class="hljs-keyword">return</span> <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>这个组件的名字是：{props.name}<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span>;<br>    }<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<p>上述两个组件在使用效果上是相等的。</p>
+<h1><span id="%E4%BD%BF%E7%94%A8%E7%BB%84%E4%BB%B6">使用组件</span></h1><p>之前，我们遇到的 React 元素还都只是 DOM 标签：</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> element = <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>这是个DOM标签<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>;<br></code></pre></td></tr></tbody></table></figure>
+
+<p>而现在，我们可以用我们定义的 React 组件来代替这些 DOM 标签，成为 React 元素。<br>当 React 元素是用户自定义的 React 组件时，它会将 JSX 接收的属性（attributes）以及子组件（children）转换为单个对象传递给组件，这个对象就是我们的 <strong><code>props</code></strong> 。</p>
+<p>比如我们下面的这段代码：</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params">props</span>) {<br>    <span class="hljs-keyword">return</span> <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>这个组件的名字是：{props.name}<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span>;<br>}<br><br><span class="hljs-keyword">const</span> element = <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">App</span> <span class="hljs-attr">name</span>=<span class="hljs-string">'app'</span> /&gt;</span></span>;<br><br><span class="hljs-title class_">ReactDOM</span>.<span class="hljs-title function_">render</span>(element, <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">'root'</span>));<br></code></pre></td></tr></tbody></table></figure>
+
+<p>它会在 Id 为 root 的 DOM 中打印一段标题，呈现的效果如下：</p>
+<div style="width: 100%; background-color: #eaeaea; padding: 1rem; font-size: 1rem;">
+    <div id="root">
+        <h1><span id="%E8%BF%99%E4%B8%AA%E7%BB%84%E4%BB%B6%E7%9A%84%E5%90%8D%E5%AD%97%E6%98%AFapp">这个组件的名字是：app</span></h1>
+    </div>
+</div>
+
+<p>我们来理解一下这个例子中发生了什么：</p>
+<ol>
+<li>我们调用 <code>ReactDOM.render()</code> 函数，并传入 <code>&lt;App name='app' /&gt;</code> 作为参数。</li>
+<li>React 调用 <code>App</code> 组件，并将 <code>{ name: 'app' }</code> 作为 props 传入。</li>
+<li><code>App</code> 组件将 <code>&lt;h1&gt;这个组件的名字是：app&lt;/h1&gt;</code> 作为返回值返回。</li>
+<li>ReactDOM 将 DOM 高效地替换成 <code>&lt;h1&gt;这个组件的名字是：app&lt;/h1&gt;</code> 。</li>
+</ol>
+<blockquote>
+<p><strong>注意：组件名称必须以大写字母开头</strong>。<br>React 会将以小写字母开头的组件视为原生 DOM 标签。例如，<code>&lt;div /&gt;</code> 代表 HTML 的 div 标签，而 <code>&lt;App /&gt;</code> 则代表一个组件，并且需在作用域内使用 <code>App</code> 。</p>
+</blockquote>
+<h1><span id="%E7%BB%84%E5%90%88%E7%BB%84%E4%BB%B6">组合组件</span></h1><p>组件可以在其输出中引用其他组件。这就可以使我们用同一组件抽象出任意层次细节。我们可以来看看以下代码：</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">Student</span>(<span class="hljs-params">props</span>) {<br>    <span class="hljs-keyword">return</span> (<br>        <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span></span><br><span class="language-xml">            {props.name}是位{props.male ? '男' : '女'}同学</span><br><span class="language-xml">        <span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span></span><br>    );<br>}<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">Classroom</span>(<span class="hljs-params">props</span>) {<br>    <span class="hljs-keyword">return</span> (<br>        <span class="language-xml"><span class="hljs-tag">&lt;&gt;</span></span><br><span class="language-xml">            <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>{props.classroom}班花名册如下：<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span><br><span class="language-xml">            <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">                {props.students.map((student) =&gt; (</span><br><span class="language-xml">                    <span class="hljs-tag">&lt;<span class="hljs-name">Student</span> <span class="hljs-attr">name</span>=<span class="hljs-string">{student.name}</span> <span class="hljs-attr">male</span>=<span class="hljs-string">{student.male}</span> /&gt;</span></span><br><span class="language-xml">                ))}</span><br><span class="language-xml">            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;/&gt;</span></span><br>    );<br>}<br><br><span class="hljs-keyword">const</span> classroom = (<br>    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">Classroom</span></span></span><br><span class="hljs-tag"><span class="language-xml">        <span class="hljs-attr">classroom</span>=<span class="hljs-string">{2}</span></span></span><br><span class="hljs-tag"><span class="language-xml">        <span class="hljs-attr">students</span>=<span class="hljs-string">{[</span></span></span><br><span class="hljs-tag"><span class="language-xml">            { <span class="hljs-attr">name:</span> '<span class="hljs-attr">小明</span>', <span class="hljs-attr">male:</span> <span class="hljs-attr">true</span> },</span></span><br><span class="hljs-tag"><span class="language-xml">            { <span class="hljs-attr">name:</span> '<span class="hljs-attr">小红</span>', <span class="hljs-attr">male:</span> <span class="hljs-attr">false</span> },</span></span><br><span class="hljs-tag"><span class="language-xml">            { <span class="hljs-attr">name:</span> '<span class="hljs-attr">小亮</span>', <span class="hljs-attr">male:</span> <span class="hljs-attr">true</span> },</span></span><br><span class="hljs-tag"><span class="language-xml">        ]}</span></span><br><span class="hljs-tag"><span class="language-xml">    /&gt;</span></span><br>);<br><br><span class="hljs-title class_">ReactDOM</span>.<span class="hljs-title function_">render</span>(classroom, <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">'root'</span>));<br></code></pre></td></tr></tbody></table></figure>
+
+<a target="_blank" rel="noopener" href="https://codepen.io/ch1ny/pen/MWrrKQE?editors=0010" class="CodePenLink"><b>在 Codepen 上尝试</b></a>
+
+<p>在这个例子中，我们构造了一个简单的花名册组件。通常来说，每个新的 React 应用程序的顶层组件都是 <code>App</code> 组件。但是，在一个实际项目中，你还会需要一些其他的小组件，并且自下而上地将这类组件逐步应用到视图层的每一处。</p>
+<h1><span id="props-%E7%9A%84%E5%8F%AA%E8%AF%BB%E6%80%A7">props 的只读性</span></h1><p>组件无论是使用函数式声明还是通过 class 声明，都绝对不能修改自身的 props ，这叫做 props 的只读性。<br>在了解只读性之前让我们先来认识一种函数：<strong>纯函数</strong>。<br>我们来看看下面这段代码：</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">add</span>(<span class="hljs-params">a, b</span>) {<br>    <span class="hljs-keyword">return</span> a + b;<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<p>像上面这段代码，我们只是使用了传入函数的参数，而没有修改入参的值，这样的函数叫做纯函数。<br>而下面这段代码中的函数就不是纯函数，因为它修改了自己的入参：</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">arrayPush</span>(<span class="hljs-params">arr, num</span>) {<br>    arr.<span class="hljs-title function_">push</span>(num);<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<p>React 是一门非常灵活的 JS 框架，但它也有个严格的规则：</p>
+<p><strong>所有 React 组件都必须像纯函数一样保护它们的 props 不被自身更改。</strong></p>
+<p>当然，一个 Web 应用的视图层是动态的，并且会随着时间的推移发生变化。下面，我们将介绍一种新的概念—— <strong>state</strong> 。在不违背上述规则的情况下，state 允许 React 组件随用户的操作、网络响应或者其他的变化而动态地更改渲染内容。</p>
+<h1><span id="state-%E4%B8%8E%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F">State 与生命周期</span></h1><h2><span id="state">State</span></h2><p>在 <a href="/React/React入门/">React 入门</a> 这篇文章中，我们曾经写了一个时钟的代码用例。</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">clock</span>(<span class="hljs-params"></span>) {<br>    <span class="hljs-keyword">const</span> element = (<br>        <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">            <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>现在是：{new Date().toLocaleTimeString()}<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>    );<br>    <span class="hljs-title class_">ReactDOM</span>.<span class="hljs-title function_">render</span>(element, <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">'root'</span>));<br>}<br><span class="hljs-built_in">setInterval</span>(clock, <span class="hljs-number">1000</span>);<br></code></pre></td></tr></tbody></table></figure>
+
+<p>在这个用例中，我们通过 <code>setInterval()</code> 方法，每隔一秒钟调用一次 <code>ReactDOM.render()</code> 方法更新视图层。但是这样的更新方式未免太过繁琐，下面我们将介绍一种新的更新视图的方法，我们将学习如何正确地封装一个 <code>Clock</code> 组件，它将设置自己的计时器并按秒实现更新。</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Clock</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">React.Component</span> {<br>    <span class="hljs-title function_">constructor</span>(<span class="hljs-params">props</span>) {<br>        <span class="hljs-variable language_">super</span>(props);<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">state</span> = {<br>            <span class="hljs-attr">time</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(),<br>        };<br>    }<br><br>    <span class="hljs-title function_">render</span>(<span class="hljs-params"></span>) {<br>        <span class="hljs-keyword">return</span> (<br>            <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">                <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>这是一个 React 的时钟用例<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span><br><span class="language-xml">                <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>现在的时间是：{this.state.time.toLocaleTimeString()}<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span></span><br><span class="language-xml">            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>        );<br>    }<br>}<br><br><span class="hljs-title class_">ReactDOM</span>.<span class="hljs-title function_">render</span>(<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">Clock</span> /&gt;</span></span>, <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">'root'</span>));<br></code></pre></td></tr></tbody></table></figure>
+
+<a target="_blank" rel="noopener" href="https://codepen.io/ch1ny/pen/zYppqdQ?editors=0010" class="CodePenLink"><b>在 Codepen 上尝试</b></a>
+
+<p>在这里我们构造了一个简单的时钟的外观，我们在渲染函数里获取到组件自身的 <code>state.time</code> ，并将其转换成时间字符串展示在视图中。但是我们还缺少一个关键功能，那就是让时钟每秒钟更新一次。接下来，我们将通过这个 class 组件，来认识 React 的 class 组件中的<strong>生命周期</strong>。</p>
+<h2><span id="%E5%88%9D%E6%AD%A5%E4%BA%86%E8%A7%A3%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F">初步了解生命周期</span></h2><p>在具有许多组件的应用程序中，当组件被销毁时释放所占用的资源是非常重要的。<br>在我们的 <code>Clock</code> 组件第一次渲染到 DOM 中时，我们就要为其设置一个计时器，让它自动更新 <code>Clock</code> 的时间。这个阶段我们称之为 <strong>“挂载（Mount）”</strong> 。<br>当我们的 <code>Clock</code> 组件从 DOM 中移除时，我们应该清除这个计时器所占据的资源，防止内存泄露。这个阶段被称为 <strong>“卸载（Unmount）”</strong> 。<br>在 React 中，为 class 组件保留了一些特殊的方法，这些方法会在一个组件的特定阶段被调用，这些方法叫做<strong>生命周期函数</strong>。</p>
+<p>以我们的 <code>Clock</code> 组件举例，我们来通过<strong>生命周期函数</strong>实现更新时钟状态。</p>
+<p><code>componentDidMount()</code> 方法会在组件已经被渲染到 DOM 后运行，因此，我们最好在这里设置计时器。</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title function_">componentDidMount</span>(<span class="hljs-params"></span>) {<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">tickInterval</span> = <span class="hljs-built_in">setInterval</span>(<span class="hljs-function">() =&gt;</span> {<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setState</span>({<br>            <span class="hljs-attr">time</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(),<br>        });<br>    }, <span class="hljs-number">1000</span>);<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<p>我们将计时器保存在 <code>this</code> 当中（<code>this.tickInterval</code>）。<br>而我们将在 <code>componentWillUnmount()</code> 方法中清除这个计时器：</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title function_">componentWillUnmount</span>(<span class="hljs-params"></span>) {<br>    <span class="hljs-built_in">clearInterval</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">tickInterval</span>);<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<p>完整代码如下：</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Clock</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">React.Component</span> {<br>    <span class="hljs-title function_">constructor</span>(<span class="hljs-params">props</span>) {<br>        <span class="hljs-variable language_">super</span>(props);<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">state</span> = {<br>            <span class="hljs-attr">time</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(),<br>        };<br>    }<br><br>    <span class="hljs-title function_">componentDidMount</span>(<span class="hljs-params"></span>) {<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">tickInterval</span> = <span class="hljs-built_in">setInterval</span>(<span class="hljs-function">() =&gt;</span> {<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setState</span>({<br>                <span class="hljs-attr">time</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(),<br>            });<br>        }, <span class="hljs-number">1000</span>);<br>    }<br><br>    <span class="hljs-title function_">componentWillUnmount</span>(<span class="hljs-params"></span>) {<br>        <span class="hljs-built_in">clearInterval</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">tickInterval</span>);<br>    }<br><br>    <span class="hljs-title function_">render</span>(<span class="hljs-params"></span>) {<br>        <span class="hljs-keyword">return</span> (<br>            <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">                <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>这是一个 React 的时钟用例<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span><br><span class="language-xml">                <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>现在的时间是：{this.state.time.toLocaleTimeString()}<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span></span><br><span class="language-xml">            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>        );<br>    }<br>}<br><br><span class="hljs-title class_">ReactDOM</span>.<span class="hljs-title function_">render</span>(<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">Clock</span> /&gt;</span></span>, <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">'root'</span>));<br></code></pre></td></tr></tbody></table></figure>
+
+<a target="_blank" rel="noopener" href="https://codepen.io/ch1ny/pen/YzYYqaG?editors=0010" class="CodePenLink"><b>在 Codepen 上尝试</b></a>
+
+<p>这个时钟样例每秒都会实现刷新。<br>让我们来快速梳理一下在这段代码中都发生了什么：</p>
+<ol>
+<li>当我们通过 <code>ReactDOM.render()</code> 方法尝试将 <code>&lt;Clock /&gt;</code> 组件渲染到 DOM 中去，React 会调用 <code>&lt;Clock /&gt;</code> 的构造函数。</li>
+<li>在构造函数中， <code>&lt;Clock /&gt;</code> 组件将一个对象 <code>{ time: new Date() }</code> 作为了 <code>this.state</code> 的初始值。</li>
+<li>之后 React 调用组件的 <code>render()</code> 方法，更新 DOM 来匹配 <code>&lt;Clock /&gt;</code> 渲染的输出。</li>
+<li>当 <code>&lt;Clock /&gt;</code> 的输出被插入到 DOM 中后，React 就会调用 <code>componentDidMount()</code> 生命周期方法。在这个方法中，<code>&lt;Clock /&gt;</code> 组件向浏览器请求设置一个计时器来每秒调用一次 <code>setState</code> 方法来更新组件状态。</li>
+<li><code>setState()</code> 方法是 React 提供的更新 class 组件的 state 的函数，通过调用这个方法，React 能够了解到 state 已经发生了改变，会重新调用 <code>render()</code> 函数来确定页面上应该显示什么。对比前后两个视图的差别对 DOM 进行最小限度的更新以匹配 React 组件的当前状态。</li>
+<li>当 <code>&lt;Clock /&gt;</code> 组件即将被从 DOM 中移除时，React 调用该组件的 <code>componentWillUnmount()</code> 方法，将计时器移除。</li>
+</ol>
+<h2><span id="%E6%AD%A3%E7%A1%AE%E5%9C%B0%E4%BD%BF%E7%94%A8-state">正确地使用 State</span></h2><p>关于 React 组件的 State，你应当注意三件事：</p>
+<h3><span id="%E4%B8%8D%E8%A6%81%E7%9B%B4%E6%8E%A5%E4%BF%AE%E6%94%B9-state">不要直接修改 State</span></h3><p>直接修改 state 是不会让组件重新渲染的：</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable language_">this</span>.<span class="hljs-property">state</span>.<span class="hljs-property">num</span> = <span class="hljs-number">0</span>; <span class="hljs-comment">// 这段代码不能更新组件的 state</span><br></code></pre></td></tr></tbody></table></figure>
+
+<p>只有在构造函数中才能通过为 <code>this.state</code> 直接赋值的方法来初始化 state 。在组件被渲染后应该使用 <code>setState()</code> 来更新组件状态。</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setState</span>({ <span class="hljs-attr">num</span>: <span class="hljs-number">0</span> });<br></code></pre></td></tr></tbody></table></figure>
+
+<h3><span id="state-%E7%9A%84%E6%9B%B4%E6%96%B0%E5%8F%AF%E8%83%BD%E6%98%AF%E5%BC%82%E6%AD%A5%E7%9A%84">State 的更新可能是异步的</span></h3><p>出于性能考虑，React 可能会把多个 <code>setState()</code> 调用合并成一个调用。<br>由于 <code>this.state</code> 和 <code>this.props</code> 的更新可能是异步的，因此建议不要依赖它们的值来更新下一个状态。<br>例如，以下代码可能无法更新计数器：</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setState</span>({<br>    <span class="hljs-attr">count</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">state</span>.<span class="hljs-property">count</span> + <span class="hljs-variable language_">this</span>.<span class="hljs-property">props</span>.<span class="hljs-property">step</span>,<br>});<br></code></pre></td></tr></tbody></table></figure>
+
+<p>要解决这个问题，可以让 <code>setState()</code> 接收一个函数而非一个对象。这个函数使用上一个 state 作为第一个参数，将此次更新被应用时的 props 作为第二个参数：</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setState</span>(<span class="hljs-function">(<span class="hljs-params">state, props</span>) =&gt;</span> ({<br>    <span class="hljs-attr">count</span>: state.<span class="hljs-property">count</span> + props.<span class="hljs-property">step</span>,<br>}));<br></code></pre></td></tr></tbody></table></figure>
+
+<h3><span id="state-%E7%9A%84%E6%9B%B4%E6%96%B0%E4%BC%9A%E8%A2%AB%E5%90%88%E5%B9%B6">State 的更新会被合并</span></h3><p>当调用 <code>setState()</code> 的时候，React 会把你提供的对象合并到当前的 state。<br>例如：</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title function_">constructor</span>(<span class="hljs-params">props</span>) {<br>    <span class="hljs-variable language_">super</span>(props)<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">state</span> = {<br>        <span class="hljs-attr">name</span>: <span class="hljs-literal">undefined</span>,<br>        <span class="hljs-attr">age</span>: <span class="hljs-number">0</span><br>    }<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<p>你可以分别调用 <code>setState()</code> 来更新不同的状态：</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title function_">componentDidMount</span>(<span class="hljs-params"></span>) {<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setState</span>({<br>        <span class="hljs-attr">name</span>: <span class="hljs-string">'德布罗煜'</span><br>    })<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setState</span>({<br>        <span class="hljs-attr">age</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>().<span class="hljs-title function_">getFullYear</span>() - <span class="hljs-number">2001</span><br>    })<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p><strong>注意：这里的合并是浅合并</strong><br>比如一个组件的 state 是 <code>{ a: {}, b: {} }</code>，当调用 <code>setState({a})</code> 时，React 会将 <code>state.b</code> 完整保留下来，但是把 <code>state.a</code> 整个替换掉。</p>
+</blockquote>
+<h2><span id="%E5%8D%95%E5%90%91%E6%95%B0%E6%8D%AE%E6%B5%81">单向数据流</span></h2><p>在 React 中，数据是<strong>向下流动</strong>的。<br>不管是父组件还是子组件，都无法知道某个组件是有状态的还是无状态的，并且它们也并不关心。因此，我们说 state 是局部的（封装的），因为除了拥有并设置了它的组件，其他组件都无法访问。<br>一个组件可以选择将它的 state 通过 props 传递给它的子组件：</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;div&gt;<br>    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">Child</span> <span class="hljs-attr">name</span>=<span class="hljs-string">{this.state.child}</span> /&gt;</span></span><br>&lt;/div&gt;<br></code></pre></td></tr></tbody></table></figure>
+
+<p><code>&lt;Child /&gt;</code> 组件会在其 props 中接收参数 <code>name</code> ，但是子组件本身无法知道它是来自它的父组件本身的 state，还是父组件接收的 props 亦或是直接写死在代码中人为传递的。</p>
+<blockquote>
+<p>这种数据流通常被称作“自上而下的”或是“单向的”数据流。任何的 state 总是所属于特定的组件，而且从该 state 派生的任何数据或 UI 只能影响树中“低于”它们的组件。如果你把一个以组件构成的树想象成一个 props 的数据瀑布的话，那么每一个组件的 state 就像是在任意一点上给瀑布增加额外的水源，但是它只能向下流动。</p>
+</blockquote>
+</body></html>
+	</article>
+
+	 
+    <div class="kira-post-copyright">
+        <strong>本文作者：</strong>德布罗煜<br>
+        <strong>本文链接：</strong><a href="https://kira.host/blog/React/React%E7%9A%84%E7%BB%84%E4%BB%B6/" title="https:&#x2F;&#x2F;kira.host&#x2F;blog&#x2F;React&#x2F;React的组件&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;kira.host&#x2F;blog&#x2F;React&#x2F;React的组件&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+  
+	<div class="kira-post-nav">
+		<nav class="post-nav">
+			  
+			<!-- 先找到与当前文字相同的目录 -->
+			                  
+			<!-- 在找到当前文章所在的 index -->
+			                    
+			<!-- 上一篇文章 -->
+			<div class="old">
+				<span>上一章</span>
+				<a href="/blog/React/React%E5%85%A5%E9%97%A8/"> React入门</a>
+			</div>
+			       
+			<!-- 下一篇文章 -->
+			<div class="new">
+				<span>下一章</span>
+				<a href="/blog/React/React%E7%9A%84%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86/"> React的事件处理</a>
+			</div>
+			                                                                                                                                  
+		</nav>
+	</div>
+	
+	<div class="kira-post-meta kira-rainbow">
+		
+			<a class="kirafont icon-container-fill -link" href="/blog/categories/%E7%BC%96%E7%A8%8B/">编程</a>
+		
+		
+			<a class="kirafont icon-tag-fill -none-link" href="/blog/tags/JavaScript/" rel="tag">JavaScript</a> <a class="kirafont icon-tag-fill -none-link" href="/blog/tags/React/" rel="tag">React</a>
+		
+	</div>
+	
+	<div class="kira-post-footer">
+		
+
+		
+	<div class="giscus"></div>
+  
+    <script src="https://giscus.app/client.js"
+      data-repo="ch1ny/ch1ny.github.io"
+      data-repo-id="R_kgDOHGgizw"
+      data-category="General"
+      data-category-id="DIC_kwDOHGgiz84CU88t"
+      data-mapping="pathname"
+      data-strict="0"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="top"
+      data-theme="light"
+      data-lang="en"
+      data-loading="lazy"
+      crossorigin="anonymous"
+      async  
+    ></script>
+  
+
+	</div>
+	
+</div>
+
+				</div>
+			</div>
+			<div class="kira-right-column">
+	<a onclick="document.querySelector('#kira-top-header').scrollIntoView({behavior: 'smooth'});" class="kira-backtotop" aria-label="回到顶部" title="回到顶部">
+		<button class="mdui-fab mdui-ripple">
+			<i class="kirafont icon-caret-up"></i>
+		</button>
+	</a>
+</div>
+
+		</div>
+	</body>
+</html>
